@@ -1,6 +1,6 @@
-FILES=../rtl/aes_rcon.sv ../rtl/aes_sv.sv ../rtl/aes_key_expand_128 ../rtl/aes_cipher_top.sv ../rtl/aes_inv_sbox.sv ../rtl/aes_inv_cipher.sv
+FILES=../rtl/aes_rcon.sv ../rtl/aes_sbox.sv ../rtl/aes_key_expand_128.sv ../rtl/aes_cipher_top.sv ../rtl/aes_inv_sbox.sv ../rtl/aes_inv_cipher_top.sv
 
-TEST= ../bench/test_bench_top.sv
+TEST= ../bench/test_bench_top
 BENCH=../sim/testbench.exe
 
 all: 
@@ -16,11 +16,11 @@ test:
 	./$(BENCH)
 
 view:
-#	dve -full64 -vpd vcdplus.vpd &
+	dve -full64 -vpd vcdplus.vpd &
 
 gtkwave:
 	vcs -vpd2vcd vcdplus.vpd waveform.vcd
-#	gtkwave waveform.vcd &
+	gtkwave waveform.vcd &
 
 #leda:
 #	leda -full64 -sverilog -top $(DUV) $(DUV4).sv $(DUV42).sv $(DUV16).sv $(DUV41).sv $(DUV43).sv $(DUV).sv

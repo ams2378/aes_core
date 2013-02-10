@@ -54,8 +54,10 @@
 //
 //
 
-`include "timescale.v"
+//`include "timescale.v"
 
+//`include 1ns/10ps  
+ 
 module aes_rcon(clk, kld, out);
 input		clk;
 input		kld;

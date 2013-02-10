@@ -54,7 +54,7 @@
 //
 //
 
-`include "timescale.v"
+//`include "timescale.v"
 
 module aes_inv_sbox(a,d);
 input	[7:0]	a;

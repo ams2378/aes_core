@@ -1,82 +1,38 @@
+FILES=../rtl/aes_rcon.sv ../rtl/aes_sv.sv ../rtl/aes_key_expand_128 ../rtl/aes_cipher_top.sv ../rtl/aes_inv_sbox.sv ../rtl/aes_inv_cipher.sv
 
-all:	sim
-SHELL = /bin/sh
-MS="-s"
+TEST= ../bench/test_bench_top.sv
+BENCH=../sim/testbench.exe
 
-##########################################################################
-#
-# DUT Sources
-#
-##########################################################################
-DUT_SRC_DIR=../../../rtl/verilog
-_TARGETS_=	$(DUT_SRC_DIR)/aes_sbox.v			\
-		$(DUT_SRC_DIR)/aes_rcon.v			\
-		$(DUT_SRC_DIR)/aes_key_expand_128.v		\
-		$(DUT_SRC_DIR)/aes_cipher_top.v			\
-		$(DUT_SRC_DIR)/aes_inv_sbox.v			\
-		$(DUT_SRC_DIR)/aes_inv_cipher_top.v
+all: 
+	make clean
+	make test
+	make gtkwave
+duv4:
+	vcs -full64 -PP -sverilog +define+SV +define+VPD $(FILES) -o $(BENCH)
+	./$(BENCH)
 
-		
-##########################################################################
-#
-# Test Bench Sources
-#
-##########################################################################
-TB_SRC_DIR=../../../bench/verilog
-_TB_=		$(TB_SRC_DIR)/test_bench_top.v	
+test:
+	vcs -full64 -PP -sverilog +define+SV +define+VPD $(FILES)  $(TEST).sv -o $(BENCH)
+	./$(BENCH)
 
-##########################################################################
-#
-# Misc Variables
-#
-##########################################################################
+view:
+#	dve -full64 -vpd vcdplus.vpd &
 
-INCDIR=+incdir+./$(DUT_SRC_DIR)/ +incdir+./$(TB_SRC_DIR)/
-LOGF=-l .nclog
-UMC_LIB=/tools/dc_libraries/virtual_silicon/umc_lib.v
-GATE_NETLIST = ../../../syn/out/aes_cipher_top.v
+gtkwave:
+	vcs -vpd2vcd vcdplus.vpd waveform.vcd
+#	gtkwave waveform.vcd &
 
-##########################################################################
-#
-# Make Targets
-#
-##########################################################################
-ss:
-	signalscan -do waves/waves.do -waves waves/waves.trn &
-
-simw:
-	@$(MAKE) -s sim ACCESS="+access+r " WAVES="+define+WAVES"
-
-sim:
-	ncverilog -q +define+RUDIS_TB $(_TARGETS_) $(_TB_)	\
-		$(INCDIR) $(WAVES) $(ACCESS) $(LOGF) +ncstatus	\
-		+ncuid+`hostname` 
-
-ivl:
-	/usr/local/bin/iverilog  -D RUDIS_TB $(_TARGETS_) $(_TB_)	\
-		-I ./$(DUT_SRC_DIR)/ -I ./$(TB_SRC_DIR)/		\
-		$(WAVES) $(ACCESS)  -s test 
-
-gatew:
-	@$(MAKE) -s gate ACCESS="+access+r" WAVES="+define+WAVES"
-
-gate:
-	ncverilog -q +define+RUDIS_TB $(_TB_) $(UMC_LIB)	\
-		$(GATE_NETLIST) $(INCDIR) $(WAVES) $(ACCESS)	\
-		$(LOGF) +ncstatus +ncuid+`hostname` 
-
-hal:
-	@echo ""
-	@echo "----- Running HAL ... ----------"
-	@hal    +incdir+$(DUT_SRC_DIR) 	-NOP -NOS	\
-		-nocheck STYVAL:USEPRT:NOBLKN:DLNBLK	\
-		$(_TARGETS_)
-	@echo "----- DONE ... ----------"
-
+#leda:
+#	leda -full64 -sverilog -top $(DUV) $(DUV4).sv $(DUV42).sv $(DUV16).sv $(DUV41).sv $(DUV43).sv $(DUV).sv
 clean:
-	rm -rf	./waves/*.dsn ./waves/*.trn		\
-		ncwork/.inc* ncwork/inc*		\
-		./verilog.* .nclog hal.log INCA_libs
+	rm -rf csrc *.exe.daidir *.exe *.log *.inf .leda_work *.key *.vpd *.vcd DVEfiles
 
-##########################################################################
+
+
+#duv41:
+#	vcs -full64 -PP -sverilog +define+SV +define+VPD $(DUV41).sv -o $(BENCH)
+#	./$(BENCH)
+#duv:
+#	vcs -full64 -PP -sverilog +define+SV +define+VPD $(DUV4).sv $(DUV41).sv $(DUV).sv -o $(BENCH)
+#	./$(BENCH)
 

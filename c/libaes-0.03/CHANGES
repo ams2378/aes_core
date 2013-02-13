@@ -1,0 +1,29 @@
+$Id: CHANGES,v 1.1 2002/01/13 13:23:20 cvs Exp $
+
+The original C and assembly code used within this library were taken
+from Brian Gladman's web pages on 9 Jan 2002.  
+Brian's original disclaimer and license information is included in all
+files derived from his work, as well as in the README file.
+
+The following changes were made to the original code:-
+  - #define renames:-
+     BLOCK_SIZE -> AES_BLOCK_SIZE
+     TYPE_PREFIX -> AES_TYPE_PREFIX
+     NAME_PREFIX -> AES_NAME_PREFIX
+     DUAL_KEY_SCHEDULE -> AES_DUAL_KEY_SCHEDULE
+     ENCRYPT_ONLY -> AES_ENCRYPT_ONLY
+     DECRYPT_ONLY -> AES_DECRYPT_ONLY
+     KS_LENGTH -> AES_KS_LENGTH
+     RC_LENGTH -> AES_RC_LENGTH
+
+  - routine name changes (added c_name() macro)
+     convert_key 
+
+  - declarations that are not needed to *use* libaes have
+    been migrated out of aes.h -> aes_options.h
+    Also sets of the code from aes.c also migrated into
+    aes_options.h to facilitate splitting of code for
+    encrypt/decrypt, set_key, set_blk and tables into
+    separate C files.  [This is done to allow the easy
+    replacement of (say) the encrypt/decrypt functions
+    with an assembler equivalent.

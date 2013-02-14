@@ -1,0 +1,5 @@
+*.o
+*.a
+*.cpp
+aes_speedcheck
+aes_vector_test

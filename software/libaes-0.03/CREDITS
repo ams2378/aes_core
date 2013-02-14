@@ -1,0 +1,14 @@
+$Id: CREDITS,v 1.1 2002/01/13 13:23:20 cvs Exp $
+
+All the original code for AES came from Brian Gladman, who has also
+been *very* helpful and responsive to my emails.  See
+	http://fp.gladman.plus.com/cryptography_technology/rijndael/
+
+I found a modified version of Brian's code with Jari Ruusu's name in
+the comments.  I don't have any contact information for Jari, and
+actually his code has pretty much vanished now...
+
+The perlasm code was taken directly from the OpenSSL project.
+
+The rest of this, almost certainly including all the mistakes, was
+written by me, Nigel Metheringham, with support from my employer.

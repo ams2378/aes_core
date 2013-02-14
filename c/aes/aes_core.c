@@ -727,7 +727,7 @@ int AES_set_encrypt_key(const unsigned char *userKey, const int bits,
    	int i = 0;
 	u32 temp;
 
-
+	printf ("received key is : %s", userKey);
 
 
 	if (!userKey || !key)

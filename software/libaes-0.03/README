@@ -1,0 +1,129 @@
+libaes - An AES/rijndael encryption library
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+	http://libaes.sourceforge.net/
+
+This package includes a C implementation of the AES (rijndael)
+encryption algorithm.  Additionally there is an intel i386
+(Pentium/MMX or higher) assembler implementation of the
+encrypt/decrypt functions.  The library can be built in 128 bit block
+mode, or alternatively (at a cost of some performance) in a mode which
+supports several different block lengths (the assembler version
+however only supports 128 block size).
+
+Additionally there are 2 test programs:-
+  aes_vector_test - tests the AES implementation for correctness by 
+		    running test vectors through it
+  aes_speedcheck
+
+
+Current Status
+~~~~~~~~~~~~~~
+
+This works and has been tested with 128 block size.  
+This release is an alpha release, in that it is intended to provoke
+discussion of the API (see bottom of this file).  As such the next
+release may well be completely incompatible.
+
+
+Building the library
+~~~~~~~~~~~~~~~~~~~~
+
+Edit the Makefile - in particular select the correct value of AES_ENC
+You could also edit aes.h to change the block size - but this is
+untested at this time.
+
+To build libaes.a
+  make
+
+To build and run the tests
+  make test
+
+NB many of the vector tests will be skipped due to the key or block
+size being unsupported.
+
+To install the library, move libaes and aes.h into the right place for
+your system (yes there is currently no make install).  You may need to
+use ranlib on the libaes.a file afterwards.
+
+
+Test Programs
+~~~~~~~~~~~~~
+
+1. aes_vector_test
+
+   Runs test vectors through the aes functions.
+   Reports any vectors that failed.
+   Skips any key or block sizes unsupported (ie only currently
+   handles the hard wired block size and 128, 192 & 256 bit keys).
+   Options
+     -v   - be verbose
+     -q   - be quiet
+     -d   - output loads of debug information
+
+   Arguments
+     list of files of test vectors
+
+2. aes_speedcheck
+
+   Runs 10 second loops of set_key, encrypt & decrypt to calculate
+   speeds of functions.
+
+   Usage:
+	aes_speedcheck [key size]
+
+   key size may be 128, 192 or 256.
+
+API
+~~~
+
+This is currently up for changing.... take care when you update
+versions.
+
+At present the aes_ctx will vary in size dependant on the block
+size, which must be hard wired.
+
+The context contains both an encryption and decryption key
+schedule. (a processed version of the key being used).
+
+All functions require an initialised (initially zero) context to be
+passed to them as the *last* parameter.  So
+
+   int aes_set_key(aes_byte * key[], int keysize, int options, aes_ctx * ctx)
+     key - the key as a byte array
+     keysize - size of key in bytes
+     options - one of aes_enc, aes_dec, aes_both (whether key scheds
+        are generated for encryption, decryption or both).
+     ctx - context
+
+   int aes_encrypt(aes_byte[] in, aes_byte out[], aes_ctx ctx)
+   int aes_encrypt(aes_byte[] in, aes_byte out[], aes_ctx ctx)
+     in - input data
+     out - output data
+
+All functions return 1 if successful, and 0 on failure.
+
+You must always call aes_set_key before encrypt/decrypt.
+
+Future Directions
+~~~~~~~~~~~~~~~~~
+
+There is a proposal to have the context only contain an encryption
+*or* a decryption key schedule.  So to handle both encryption and
+decryption you will need to declare and use 2 contexts.  Comments on
+this would be helpful.
+
+Should the context be the first parameter?
+
+Need to make the library handle multiple block sizes without
+recompiling - but this could adversely affect code size or speed (you
+can make a fast version of the code for one block size - so to support
+all 3 block sizes we would probably have separate encrypt/decrypt
+functions for each block size (ie library bloat but not necessarily
+program bloat unless you *need* all 3 sizes).
+
+Need to get the cbc code working - easy enough but I'm in a hurry
+
+If you have opinions then come to the mailing list and express them.
+
+$Id: README,v 1.1 2002/01/13 13:23:20 cvs Exp $

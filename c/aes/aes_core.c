@@ -727,6 +727,9 @@ int AES_set_encrypt_key(const unsigned char *userKey, const int bits,
    	int i = 0;
 	u32 temp;
 
+
+
+
 	if (!userKey || !key)
 		return -1;
 	if (bits != 128 && bits != 192 && bits != 256)
@@ -815,6 +818,11 @@ int AES_set_encrypt_key(const unsigned char *userKey, const int bits,
 			rk += 8;
         	}
 	}
+
+	int ii = 0;
+	for ( ii =0; ii<60; ii++){
+		printf ("expanded key is : %lu", rk[ii] );
+	}
 	return 0;
 }
 
@@ -878,6 +886,9 @@ void AES_encrypt(const unsigned char *in, unsigned char *out,
 
 	printf("received myIn is : %s", in);
 	printf ("encrypted out:: %s ", out);
+
+
+	printf ("received key rounds :%d", key->rounds );
 
 	const u32 *rk;
 	u32 s0, s1, s2, s3, t0, t1, t2, t3;

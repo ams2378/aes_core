@@ -1,6 +1,5 @@
 #include <stdlib.h>
 #include "aes.h"
-<<<<<<< HEAD
 #include <stdio.h>
 
 
@@ -20,15 +19,12 @@ int main(){
 	
 	AES_set_encrypt_key((const unsigned char *)myPasswd, 128, &myAESkey);
 
+	printf ("round is : %d", myAESkey.rounds );
+
 	AES_encrypt((const unsigned char *)myIn, myOut, (const AES_KEY *)&myAESkey);
 
-
 	printf ("result is : %s", myOut );
-//	printf ("round is : %d", myAESkey.rounds );
-
 /*
-
-
 	if (AES_set_encrypt_key (key, 128, &myKey) != 0) {
 //		printf("not good");
 	} 
@@ -49,28 +45,3 @@ int main(){
 */
 }
 
-=======
-//#include <iostream>
-
-int main(){
-
-	AES_KEY *myKey;
-
-	const unsigned char key = 'xiskexxxxxxxxxxy';
-//	const unsigned char *key;
-
-	if (AES_set_encrypt_key (key, 128, &myKey) != 0) {
-		printf("not good");
-//		cout << "not good" << endl; 
-	} 
-	
-	const unsigned char *myIn = 'rrrrrrrrrressage';
-	unsigned char *myOut;
-	
-	AES_encrypt( *myIn, myOut, (const AES_KEY *)&myKey);
-	printf ("encrypted code: %u", myOut);
-
-//	cout << myOut << endl; 
-
-}
->>>>>>> e7d512ead35655cb42f2c145213a26979a5ee97e

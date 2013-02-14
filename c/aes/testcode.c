@@ -19,11 +19,13 @@ int main(){
 	
 	AES_set_encrypt_key((const unsigned char *)myPasswd, 128, &myAESkey);
 
-	printf ("round is : %d", myAESkey.rounds );
+	printf ("round is : %d\n", myAESkey.rounds );
+
+	printf ("expandedkey is : %s\n", myAESkey.rd_key );
 
 	AES_encrypt((const unsigned char *)myIn, myOut, (const AES_KEY *)&myAESkey);
 
-	printf ("result is : %s", myOut );
+	printf ("result is : %s\n", myOut );
 /*
 	if (AES_set_encrypt_key (key, 128, &myKey) != 0) {
 //		printf("not good");

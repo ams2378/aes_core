@@ -1,0 +1,244 @@
+[==========] Running 70 tests from 9 test cases.
+[----------] Global test environment set-up.
+[----------] 3 tests from AESTest
+[ RUN      ] AESTest.GenerateKeyAndEncrypt
+[       OK ] AESTest.GenerateKeyAndEncrypt
+[ RUN      ] AESTest.LoadKeyAndDecrypt
+[       OK ] AESTest.LoadKeyAndDecrypt
+[ RUN      ] AESTest.GenerateKeyDumpAndCompare
+[       OK ] AESTest.GenerateKeyDumpAndCompare
+[----------] 4 tests from DSATest
+[ RUN      ] DSATest.GenerateSignAndVerify
+[Keyczar WARNING keyczar/key_type.cc:170] Key size of size 1024 bits is shorter than recommanded (2048 bits).
+[       OK ] DSATest.GenerateSignAndVerify
+[ RUN      ] DSATest.VerifyDumpedSignature
+[Keyczar WARNING keyczar/key_type.cc:170] Key size of size 1024 bits is shorter than recommanded (2048 bits).
+[       OK ] DSATest.VerifyDumpedSignature
+[ RUN      ] DSATest.LoadPEMPrivateKey
+[Keyczar WARNING keyczar/key_type.cc:170] Key size of size 1024 bits is shorter than recommanded (2048 bits).
+[Keyczar WARNING keyczar/key_type.cc:170] Key size of size 1024 bits is shorter than recommanded (2048 bits).
+[       OK ] DSATest.LoadPEMPrivateKey
+[ RUN      ] DSATest.ExportAndImportPrivateKey
+[Keyczar ERROR keyczar/openssl/util.cc:31] error:060A407D:digital envelope routines:PKCS5_V2_PBKDF2_KEYIVGEN:unsupported prf
+[Keyczar ERROR keyczar/openssl/util.cc:31] error:06074078:digital envelope routines:EVP_PBE_CipherInit:keygen failure
+[Keyczar ERROR keyczar/openssl/util.cc:31] error:23077073:PKCS12 routines:PKCS12_pbe_crypt:pkcs12 algor cipherinit error
+[Keyczar ERROR keyczar/openssl/util.cc:31] error:2306A075:PKCS12 routines:PKCS12_item_decrypt_d2i:pkcs12 pbe crypt error
+[Keyczar ERROR keyczar/openssl/util.cc:31] error:0907B00D:PEM routines:PEM_READ_BIO_PRIVATEKEY:ASN1 lib
+keyczar/dsa_key_unittest.cc:120: Failure
+Value of: imported_key.get()
+  Actual: false
+Expected: true
+[  FAILED  ] DSATest.ExportAndImportPrivateKey
+[----------] 4 tests from ECDSATest
+[ RUN      ] ECDSATest.GenerateSignAndVerify
+[Keyczar WARNING keyczar/key_type.cc:170] Key size of size 192 bits is shorter than recommanded (224 bits).
+[       OK ] ECDSATest.GenerateSignAndVerify
+[ RUN      ] ECDSATest.VerifyDumpedSignature
+[       OK ] ECDSATest.VerifyDumpedSignature
+[ RUN      ] ECDSATest.LoadPEMPrivateKey
+[       OK ] ECDSATest.LoadPEMPrivateKey
+[ RUN      ] ECDSATest.ExportAndImportPrivateKey
+[Keyczar ERROR keyczar/openssl/util.cc:31] error:060A407D:digital envelope routines:PKCS5_V2_PBKDF2_KEYIVGEN:unsupported prf
+[Keyczar ERROR keyczar/openssl/util.cc:31] error:06074078:digital envelope routines:EVP_PBE_CipherInit:keygen failure
+[Keyczar ERROR keyczar/openssl/util.cc:31] error:23077073:PKCS12 routines:PKCS12_pbe_crypt:pkcs12 algor cipherinit error
+[Keyczar ERROR keyczar/openssl/util.cc:31] error:2306A075:PKCS12 routines:PKCS12_item_decrypt_d2i:pkcs12 pbe crypt error
+[Keyczar ERROR keyczar/openssl/util.cc:31] error:0907B00D:PEM routines:PEM_READ_BIO_PRIVATEKEY:ASN1 lib
+keyczar/ecdsa_key_unittest.cc:120: Failure
+Value of: imported_key.get()
+  Actual: false
+Expected: true
+[  FAILED  ] ECDSATest.ExportAndImportPrivateKey
+[----------] 2 tests from HMACTest
+[ RUN      ] HMACTest.GenerateKeyAndSign
+[       OK ] HMACTest.GenerateKeyAndSign
+[ RUN      ] HMACTest.LoadKeyAndVerify
+[       OK ] HMACTest.LoadKeyAndVerify
+[----------] 30 tests from KeyczarTest
+[ RUN      ] KeyczarTest.AcceptablePurpose
+[Keyczar WARNING keyczar/key_type.cc:170] Key size of size 1024 bits is shorter than recommanded (2048 bits).
+[Keyczar WARNING keyczar/key_type.cc:170] Key size of size 1024 bits is shorter than recommanded (2048 bits).
+[Keyczar WARNING keyczar/key_type.cc:170] Key size of size 1024 bits is shorter than recommanded (2048 bits).
+[Keyczar WARNING keyczar/key_type.cc:170] Key size of size 1024 bits is shorter than recommanded (2048 bits).
+[Keyczar WARNING keyczar/key_type.cc:170] Key size of size 1024 bits is shorter than recommanded (2048 bits).
+[Keyczar WARNING keyczar/key_type.cc:170] Key size of size 1024 bits is shorter than recommanded (2048 bits).
+[Keyczar WARNING keyczar/key_type.cc:170] Key size of size 1024 bits is shorter than recommanded (2048 bits).
+[Keyczar WARNING keyczar/key_type.cc:170] Key size of size 1024 bits is shorter than recommanded (2048 bits).
+[Keyczar WARNING keyczar/key_type.cc:170] Key size of size 1024 bits is shorter than recommanded (2048 bits).
+[Keyczar WARNING keyczar/key_type.cc:170] Key size of size 1024 bits is shorter than recommanded (2048 bits).
+[Keyczar WARNING keyczar/key_type.cc:170] Key size of size 1024 bits is shorter than recommanded (2048 bits).
+[Keyczar WARNING keyczar/key_type.cc:170] Key size of size 1024 bits is shorter than recommanded (2048 bits).
+[Keyczar WARNING keyczar/key_type.cc:170] Key size of size 1024 bits is shorter than recommanded (2048 bits).
+[Keyczar WARNING keyczar/key_type.cc:170] Key size of size 1024 bits is shorter than recommanded (2048 bits).
+[       OK ] KeyczarTest.AcceptablePurpose
+[ RUN      ] KeyczarTest.RSAEncryptAndDecrypt
+[       OK ] KeyczarTest.RSAEncryptAndDecrypt
+[ RUN      ] KeyczarTest.RSASignAndVerify
+[       OK ] KeyczarTest.RSASignAndVerify
+[ RUN      ] KeyczarTest.RSAAttachedSignAndVerify
+[Keyczar ERROR keyczar/openssl/util.cc:31] error:04091068:rsa routines:INT_RSA_VERIFY:bad signature
+[       OK ] KeyczarTest.RSAAttachedSignAndVerify
+[ RUN      ] KeyczarTest.RSASignAndVerifyUnversioned
+[Keyczar ERROR keyczar/openssl/util.cc:31] error:0407006A:rsa routines:RSA_padding_check_PKCS1_type_1:block type is not 01
+[Keyczar ERROR keyczar/openssl/util.cc:31] error:04067072:rsa routines:RSA_EAY_PUBLIC_DECRYPT:padding check failed
+[       OK ] KeyczarTest.RSASignAndVerifyUnversioned
+[ RUN      ] KeyczarTest.RSADecrypt
+[       OK ] KeyczarTest.RSADecrypt
+[ RUN      ] KeyczarTest.RSAVerify
+[       OK ] KeyczarTest.RSAVerify
+[ RUN      ] KeyczarTest.HMACSignAndVerify
+[       OK ] KeyczarTest.HMACSignAndVerify
+[ RUN      ] KeyczarTest.HMACAttachedSignAndVerify
+[Keyczar ERROR keyczar/openssl/util.cc:31] error:04091068:rsa routines:INT_RSA_VERIFY:bad signature
+[       OK ] KeyczarTest.HMACAttachedSignAndVerify
+[ RUN      ] KeyczarTest.HMACSignAndVerifyUnversioned
+[       OK ] KeyczarTest.HMACSignAndVerifyUnversioned
+[ RUN      ] KeyczarTest.HMACVerify
+[       OK ] KeyczarTest.HMACVerify
+[ RUN      ] KeyczarTest.AESEncryptAndDecrypt
+[       OK ] KeyczarTest.AESEncryptAndDecrypt
+[ RUN      ] KeyczarTest.AESEncryptAndDecryptNoEncoding
+[       OK ] KeyczarTest.AESEncryptAndDecryptNoEncoding
+[ RUN      ] KeyczarTest.AESDecrypt1
+[       OK ] KeyczarTest.AESDecrypt1
+[ RUN      ] KeyczarTest.AESDecrypt2
+[       OK ] KeyczarTest.AESDecrypt2
+[ RUN      ] KeyczarTest.AESCryptedEncryptAndDecrypt
+[       OK ] KeyczarTest.AESCryptedEncryptAndDecrypt
+[ RUN      ] KeyczarTest.AESCryptedDecrypt1
+[       OK ] KeyczarTest.AESCryptedDecrypt1
+[ RUN      ] KeyczarTest.AESCryptedDecrypt2
+[       OK ] KeyczarTest.AESCryptedDecrypt2
+[ RUN      ] KeyczarTest.DSASignAndVerify
+[Keyczar WARNING keyczar/key_type.cc:170] Key size of size 1024 bits is shorter than recommanded (2048 bits).
+[Keyczar WARNING keyczar/key_type.cc:170] Key size of size 1024 bits is shorter than recommanded (2048 bits).
+[Keyczar WARNING keyczar/key_type.cc:170] Key size of size 1024 bits is shorter than recommanded (2048 bits).
+[Keyczar WARNING keyczar/key_type.cc:170] Key size of size 1024 bits is shorter than recommanded (2048 bits).
+[       OK ] KeyczarTest.DSASignAndVerify
+[ RUN      ] KeyczarTest.DSAAttachedSignAndVerify
+[Keyczar ERROR keyczar/openssl/util.cc:31] error:04091068:rsa routines:INT_RSA_VERIFY:bad signature
+[       OK ] KeyczarTest.DSAAttachedSignAndVerify
+[ RUN      ] KeyczarTest.DSASignAndVerifyUnversioned
+[Keyczar WARNING keyczar/key_type.cc:170] Key size of size 1024 bits is shorter than recommanded (2048 bits).
+[Keyczar WARNING keyczar/key_type.cc:170] Key size of size 1024 bits is shorter than recommanded (2048 bits).
+[Keyczar WARNING keyczar/key_type.cc:170] Key size of size 1024 bits is shorter than recommanded (2048 bits).
+[Keyczar WARNING keyczar/key_type.cc:170] Key size of size 1024 bits is shorter than recommanded (2048 bits).
+[       OK ] KeyczarTest.DSASignAndVerifyUnversioned
+[ RUN      ] KeyczarTest.DSAVerify
+[Keyczar WARNING keyczar/key_type.cc:170] Key size of size 1024 bits is shorter than recommanded (2048 bits).
+[Keyczar WARNING keyczar/key_type.cc:170] Key size of size 1024 bits is shorter than recommanded (2048 bits).
+[       OK ] KeyczarTest.DSAVerify
+[ RUN      ] KeyczarTest.ECDSASignAndVerify
+[       OK ] KeyczarTest.ECDSASignAndVerify
+[ RUN      ] KeyczarTest.ECDSAAttachedSignAndVerify
+[Keyczar ERROR keyczar/openssl/util.cc:31] error:0A071003:dsa routines:DSA_do_verify:BN lib
+[Keyczar ERROR keyczar/openssl/util.cc:31] error:04091068:rsa routines:INT_RSA_VERIFY:bad signature
+[       OK ] KeyczarTest.ECDSAAttachedSignAndVerify
+[ RUN      ] KeyczarTest.ECDSASignAndVerifyUnversioned
+[       OK ] KeyczarTest.ECDSASignAndVerifyUnversioned
+[ RUN      ] KeyczarTest.ECDSAVerify
+[       OK ] KeyczarTest.ECDSAVerify
+[ RUN      ] KeyczarTest.AESEncryptAndDecryptBigBuffer
+[       OK ] KeyczarTest.AESEncryptAndDecryptBigBuffer
+[ RUN      ] KeyczarTest.Compression
+[       OK ] KeyczarTest.Compression
+[ RUN      ] KeyczarTest.PBEEncryptAndDecrypt
+[       OK ] KeyczarTest.PBEEncryptAndDecrypt
+[ RUN      ] KeyczarTest.BuggyAesHash
+[       OK ] KeyczarTest.BuggyAesHash
+[----------] 2 tests from KeysetMetadataTest
+[ RUN      ] KeysetMetadataTest.CreateFromValue
+[       OK ] KeysetMetadataTest.CreateFromValue
+[ RUN      ] KeysetMetadataTest.WithoutNextKeyVersionNumber
+[       OK ] KeysetMetadataTest.WithoutNextKeyVersionNumber
+[----------] 6 tests from KeysetTest
+[ RUN      ] KeysetTest.KeyOperations
+[Keyczar WARNING keyczar/keyset.cc:270] Cannot promote a primary key.
+[Keyczar WARNING keyczar/keyset.cc:300] Cannot demote an inactive key.
+[       OK ] KeysetTest.KeyOperations
+[ RUN      ] KeysetTest.AddKeys
+[       OK ] KeysetTest.AddKeys
+[ RUN      ] KeysetTest.RevokeKeys
+[Keyczar WARNING keyczar/keyset.cc:319] Cannot revoke an active key.
+[Keyczar WARNING keyczar/keyset.cc:319] Cannot revoke an active key.
+[       OK ] KeysetTest.RevokeKeys
+[ RUN      ] KeysetTest.KeyAccess
+[       OK ] KeysetTest.KeyAccess
+[ RUN      ] KeysetTest.PublicKeyExport
+[       OK ] KeysetTest.PublicKeyExport
+[ RUN      ] KeysetTest.Observers
+[       OK ] KeysetTest.Observers
+[----------] 12 tests from RSATest
+[ RUN      ] RSATest.GeneratePrivateKeyAndPublicEncrypt
+[Keyczar WARNING keyczar/key_type.cc:170] Key size of size 512 bits is shorter than recommanded (2048 bits).
+[Keyczar WARNING keyczar/key_type.cc:170] Key size of size 768 bits is shorter than recommanded (2048 bits).
+[Keyczar WARNING keyczar/key_type.cc:170] Key size of size 1024 bits is shorter than recommanded (2048 bits).
+[       OK ] RSATest.GeneratePrivateKeyAndPublicEncrypt
+[ RUN      ] RSATest.GeneratePrivateKeyAndPrivateSign
+[Keyczar WARNING keyczar/key_type.cc:170] Key size of size 512 bits is shorter than recommanded (2048 bits).
+[Keyczar WARNING keyczar/key_type.cc:170] Key size of size 768 bits is shorter than recommanded (2048 bits).
+[Keyczar WARNING keyczar/key_type.cc:170] Key size of size 1024 bits is shorter than recommanded (2048 bits).
+[       OK ] RSATest.GeneratePrivateKeyAndPrivateSign
+[ RUN      ] RSATest.LoadPrivateKey
+[       OK ] RSATest.LoadPrivateKey
+[ RUN      ] RSATest.LoadPublicKey
+[       OK ] RSATest.LoadPublicKey
+[ RUN      ] RSATest.LoadPrivateKeyDumpAndExport
+[       OK ] RSATest.LoadPrivateKeyDumpAndExport
+[ RUN      ] RSATest.CompareOutputHeader
+[       OK ] RSATest.CompareOutputHeader
+[ RUN      ] RSATest.CompareDecrypt
+[       OK ] RSATest.CompareDecrypt
+[ RUN      ] RSATest.VerifyEncodedSignature
+[       OK ] RSATest.VerifyEncodedSignature
+[ RUN      ] RSATest.CompareOriginalAndDumpedPrivateKey
+[       OK ] RSATest.CompareOriginalAndDumpedPrivateKey
+[ RUN      ] RSATest.CompareOriginalAndExportedPublicKey
+[       OK ] RSATest.CompareOriginalAndExportedPublicKey
+[ RUN      ] RSATest.LoadPEMPrivateKey
+[Keyczar ERROR keyczar/key_type.cc:165] Invalid key size: 128
+[       OK ] RSATest.LoadPEMPrivateKey
+[ RUN      ] RSATest.ExportAndImportPrivateKey
+[Keyczar ERROR keyczar/openssl/util.cc:31] error:060A407D:digital envelope routines:PKCS5_V2_PBKDF2_KEYIVGEN:unsupported prf
+[Keyczar ERROR keyczar/openssl/util.cc:31] error:06074078:digital envelope routines:EVP_PBE_CipherInit:keygen failure
+[Keyczar ERROR keyczar/openssl/util.cc:31] error:23077073:PKCS12 routines:PKCS12_pbe_crypt:pkcs12 algor cipherinit error
+[Keyczar ERROR keyczar/openssl/util.cc:31] error:2306A075:PKCS12 routines:PKCS12_item_decrypt_d2i:pkcs12 pbe crypt error
+[Keyczar ERROR keyczar/openssl/util.cc:31] error:0907B00D:PEM routines:PEM_READ_BIO_PRIVATEKEY:ASN1 lib
+keyczar/rsa_key_unittest.cc:340: Failure
+Value of: imported_key.get()
+  Actual: false
+Expected: true
+[  FAILED  ] RSATest.ExportAndImportPrivateKey
+[----------] 7 tests from SessionTest
+[ RUN      ] SessionTest.RoundTripWithVariousKeyTypes
+[Keyczar WARNING keyczar/key_type.cc:170] Key size of size 1024 bits is shorter than recommanded (2048 bits).
+[Keyczar WARNING keyczar/key_type.cc:170] Key size of size 1024 bits is shorter than recommanded (2048 bits).
+[Keyczar WARNING keyczar/key_type.cc:170] Key size of size 1024 bits is shorter than recommanded (2048 bits).
+[Keyczar WARNING keyczar/key_type.cc:170] Key size of size 1024 bits is shorter than recommanded (2048 bits).
+[Keyczar WARNING keyczar/key_type.cc:170] Key size of size 1024 bits is shorter than recommanded (2048 bits).
+[Keyczar WARNING keyczar/key_type.cc:170] Key size of size 1024 bits is shorter than recommanded (2048 bits).
+[Keyczar WARNING keyczar/key_type.cc:170] Key size of size 1024 bits is shorter than recommanded (2048 bits).
+[Keyczar WARNING keyczar/key_type.cc:170] Key size of size 1024 bits is shorter than recommanded (2048 bits).
+[       OK ] SessionTest.RoundTripWithVariousKeyTypes
+[ RUN      ] SessionTest.ConstructWithBadCrypters
+[       OK ] SessionTest.ConstructWithBadCrypters
+[ RUN      ] SessionTest.ConstructDecrypterWithBadSession
+[       OK ] SessionTest.ConstructDecrypterWithBadSession
+[ RUN      ] SessionTest.DecryptWithWrongKeys
+[Keyczar WARNING keyczar/key_type.cc:170] Key size of size 1024 bits is shorter than recommanded (2048 bits).
+[Keyczar WARNING keyczar/key_type.cc:170] Key size of size 1024 bits is shorter than recommanded (2048 bits).
+[       OK ] SessionTest.DecryptWithWrongKeys
+[ RUN      ] SessionTest.DecryptWithWrongSession
+[       OK ] SessionTest.DecryptWithWrongSession
+[ RUN      ] SessionTest.Base64Encoding
+[       OK ] SessionTest.Base64Encoding
+[ RUN      ] SessionTest.BinaryEncoding
+[       OK ] SessionTest.BinaryEncoding
+[----------] Global test environment tear-down
+[==========] 70 tests from 9 test cases ran.
+[  PASSED  ] 67 tests.
+[  FAILED  ] 3 tests, listed below:
+[  FAILED  ] DSATest.ExportAndImportPrivateKey
+[  FAILED  ] ECDSATest.ExportAndImportPrivateKey
+[  FAILED  ] RSATest.ExportAndImportPrivateKey
+
+ 3 FAILED TESTS

@@ -1,0 +1,52 @@
+file /home/asc2171/aes_core/c/keyczar-cpp/src/main.scons,line 74:
+	Configure(confdir = .sconf_temp)
+scons: Configure: Checking for python command... 
+scons: Configure: (cached) yes
+
+scons: Configure: Checking for swig command... 
+scons: Configure: (cached) no
+
+scons: Configure: Checking whether the C++ compiler works
+.sconf_temp/conftest_0.cpp <-
+  |
+  |int main()
+  |{
+  |    return 0;
+  |}
+  |
+________Compiling .sconf_temp/conftest_0.o
+scons: Configure: yes
+
+scons: Configure: error: no result
+
+scons: Configure: Checking for C library crypto... 
+.sconf_temp/conftest_1.c <-
+  |
+  |
+  |
+  |int
+  |main() {
+  |  
+  |return 0;
+  |}
+  |
+________Compiling .sconf_temp/conftest_1.o
+________Linking .sconf_temp/conftest_1
+scons: Configure: yes
+
+scons: Configure: Checking for C library z... 
+.sconf_temp/conftest_2.c <-
+  |
+  |
+  |
+  |int
+  |main() {
+  |  
+  |return 0;
+  |}
+  |
+________Compiling .sconf_temp/conftest_2.o
+________Linking .sconf_temp/conftest_2
+scons: Configure: yes
+
+

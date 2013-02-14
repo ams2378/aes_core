@@ -727,7 +727,7 @@ int AES_set_encrypt_key(const unsigned char *userKey, const int bits,
    	int i = 0;
 	u32 temp;
 
-	printf ("received key is : %s", userKey);
+	printf ("received key is : %s\n", userKey);
 
 
 	if (!userKey || !key)
@@ -821,7 +821,7 @@ int AES_set_encrypt_key(const unsigned char *userKey, const int bits,
 
 	int ii = 0;
 	for ( ii =0; ii<60; ii++){
-		printf ("expanded key is : %lu", rk[ii] );
+		printf ("expanded key is : %lu\n", rk[ii] );
 	}
 	return 0;
 }
@@ -884,11 +884,12 @@ int AES_set_decrypt_key(const unsigned char *userKey, const int bits,
 void AES_encrypt(const unsigned char *in, unsigned char *out,
 		 const AES_KEY *key) {
 
-	printf("received myIn is : %s", in);
-	printf ("encrypted out:: %s ", out);
+	printf("received myIn is : %s\n", in);
+	printf ("encrypted out:: %s\n", out);
 
+	printf("received key is : %s\n", key->rd_key);
 
-	printf ("received key rounds :%d", key->rounds );
+	printf ("received key rounds :%d\n", key->rounds );
 
 	const u32 *rk;
 	u32 s0, s1, s2, s3, t0, t1, t2, t3;

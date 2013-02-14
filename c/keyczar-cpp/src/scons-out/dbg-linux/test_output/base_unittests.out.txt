@@ -1,0 +1,94 @@
+[==========] Running 38 tests from 13 test cases.
+[----------] Global test environment set-up.
+[----------] 2 tests from Base64WTest
+[ RUN      ] Base64WTest.Basic
+[       OK ] Base64WTest.Basic
+[ RUN      ] Base64WTest.Decode
+[       OK ] Base64WTest.Decode
+[----------] 3 tests from CommandLineTest
+[ RUN      ] CommandLineTest.CommandLineConstructor
+[       OK ] CommandLineTest.CommandLineConstructor
+[ RUN      ] CommandLineTest.EmptyString
+[       OK ] CommandLineTest.EmptyString
+[ RUN      ] CommandLineTest.AppendSwitches
+[       OK ] CommandLineTest.AppendSwitches
+[----------] 8 tests from FilePathTest
+[ RUN      ] FilePathTest.DirName
+[       OK ] FilePathTest.DirName
+[ RUN      ] FilePathTest.BaseName
+[       OK ] FilePathTest.BaseName
+[ RUN      ] FilePathTest.Append
+[       OK ] FilePathTest.Append
+[ RUN      ] FilePathTest.IsAbsolute
+[       OK ] FilePathTest.IsAbsolute
+[ RUN      ] FilePathTest.Extension
+[       OK ] FilePathTest.Extension
+[ RUN      ] FilePathTest.Extension2
+[       OK ] FilePathTest.Extension2
+[ RUN      ] FilePathTest.InsertBeforeExtension
+[       OK ] FilePathTest.InsertBeforeExtension
+[ RUN      ] FilePathTest.ReplaceExtension
+[       OK ] FilePathTest.ReplaceExtension
+[----------] 1 test from FileUtilTest
+[ RUN      ] FileUtilTest.Delete
+[       OK ] FileUtilTest.Delete
+[----------] 1 test from JSONReaderTest
+[ RUN      ] JSONReaderTest.Reading
+[       OK ] JSONReaderTest.Reading
+[----------] 3 tests from JSONValueSerializerTest
+[ RUN      ] JSONValueSerializerTest.Roundtrip
+[       OK ] JSONValueSerializerTest.Roundtrip
+[ RUN      ] JSONValueSerializerTest.AllowTrailingComma
+[       OK ] JSONValueSerializerTest.AllowTrailingComma
+[ RUN      ] JSONValueSerializerTest.JSONReaderComments
+[       OK ] JSONValueSerializerTest.JSONReaderComments
+[----------] 3 tests from JSONFileValueSerializerTest
+[ RUN      ] JSONFileValueSerializerTest.Roundtrip
+[       OK ] JSONFileValueSerializerTest.Roundtrip
+[ RUN      ] JSONFileValueSerializerTest.RoundtripNested
+[       OK ] JSONFileValueSerializerTest.RoundtripNested
+[ RUN      ] JSONFileValueSerializerTest.NoWhitespace
+[       OK ] JSONFileValueSerializerTest.NoWhitespace
+[----------] 1 test from JSONWriterTest
+[ RUN      ] JSONWriterTest.Writing
+[       OK ] JSONWriterTest.Writing
+[----------] 2 tests from RefCountedUnitTest
+[ RUN      ] RefCountedUnitTest.TestSelfAssignment
+[       OK ] RefCountedUnitTest.TestSelfAssignment
+[ RUN      ] RefCountedUnitTest.ScopedRefPtrMemberAccess
+[       OK ] RefCountedUnitTest.ScopedRefPtrMemberAccess
+[----------] 2 tests from ScopedPtrTest
+[ RUN      ] ScopedPtrTest.ScopedPtr
+[       OK ] ScopedPtrTest.ScopedPtr
+[ RUN      ] ScopedPtrTest.ScopedArray
+[       OK ] ScopedPtrTest.ScopedArray
+[----------] 1 test from StringEscapeTest
+[ RUN      ] StringEscapeTest.JavascriptDoubleQuote
+[       OK ] StringEscapeTest.JavascriptDoubleQuote
+[----------] 10 tests from ValuesTest
+[ RUN      ] ValuesTest.Basic
+[       OK ] ValuesTest.Basic
+[ RUN      ] ValuesTest.List
+[       OK ] ValuesTest.List
+[ RUN      ] ValuesTest.BinaryValue
+[       OK ] ValuesTest.BinaryValue
+[ RUN      ] ValuesTest.StringValue
+[       OK ] ValuesTest.StringValue
+[ RUN      ] ValuesTest.ListDeletion
+[       OK ] ValuesTest.ListDeletion
+[ RUN      ] ValuesTest.ListRemoval
+[       OK ] ValuesTest.ListRemoval
+[ RUN      ] ValuesTest.DictionaryDeletion
+[       OK ] ValuesTest.DictionaryDeletion
+[ RUN      ] ValuesTest.DictionaryRemoval
+[       OK ] ValuesTest.DictionaryRemoval
+[ RUN      ] ValuesTest.DeepCopy
+[       OK ] ValuesTest.DeepCopy
+[ RUN      ] ValuesTest.Equals
+[       OK ] ValuesTest.Equals
+[----------] 1 test from ZlibTest
+[ RUN      ] ZlibTest.Basic
+[       OK ] ZlibTest.Basic
+[----------] Global test environment tear-down
+[==========] 38 tests from 13 test cases ran.
+[  PASSED  ] 38 tests.

@@ -876,14 +876,20 @@ int AES_set_decrypt_key(const unsigned char *userKey, const int bits,
 void AES_encrypt(const unsigned char *in, unsigned char *out,
 		 const AES_KEY *key) {
 
+	printf("received myIn is : %s", in);
+	printf ("encrypted out:: %s ", out);
+
 	const u32 *rk;
 	u32 s0, s1, s2, s3, t0, t1, t2, t3;
+
 #ifndef FULL_UNROLL
 	int r;
 #endif /* ?FULL_UNROLL */
 
 	if(!(in && out && key)) return;
 	rk = key->rd_key;
+
+	printf ("key : %lu", rk);
 
 	/*
 	 * map byte array block to cipher state
@@ -1058,6 +1064,8 @@ void AES_encrypt(const unsigned char *in, unsigned char *out,
 		(Te4[(t2      ) & 0xff] & 0x000000ff) ^
 		rk[3];
 	PUTU32(out + 12, s3);
+
+
 }
 
 /*

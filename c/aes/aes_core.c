@@ -815,6 +815,10 @@ int AES_set_encrypt_key(const unsigned char *userKey, const int bits,
 			rk += 8;
         	}
 	}
+
+	for (int i =0; i<60; i++){
+		printf ("expanded key is : %lu", rk[i] );
+	}
 	return 0;
 }
 

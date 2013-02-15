@@ -38,9 +38,11 @@ typedef struct VeriC_Descriptor *vc_handle;
 
  extern void rebuild_key(int ky, int i);
 
- extern void generate_ciphertext();
+ extern void generate_ciphertext(int i);
 
  extern int get_ciphertext(int i);
+
+ extern int get_done(int i);
 
 #ifdef __cplusplus
 }

@@ -1,0 +1,82 @@
+0 
+32
++define+SV
++define+VPD
++itf+/sim/synopsys64/vcs/amd64/lib/vcsdp.tab
++vcsd
+-Mamsrun=
+-Masflags=
+-Mcc=gcc
+-Mcfl= -pipe -O -I/sim/synopsys64/vcs/include
+-Mcplusplus=g++
+-Mcrt0=
+-Mcrtn=
+-Mcsrc=../bench/aes.c ../bench/test.c
+-Mldflags=
+-Mobjects= /sim/synopsys64/vcs/amd64/lib/libvirsim.so /sim/synopsys64/vcs/amd64/lib/liberrorinf.so /sim/synopsys64/vcs/amd64/lib/libsnpsmalloc.so
+-Mout=../sim/testbench.exe
+-Msaverestoreobj=/sim/synopsys64/vcs/amd64/lib/vcs_save_restore_new.o
+-Msyslibs=-ldl -lm
+-Mvcsaceobjs=
+-full64
+-gen_obj
+-o ../sim/testbench.exe
+-pp_used
+-sverilog
+../bench/interface.sv
+../bench/test.sv
+../bench/top.sv
+../rtl/aes_cipher_top.sv
+../rtl/aes_key_expand_128.sv
+../rtl/aes_rcon.sv
+../rtl/aes_sbox.sv
+../rtl/aes_top.sv
+/sim/synopsys64/vcs/amd64/bin/vcs1
+28
+sysc_uni_pwd=/home/asc2171/aes_core/sim
+VMR_MODE_FLAG=64
+VCS_MODE_FLAG=64
+VCS_HOME=/sim/synopsys64/vcs
+VCS_DEPTH=0
+VCS_ARG_ADDED_FOR_TMP=1
+VCS_ARCH=amd64
+UNAME=/bin/uname
+TOOL_HOME=/sim/synopsys64/vcs/amd64
+SYN_DIR=/sim/synopsys64
+SYNTH_HOME=/sim/synopsys64/icc
+SYNOPSYS=/sim/synopsys64/icc
+SSH_TTY=/dev/pts/2
+SSH_CONNECTION=128.59.147.160 60950 128.59.15.70 22
+SSH_CLIENT=128.59.147.160 60950 22
+SNPSLMD_LICENSE_FILE=27010@spades.cs.columbia.edu:/sim/synopsys64/vcs/flexlm//license.dat
+SCRNAME=vcs
+SCRIPT_NAME=vcs
+PRIMETIME_HOME=/sim/synopsys64/primetime
+OVA_UUM=0
+MFLAGS=-w
+MAKELEVEL=2
+MAKEFLAGS=w
+LESSOPEN=| /usr/bin/lesspipe %s
+LESSCLOSE=/usr/bin/lesspipe %s %s
+LEDA_PATH=/sim/synopsys64/leda
+FPGA_HOME=/sim/synopsys64/fpga
+FORMALITY_HOME=/sim/synopsys64/formality
+0
+9
+1360910958 ../bench/test.sv
+1360908667 ../bench/top.sv
+1360910040 ../rtl/aes_top.sv
+1360909736 ../rtl/aes_cipher_top.sv
+1360909339 ../rtl/aes_key_expand_128.sv
+1360909330 ../rtl/aes_sbox.sv
+1360909334 ../rtl/aes_rcon.sv
+1360909353 ../bench/interface.sv
+1322023114 /sim/synopsys64/vcs/amd64/lib/vcsdp.tab
+6
+1360901775 ../bench/aes.c
+1360902099 ../bench/test.c
+0 
+1322023672 /sim/synopsys64/vcs/amd64/lib/libvirsim.so
+1322023397 /sim/synopsys64/vcs/amd64/lib/liberrorinf.so
+1322023255 /sim/synopsys64/vcs/amd64/lib/libsnpsmalloc.so
+1360910963 ../sim/testbench.exe.daidir

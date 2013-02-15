@@ -1,6 +1,7 @@
-FILES=../rtl/aes_rcon.sv ../rtl/aes_sbox.sv ../rtl/aes_key_expand_128.sv ../rtl/aes_cipher_top.sv ../rtl/aes_inv_sbox.sv ../rtl/aes_inv_cipher_top.sv
-
-TEST= ../bench/test_bench_top
+MODULES= ../rtl/aes_rcon.sv ../rtl/aes_sbox.sv ../rtl/aes_key_expand_128.sv ../rtl/aes_cipher_top.sv ../rtl/aes_top.sv
+INTERFACE= ../bench/interface.sv
+TOP = ../bench/top.sv
+TEST= ../bench/aes.c ../bench/test.c ../bench/test.sv
 BENCH=../sim/testbench.exe
 
 all: 
@@ -8,11 +9,11 @@ all:
 	make test
 	make gtkwave
 duv4:
-	vcs -full64 -PP -sverilog +define+SV +define+VPD $(FILES) -o $(BENCH)
+	vcs -full64 -PP -sverilog +define+SV +define+VPD $(INTERFACE) $(MODULES) $(TOP)-o $(BENCH)
 	./$(BENCH)
 
 test:
-	vcs -full64 -PP -sverilog +define+SV +define+VPD $(FILES)  $(TEST).sv -o $(BENCH)
+	vcs -full64 -PP -sverilog +define+SV +define+VPD $(INTERFACE) $(MODULES)  $(TOP) $(TEST) -o $(BENCH)
 	./$(BENCH)
 
 view:

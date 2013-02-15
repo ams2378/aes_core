@@ -165,14 +165,10 @@ program tb (ifc.bench ds);
 		
 		repeat(env.max_transcations) begin
 			do_cycle();
-			checker.check_result(ds.cb.text_o, ds.cb.done_o,
-						test.text_out, test.done_out);
-
+			checker.check_result(ds.cb.text_o, ds.cb.done_o,test.text_out, test.done_out);
 		end
 		if (checker.pass == 1)
 			$display("TEST PASSED!");
 		
-		
-
 	end
 endprogram

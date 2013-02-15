@@ -2,5 +2,9 @@ import_DPI rebuild_text tb
 import_DPI rebuild_key tb
 import_DPI generate_ciphertext tb
 import_DPI get_ciphertext tb
+import_DPI get_done tb
+import_DPI generate_key_text tb
+import_DPI get_text tb
+import_DPI get_key tb
 DirectC getCurSchedRegion 
 DirectC WmaskAndSet4 

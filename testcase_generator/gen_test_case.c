@@ -13,7 +13,7 @@ void rand_word_array(word w[], int bit_num);
 void print_verilog_hex(word w[], int bit_num);
 
 int main() {
-    const int num_case = 1;
+    const int num_case = 10;
     int bit_num;
     int i;
     word state[4];

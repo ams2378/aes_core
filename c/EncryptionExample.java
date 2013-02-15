@@ -7,8 +7,8 @@ public class EncryptionExample {
 
 public static void main(String[] args) throws Exception {
  
-    final String keyHex = "00000000000000000000000000000000";
-    final String plaintextHex = "f34481ec3cc627bacd5dc3fb08f273e6";
+    final String keyHex = "c6cdb2ab1154b49b4174820e87dc3d21";
+    final String plaintextHex = "b70d32665aa3583117055d25d45ee958";
 
     SecretKey key = new SecretKeySpec(DatatypeConverter
         .parseHexBinary(keyHex), "AES");

@@ -13,7 +13,7 @@ void rand_word_array(word w[], int bit_num);
 void print_verilog_hex(word w[], int bit_num);
 
 int main() {
-    const int num_case = 5;
+    const int num_case = 1;
     int bit_num;
     int i;
     word state[4];
@@ -35,7 +35,7 @@ int main() {
         print_verilog_hex(state, 128);
         printf("\n\n");       
     }
-
+/*
     bit_num = 192;
     printf("AES-%d test cases:\n\n", bit_num);
     for(i=0; i<num_case; i++) {
@@ -69,7 +69,7 @@ int main() {
         print_verilog_hex(state, 128);
         printf("\n\n");       
     }
-    
+*/    
     return 0;
 }
 
@@ -98,3 +98,7 @@ void print_verilog_hex(word w[], int bit_num) {
     for(i=0; i<byte_num; i++)
         printf("%02x", b[i]);
 }
+
+
+
+

@@ -56,6 +56,9 @@
 
 //`include "timescale.v"
 
+`timescale 1ns/1ps 
+
+
 module aes_cipher_top(clk, rst, ld, done, key, text_in, text_out );
 input		clk, rst;
 input		ld;
@@ -249,5 +252,6 @@ aes_sbox us32(	.a(	sa32	), .d(	sa32_sub	));
 aes_sbox us33(	.a(	sa33	), .d(	sa33_sub	));
 
 endmodule
+
 
 

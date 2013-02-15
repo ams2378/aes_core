@@ -8,42 +8,41 @@
 *  	 
 */
 
-interface ifc (input bit clk);
-    logic ld_i;
-    logic [127:0] key_i;
-    logic [127:0] text_i;
-    logic mode_i; //encryption or decryption
+`timescale 1ns/1ps 
 
-    logic done_o;
-    logic [127:0] text_o;
+interface ifc (input bit clk);
+    logic ld;
+    logic [127:0] key;
+    logic [127:0] text_in;
+
+    logic done;
+    logic [127:0] text_out;
    
     logic rst;
 
     clocking cb @(posedge clk);
-        default output #1;
-       
-	output rst;
-	
-	output ld_i;
-	output key_i;
-	output text_i;
-	output mode_i;
+//        default output #1;
 
-	input done_o;
-	input text_o;
+       	output rst;	
+	output ld;
+	output key;
+	output text_in;
+
+	input done;
+	input text_out;
     endclocking
 
     modport dut (
+
 	input clk,
 	input rst,
 	
-	input key_i;
-	input text_i;
-	input ld_i;
-	input mode_i;
+	input key,
+	input text_in,
+	input ld,
 
-	output text_o;
-	output done_o; 
+	output text_out,
+	output done
 	);
 
     modport bench (clocking cb);

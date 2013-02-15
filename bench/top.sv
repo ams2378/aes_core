@@ -15,7 +15,7 @@ module top();
  
    initial $vcdpluson;
 
-   ifc IFC(clk); // instantiate the interface file
+   ifc IFC(clk); 		// instantiate the interface file
    aes_top dut(IFC.dut); 
    tb test_bench_top(IFC.bench);
 endmodule

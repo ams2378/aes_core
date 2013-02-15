@@ -56,6 +56,9 @@
 
 //`include "timescale.v"
 
+`timescale 1ns/1ps
+
+
 module aes_key_expand_128(clk, kld, key, wo_0, wo_1, wo_2, wo_3);
 input		clk;
 input		kld;

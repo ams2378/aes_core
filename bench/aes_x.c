@@ -1,4 +1,5 @@
-/*copyright 2012, Homer Hsing <homer.hsing@gmail.com>
+/*
+ * Copyright 2012, Homer Hsing <homer.hsing@gmail.com>
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -113,6 +114,15 @@ void encrypt_128_key_expand_inline(word state[], word key[]) {
 }
 
 void encrypt_128_key_expand_inline_no_branch(word state[], word key[]) {
+
+
+	printf("inside aes.c \n");
+	printf ("state\n");
+	print_verilog_hex_2(state, 128);
+	printf ("\nkey\n");
+	print_verilog_hex_2(key, 128);
+	printf ("\n");
+
     int nr = 10;
     int i;
     word k0 = key[0], k1 = key[1], k2 = key[2], k3 = key[3];
@@ -172,6 +182,11 @@ void encrypt_128_key_expand_inline_no_branch(word state[], word key[]) {
     state[1] = k1;
     state[2] = k2;
     state[3] = k3;
+
+	printf ("$$$$$$$final cipher text\n");
+	print_verilog_hex_2(state, 128);
+	printf ("\nkey\n");
+
 }
 
 void encrypt_192_key_expand_inline_no_branch(word state[], word key[]) {
@@ -382,6 +397,19 @@ a:      z0 = k4, z1 = k5, z2 = k6, z3 = k7;
     state[1] = k1;
     state[2] = k2;
     state[3] = k3;
+}
+
+
+
+
+
+void print_verilog_hex_2(word w[], int bit_num) {
+    int byte_num = bit_num / 8;
+    int i;
+    byte *b = (byte *)w;
+    printf("%d'h", bit_num);
+    for(i=byte_num-1; i >=0; i--)
+        printf("%02x", b[i]);
 }
 
 

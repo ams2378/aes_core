@@ -18,22 +18,94 @@ word ctext[4];
 word state[4];
 word key[8];
 
+word t_state[4];
+word t_key[8];
+
+void rebuild_text(word t_state, int i) {
+	state[i] = t_state;
+
+#ifdef print
+    printf (" rebuilt text received in C :%d\n", t_state);
+    printf (" rebuilt text in C :%d%d%d%d\n", state[0], state[1], state[2], state[3]);
+
+	printf ("text is \n");
+	print_verilog_hex(state, 128);
+	printf ("\n");
+#endif	
+}
+
+void rebuild_key(word t_key, int i) {
+	key[i] = t_key;
+#ifdef print
+    printf (" rebuilt key received in C :%d\n", t_key);
+    printf (" rebuilt key in C :%d%d%d%d\n", key[0], key[1], key[2], key[3]);
+
+	printf ("key is \n");
+	print_verilog_hex(key, 128);
+	printf ("\n");
+	
+#endif
+}
+
+void generate_ciphertext(int rst){
+
+	printf ("!!!!!!!!!! rst inside C : %d\n", rst);
+
+	printf (" ############## Text to be encrypted in hex \n");
+	print_verilog_hex(state, 128);
+	printf ("\n");
+	
+	printf (" ############## key to be used in hex \n");
+	print_verilog_hex(key, 128);
+	printf ("\n");
+
+	if (rst == 0) {
+		ctext[0] = 0;
+		ctext[1] = 0;
+		ctext[2] = 0;
+		ctext[3] = 0;
+	} else {
+		printf ("@@@@@@ encrypting");
+    		encrypt_128_key_expand_inline_no_branch(state, key);
+	}
+
+	ctext[0] = state[0];
+	ctext[1] = state[1];
+	ctext[2] = state[2];
+	ctext[3] = state[3];
+//    printf (" in C ciphertext is :%d%d%d%d\n", state[0], state[1], state[2], state[3]);
+
+//#ifdef print
+	printf (" ############## in C ciphertext in hex \n");
+	print_verilog_hex(ctext, 128);
+	printf ("\n");
+	print_verilog_hex(state, 128);
+//#endif
+}
+
+word get_ciphertext(int i){
+
+#ifdef print
+	printf ("sent cipher : %d\n", ctext[i]);
+
+#endif
+
+	printf ("GET CIPHERTEXT IN C is \n");
+	print_verilog_hex(ctext, 128);
+	printf ("\n");
+
+	return ctext[i];
+}
+
 void generate_key_text(){
 
 	rand_word_array(state, 128);
 	rand_word_array(key, 128);
-	
-	//printing C generated key and text 
-	printf("Generated key in C: ");
-	print_verilog_hex(key, 128);
-	printf("\n");
-	printf("Generated state in C: ");
-	print_verilog_hex(state, 128);
-	printf("\n");
-
 }
 
+
 word get_text(int i){
+
 	return state[i];
 }
 
@@ -41,62 +113,6 @@ word get_key(int i){
 
 	return key[i];
 }
-
-void rebuild_text(word t_state, int i) {
-	state[i] = t_state;
-
-	#ifdef print
-    	printf (" rebuilt text received in C :%d\n", t_state);
-    	printf (" rebuilt text in C :%d%d%d%d\n", state[0], state[1], state[2], state[3]);
-
-	printf ("text is \n");
-	print_verilog_hex(state, 128);
-	printf ("\n");
-	#endif	
-}
-
-void rebuild_key(word t_key, int i) {
-	key[i] = t_key;
-	
-	#ifdef print
-    	printf (" rebuilt key received in C :%d\n", t_key);
-    	printf (" rebuilt key in C :%d%d%d%d\n", key[0], key[1], key[2], key[3]);
-
-	printf ("key is \n");
-	print_verilog_hex(key, 128);
-	printf ("\n");
-	#endif
-}
-
-void generate_ciphertext(int rst){
-	//Text and State received in C
-	printf("Received key in C: ");
-	print_verilog_hex(key, 128);
-	printf("\n");
-	printf("Received state in C: ");
-	print_verilog_hex(state, 128);
-	printf("\n");
-
-	printf("########ENCRYPTING#########");
-	printf("\n");    
-	encrypt_128_key_expand_inline_no_branch(state, key);
-			
-	ctext[0] = state[0];
-	ctext[1] = state[1];
-	ctext[2] = state[2];
-	ctext[3] = state[3];
-
-	printf("Encrypted text in C: ");
-	print_verilog_hex(ctext, 128);
-	printf("\n");
-
-}
-
-word get_ciphertext(int i){
-	return ctext[i];
-}
-
-
 
 
 word rand_word() {
@@ -117,11 +133,13 @@ void rand_word_array(word w[], int bit_num) {
 }
 
 void print_verilog_hex(word w[], int bit_num) {
+
     int byte_num = bit_num / 8;
     int i;
     byte *b = (byte *)w;
     printf("%d'h", bit_num);
-    for(i=byte_num-1; i>= 0; i--)
+//    for(i=0; i<byte_num; i++)
+    for(i=byte_num-1; i>=0; i--)
         printf("%02x", b[i]);
 }
 

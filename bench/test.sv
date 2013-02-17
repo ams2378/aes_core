@@ -21,7 +21,7 @@ endclass
 class aes_checker;
 	bit pass;
 
-	function void check_result (int dut_text_0, int dut_text_1, int dut_text_2, int dut_text_3, int dut_done, 
+	function void check_result_en (int dut_text_0, int dut_text_1, int dut_text_2, int dut_text_3, int dut_done, 
 				   int unsigned bench_text_o[], int bench_done, int status, int rst_chk);
 
 		int verbose = 1;
@@ -84,6 +84,14 @@ class aes_checker;
 	end
 
 	endfunction
+    
+    function void check_result_de(int dut_text_0, int dut_text_1, int dut_text_2, int dut_text_3, int dut_done, 
+				   int unsigned bench_text_o[], int bench_done, int status, int rst_chk);
+
+            $display("decryption !!!");
+        
+    endfunction
+    
 
 endclass
 
@@ -138,7 +146,9 @@ program tb (ifc.bench ds);
 		end else
 			rst_chk		=	0; 
 
-
+    
+        //ENCRYPTION MODE
+        if (t.mode == 0) begin
 		ds.cb.rst		<= 	t.rst;	
 		ds.cb.ld		<= 	t.ld;
         ds.cb.mode      <=  t.mode;
@@ -187,8 +197,59 @@ program tb (ifc.bench ds);
 
 	@(ds.cb);
 
-		checker.check_result(ds.cb.text_out[31:0],  ds.cb.text_out[63:32], ds.cb.text_out[95:64],  
+		checker.check_result_en(ds.cb.text_out[31:0],  ds.cb.text_out[63:32], ds.cb.text_out[95:64],  
 					ds.cb.text_out[127:96], ds.cb.done, ctext, t.done, t.status, rst_chk);
+
+    end
+    //DECRYPTION MODE
+    else if (t.mode == 1) begin
+        send_ld_rst (t.ld, t.rst);
+		rebuild_text(t.text[0], 0);
+		rebuild_text(t.text[1], 1);
+		rebuild_text(t.text[2], 2);
+		rebuild_text(t.text[3], 3);
+		rearrange_text();
+
+		rebuild_key(t.key[0], 0);
+		rebuild_key(t.key[1], 1);
+		rebuild_key(t.key[2], 2);
+		rebuild_key(t.key[3], 3);
+		rearrange_key();
+
+		generate_ciphertext();
+        rearrange_cipher();
+		
+        ctext[0] = get_ciphertext(0);
+		ctext[1] = get_ciphertext(1);
+		ctext[2] = get_ciphertext(2);
+		ctext[3] = get_ciphertext(3);
+
+        //send cipher text to decryption mode dut
+        ds.cb.rst		<= 	t.rst;	
+		ds.cb.ld		<= 	t.ld;
+        ds.cb.mode      <=  t.mode;
+		ds.cb.text_in[31:0] 	<= 	ctext[0];
+		ds.cb.text_in[63:32]	<= 	ctext[1]; 
+		ds.cb.text_in[95:64 ]	<= 	ctext[2]; 		
+		ds.cb.text_in[127:96]	<= 	ctext[3]; 		
+
+		ds.cb.key[31:0] 	<= 	t.key[0];
+		ds.cb.key[63:32]	<= 	t.key[1]; 		
+		ds.cb.key[95:64 ]	<= 	t.key[2]; 		
+		ds.cb.key[127:96]	<= 	t.key[3]; 	
+
+        t.done   = get_done();
+		t.status = get_status();	
+
+	@(ds.cb);
+
+	checker.check_result_de(ds.cb.text_out[31:0],  ds.cb.text_out[63:32], ds.cb.text_out[95:64],  
+					ds.cb.text_out[127:96], ds.cb.done, t.text, t.done, t.status, rst_chk);
+
+        
+
+    end
+
 
 	endtask
 

@@ -9,7 +9,7 @@ class aes_transaction;
 	int		status;
 
 	constraint ld_status {
-		(status == 1) -> (ld == 0);
+		(status != 0) -> (ld == 0);
 	}
 
 endclass

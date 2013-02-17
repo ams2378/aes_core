@@ -7,11 +7,10 @@ module aes_top(ifc.dut d);
     logic load_d;
     logic keyload;
 
-    logic en_text_out;
+    logic [127:0] en_text_out;
     logic en_done;
-    logic de_text_out;
+    logic [127:0] de_text_out;
     logic de_done;
-
 
     always_comb begin
         unique if (d.mode == '0 && d.ld == '1) begin

@@ -54,7 +54,7 @@ class aes_checker;
 			$display (" %t <<<<<< BYPASSING DATA CHECKER:  DUT OUTPUT NOT READY YET >>>>>>>> status is : %d", $realtime, status);
 
 	end else begin
-			$display (" %t <<<<< BYPASSING CHECKER:  DUT OUTPUT NOT READY YET >>>>>>", $realtime);
+			$display (" %t <<<<< BYPASSING CHECKER:  DUT OUTPUT NOT READY YET >>>>>> status is : %d", $realtime, status);
 	end
 
 	pass = (text_passed & done_passed);

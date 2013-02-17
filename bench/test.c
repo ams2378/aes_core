@@ -174,6 +174,8 @@ void rearrange_key() {
 }
 
 void rearrange_cipher() {
+
+	printf ("\n C : status at cipher : %d", status);
     int i;
     byte *n = (byte *)ctext;
     word x[4];

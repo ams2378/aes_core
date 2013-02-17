@@ -50,11 +50,11 @@ program tb (ifc.bench ds);
 
 		t.rst= '1;		// temporary
 		
-		$display ("TIME IS :: ", $realtime );	
-		$display ("ld and rst is : %b%b ", t.ld, t.rst );	
-		$display ("status is : %d ", t.status );	
-		$display("Generated key in SV: %h%h%h%h", t.key[3], t.key[2], t.key[1], t.key[0]);
-		$display("Generated text in SV: %h%h%h%h", t.text[3], t.text[2], t.text[1], t.text[0]);
+		$display ("SV: TIME IS :: ", $realtime );	
+		$display ("SV: ld and rst is : %b%b ", t.ld, t.rst );	
+		$display ("SV: status is : %d ", t.status );	
+		$display("SV: Generated key: %h%h%h%h", t.key[3], t.key[2], t.key[1], t.key[0]);
+		$display("SV: Generated text: %h%h%h%h", t.text[3], t.text[2], t.text[1], t.text[0]);
 		
 
 		//send text/key to dut and software

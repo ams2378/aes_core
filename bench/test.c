@@ -30,6 +30,8 @@ int get_done() {
 		done = 1;
 	else
 		done = 0;
+
+	return done;
 }
 
 int get_status() {

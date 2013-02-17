@@ -17,8 +17,8 @@ endclass
 class aes_checker;
 	bit pass;
 
-	function void check_result (int dut_text_0, int dut_text_1, int dut_text_2, int dut_text_3, 
-				    int dut_done, int unsigned bench_text_o[], int bench_done, int status);
+	function void check_result (int dut_text_0, int dut_text_1, int dut_text_2, int dut_text_3, int dut_done, 
+				   int unsigned bench_text_o[], int bench_done, int status, int rst_chk);
 
 
 
@@ -26,7 +26,7 @@ class aes_checker;
 		bit text_passed;
 		bit done_passed;
 
-	if (status == 14 || status == 0) begin
+	if (status == 14 || rst_chk == 1) begin
  
 		text_passed = (dut_text_0 == bench_text_o[0]) && (dut_text_1 == bench_text_o[1]) &&
 		    	      (dut_text_2 == bench_text_o[2]) && (dut_text_3 == bench_text_o[3]);
@@ -48,13 +48,21 @@ class aes_checker;
             			$display("bench value || bench_done: %h%h%h%h", bench_text_o[3], bench_text_o[2], bench_text_o[1], bench_text_o[0], bench_done);
 		end
 	
-	end else if (status <= 13 ) begin
+	end else if (status <= 13 || status == 0) begin
 
-			done_passed = (dut_done == bench_done);
-			$display (" %t <<<<<< BYPASSING DATA CHECKER:  DUT OUTPUT NOT READY YET >>>>>>>> status is : %d", $realtime, status);
+		done_passed = (dut_done == bench_done);
+
+		if (done_passed) begin 
+				$display ("********** DONE PASSED ***********, status is : %d", status);	
+		end else if ( !done_passed & verbose) begin
+			        $display("%t : error in done bit \n", $realtime);
+            			$display("dut value: %d", dut_done);
+            			$display("bench value: %d", bench_done);
+
+		$display (" %t <<<<<< BYPASSING DATA CHECKER:  DUT OUTPUT NOT READY YET >>>>>>>> status is : %d", $realtime, status);
 
 	end else begin
-			$display (" %t <<<<< BYPASSING CHECKER:  DUT OUTPUT NOT READY YET >>>>>> status is : %d", $realtime, status);
+		$display (" %t <<<<< BYPASSING CHECKER:  DUT OUTPUT NOT READY YET >>>>>> status is : %d", $realtime, status);
 	end
 
 	pass = (text_passed & done_passed);
@@ -64,7 +72,7 @@ class aes_checker;
 				$display("%t : pass \n", $realtime);
 			end else begin
 				$display("%t : failed  \n", $realtime);
-			//	$exit();
+				$exit();
 			end
 	end
 
@@ -95,6 +103,8 @@ program tb (ifc.bench ds);
 	aes_transaction t;
 	int en_ce_stat = 0;
 	int unsigned ctext[4];
+	int rst_chk;
+	
 
 	int temp = 0;			// temporary
 	
@@ -117,11 +127,12 @@ program tb (ifc.bench ds);
 		
 
 		//send text/key to dut and software
-/*
-	if (t.ld == 1) begin
-		t.status 		= 	1;
-	end 
-*/
+
+		if (t.rst == 0) begin
+			rst_chk 	= 	1;
+		end else
+			rst_chk		=	0; 
+
 
 		ds.cb.rst		<= 	t.rst;	
 		ds.cb.ld		<= 	t.ld;
@@ -168,8 +179,8 @@ program tb (ifc.bench ds);
                 $display("\n");
 		$display("\n");
 
-			checker.check_result(ds.cb.text_out[31:0],  ds.cb.text_out[63:32], ds.cb.text_out[95:64],  
-					    ds.cb.text_out[127:96], ds.cb.done, ctext, t.done, t.status);
+		checker.check_result(ds.cb.text_out[31:0],  ds.cb.text_out[63:32], ds.cb.text_out[95:64],  
+					ds.cb.text_out[127:96], ds.cb.done, ctext, t.done, t.status, rst_chk);
 
 	@(ds.cb);
 

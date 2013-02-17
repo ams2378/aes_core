@@ -14,8 +14,6 @@ class aes_transaction;
 
 endclass
 
-
-
 program tb (ifc.bench ds);
 
 	import "DPI-C" function void rebuild_text ( input int  txt, input int i);

@@ -51,7 +51,7 @@ class aes_checker;
 	end else if (status <= 12 ) begin
 
 			done_passed = (dut_done == bench_done);
-			$display (" %t <<<<<< BYPASSING DATA CHECKER:  DUT OUTPUT NOT READY YET >>>>>>>>", $realtime);
+			$display (" %t <<<<<< BYPASSING DATA CHECKER:  DUT OUTPUT NOT READY YET >>>>>>>> status is : %d", $realtime, status);
 
 	end else begin
 			$display (" %t <<<<< BYPASSING CHECKER:  DUT OUTPUT NOT READY YET >>>>>>", $realtime);

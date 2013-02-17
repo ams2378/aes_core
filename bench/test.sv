@@ -119,6 +119,8 @@ program tb (ifc.bench ds);
 	int en_ce_stat = 0;
 	int unsigned ctext[4];
 	int rst_chk;
+    t.status = 0;
+    bit current_mode;
 
 	task do_cycle;
 
@@ -138,6 +140,9 @@ program tb (ifc.bench ds);
 //		$display("SV: Generated key: %h%h%h%h", t.key[3], t.key[2], t.key[1], t.key[0]);
 //		$display("SV: Generated text: %h%h%h%h", t.text[3], t.text[2], t.text[1], t.text[0]);
 
+        if (t.status == 0) begin
+            current_mode = t.mode;
+        end
 
 		//send text/key to dut and software
 
@@ -148,7 +153,7 @@ program tb (ifc.bench ds);
 
     
         //ENCRYPTION MODE
-        if (t.mode == 0) begin
+        if (current_mode == 0) begin
 		ds.cb.rst		<= 	t.rst;	
 		ds.cb.ld		<= 	t.ld;
         ds.cb.mode      <=  t.mode;
@@ -202,7 +207,7 @@ program tb (ifc.bench ds);
 
     end
     //DECRYPTION MODE
-    else if (t.mode == 1) begin
+    else if (current_mode == 1) begin
         send_ld_rst (t.ld, t.rst);
 		rebuild_text(t.text[0], 0);
 		rebuild_text(t.text[1], 1);

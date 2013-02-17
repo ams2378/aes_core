@@ -102,22 +102,24 @@ program tb (ifc.bench ds);
 
 	task do_cycle;
 
-//		$display("\n");
-//		$display("\n");
-//		$display(" %t ***********************START*************************  ", $realtime);
-//		$display("\n");
-
 		t.randomize();
-
+		
+		int verbose = 0;
 //		t.rst= '1;		// temporary
 
-//		$display ("SV: TIME IS :: ", $realtime );	
-//		$display ("SV: ld and rst is : %b%b ", t.ld, t.rst );	
-//		$display ("SV: status is : %d ", t.status );	
-//		$display("SV: Generated key: %h%h%h%h", t.key[3], t.key[2], t.key[1], t.key[0]);
-//		$display("SV: Generated text: %h%h%h%h", t.text[3], t.text[2], t.text[1], t.text[0]);
+	if (verbose) begin
 
+		$display("\n");
+		$display("\n");
+		$display(" %t ***********************START*************************  ", $realtime);
+		$display("\n");
+		$display ("SV: TIME IS :: ", $realtime );	
+		$display ("SV: ld and rst is : %b%b ", t.ld, t.rst );	
+		$display ("SV: status is : %d ", t.status );	
+		$display("SV: Generated key: %h%h%h%h", t.key[3], t.key[2], t.key[1], t.key[0]);
+		$display("SV: Generated text: %h%h%h%h", t.text[3], t.text[2], t.text[1], t.text[0]);
 
+	end
 		//send text/key to dut and software
 
 		if (t.rst == 0) begin
@@ -162,19 +164,20 @@ program tb (ifc.bench ds);
 		t.done   = get_done();
 		t.status = get_status();	
 
-//		$display("SV: Receieved Encrypted Text: %h%h%h%h", ctext[3], ctext[2], ctext[1], ctext[0]);
-//		$display("SV: Done is : %d", t.done);
+	if (verbose) begin
 
-//         	$display("DUT: Cipher out: %h%h%h%h", ds.cb.text_out[127:96], ds.cb.text_out[95:64], ds.cb.text_out[63:32], ds.cb.text_out[31:0]);
-//		$display ("DUT: Done out : %d", ds.cb.done);
+		$display("SV: Receieved Encrypted Text: %h%h%h%h", ctext[3], ctext[2], ctext[1], ctext[0]);
+		$display("SV: Done is : %d", t.done);
 
-//              $display("\n");
-//		$display("\n");
+         	$display("DUT: Cipher out: %h%h%h%h", ds.cb.text_out[127:96], ds.cb.text_out[95:64], ds.cb.text_out[63:32], ds.cb.text_out[31:0]);
+		$display ("DUT: Done out : %d", ds.cb.done);
+
+                $display("\n");
+		$display("\n");
+
+	end
 
 	@(ds.cb);
-
-		//checker.check_result(ds.cb.text_out[31:0],  ds.cb.text_out[63:32], ds.cb.text_out[95:64],  
-		//			ds.cb.text_out[127:96], ds.cb.done, ctext, t.done, t.status, rst_chk);
 
 	endtask
 

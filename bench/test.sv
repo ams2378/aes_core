@@ -20,8 +20,6 @@ class aes_checker;
 	function void check_result (int dut_text_0, int dut_text_1, int dut_text_2, int dut_text_3, int dut_done, 
 				   int unsigned bench_text_o[], int bench_done, int status, int rst_chk);
 
-
-
 		int verbose = 1;
 		bit text_passed;
 		bit done_passed;
@@ -58,6 +56,7 @@ class aes_checker;
 			        $display("%t : error in done bit \n", $realtime);
             			$display("dut value: %d", dut_done);
             			$display("bench value: %d", bench_done);
+		end
 
 		$display (" %t <<<<<< BYPASSING DATA CHECKER:  DUT OUTPUT NOT READY YET >>>>>>>> status is : %d", $realtime, status);
 
@@ -68,7 +67,7 @@ class aes_checker;
 	pass = (text_passed & done_passed);
 
 	if (pass) begin
-	        	 if(verbose) begin 
+	        	if(verbose) begin 
 				$display("%t : pass \n", $realtime);
 			end else begin
 				$display("%t : failed  \n", $realtime);

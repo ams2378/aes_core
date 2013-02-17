@@ -20,6 +20,9 @@ class aes_checker;
 	function void check_result (int dut_text_0, int dut_text_1, int dut_text_2, int dut_text_3, 
 				    int dut_done, int unsigned bench_text_o[], int bench_done, int status);
 
+
+		$display (" CHECKED: status is : %d", status);
+
 		int verbose = 1;
 		bit text_passed;
 		bit done_passed;

@@ -3,7 +3,7 @@
 class aes_transaction;
 	rand int 	unsigned text[4];
 	rand int 	unsigned key[4];
-	bit 		rst;
+	rand bit 	rst;
 	rand bit	ld;
 	int		done;
 	int		status;
@@ -107,9 +107,6 @@ program tb (ifc.bench ds);
 	int unsigned ctext[4];
 	int rst_chk;
 	
-
-	int temp = 0;			// temporary
-	
 	task do_cycle;
 
 //		$display("\n");
@@ -119,7 +116,7 @@ program tb (ifc.bench ds);
 
 		t.randomize();
 
-		t.rst= '1;		// temporary
+	//	t.rst= '1;		// temporary
 		
 //		$display ("SV: TIME IS :: ", $realtime );	
 //		$display ("SV: ld and rst is : %b%b ", t.ld, t.rst );	

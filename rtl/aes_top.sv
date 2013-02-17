@@ -6,7 +6,7 @@ module aes_top(ifc.dut d);
 
     always_comb begin
 
-        if (d.mode == 0) begin
+        unique if (d.mode == '0)
         	aes_cipher_top cipher (
 		    	.clk(d.clk),	
 			    .rst(d.rst),
@@ -16,7 +16,7 @@ module aes_top(ifc.dut d);
 			    .text_out(d.text_out),
 			    .done(d.done)
 			);
-        end else begin
+        else
             aes_inv_cipher_top decipher (
 			    .clk(d.clk),	
 			    .rst(d.rst),
@@ -24,9 +24,8 @@ module aes_top(ifc.dut d);
 			    .key(d.key),
 			    .text_in(d.text_in),
 			    .text_out(d.text_out),
-		    	.done(d.done_o)
+		    	.done(d.done)
 			);
-        end
     end
 endmodule
 

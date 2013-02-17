@@ -50,12 +50,9 @@ program tb (ifc.bench ds);
 
 		t.rst= '1;		// temporary
 		
-//		$display ("TIME IS :: ", $realtime, "  ld is : %b ", t.ld, " %t status is : %d", t.status );	
-
 		$display ("TIME IS :: ", $realtime );	
-		$display ("ld is : %b ", t.ld );	
+		$display ("ld and rst is : %b%b ", t.ld, t.rst );	
 		$display ("status is : %d ", t.status );	
-		$display("\n");
 		$display("Generated key in SV: %h%h%h%h", t.key[3], t.key[2], t.key[1], t.key[0]);
 		$display("Generated text in SV: %h%h%h%h", t.text[3], t.text[2], t.text[1], t.text[0]);
 		
@@ -105,10 +102,8 @@ program tb (ifc.bench ds);
 
 		$display("Receieved Encrypted Text is SV: %h%h%h%h", ctext[3], ctext[2], ctext[1], ctext[0]);
 
-		$display("\n");
                 $display("\n");
                 $display("***********************STOP*************************");
-		$display("\n");
 		$display("\n");
 	endtask
 

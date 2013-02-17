@@ -109,10 +109,10 @@ program tb (ifc.bench ds);
 	
 	task do_cycle;
 
-		$display("\n");
-		$display("\n");
-		$display(" %t ***********************START*************************  ", $realtime);
-		$display("\n");
+//		$display("\n");
+//		$display("\n");
+//		$display(" %t ***********************START*************************  ", $realtime);
+//		$display("\n");
 
 		t.randomize();
 
@@ -169,14 +169,14 @@ program tb (ifc.bench ds);
 		t.done   = get_done();
 		t.status = get_status();	
 
-		$display("SV: Receieved Encrypted Text: %h%h%h%h", ctext[3], ctext[2], ctext[1], ctext[0]);
-		$display("SV: Done is : %d", t.done);
+//		$display("SV: Receieved Encrypted Text: %h%h%h%h", ctext[3], ctext[2], ctext[1], ctext[0]);
+//		$display("SV: Done is : %d", t.done);
 
-           	$display("DUT: Cipher out: %h%h%h%h", ds.cb.text_out[127:96], ds.cb.text_out[95:64], ds.cb.text_out[63:32], ds.cb.text_out[31:0]);
-		$display ("DUT: Done out : %d", ds.cb.done);
+//         	$display("DUT: Cipher out: %h%h%h%h", ds.cb.text_out[127:96], ds.cb.text_out[95:64], ds.cb.text_out[63:32], ds.cb.text_out[31:0]);
+//		$display ("DUT: Done out : %d", ds.cb.done);
 
-                $display("\n");
-		$display("\n");
+//              $display("\n");
+//		$display("\n");
 
 	@(ds.cb);
 

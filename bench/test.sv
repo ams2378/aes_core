@@ -180,7 +180,7 @@ program tb (ifc.bench ds);
 		repeat(20) begin
 			do_cycle();
 			checker.check_result(ds.cb.text_out[31:0],  ds.cb.text_out[63:32], ds.cb.text_out[95:64],  
-					    ds.cb.text_out[127:96], ds.cb.done, ctext, t.done, t.status);
+					    ds.cb.text_out[127:96], ds.cb.done, ctext, t.done, t.status-1);
 		
 		end
 	end

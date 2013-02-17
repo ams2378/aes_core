@@ -24,7 +24,7 @@ class aes_checker;
 		bit text_passed;
 		bit done_passed;
 
-	if (status == 13) {
+	if (status == 13) begin 
 		 	text_passed = (dut_text_0 == bench_text_o[0]) && (dut_text_1 == bench_text_o[1]) &&
 			    	      (dut_text_2 == bench_text_o[2]) && (dut_text_3 == bench_text_o[3]);
 		 	done_passed = (dut_done == bench_done);
@@ -53,7 +53,7 @@ class aes_checker;
 			end
 			//	$exit();
 		end
-	} else begin
+	end else begin
 			$display (" %t <<<<<<<<<<< BYPASSING CHECKER:  DUT OUTPUT NOT READY YET >>>>>>>>>>>>>>", $realtime);
 	end
 

@@ -101,8 +101,10 @@ program tb (ifc.bench ds);
 		t.status = get_status();	
 
 		$display("SV: Receieved Encrypted Text: %h%h%h%h", ctext[3], ctext[2], ctext[1], ctext[0]);
+		$display("SV: Done is : %d", t.done);
 
-           	$display("SV: dut value: %h%h%h%h", ds.cb.text_out[127:96], ds.cb.text_out[95:64], ds.cb.text_out[63:32], ds.cb.text_out[31:0]);
+           	$display("DUT: Cipher out: %h%h%h%h", ds.cb.text_out[127:96], ds.cb.text_out[95:64], ds.cb.text_out[63:32], ds.cb.text_out[31:0]);
+		$display ("DUT: Done out : %d", ds.cb.done);
 
                 $display("\n");
                 $display("***********************STOP*************************");

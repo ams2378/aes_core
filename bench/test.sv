@@ -32,7 +32,7 @@ class aes_checker;
 
 		if (done_passed) begin 
 				$display ("********** DONE PASSED ***********");	
-		end else if ( (!done_passed & verbose) begin
+		end else if ( !done_passed & verbose) begin
 			        $display("%t : error in done bit \n", $realtime);
             			$display("dut value: %d", dut_done);
             			$display("bench value: %d", bench_done);

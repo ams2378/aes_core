@@ -54,6 +54,7 @@ program tb (ifc.bench ds);
 
 		$display ("TIME IS :: ", $realtime );	
 		$display ("ld is : %b ", t.ld );	
+		$display ("status is : %b ", t.status );	
 		$display("\n");
 		$display("Generated key in SV: %h%h%h%h", t.key[3], t.key[2], t.key[1], t.key[0]);
 		$display("Generated text in SV: %h%h%h%h", t.text[3], t.text[2], t.text[1], t.text[0]);

@@ -21,12 +21,12 @@ class aes_checker;
 				    int dut_done, int unsigned bench_text_o[], int bench_done, int status);
 
 
-		$display (" CHECKED: status is : %d", status);
 
 		int verbose = 1;
 		bit text_passed;
 		bit done_passed;
 
+		$display (" CHECKED: status is : %d", status);
 	if (status == 13 || status == 0) begin
  
 		text_passed = (dut_text_0 == bench_text_o[0]) && (dut_text_1 == bench_text_o[1]) &&

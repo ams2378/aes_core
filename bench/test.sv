@@ -44,7 +44,7 @@ class aes_checker;
 
 	pass = (text_passed & done_passed);
 
-	if (passed) begin
+	if (pass) begin
 	        	 if(verbose) $display("%t : pass \n", $realtime);
 		end else begin
 			if ( !text_passed & verbose ) begin

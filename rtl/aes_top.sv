@@ -7,6 +7,11 @@ module aes_top(ifc.dut d);
     logic load_d;
     logic keyload;
 
+    logic en_text_out;
+    logic en_done;
+    logic de_text_out;
+    logic de_done;
+
 
     always_comb begin
         unique if (d.mode == '0 && d.ld == '1) begin
@@ -30,8 +35,8 @@ module aes_top(ifc.dut d);
 	    .ld(load_e),
 	    .key(d.key),
 	    .text_in(d.text_in),
-	    .text_out(d.text_out),
-	    .done(d.done)
+	    .text_out(en_text_out),
+	    .done(en_done)
 	);
     
     aes_inv_cipher_top decipher (
@@ -41,9 +46,22 @@ module aes_top(ifc.dut d);
         .kld(keyload),
 	    .key(d.key),
 	    .text_in(d.text_in),
-	    .text_out(d.text_out),
-    	.done(d.done)
+	    .text_out(de_text_out),
+    	.done(de_done)
 	);
+
+    always_comb begin
+        unique if (en_done) begin
+            assign d.text_out = en_text_out;
+            assign d.done = en_done;
+        end else if (de_done) begin
+            assign d.text_out = de_text_out;
+            assign d.done = de_done;
+        end else begin
+            assign d.text_out = '0;
+            assign d.done = '0;
+        end
+    end
 
 
 endmodule

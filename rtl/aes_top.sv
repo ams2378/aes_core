@@ -9,11 +9,11 @@ module aes_top(ifc.dut d);
 
 
     always_comb begin
-        unique if (d.mode == '0 && d.ld = '1) begin
+        unique if (d.mode == '0 && d.ld == '1) begin
             load_e = '1;
             load_d = '0;
             keyload = '0;
-        end else if (d.mode == '0 && d.ld = '1) begin 
+        end else if (d.mode == '0 && d.ld == '1) begin 
             load_e = '0;
             load_d = '1;
             keyload = '1

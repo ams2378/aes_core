@@ -16,7 +16,7 @@ module aes_top(ifc.dut d);
         end else if (d.mode == '0 && d.ld == '1) begin 
             load_e = '0;
             load_d = '1;
-            keyload = '1
+            keyload = '1;
         end else begin
             load_e = '0;
             load_d = '0;

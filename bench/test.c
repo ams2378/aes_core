@@ -51,7 +51,7 @@ void send_ld_rst (int l, int rt) {
 //	rst = rt;
 
 	if (tmp_rst != 0) 
-		rst = rt
+		rst = rt;
 
 	if (status == 13 || rst == 0)
 //	if (status == 13 || rst_ctrl[1] == 0)

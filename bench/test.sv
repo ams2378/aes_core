@@ -100,11 +100,13 @@ program tb (ifc.bench ds);
 	int unsigned ctext[4];
 	int rst_chk;
 
+
+	int verbose = 0;
+
 	task do_cycle;
 
 		t.randomize();
 		
-		int verbose = 0;
 //		t.rst= '1;		// temporary
 
 	if (verbose) begin

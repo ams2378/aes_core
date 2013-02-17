@@ -15,7 +15,7 @@ void rand_word_array(word w[], int bit_num);
 void print_verilog_hex(word w[], int bit_num);
 
 
-int  rst;
+int  rst = 1;
 int  ld;
 int  status = 0;
 int  done;
@@ -48,16 +48,10 @@ int get_status() {
 void send_ld_rst (int l, int rt) {
 
 	ld = l;
-	rst = rt;
+//	rst = rt;
 
-	if (tmp_rst == 0) {
-		rst_ctrl[0] = rst;
-		tmp_rst = 1;
-	} else {
-		rst_ctrl[1] = rst;
-		tmp_rst = 0;
-	}
-		
+	if (tmp_rst != 0) 
+		rst = rt
 
 	if (status == 13 || rst == 0)
 //	if (status == 13 || rst_ctrl[1] == 0)
@@ -68,6 +62,8 @@ void send_ld_rst (int l, int rt) {
 
 	if (ld == 1)
 		status = 1;
+
+	tmp_rst == 1;
 
 }
 

@@ -42,8 +42,6 @@ typedef struct VeriC_Descriptor *vc_handle;
 
  extern int get_ciphertext(int i);
 
- extern int get_done(int i);
-
  extern void generate_key_text();
 
  extern int get_text(int i);

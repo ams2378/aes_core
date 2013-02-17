@@ -30,7 +30,8 @@ int get_done() {
 
 	int temp = 0;
 
-	if (status == 13 && rst != 0)
+//	if (status == 13 && rst != 0)
+	if (status == 13 && rst_ctrl[0] !=0)
 		done = 1;
 	else
 		done = 0;
@@ -58,7 +59,8 @@ void send_ld_rst (int l, int rt) {
 	}
 		
 
-	if (status == 13 || rst == 0)
+//	if (status == 13 || rst == 0)
+	if (status == 13 || rst_ctrl[0] == 0)
 		status = 0;
 
 	if (status >= 1)

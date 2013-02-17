@@ -14,6 +14,55 @@ class aes_transaction;
 
 endclass
 
+class aes_checker;
+	bit pass;
+
+	function void check_result (int dut_text_0, int dut_text_1, int dut_text_2, int dut_text_3, 
+				    int dut_done, int bench_text_o[], int bench_done, int status);
+
+		int verbose = 1;
+		bit text_passed;
+		bit done_passed;
+
+	if (status == 13) {
+		 	text_passed = (dut_text_0 == bench_text_o[0]) && (dut_text_1 == bench_text_o[1]) &&
+			    	      (dut_text_2 == bench_text_o[2]) && (dut_text_3 == bench_text_o[3]);
+		 	done_passed = (dut_done == bench_done);
+	
+			bit passed = (text_passed & done_passed);
+			pass = passed;
+		
+		if (text_passed) begin $display ("********** TEXT PASSED ***********");	end;
+		if (done_passed) begin $display ("********** DONE PASSED ***********");	end;
+
+
+		if (passed) begin
+	        	 if(verbose) $display("%t : pass \n", $realtime);
+            	//	$display("dut value || dut done: %h%h%h%h %d", dut_text_3, dut_text_2, dut_text_1, dut_text_0, dut_done);
+            	//	$display("bench value || bench_done: %h%h%h%h", bench_text_o[3], bench_text_o[2], bench_text_o[1], bench_text_o[0], bench_done);
+		end else begin
+			if ( !text_passed & verbose ) begin
+		        	$display("%t : error in text_o \n", $realtime);
+            			$display("dut value || dut done: %h%h%h%h %d", dut_text_3, dut_text_2, dut_text_1, dut_text_0, dut_done);
+            			$display("bench value || bench_done: %h%h%h%h", bench_text_o[3], bench_text_o[2], bench_text_o[1], bench_text_o[0], bench_done);
+			end
+			if ( !done_passed & verbose) begin
+			        $display("%t : error in done bit \n", $realtime);
+            			$display("dut value: %d", dut_done);
+            			$display("bench value: %d", bench_done);
+			end
+			//	$exit();
+		end
+	} else begin
+			$display (" %t <<<<<<<<<<< BYPASSING CHECKER:  DUT OUTPUT NOT READY YET >>>>>>>>>>>>>>", $realtime);
+	end
+
+	endfunction
+
+endclass
+
+
+
 program tb (ifc.bench ds);
 
 	import "DPI-C" function void rebuild_text ( input int  txt, input int i);
@@ -118,6 +167,8 @@ program tb (ifc.bench ds);
 		
 		repeat(20) begin
 			do_cycle();
+			checker.check_result(ds.cb.text_out[31:0],  ds.cb.text_out[63:32], ds.cb.text_out[95:64],  
+					    ds.cb.text_out[127:96], ds.cb.done, ctext, t.done, t.status);
 		
 		end
 	end

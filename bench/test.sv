@@ -61,6 +61,7 @@ class aes_checker;
 		end
 
 
+                $display("***********************STOP*************************");
 	endfunction
 
 endclass
@@ -95,7 +96,7 @@ program tb (ifc.bench ds);
 
 		$display("\n");
 		$display("\n");
-		$display("***********************START*************************");
+		$display(" %t ***********************START*************************  ", $realtime);
 		$display("\n");
 
 		t.randomize();
@@ -159,7 +160,6 @@ program tb (ifc.bench ds);
 		$display ("DUT: Done out : %d", ds.cb.done);
 
                 $display("\n");
-                $display("***********************STOP*************************");
 		$display("\n");
 
 	@(ds.cb);

@@ -21,7 +21,7 @@ endclass
 class aes_checker;
 	bit pass;
 
-	function void check_result_en (int dut_text_0, int dut_text_1, int dut_text_2, int dut_text_3, int dut_done, 
+	function void check_result (int dut_text_0, int dut_text_1, int dut_text_2, int dut_text_3, int dut_done, 
 				   int unsigned bench_text_o[], int bench_done, int status, int rst_chk);
 
 		int verbose = 1;
@@ -84,14 +84,7 @@ class aes_checker;
 	end
 
 	endfunction
-    
-    function void check_result_de(int dut_text_0, int dut_text_1, int dut_text_2, int dut_text_3, int dut_done, 
-				   int unsigned bench_text_o[], int bench_done, int status, int rst_chk);
-
-            $display("decryption !!!");
-        
-    endfunction
-    
+      
 
 endclass
 
@@ -119,7 +112,7 @@ program tb (ifc.bench ds);
 	int en_ce_stat = 0;
 	int unsigned ctext[4];
 	int rst_chk;
-    t.status = 0;
+
     bit current_mode;
 
 	task do_cycle;
@@ -202,13 +195,13 @@ program tb (ifc.bench ds);
 
 	@(ds.cb);
 
-		checker.check_result_en(ds.cb.text_out[31:0],  ds.cb.text_out[63:32], ds.cb.text_out[95:64],  
+		checker.check_result(ds.cb.text_out[31:0],  ds.cb.text_out[63:32], ds.cb.text_out[95:64],  
 					ds.cb.text_out[127:96], ds.cb.done, ctext, t.done, t.status, rst_chk);
 
     end
     //DECRYPTION MODE
     else if (current_mode == 1) begin
-        send_ld_rst (t.ld, t.rst);
+        send_ld_rst_de (t.ld, t.rst);
 		rebuild_text(t.text[0], 0);
 		rebuild_text(t.text[1], 1);
 		rebuild_text(t.text[2], 2);
@@ -243,12 +236,12 @@ program tb (ifc.bench ds);
 		ds.cb.key[95:64 ]	<= 	t.key[2]; 		
 		ds.cb.key[127:96]	<= 	t.key[3]; 	
 
-        t.done   = get_done();
+        t.done   = get_done_de();
 		t.status = get_status();	
 
 	@(ds.cb);
 
-	checker.check_result_de(ds.cb.text_out[31:0],  ds.cb.text_out[63:32], ds.cb.text_out[95:64],  
+	checker.check_result(ds.cb.text_out[31:0],  ds.cb.text_out[63:32], ds.cb.text_out[95:64],  
 					ds.cb.text_out[127:96], ds.cb.done, t.text, t.done, t.status, rst_chk);
 
         
@@ -262,7 +255,7 @@ program tb (ifc.bench ds);
 	initial begin
 		t = new();
 		checker = new();
-
+        t.status = 0;
 		repeat(10000) begin
 			do_cycle();
 		//	checker.check_result(ds.cb.text_out[31:0],  ds.cb.text_out[63:32], ds.cb.text_out[95:64],  

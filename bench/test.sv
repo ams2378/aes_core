@@ -49,7 +49,7 @@ class aes_checker;
 
 				$exit();
 		end
-	
+
 	end else if (status < 13 || status == 0) begin
 
 		done_passed = (dut_done == bench_done);
@@ -61,7 +61,7 @@ class aes_checker;
 			        $display("%t : error in done bit \n", $realtime);
             			$display("dut value: %d", dut_done);
             			$display("bench value: %d", bench_done);
-				
+
 				$exit();
 		end
 
@@ -99,7 +99,7 @@ program tb (ifc.bench ds);
 	int en_ce_stat = 0;
 	int unsigned ctext[4];
 	int rst_chk;
-	
+
 	task do_cycle;
 
 //		$display("\n");
@@ -110,13 +110,13 @@ program tb (ifc.bench ds);
 		t.randomize();
 
 //		t.rst= '1;		// temporary
-		
+
 //		$display ("SV: TIME IS :: ", $realtime );	
 //		$display ("SV: ld and rst is : %b%b ", t.ld, t.rst );	
 //		$display ("SV: status is : %d ", t.status );	
 //		$display("SV: Generated key: %h%h%h%h", t.key[3], t.key[2], t.key[1], t.key[0]);
 //		$display("SV: Generated text: %h%h%h%h", t.text[3], t.text[2], t.text[1], t.text[0]);
-		
+
 
 		//send text/key to dut and software
 
@@ -145,15 +145,15 @@ program tb (ifc.bench ds);
 		rebuild_text(t.text[2], 2);
 		rebuild_text(t.text[3], 3);
 		rearrange_text();
-	
+
 		rebuild_key(t.key[0], 0);
 		rebuild_key(t.key[1], 1);
 		rebuild_key(t.key[2], 2);
 		rebuild_key(t.key[3], 3);
 		rearrange_key();
-		
+
 		generate_ciphertext();
-		
+
 		rearrange_cipher();
 		ctext[0] = get_ciphertext(0);
 		ctext[1] = get_ciphertext(1);
@@ -178,7 +178,7 @@ program tb (ifc.bench ds);
 
 	endtask
 
-	
+
 	initial begin
 		t = new();
 		checker = new();
@@ -187,11 +187,9 @@ program tb (ifc.bench ds);
 			do_cycle();
 		//	checker.check_result(ds.cb.text_out[31:0],  ds.cb.text_out[63:32], ds.cb.text_out[95:64],  
 		//			    ds.cb.text_out[127:96], ds.cb.done, ctext, t.done, t.status);
-		
+
 		end
 	end
 endprogram
 
-
- 
 

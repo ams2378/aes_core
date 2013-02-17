@@ -35,7 +35,7 @@ int get_done() {
 }
 
 int get_status() {
-	
+
 	return status;
 
 }
@@ -94,7 +94,7 @@ void generate_ciphertext(int rst){
 
 	if (status == 13 && rst != 0)
 		encrypt_128_key_expand_inline_no_branch(state, key);
-			
+
 	ctext[0] = state[0];
 	ctext[1] = state[1];
 	ctext[2] = state[2];
@@ -192,4 +192,3 @@ void rearrange_cipher() {
 	   }    
    }
 } 
- 

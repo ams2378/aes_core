@@ -54,6 +54,12 @@ typedef struct VeriC_Descriptor *vc_handle;
 
  extern void rearrange_cipher();
 
+ extern void send_ld_rst(int i, int j);
+
+ extern int get_done();
+
+ extern int get_status();
+
 #ifdef __cplusplus
 }
 #endif

@@ -8,5 +8,8 @@ import_DPI read_text tb
 import_DPI rearrange_text tb
 import_DPI rearrange_key tb
 import_DPI rearrange_cipher tb
+import_DPI send_ld_rst tb
+import_DPI get_done tb
+import_DPI get_status tb
 DirectC getCurSchedRegion 
 DirectC WmaskAndSet4 

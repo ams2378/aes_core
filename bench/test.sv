@@ -23,13 +23,14 @@ class aes_checker;
 		int verbose = 1;
 		bit text_passed;
 		bit done_passed;
+		bit passed;
 
 	if (status == 13) begin 
 		 	text_passed = (dut_text_0 == bench_text_o[0]) && (dut_text_1 == bench_text_o[1]) &&
 			    	      (dut_text_2 == bench_text_o[2]) && (dut_text_3 == bench_text_o[3]);
 		 	done_passed = (dut_done == bench_done);
 	
-			bit passed = (text_passed & done_passed);
+			passed = (text_passed & done_passed);
 			pass = passed;
 		
 		if (text_passed) begin $display ("********** TEXT PASSED ***********");	end;

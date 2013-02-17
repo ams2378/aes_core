@@ -31,7 +31,7 @@ class aes_checker;
 	 	done_passed = (dut_done == bench_done);
 
 		if (done_passed) begin 
-				$display ("********** DONE PASSED ***********, status is : %d", status);	
+				$display ("********** DONE PASSED ***********" );	
 		end else if ( !done_passed & verbose) begin
 			        $display("%t : error in done bit \n", $realtime);
             			$display("dut value: %d", dut_done);
@@ -58,19 +58,19 @@ class aes_checker;
             			$display("bench value: %d", bench_done);
 		end
 
-		$display (" %t <<<<<< BYPASSING DATA CHECKER:  DUT OUTPUT NOT READY YET >>>>>>>> status is : %d", $realtime, status);
+		$display (" %t <<<<<< BYPASSING DATA CHECKER:  DUT OUTPUT NOT READY YET >>>>>>>> ", $realtime);
 
 	end else begin
-		$display (" %t <<<<< BYPASSING CHECKER:  DUT OUTPUT NOT READY YET >>>>>> status is : %d", $realtime, status);
+		$display (" %t <<<<< BYPASSING CHECKER:  DUT OUTPUT NOT READY YET >>>>>> ", $realtime );
 	end
 
 	pass = (text_passed & done_passed);
 
 	if (pass) begin
 	        	if(verbose) begin 
-				$display("%t : pass \n", $realtime);
+				$display("%t : TEST PASSED pass \n", $realtime);
 			end else begin
-				$display("%t : failed  \n", $realtime);
+				$display("%t : !!!!!!!!!!! FATAL - TEST FAILED  \n", $realtime);
 				$exit();
 			end
 	end
@@ -118,11 +118,11 @@ program tb (ifc.bench ds);
 
 		t.rst= '1;		// temporary
 		
-		$display ("SV: TIME IS :: ", $realtime );	
-		$display ("SV: ld and rst is : %b%b ", t.ld, t.rst );	
-		$display ("SV: status is : %d ", t.status );	
-		$display("SV: Generated key: %h%h%h%h", t.key[3], t.key[2], t.key[1], t.key[0]);
-		$display("SV: Generated text: %h%h%h%h", t.text[3], t.text[2], t.text[1], t.text[0]);
+//		$display ("SV: TIME IS :: ", $realtime );	
+//		$display ("SV: ld and rst is : %b%b ", t.ld, t.rst );	
+//		$display ("SV: status is : %d ", t.status );	
+//		$display("SV: Generated key: %h%h%h%h", t.key[3], t.key[2], t.key[1], t.key[0]);
+//		$display("SV: Generated text: %h%h%h%h", t.text[3], t.text[2], t.text[1], t.text[0]);
 		
 
 		//send text/key to dut and software

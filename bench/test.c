@@ -64,7 +64,6 @@ void send_ld_rst (int l, int rt) {
 		status = 1;
 
 	tmp_rst == 1;
-
 }
 
 void rebuild_text(word t_state, int i) {

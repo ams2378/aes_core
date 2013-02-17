@@ -1,11 +1,16 @@
 `timescale 1ns/1ps
 
 class aes_transaction;
-	rand int unsigned text[4];
-	rand int unsigned key[4];
-	bit rst;
-	bit ld;
+	rand int 	unsigned text[4];
+	rand int 	unsigned key[4];
+	bit 		rst;
+	rand bit	ld;
+	int		done;
+	int		status;
 
+	constraint ld_status {
+		(status == 1) -> (ld == 0);
+	}
 
 endclass
 
@@ -24,7 +29,9 @@ program tb (ifc.bench ds);
 	import "DPI-C" function void rearrange_text();
 	import "DPI-C" function void rearrange_key();
 	import "DPI-C" function void rearrange_cipher();
-	import "DPI-C" function void send_key(  );
+	import "DPI-C" function void send_ld_rst( int i, int j );
+	import "DPI-C" function int get_done();
+	import "DPI-C" function int get_status();
 
 	aes_transaction t;
 	int en_ce_stat = 0;
@@ -42,22 +49,21 @@ program tb (ifc.bench ds);
 		t.randomize();
 
 		t.rst= '1;		// temporary
-		t.ld = '1;		// temporary
+		
 	
 		$display("Generated key in SV: %h%h%h%h", t.key[3], t.key[2], t.key[1], t.key[0]);
 		$display("Generated text in SV: %h%h%h%h", t.text[3], t.text[2], t.text[1], t.text[0]);
 		
 
 		//send text/key to dut and software
-
-	if (temp == 3 && en_de_stat == 0) {
-		ds.cb.ld		<= 	t.ld;
-		send_key (1);
-	}
-	else
-		ds.cb.ld		<=	'0;
+/*
+	if (t.ld == 1) begin
+		t.status 		= 	1;
+	end 
+*/
 
 		ds.cb.rst		<= 	t.rst;	
+		ds.cb.ld		<= 	t.ld;
 		ds.cb.text_in[31:0] 	<= 	t.text[0];
 		ds.cb.text_in[63:32]	<= 	t.text[1]; 
 		ds.cb.text_in[95:64 ]	<= 	t.text[2]; 		
@@ -69,6 +75,7 @@ program tb (ifc.bench ds);
 		ds.cb.key[127:96]	<= 	t.key[3]; 			
 
 
+		send_ld_rst (t.ld, t.rst);
 		rebuild_text(t.text[0], 0);
 		rebuild_text(t.text[1], 1);
 		rebuild_text(t.text[2], 2);
@@ -83,12 +90,13 @@ program tb (ifc.bench ds);
 		
 		generate_ciphertext();
 		
-		//get ciphered text from C	
 		rearrange_cipher();
 		ctext[0] = get_ciphertext(0);
 		ctext[1] = get_ciphertext(1);
 		ctext[2] = get_ciphertext(2);
-		ctext[3] = get_ciphertext(3);	
+		ctext[3] = get_ciphertext(3);
+		t.done   = get_done();
+		t.status = get_status();	
 
 		$display("Receieved Encrypted Text is SV: %h%h%h%h", ctext[3], ctext[2], ctext[1], ctext[0]);
 

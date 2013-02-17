@@ -14,21 +14,52 @@ word rand_word();
 void rand_word_array(word w[], int bit_num);
 void print_verilog_hex(word w[], int bit_num);
 
+
+int  rst;
+int  ld;
+int  status = 0;
+int  done;
 word ctext[4];
 word state[4];
 word key[8];
 
-word get_text(int i){
-	return state[i];
+
+int get_done() {
+
+	if (status == 13 && rst != 0)
+		done = 1;
+	else
+		done = 0;
 }
 
-word get_key(int i){
+int get_status() {
+	
+	return status;
 
-	return key[i];
+}
+
+void send_ld_rst (int l, int rt) {
+
+	ld = l;
+	rst = rt;
+
+	if (status == 13 || rst == 0)
+		status = 0;
+
+	if (status >= 1)
+		status = status + 1;
+
+	if (ld == 1)
+		status = 1;
+
 }
 
 void rebuild_text(word t_state, int i) {
-	state[i] = t_state;
+
+	if (status == 1)
+		state[i] = t_state;
+	else
+		state[i] = state[i];
 
 	#ifdef print
     	printf (" rebuilt text received in C :%d\n", t_state);
@@ -41,8 +72,12 @@ void rebuild_text(word t_state, int i) {
 }
 
 void rebuild_key(word t_key, int i) {
-	key[i] = t_key;
-	
+
+	if (status == 1)
+		key[i] = t_key;
+	else 
+		key[i] = key[i];	
+
 	#ifdef print
     	printf (" rebuilt key received in C :%d\n", t_key);
     	printf (" rebuilt key in C :%d%d%d%d\n", key[0], key[1], key[2], key[3]);
@@ -54,6 +89,15 @@ void rebuild_key(word t_key, int i) {
 }
 
 void generate_ciphertext(int rst){
+
+	if (status == 13 && rst != 0)
+		encrypt_128_key_expand_inline_no_branch(state, key);
+			
+	ctext[0] = state[0];
+	ctext[1] = state[1];
+	ctext[2] = state[2];
+	ctext[3] = state[3];
+
 	//Text and State received in C
 /*	printf("\nReceived key in C: ");
 	print_verilog_hex(key, 128);
@@ -65,12 +109,7 @@ void generate_ciphertext(int rst){
 	printf("########ENCRYPTING#########");
 	printf("\n");    
 */
-	encrypt_128_key_expand_inline_no_branch(state, key);
-			
-	ctext[0] = state[0];
-	ctext[1] = state[1];
-	ctext[2] = state[2];
-	ctext[3] = state[3];
+
 /*
 	printf("Encrypted text in C: ");
 	print_verilog_hex(ctext, 128);
@@ -79,6 +118,10 @@ void generate_ciphertext(int rst){
 }
 
 word get_ciphertext(int i){
+
+	if (rst == 0)
+		ctext[i] = 0;
+
 	return ctext[i];
 }
 
@@ -86,33 +129,6 @@ word get_ciphertext(int i){
 void read_text(){
 
 	print_verilog_hex(state, 128);
-}
-
-word rand_word() {
-    word w = 0;
-    int i;
-    for(i=0; i<4; i++) {
-        word x = rand() & 255;
-        w = (w << 8) | x;
-    }
-    return w;
-}
-
-void rand_word_array(word w[], int bit_num) {
-    int word_num = bit_num / 32;
-    int i;
-    for(i=0; i<word_num; i++)
-        w[i] = rand_word();
-}
-
-void print_verilog_hex_76(word w[], int bit_num) {
-    int byte_num = bit_num / 8;
-    int i;
-    byte *b = (byte *)w;
-    printf("%d'h", bit_num);
-    for(i=byte_num-1; i>= 0; i--)
-//    for(i=0; i<byte_num; i++)
-        printf("%02x", b[i]);
 }
 
 
@@ -133,10 +149,13 @@ void rearrange_text() {
     byte *n = (byte *)state;
     word x[4];
     x[0] = state[0]; x[1] = state[1]; x[2] = state[2]; x[3] = state[3];
-    byte *o = (byte *)x;
-    for (i=0; i<16; i++) {
-	n[i] = o[15-i];
-    } 
+
+    if (status == 1) {
+	    byte *o = (byte *)x;
+	    for (i=0; i<16; i++) {
+		n[i] = o[15-i];
+    	} 
+    }
 }
 
 
@@ -145,21 +164,26 @@ void rearrange_key() {
     byte *n = (byte *)key;
     word x[4];
     x[0] = key[0]; x[1] = key[1]; x[2] = key[2]; x[3] = key[3];
-    byte *o = (byte *)x;
-    for (i=0; i<16; i++) {
-	n[i] = o[15-i];
-   }    
-}
 
+    if (status == 1) {
+	    byte *o = (byte *)x;
+	    for (i=0; i<16; i++) {
+		n[i] = o[15-i];
+   	}    
+   }
+}
 
 void rearrange_cipher() {
     int i;
     byte *n = (byte *)ctext;
     word x[4];
     x[0] = ctext[0]; x[1] = ctext[1]; x[2] = ctext[2]; x[3] = ctext[3];
-    byte *o = (byte *)x;
-    for (i=0; i<16; i++) {
-	n[i] = o[15-i];
-   }    
+
+    if (status == 13) {
+	    byte *o = (byte *)x;
+	    for (i=0; i<16; i++) {
+		n[i] = o[15-i];
+	   }    
+   }
 } 
  

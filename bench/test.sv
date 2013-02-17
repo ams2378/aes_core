@@ -24,33 +24,36 @@ program tb (ifc.bench ds);
 	import "DPI-C" function void rearrange_text();
 	import "DPI-C" function void rearrange_key();
 	import "DPI-C" function void rearrange_cipher();
+	import "DPI-C" function void send_key(  );
 
 	aes_transaction t;
 	int en_ce_stat = 0;
 	int unsigned ctext[4];
 
-	int temp = 0;
+	int temp = 0;			// temporary
 	
 	task do_cycle;
+
 		$display("\n");
 		$display("\n");
 		$display("***********************START*************************");
 		$display("\n");
 
-
 		t.randomize();
 
-		t.rst= '1;
-		t.ld = '1;
+		t.rst= '1;		// temporary
+		t.ld = '1;		// temporary
 	
 		$display("Generated key in SV: %h%h%h%h", t.key[3], t.key[2], t.key[1], t.key[0]);
 		$display("Generated text in SV: %h%h%h%h", t.text[3], t.text[2], t.text[1], t.text[0]);
 		
 
-		//send text/key to dut
+		//send text/key to dut and software
 
-	if (temp == 3)
+	if (temp == 3 && en_de_stat == 0) {
 		ds.cb.ld		<= 	t.ld;
+		send_key (1);
+	}
 	else
 		ds.cb.ld		<=	'0;
 
@@ -66,7 +69,6 @@ program tb (ifc.bench ds);
 		ds.cb.key[127:96]	<= 	t.key[3]; 			
 
 
-		//send text/key to c model
 		rebuild_text(t.text[0], 0);
 		rebuild_text(t.text[1], 1);
 		rebuild_text(t.text[2], 2);

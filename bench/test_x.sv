@@ -8,6 +8,10 @@ class aes_transaction;
 	int		done;
 	int		status;
 
+	constraint ld_status {
+		(status !=0) -> (ld == 0);
+	}
+
 function void set_encrypt_status (int s);
 	
 //	$display ("set encrypt stat get called");

@@ -4,18 +4,30 @@
 
 module aes_top(ifc.dut d);
 
+    always_comb begin
 
-	aes_cipher_top cipher (
-			.clk(d.clk),	
-			.rst(d.rst),
-			.ld(d.ld),
-			.key(d.key),
-			.text_in(d.text_in),
-			.text_out(d.text_out),
-			.done(d.done)
+        if (d.mode == 0) begin
+        	aes_cipher_top cipher (
+		    	.clk(d.clk),	
+			    .rst(d.rst),
+			    .ld(d.ld),
+			    .key(d.key),
+			    .text_in(d.text_in),
+			    .text_out(d.text_out),
+			    .done(d.done)
 			);
-
-
+        end else begin
+            aes_inv_cipher_top decipher (
+			    .clk(d.clk),	
+			    .rst(d.rst),
+			    .ld(d.ld),
+			    .key(d.key),
+			    .text_in(d.text_in),
+			    .text_out(d.text_out),
+		    	.done(d.done_o)
+			);
+        end
+    end
 endmodule
 
 /*

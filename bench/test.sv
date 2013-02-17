@@ -7,7 +7,9 @@ class aes_transaction;
 	rand int 	unsigned key[4];
 	rand bit 	rst;
 	rand bit	ld;
-	int		done;
+    rand bit    mode; // 0 = encryption, 1 = decryption 
+	
+    int		done;
 	int		status;
 
 	constraint ld_status {
@@ -111,7 +113,8 @@ program tb (ifc.bench ds);
 
 		t.randomize();
 
-//		t.rst= '1;		// temporary
+		t.rst= '1;		// temporary
+        t.mode = '0;    // temporary
 
 //		$display ("SV: TIME IS :: ", $realtime );	
 //		$display ("SV: ld and rst is : %b%b ", t.ld, t.rst );	
@@ -130,6 +133,7 @@ program tb (ifc.bench ds);
 
 		ds.cb.rst		<= 	t.rst;	
 		ds.cb.ld		<= 	t.ld;
+        ds.cb.mode      <=  t.mode;
 		ds.cb.text_in[31:0] 	<= 	t.text[0];
 		ds.cb.text_in[63:32]	<= 	t.text[1]; 
 		ds.cb.text_in[95:64 ]	<= 	t.text[2]; 		

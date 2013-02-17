@@ -16,6 +16,7 @@ interface ifc (input bit clk);
     logic [127:0] text_in;
 
     logic done;
+    logic mode;
     logic [127:0] text_out;
    
     logic rst;
@@ -23,13 +24,15 @@ interface ifc (input bit clk);
     clocking cb @(posedge clk);
 //        default output #1;
 
-       	output rst;	
+    output rst;	
 	output ld;
 	output key;
 	output text_in;
+    output mode;
 
 	input done;
 	input text_out;
+    
     endclocking
 
     modport dut (
@@ -40,6 +43,7 @@ interface ifc (input bit clk);
 	input key,
 	input text_in,
 	input ld,
+    input mode,
 
 	output text_out,
 	output done

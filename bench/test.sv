@@ -50,7 +50,9 @@ program tb (ifc.bench ds);
 
 		t.rst= '1;		// temporary
 		
-		$display ("TIME IS :: ", $realtime, "  ld is : %b ", t.ld, " %t status is : %d", t.status );	
+//		$display ("TIME IS :: ", $realtime, "  ld is : %b ", t.ld, " %t status is : %d", t.status );	
+
+		$display ("TIME IS :: ", $realtime );	
 		$display("\n");
                 $display("\n");
 		$display("Generated key in SV: %h%h%h%h", t.key[3], t.key[2], t.key[1], t.key[0]);

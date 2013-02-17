@@ -34,6 +34,17 @@ int get_done() {
 	return done;
 }
 
+int get_done() {
+
+	if (status == 26 && rst != 0)
+		done = 1;
+	else
+		done = 0;
+
+	return done;
+}
+
+
 int get_status() {
 
 	return status;
@@ -56,6 +67,24 @@ void send_ld_rst (int l, int rt) {
 
 }
 
+
+void send_ld_rst_de (int l, int rt) {
+
+	ld = l;
+	rst = rt;
+
+	if (status == 26 || rst == 0)
+		status = 0;
+
+	if (status >= 1)
+		status = status + 1;
+
+	if (ld == 1)
+		status = 1;
+
+}
+
+
 void rebuild_text(word t_state, int i) {
 
 	if (status == 1)
@@ -70,15 +99,15 @@ void rebuild_text(word t_state, int i) {
 	printf ("text is \n");
 	print_verilog_hex(state, 128);
 	printf ("\n");
-	#endif	
+	#endif
 }
 
 void rebuild_key(word t_key, int i) {
 
 	if (status == 1)
 		key[i] = t_key;
-	else 
-		key[i] = key[i];	
+	else
+		key[i] = key[i];
 
 	#ifdef print
     	printf (" rebuilt key received in C :%d\n", t_key);
@@ -109,7 +138,7 @@ void generate_ciphertext(int rst){
 	printf("\n");
 
 	printf("########ENCRYPTING#########");
-	printf("\n");    
+	printf("\n");
 */
 
 /*
@@ -156,7 +185,7 @@ void rearrange_text() {
 	    byte *o = (byte *)x;
 	    for (i=0; i<16; i++) {
 		n[i] = o[15-i];
-    	} 
+    	}
     }
 }
 
@@ -171,7 +200,7 @@ void rearrange_key() {
 	    byte *o = (byte *)x;
 	    for (i=0; i<16; i++) {
 		n[i] = o[15-i];
-   	}    
+   	}
    }
 }
 
@@ -189,6 +218,6 @@ void rearrange_cipher() {
 	    byte *o = (byte *)x;
 	    for (i=0; i<16; i++) {
 		n[i] = o[15-i];
-	   }    
+	   }
    }
-} 
+}

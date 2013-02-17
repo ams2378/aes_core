@@ -100,11 +100,14 @@ program tb (ifc.bench ds);
 		t.done   = get_done();
 		t.status = get_status();	
 
-		$display("Receieved Encrypted Text is SV: %h%h%h%h", ctext[3], ctext[2], ctext[1], ctext[0]);
+		$display("SV: Receieved Encrypted Text: %h%h%h%h", ctext[3], ctext[2], ctext[1], ctext[0]);
 
                 $display("\n");
                 $display("***********************STOP*************************");
 		$display("\n");
+
+	@(ds.cb);
+
 	endtask
 
 	

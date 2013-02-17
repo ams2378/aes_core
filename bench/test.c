@@ -23,10 +23,14 @@ word ctext[4];
 word state[4];
 word key[8];
 
+int rst_ctrl [2] = {0, 0};
+int tmp_rst = 0;
 
 int get_done() {
 
-	if (status == 13 && rst != 0)
+	int temp = 0;
+
+	if (status == 13 && rst_ctrl[0] != 0)
 		done = 1;
 	else
 		done = 0;
@@ -45,7 +49,16 @@ void send_ld_rst (int l, int rt) {
 	ld = l;
 	rst = rt;
 
-	if (status == 13 || rst == 0)
+	if (tmp_rst == 0) {
+		rst_ctrl[0] = rst;
+		tmp_rst = 1;
+	} else {
+		rst_ctrl[1] = rst;
+		tmp_rst = 0;
+	}
+		
+
+	if (status == 13 || rst_ctrl == 0)
 		status = 0;
 
 	if (status >= 1)

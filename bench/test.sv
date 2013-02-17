@@ -29,39 +29,41 @@ class aes_checker;
 		text_passed = (dut_text_0 == bench_text_o[0]) && (dut_text_1 == bench_text_o[1]) &&
 		    	      (dut_text_2 == bench_text_o[2]) && (dut_text_3 == bench_text_o[3]);
 	 	done_passed = (dut_done == bench_done);
+
+		if (done_passed) begin 
+				$display ("********** DONE PASSED ***********");	
+		end else if ( (!done_passed & verbose) begin
+			        $display("%t : error in done bit \n", $realtime);
+            			$display("dut value: %d", dut_done);
+            			$display("bench value: %d", bench_done);
+		end
+
+		if (text_passed) begin 
+				$display ("********** TEXT PASSED ***********");	
+		end else if ( !text_passed & verbose ) begin
+		        	$display("%t : error in text_o \n", $realtime);
+            			$display("dut value || dut done: %h%h%h%h %d", dut_text_3, dut_text_2, dut_text_1, dut_text_0, dut_done);
+            			$display("bench value || bench_done: %h%h%h%h", bench_text_o[3], bench_text_o[2], bench_text_o[1], bench_text_o[0], bench_done);
+		end
 	
 	end else if (status <= 12 ) begin
 
 			done_passed = (dut_done == bench_done);
-			$display (" %t <<<<<<<<<<< BYPASSING DATA CHECKER:  DUT OUTPUT NOT READY YET >>>>>>>>>>>>>>", $realtime);
+			$display (" %t <<<<<< BYPASSING DATA CHECKER:  DUT OUTPUT NOT READY YET >>>>>>>>", $realtime);
 
 	end else begin
-			$display (" %t <<<<<<<<<<< BYPASSING CHECKER:  DUT OUTPUT NOT READY YET >>>>>>>>>>>>>>", $realtime);
+			$display (" %t <<<<< BYPASSING CHECKER:  DUT OUTPUT NOT READY YET >>>>>>", $realtime);
 	end
-
-	if (text_passed) begin $display ("********** TEXT PASSED ***********");	end;
-	if (done_passed) begin $display ("********** DONE PASSED ***********");	end;
 
 	pass = (text_passed & done_passed);
 
 	if (pass) begin
 	        	 if(verbose) $display("%t : pass \n", $realtime);
-		end else begin
-			if ( !text_passed & verbose ) begin
-		        	$display("%t : error in text_o \n", $realtime);
-            			$display("dut value || dut done: %h%h%h%h %d", dut_text_3, dut_text_2, dut_text_1, dut_text_0, dut_done);
-            			$display("bench value || bench_done: %h%h%h%h", bench_text_o[3], bench_text_o[2], bench_text_o[1], bench_text_o[0], bench_done);
-			end
-			if ( !done_passed & verbose) begin
-			        $display("%t : error in done bit \n", $realtime);
-            			$display("dut value: %d", dut_done);
-            			$display("bench value: %d", bench_done);
-			end
+		end else
+			$display("%t : failed  \n", $realtime);
 			//	$exit();
 		end
 
-
-                $display("***********************STOP*************************");
 	endfunction
 
 endclass

@@ -26,7 +26,6 @@ class aes_checker;
 		bit text_passed;
 		bit done_passed;
 
-		$display (" CHECKED: status is : %d", status);
 	if (status == 13 || status == 0) begin
  
 		text_passed = (dut_text_0 == bench_text_o[0]) && (dut_text_1 == bench_text_o[1]) &&
@@ -34,7 +33,7 @@ class aes_checker;
 	 	done_passed = (dut_done == bench_done);
 
 		if (done_passed) begin 
-				$display ("********** DONE PASSED ***********");	
+				$display ("********** DONE PASSED ***********, status is : %d", status);	
 		end else if ( !done_passed & verbose) begin
 			        $display("%t : error in done bit \n", $realtime);
             			$display("dut value: %d", dut_done);

@@ -58,11 +58,13 @@ class aes_checker;
 	pass = (text_passed & done_passed);
 
 	if (pass) begin
-	        	 if(verbose) $display("%t : pass \n", $realtime);
-		end else
-			$display("%t : failed  \n", $realtime);
+	        	 if(verbose) begin 
+				$display("%t : pass \n", $realtime);
+			end else begin
+				$display("%t : failed  \n", $realtime);
 			//	$exit();
-		end
+			end
+	end
 
 	endfunction
 

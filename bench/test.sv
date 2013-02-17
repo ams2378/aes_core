@@ -23,24 +23,29 @@ class aes_checker;
 		int verbose = 1;
 		bit text_passed;
 		bit done_passed;
-		bit passed;
 
-	if (status == 13) begin 
-		 	text_passed = (dut_text_0 == bench_text_o[0]) && (dut_text_1 == bench_text_o[1]) &&
-			    	      (dut_text_2 == bench_text_o[2]) && (dut_text_3 == bench_text_o[3]);
-		 	done_passed = (dut_done == bench_done);
+	if (status == 13 || status == 0) begin
+ 
+		text_passed = (dut_text_0 == bench_text_o[0]) && (dut_text_1 == bench_text_o[1]) &&
+		    	      (dut_text_2 == bench_text_o[2]) && (dut_text_3 == bench_text_o[3]);
+	 	done_passed = (dut_done == bench_done);
 	
-			passed = (text_passed & done_passed);
-			pass = passed;
-		
-		if (text_passed) begin $display ("********** TEXT PASSED ***********");	end;
-		if (done_passed) begin $display ("********** DONE PASSED ***********");	end;
+	end else if (status <= 12 ) begin
 
+			done_passed = (dut_done == bench_done);
+			$display (" %t <<<<<<<<<<< BYPASSING DATA CHECKER:  DUT OUTPUT NOT READY YET >>>>>>>>>>>>>>", $realtime);
 
-		if (passed) begin
+	end else begin
+			$display (" %t <<<<<<<<<<< BYPASSING CHECKER:  DUT OUTPUT NOT READY YET >>>>>>>>>>>>>>", $realtime);
+	end
+
+	if (text_passed) begin $display ("********** TEXT PASSED ***********");	end;
+	if (done_passed) begin $display ("********** DONE PASSED ***********");	end;
+
+	pass = (text_passed & done_passed);
+
+	if (passed) begin
 	        	 if(verbose) $display("%t : pass \n", $realtime);
-            	//	$display("dut value || dut done: %h%h%h%h %d", dut_text_3, dut_text_2, dut_text_1, dut_text_0, dut_done);
-            	//	$display("bench value || bench_done: %h%h%h%h", bench_text_o[3], bench_text_o[2], bench_text_o[1], bench_text_o[0], bench_done);
 		end else begin
 			if ( !text_passed & verbose ) begin
 		        	$display("%t : error in text_o \n", $realtime);
@@ -54,9 +59,7 @@ class aes_checker;
 			end
 			//	$exit();
 		end
-	end else begin
-			$display (" %t <<<<<<<<<<< BYPASSING CHECKER:  DUT OUTPUT NOT READY YET >>>>>>>>>>>>>>", $realtime);
-	end
+
 
 	endfunction
 
@@ -81,6 +84,7 @@ program tb (ifc.bench ds);
 	import "DPI-C" function int get_done();
 	import "DPI-C" function int get_status();
 
+	aes_checker checker;
 	aes_transaction t;
 	int en_ce_stat = 0;
 	int unsigned ctext[4];
@@ -165,7 +169,8 @@ program tb (ifc.bench ds);
 	
 	initial begin
 		t = new();
-		
+		checker = new();
+
 		repeat(20) begin
 			do_cycle();
 			checker.check_result(ds.cb.text_out[31:0],  ds.cb.text_out[63:32], ds.cb.text_out[95:64],  

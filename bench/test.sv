@@ -3,7 +3,7 @@
 class aes_transaction;
 	rand int 	unsigned text[4];
 	rand int 	unsigned key[4];
-	rand bit 	rst;
+	 bit 	rst;
 	rand bit	ld;
 	int		done;
 	int		status;
@@ -38,7 +38,7 @@ class aes_checker;
             			$display("bench value: %d", bench_done);
 		end
 
-		if (text_passed) begin 
+		if (text_passed ) begin 
 				$display ("********** TEXT PASSED ***********");	
 		end else if ( !text_passed & verbose ) begin
 		        	$display("%t : error in text_o \n", $realtime);
@@ -59,12 +59,12 @@ class aes_checker;
             			$display("bench value: %d", bench_done);
 		end
 
-		$display (" %t <<<<<< BYPASSING DATA CHECKER:  DUT OUTPUT NOT READY YET >>>>>>>> ", $realtime);
+		if (verbose) begin  $display (" %t <<<<<< BYPASSING DATA CHECKER:  DUT OUTPUT NOT READY YET >>>>>>>> ", $realtime); end
 
 	end else begin
 		done_passed = 1;
 		text_passed = 1;
-		$display (" %t <<<<< BYPASSING CHECKER:  DUT OUTPUT NOT READY YET >>>>>> ", $realtime );
+		if (verbose) begin $display (" %t <<<<< BYPASSING CHECKER:  DUT OUTPUT NOT READY YET >>>>>> ", $realtime ); end
 	end
 
 	pass = (text_passed & done_passed);
@@ -116,7 +116,7 @@ program tb (ifc.bench ds);
 
 		t.randomize();
 
-	//	t.rst= '1;		// temporary
+		t.rst= '1;		// temporary
 		
 //		$display ("SV: TIME IS :: ", $realtime );	
 //		$display ("SV: ld and rst is : %b%b ", t.ld, t.rst );	
@@ -190,7 +190,7 @@ program tb (ifc.bench ds);
 		t = new();
 		checker = new();
 
-		repeat(20) begin
+		repeat(200) begin
 			do_cycle();
 		//	checker.check_result(ds.cb.text_out[31:0],  ds.cb.text_out[63:32], ds.cb.text_out[95:64],  
 		//			    ds.cb.text_out[127:96], ds.cb.done, ctext, t.done, t.status);

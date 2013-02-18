@@ -54,15 +54,16 @@
 //
 //
 
-//`include "timescale.v"
+`timescale 1ns/1ps 
 
-module aes_inv_cipher_top(clk, rst, kld, ld, done, key, text_in, text_out );
+module aes_inv_cipher_top(clk, rst, kld, ld, done, key, text_in, text_out, kdone );		//edit ams
 input		clk, rst;
 input		kld, ld;
 output		done;
 input	[127:0]	key;
 input	[127:0]	text_in;
 output	[127:0]	text_out;
+output		kdone;						// edit ams
 
 ////////////////////////////////////////////////////////////////////
 //
@@ -268,7 +269,7 @@ endfunction
 
 reg	[127:0]	kb[10:0];
 reg	[3:0]	kcnt;
-reg		kdone;
+//reg		kdone;						// edit: ams
 reg		kb_ld;
 
 always @(posedge clk)

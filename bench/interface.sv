@@ -15,6 +15,7 @@ interface ifc (input bit clk);
     logic [127:0] key;
     logic [127:0] text_in;
 
+    logic kdone;
     logic done;
     logic [127:0] text_out;
    
@@ -28,6 +29,7 @@ interface ifc (input bit clk);
 	output key;
 	output text_in;
 
+	input kdone;
 	input done;
 	input text_out;
     endclocking
@@ -41,6 +43,7 @@ interface ifc (input bit clk);
 	input text_in,
 	input ld,
 
+	output kdone,
 	output text_out,
 	output done
 	);

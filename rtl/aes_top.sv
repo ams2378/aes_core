@@ -5,6 +5,7 @@
 module aes_top(ifc.dut d);
 
 
+
 	aes_cipher_top cipher (
 			.clk(d.clk),	
 			.rst(d.rst),
@@ -14,6 +15,19 @@ module aes_top(ifc.dut d);
 			.text_out(d.text_out),
 			.done(d.done)
 			);
+
+
+	aes_cipher_top cipher (
+			.clk(d.clk),	
+			.rst(d.rst),
+			.ld(d.ld),
+			.key(d.key),
+			.text_in(d.text_in),
+			.text_out(d.text_out),
+			.done(d.done),
+			.kdone(d.kdone)
+			);
+
 
 
 endmodule

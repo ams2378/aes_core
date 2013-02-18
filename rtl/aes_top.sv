@@ -17,7 +17,7 @@ module aes_top(ifc.dut d);
 			);
 
 
-	aes_cipher_top cipher (
+	aes_cipher_top dcipher (
 			.clk(d.clk),	
 			.rst(d.rst),
 			.ld(d.ld),

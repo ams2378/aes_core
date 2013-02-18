@@ -42,16 +42,12 @@ int get_done() {
 int get_status() {
 
 	return status;
-
 }
 
 void send_ld_rst (int l, int rt) {
 
 	ld = l;
 	rst = rt;
-
-//	if (tmp_rst != 0) 
-//		rst = rt;
 
 	if (status == 13 || rst == 0)
 //	if (status == 13 || rst_ctrl[1] == 0)
@@ -64,6 +60,8 @@ void send_ld_rst (int l, int rt) {
 		status = 1;
 
 	tmp_rst == 1;
+
+	printf (" status and rst : %d%d", status, rst);
 }
 
 void rebuild_text(word t_state, int i) {
@@ -142,7 +140,6 @@ void read_text(){
 
 	print_verilog_hex(state, 128);
 }
-
 
 void print_verilog_hex(word w[], int bit_num) {
     int byte_num = bit_num / 8;

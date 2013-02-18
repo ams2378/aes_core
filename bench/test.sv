@@ -3,22 +3,74 @@
 class aes_transaction;
 	rand int 	unsigned text[4];
 	rand int 	unsigned key[4];
-	 bit 	rst;
+	rand bit 	rst;
 	rand bit	ld;
 	int		done;
 	int		status;
 
+	int 		ld_density;
+	int		rst_density;
+
+	function new (int ld_den, int rst_den);
+		ld_density = ld_den;
+		rst_density = rst_den;
+	endfunction
+
+	constraint density_dist {
+		ld dist {0:/100-ld_density, 1:/ld_density};
+		rst dist {0:/100-rst_density, 1:/rst_density};
+	}
+
 	constraint ld_status {
 		(status != 0) -> (ld == 0);
 	}
-/*
-	constraint density_dist {
-      			reset_req dist {0:/100-reset_density, 1:/reset_density};
-	}
 
-	function new (int ld_density);
-*/
 endclass
+/*
+class aes_env;
+    int cycle = 0;
+    int max_transactions = 1000;
+    int warmup_time = 10;
+    bit verbose = 1;
+
+    int reset_density, search_density, read_density, write_density;
+
+    function configure(string filename);
+        int file, value, seed, chars_returned;
+        string param;
+        file = $fopen(filename, "r");
+        while(!$feof(file)) begin
+            chars_returned = $fscanf(file, "%s %d", param, value);
+            if ("RANDOM_SEED" == param) begin
+                seed = value;
+                $srandom(seed);
+            end
+            else if("TRANSACTIONS" == param) begin
+                max_transactions = value;
+            end
+	    else if("RESET_DENSITY" == param) begin
+	    	reset_density = value;
+	    end
+	    else if("SEARCH_DENSITY" == param) begin
+		search_density = value;
+	    end
+	    else if("READ_DENSITY" == param) begin
+		read_density = value;
+	    end
+	    else if("WRITE_DENSITY" == param) begin
+		write_density = value;
+	    end
+	    else if("VERBOSE" == param) begin
+		verbose = value;
+	    end
+            else begin
+                $display("Never heard of a: %s", param);
+                $exit();
+            end
+        end
+    endfunction
+endclass
+*/
 
 class aes_checker;
 	bit pass;
@@ -189,7 +241,7 @@ program tb (ifc.bench ds);
 
 
 	initial begin
-		t = new();
+		t = new( 30, 100 );
 		checker = new();
 
 		repeat(10000) begin

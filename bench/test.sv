@@ -26,6 +26,7 @@ class aes_transaction;
 	}
 
 endclass
+
 /*
 class aes_env;
     int cycle = 0;
@@ -164,7 +165,7 @@ program tb (ifc.bench ds);
 
 		t.randomize();
 		
-		t.rst= '1;		// temporary
+//		t.rst= '1;		// temporary
 
 	if (verbose) begin
 

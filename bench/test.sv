@@ -28,8 +28,8 @@ class aes_checker;
 		bit text_passed;
 		bit done_passed;
 
-//        $display("dut value || dut done: %h%h%h%h %d", dut_text_3, dut_text_2, dut_text_1, dut_text_0, dut_done);
-//        $display("bench value || bench_done: %h%h%h%h", bench_text_o[3], bench_text_o[2], bench_text_o[1], bench_text_o[0], bench_done);
+        $display("dut value || dut done: %h%h%h%h %d", dut_text_3, dut_text_2, dut_text_1, dut_text_0, dut_done);
+        $display("bench value || bench_done: %h%h%h%h", bench_text_o[3], bench_text_o[2], bench_text_o[1], bench_text_o[0], bench_done);
 
 
 
@@ -47,7 +47,7 @@ class aes_checker;
             			$display("dut value: %d", dut_done);
             			$display("bench value: %d", bench_done);
 
-				$exit();
+	//			$exit();
 		end
 
 		if (text_passed ) begin 
@@ -57,7 +57,7 @@ class aes_checker;
             			$display("dut value || dut done: %h%h%h%h %d", dut_text_3, dut_text_2, dut_text_1, dut_text_0, dut_done);
             			$display("bench value || bench_done: %h%h%h%h", bench_text_o[3], bench_text_o[2], bench_text_o[1], bench_text_o[0], bench_done);
 
-				$exit();
+	//			$exit();
 		end
 
         
@@ -74,7 +74,7 @@ class aes_checker;
             			$display("dut value: %d", dut_done);
             			$display("bench value: %d", bench_done);
 
-				$exit();
+	//			$exit();
 		end
 
 		if (verbose) begin  $display (" %t <<<<<< BYPASSING DATA CHECKER:  DUT OUTPUT NOT READY YET >>>>>>>> ", $realtime); end
@@ -106,11 +106,16 @@ program tb (ifc.bench ds);
 	import "DPI-C" function void send_ld_rst( int i, int j );
 	import "DPI-C" function int get_done();
 	import "DPI-C" function int get_status();
+	
+	import "DPI-C" function int get_done_de();
+	import "DPI-C" function int send_ld_rst_de(int i, int j);
 
 	aes_checker checker;
 	aes_transaction t;
 	int en_ce_stat = 0;
 	int unsigned ctext[4];
+	int unsigned dtext[4];
+	int unsigned dkey[4];
 	int rst_chk;
 
     bit current_mode;
@@ -125,7 +130,7 @@ program tb (ifc.bench ds);
 		t.randomize();
 
 		t.rst= '1;		// temporary
-        t.mode = '0;    // temporary
+//        t.mode = '0;    // temporary
 
 //		$display ("SV: TIME IS :: ", $realtime );	
 //		$display ("SV: ld and rst is : %b%b ", t.ld, t.rst );	
@@ -195,6 +200,8 @@ program tb (ifc.bench ds);
 
 	@(ds.cb);
 
+
+	$display("ENCRTYPTION   ");
 		checker.check_result(ds.cb.text_out[31:0],  ds.cb.text_out[63:32], ds.cb.text_out[95:64],  
 					ds.cb.text_out[127:96], ds.cb.done, ctext, t.done, t.status, rst_chk);
 
@@ -217,10 +224,23 @@ program tb (ifc.bench ds);
 		generate_ciphertext();
         rearrange_cipher();
 		
-        ctext[0] = get_ciphertext(0);
+		if (t.status == 1) begin
+       		 ctext[0] = get_ciphertext(0);
 		ctext[1] = get_ciphertext(1);
 		ctext[2] = get_ciphertext(2);
 		ctext[3] = get_ciphertext(3);
+
+		dtext[0] = t.text[0];
+		dtext[1] = t.text[1];
+		dtext[2] = t.text[2];
+		dtext[3] = t.text[3];
+
+		dkey[0] = t.key[0];
+		dkey[1] = t.key[1];
+		dkey[2] = t.key[2];
+		dkey[3] = t.key[3];
+		end
+
 
         //send cipher text to decryption mode dut
         ds.cb.rst		<= 	t.rst;	
@@ -231,18 +251,20 @@ program tb (ifc.bench ds);
 		ds.cb.text_in[95:64 ]	<= 	ctext[2]; 		
 		ds.cb.text_in[127:96]	<= 	ctext[3]; 		
 
-		ds.cb.key[31:0] 	<= 	t.key[0];
-		ds.cb.key[63:32]	<= 	t.key[1]; 		
-		ds.cb.key[95:64 ]	<= 	t.key[2]; 		
-		ds.cb.key[127:96]	<= 	t.key[3]; 	
+		ds.cb.key[31:0] 	<= 	dkey[0];
+		ds.cb.key[63:32]	<= 	dkey[1]; 		
+		ds.cb.key[95:64 ]	<= 	dkey[2]; 		
+		ds.cb.key[127:96]	<= 	dkey[3]; 	
 
         t.done   = get_done_de();
 		t.status = get_status();	
 
 	@(ds.cb);
 
+	$display("DECRTYPTION   ");
+
 	checker.check_result(ds.cb.text_out[31:0],  ds.cb.text_out[63:32], ds.cb.text_out[95:64],  
-					ds.cb.text_out[127:96], ds.cb.done, t.text, t.done, t.status, rst_chk);
+					ds.cb.text_out[127:96], ds.cb.done, dtext, t.done, t.status, rst_chk);
 
         
 
@@ -256,7 +278,7 @@ program tb (ifc.bench ds);
 		t = new();
 		checker = new();
         t.status = 0;
-		repeat(10000) begin
+		repeat(100) begin
 			do_cycle();
 		//	checker.check_result(ds.cb.text_out[31:0],  ds.cb.text_out[63:32], ds.cb.text_out[95:64],  
 		//			    ds.cb.text_out[127:96], ds.cb.done, ctext, t.done, t.status);

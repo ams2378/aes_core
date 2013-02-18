@@ -15,7 +15,7 @@ void rand_word_array(word w[], int bit_num);
 void print_verilog_hex(word w[], int bit_num);
 
 
-int  rst = 1;
+int  rst;
 int  ld;
 int  status = 0;
 int  done;

@@ -3,7 +3,7 @@
 class aes_transaction;
 	rand int 	unsigned text[4];
 	rand int 	unsigned key[4];
-	 bit 	rst;
+	rand bit 	rst;
 	rand bit	ld;
 	int		done;
 	int		status;
@@ -11,7 +11,13 @@ class aes_transaction;
 	constraint ld_status {
 		(status != 0) -> (ld == 0);
 	}
+/*
+	constraint density_dist {
+      			reset_req dist {0:/100-reset_density, 1:/reset_density};
+	}
 
+	function new (int ld_density);
+*/
 endclass
 
 class aes_checker;
@@ -106,7 +112,7 @@ program tb (ifc.bench ds);
 
 		t.randomize();
 		
-		t.rst= '1;		// temporary
+//		t.rst= '1;		// temporary
 
 	if (verbose) begin
 
@@ -186,7 +192,7 @@ program tb (ifc.bench ds);
 		t = new();
 		checker = new();
 
-		repeat(50000) begin
+		repeat(10000) begin
 			do_cycle();
 			checker.check_result(ds.cb.text_out[31:0],  ds.cb.text_out[63:32], ds.cb.text_out[95:64],  
 				    ds.cb.text_out[127:96], ds.cb.done, ctext, t.done, t.status, rst_chk);

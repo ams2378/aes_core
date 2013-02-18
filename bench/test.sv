@@ -223,7 +223,8 @@ program tb (ifc.bench ds);
 
 		generate_ciphertext();
         rearrange_cipher();
-		
+		$display ("status : ", t.status);	
+	
 		if (t.status == 1) begin
        		 ctext[0] = get_ciphertext(0);
 		ctext[1] = get_ciphertext(1);
@@ -244,7 +245,7 @@ program tb (ifc.bench ds);
 
         //send cipher text to decryption mode dut
         ds.cb.rst		<= 	t.rst;	
-		ds.cb.ld		<= 	t.ld;
+		ds.cb.ld		<=	t.ld;
         ds.cb.mode      <=  t.mode;
 		ds.cb.text_in[31:0] 	<= 	ctext[0];
 		ds.cb.text_in[63:32]	<= 	ctext[1]; 

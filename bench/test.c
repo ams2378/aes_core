@@ -52,8 +52,8 @@ void send_ld_rst (int l, int rt) {
 	ld = l;
 
 //	if (status == 13 || rst == 0)
-//	if (status == 13 || rst_ctrl[1] == 0)
-//		status = 0;
+	if (rst == 0)
+		status = 0;
 
 	if (status >= 1)
 		status = status + 1;

@@ -21,6 +21,7 @@ module aes_top(ifc.dut d);
 			.clk(d.clk),	
 			.rst(d.rst),
 			.ld(d.ld),
+			.kld(d.kld),
 			.key(d.key),
 			.text_in(d.text_in),
 			.text_out(d.text_out),

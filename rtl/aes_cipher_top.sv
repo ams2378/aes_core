@@ -112,7 +112,7 @@ always @(posedge clk)
 
 always @(posedge clk) 
 
-	if (!rst)	done <= #1 !(|dcnt[3:1]) & dcnt[0] & !ld;
+	if (rst)	done <= #1 !(|dcnt[3:1]) & dcnt[0] & !ld;
 	else		done <= #1 '0;
 
 always @(posedge clk) if(ld) text_in_r <= #1 text_in;

@@ -44,7 +44,7 @@ interface ifc (input bit clk);
 	input key,
 	input text_in,
 	input ld,
-	input kld;
+	input kld,
 
 	output kdone,
 	output text_out,

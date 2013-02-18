@@ -242,7 +242,7 @@ program tb (ifc.bench ds);
 
 
 	initial begin
-		t = new( 10, 50 );
+		t = new( 30, 70 );
 		checker = new();
 
 		repeat(50000) begin

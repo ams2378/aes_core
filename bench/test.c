@@ -30,8 +30,9 @@ int get_done() {
 
 	int temp = 0;
 
-	if (status == 13 && rst != 0)
+//	if (status == 13 && rst != 0)
 //	if (status == 13 && rst_ctrl[0] !=0)
+	if (status == 13)
 		done = 1;
 	else
 		done = 0;
@@ -47,7 +48,6 @@ int get_status() {
 void send_ld_rst (int l, int rt) {
 
 	ld = l;
-	rst = rt;
 
 	if (status == 13 || rst == 0)
 //	if (status == 13 || rst_ctrl[1] == 0)
@@ -61,6 +61,7 @@ void send_ld_rst (int l, int rt) {
 
 	tmp_rst == 1;
 
+	rst = rt;
 	printf (" status and rst : %d%d", status, rst);
 }
 

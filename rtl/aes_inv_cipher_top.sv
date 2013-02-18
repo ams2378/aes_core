@@ -269,7 +269,7 @@ endfunction
 
 reg	[127:0]	kb[10:0];
 reg	[3:0]	kcnt;
-//reg		kdone;						// edit: ams
+reg		kdone;						// edit: ams
 reg		kb_ld;
 
 always @(posedge clk)

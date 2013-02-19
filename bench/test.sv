@@ -268,7 +268,7 @@ program tb (ifc.bench ds);
 
 		$fdisplay (f, " VALIDATON SUITE FOR AES CORE - ELEN 6321");
 
-		repeat(30) begin
+		repeat(60) begin
 			do_cycle();
 		end
 	end

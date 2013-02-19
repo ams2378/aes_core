@@ -277,8 +277,9 @@ program tb (ifc.bench ds);
 
 		f = $fopen ("log.txt");
 
-		repeat (3)
+		repeat (3) begin
 			do_cycle();
+		end
 
 		repeat(20) begin
 			do_cycle();

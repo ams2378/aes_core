@@ -243,10 +243,10 @@ program tb (ifc.bench ds);
 		$fdisplay (f, "S30 S31 S32 S33 : %h %h %h %h", ds.cb.sa30, ds.cb.sa31, ds.cb.sa32, ds.cb.sa33);
 
 		$fdisplay (f, "Outputs from sbox : ");
-		$fdisplay (f, "S00_SUB S01_SUB S02_SUB S03_SUB : %h %h %h %h", ds.cb.sa00, ds.cb.sa01, ds.cb.sa02, ds.cb.sa03);
-		$fdisplay (f, "S10_SUB S11_SUB S12_SUB S13_SUB : %h %h %h %h", ds.cb.sa10, ds.cb.sa11, ds.cb.sa12, ds.cb.sa13);
-		$fdisplay (f, "S20_SUB S21_SUB S22_SUB S23_SUB : %h %h %h %h", ds.cb.sa20, ds.cb.sa21, ds.cb.sa22, ds.cb.sa23);
-		$fdisplay (f, "S30_SUB S31_SUB S32_SUB S33_SUB : %h %h %h %h", ds.cb.sa30, ds.cb.sa31, ds.cb.sa32, ds.cb.sa33);
+		$fdisplay (f, "S00_SUB S01_SUB S02_SUB S03_SUB : %h %h %h %h", ds.cb.sa00_sub, ds.cb.sa01_sub, ds.cb.sa02_sub, ds.cb.sa03_sub);
+		$fdisplay (f, "S10_SUB S11_SUB S12_SUB S13_SUB : %h %h %h %h", ds.cb.sa10_sub, ds.cb.sa11_sub, ds.cb.sa12_sub, ds.cb.sa13_sub);
+		$fdisplay (f, "S20_SUB S21_SUB S22_SUB S23_SUB : %h %h %h %h", ds.cb.sa20_sub, ds.cb.sa21_sub, ds.cb.sa22_sub, ds.cb.sa23_sub);
+		$fdisplay (f, "S30_SUB S31_SUB S32_SUB S33_SUB : %h %h %h %h", ds.cb.sa30_sub, ds.cb.sa31_sub, ds.cb.sa32_sub, ds.cb.sa33_sub);
 
 		$fdisplay (f, "Final Outputs:");
 		$fdisplay (f, "Done : %b", ds.cb.done);

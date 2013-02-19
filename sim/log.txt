@@ -1,0 +1,340 @@
+------------- Simulation Time -----------------                25000
+Inputs :
+rst : 1
+Key load : 0 
+KEY: b4d5a92e4296ec2a9f5b2d63cb0bc711
+TEXT: fe0f4bf598c5072c7a960bfbd5cfd733
+Inputs to sbox : 
+S00 S01 S02 S03 : xx xx xx xx
+S10 S11 S12 S13 : xx xx xx xx
+S20 S21 S22 S23 : xx xx xx xx
+S30 S31 S32 S33 : xx xx xx xx
+Outputs from sbox : 
+S00_SUB S01_SUB S02_SUB S03_SUB : xx xx xx xx
+S10_SUB S11_SUB S12_SUB S13_SUB : xx xx xx xx
+S20_SUB S21_SUB S22_SUB S23_SUB : xx xx xx xx
+S30_SUB S31_SUB S32_SUB S33_SUB : xx xx xx xx
+Final Outputs:
+Done : x
+Result from DUT : xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
+Result from GoldenModel : 00000000000000000000000000000000 
+------------- Simulation Time -----------------                35000
+Inputs :
+rst : 1
+Key load : 0 
+KEY: c9acff2ca688ec228ca43ada95c2125d
+TEXT: 814c3254ca6e8f8f39fd3a1430728fc1
+Inputs to sbox : 
+S00 S01 S02 S03 : xx xx xx xx
+S10 S11 S12 S13 : xx xx xx xx
+S20 S21 S22 S23 : xx xx xx xx
+S30 S31 S32 S33 : xx xx xx xx
+Outputs from sbox : 
+S00_SUB S01_SUB S02_SUB S03_SUB : xx xx xx xx
+S10_SUB S11_SUB S12_SUB S13_SUB : xx xx xx xx
+S20_SUB S21_SUB S22_SUB S23_SUB : xx xx xx xx
+S30_SUB S31_SUB S32_SUB S33_SUB : xx xx xx xx
+Final Outputs:
+Done : x
+Result from DUT : xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
+Result from GoldenModel : 00000000000000000000000000000000 
+------------- Simulation Time -----------------                45000
+Inputs :
+rst : 1
+Key load : 0 
+KEY: faba4738e0bbe13e76b264d1e75fab24
+TEXT: aeec7ded097bdbf33678fe7e5b05283c
+Inputs to sbox : 
+S00 S01 S02 S03 : xx xx xx xx
+S10 S11 S12 S13 : xx xx xx xx
+S20 S21 S22 S23 : xx xx xx xx
+S30 S31 S32 S33 : xx xx xx xx
+Outputs from sbox : 
+S00_SUB S01_SUB S02_SUB S03_SUB : xx xx xx xx
+S10_SUB S11_SUB S12_SUB S13_SUB : xx xx xx xx
+S20_SUB S21_SUB S22_SUB S23_SUB : xx xx xx xx
+S30_SUB S31_SUB S32_SUB S33_SUB : xx xx xx xx
+Final Outputs:
+Done : x
+Result from DUT : xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
+Result from GoldenModel : 00000000000000000000000000000000 
+------------- Simulation Time -----------------                55000
+Inputs :
+rst : 1
+Key load : 1 
+KEY: 58538396a255351db699319a0ed41b19
+TEXT: 060d8e674aee46cfdb9cffaa0444e989
+Inputs to sbox : 
+S00 S01 S02 S03 : xx xx xx xx
+S10 S11 S12 S13 : xx xx xx xx
+S20 S21 S22 S23 : xx xx xx xx
+S30 S31 S32 S33 : xx xx xx xx
+Outputs from sbox : 
+S00_SUB S01_SUB S02_SUB S03_SUB : xx xx xx xx
+S10_SUB S11_SUB S12_SUB S13_SUB : xx xx xx xx
+S20_SUB S21_SUB S22_SUB S23_SUB : xx xx xx xx
+S30_SUB S31_SUB S32_SUB S33_SUB : xx xx xx xx
+Final Outputs:
+Done : x
+Result from DUT : xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
+Result from GoldenModel : 89e94404aaff9cdbcf46ee4a678e0d06 
+------------- Simulation Time -----------------                65000
+Inputs :
+rst : 1
+Key load : 0 
+KEY: f15ea926efe6c28fa123ddfc85c45435
+TEXT: 45be707034a62e0b8d2df1553cab3166
+Inputs to sbox : 
+S00 S01 S02 S03 : xx xx xx xx
+S10 S11 S12 S13 : xx xx xx xx
+S20 S21 S22 S23 : xx xx xx xx
+S30 S31 S32 S33 : xx xx xx xx
+Outputs from sbox : 
+S00_SUB S01_SUB S02_SUB S03_SUB : xx xx xx xx
+S10_SUB S11_SUB S12_SUB S13_SUB : xx xx xx xx
+S20_SUB S21_SUB S22_SUB S23_SUB : xx xx xx xx
+S30_SUB S31_SUB S32_SUB S33_SUB : xx xx xx xx
+Final Outputs:
+Done : x
+Result from DUT : xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
+Result from GoldenModel : 89e94404aaff9cdbcf46ee4a678e0d06 
+------------- Simulation Time -----------------                75000
+Inputs :
+rst : 1
+Key load : 0 
+KEY: 7817bbd009fa20866a2a82040d60c201
+TEXT: 75611797914c82f7f4454ab3d44cfb93
+Inputs to sbox : 
+S00 S01 S02 S03 : xx xx xx xx
+S10 S11 S12 S13 : xx xx xx xx
+S20 S21 S22 S23 : xx xx xx xx
+S30 S31 S32 S33 : xx xx xx xx
+Outputs from sbox : 
+S00_SUB S01_SUB S02_SUB S03_SUB : xx xx xx xx
+S10_SUB S11_SUB S12_SUB S13_SUB : xx xx xx xx
+S20_SUB S21_SUB S22_SUB S23_SUB : xx xx xx xx
+S30_SUB S31_SUB S32_SUB S33_SUB : xx xx xx xx
+Final Outputs:
+Done : 0
+Result from DUT : xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
+Result from GoldenModel : 89e94404aaff9cdbcf46ee4a678e0d06 
+------------- Simulation Time -----------------                85000
+Inputs :
+rst : 1
+Key load : 0 
+KEY: 6d16e1e0839ad0534b56d9bfe8f2c8ff
+TEXT: cab194e7dfbc6e766bd750c4ccaddaf8
+Inputs to sbox : 
+S00 S01 S02 S03 : 5e e8 6d 0a
+S10 S11 S12 S13 : 5e bb 05 90
+S20 S21 S22 S23 : 0d 73 ce f2
+S30 S31 S32 S33 : f1 d2 30 90
+Outputs from sbox : 
+S00_SUB S01_SUB S02_SUB S03_SUB : 58 9b 3c 67
+S10_SUB S11_SUB S12_SUB S13_SUB : 58 ea 6b 60
+S20_SUB S21_SUB S22_SUB S23_SUB : d7 8f 8b 89
+S30_SUB S31_SUB S32_SUB S33_SUB : a1 b5 04 60
+Final Outputs:
+Done : 0
+Result from DUT : xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
+Result from GoldenModel : 89e94404aaff9cdbcf46ee4a678e0d06 
+------------- Simulation Time -----------------                95000
+Inputs :
+rst : 1
+Key load : 0 
+KEY: 5cb44c20ddeec9d8d330897b0e49dfa0
+TEXT: 977946b9644ce256d738545d5affd5e6
+Inputs to sbox : 
+S00 S01 S02 S03 : 6f 0b bf a6
+S10 S11 S12 S13 : 8d c5 1b bd
+S20 S21 S22 S23 : 48 63 7e 7e
+S30 S31 S32 S33 : 74 2d 38 d5
+Outputs from sbox : 
+S00_SUB S01_SUB S02_SUB S03_SUB : a8 2b 08 24
+S10_SUB S11_SUB S12_SUB S13_SUB : 5d a6 af 7a
+S20_SUB S21_SUB S22_SUB S23_SUB : 52 fb f3 f3
+S30_SUB S31_SUB S32_SUB S33_SUB : 92 d8 07 03
+Final Outputs:
+Done : 0
+Result from DUT : 4916dc5d28c2eb813950840f6cbcc7a7 
+Result from GoldenModel : 89e94404aaff9cdbcf46ee4a678e0d06 
+------------- Simulation Time -----------------               105000
+Inputs :
+rst : 1
+Key load : 0 
+KEY: 75c293fd6f130caa1ed79b25fe3bacee
+TEXT: e27f53b69c9da96dfc368771a5d2a7c9
+Inputs to sbox : 
+S00 S01 S02 S03 : 30 14 d8 94
+S10 S11 S12 S13 : 5c f5 e5 5c
+S20 S21 S22 S23 : ab eb c9 b9
+S30 S31 S32 S33 : a6 28 17 eb
+Outputs from sbox : 
+S00_SUB S01_SUB S02_SUB S03_SUB : 04 fa 61 22
+S10_SUB S11_SUB S12_SUB S13_SUB : 4a e6 d9 4a
+S20_SUB S21_SUB S22_SUB S23_SUB : 62 e9 dd 56
+S30_SUB S31_SUB S32_SUB S33_SUB : 24 34 f0 e9
+Final Outputs:
+Done : 0
+Result from DUT : d208ae15e2a8cca4c44d3e54e38edf28 
+Result from GoldenModel : 89e94404aaff9cdbcf46ee4a678e0d06 
+------------- Simulation Time -----------------               115000
+Inputs :
+rst : 1
+Key load : 0 
+KEY: 070960497a90a322d41775d0c36afbfa
+TEXT: 2333fb2a2872c324911eaf112ca38526
+Inputs to sbox : 
+S00 S01 S02 S03 : 15 3c 57 59
+S10 S11 S12 S13 : de 12 cf 1d
+S20 S21 S22 S23 : 2b 94 a8 95
+S30 S31 S32 S33 : 2e 34 89 7b
+Outputs from sbox : 
+S00_SUB S01_SUB S02_SUB S03_SUB : 59 eb 5b cb
+S10_SUB S11_SUB S12_SUB S13_SUB : 1d c9 8a a4
+S20_SUB S21_SUB S22_SUB S23_SUB : f1 22 c2 2a
+S30_SUB S31_SUB S32_SUB S33_SUB : 31 18 a7 21
+Final Outputs:
+Done : 0
+Result from DUT : 1c7e95392b4621c27ce2795ef831d6b5 
+Result from GoldenModel : 89e94404aaff9cdbcf46ee4a678e0d06 
+------------- Simulation Time -----------------               125000
+Inputs :
+rst : 1
+Key load : 0 
+KEY: eb75580f131986f42d7c01cf4d432c1f
+TEXT: 647dd28ee4b060cdf9fdce85c8c56c2a
+Inputs to sbox : 
+S00 S01 S02 S03 : 20 b3 55 08
+S10 S11 S12 S13 : 41 d9 c2 91
+S20 S21 S22 S23 : 4a 37 64 15
+S30 S31 S32 S33 : 25 85 83 62
+Outputs from sbox : 
+S00_SUB S01_SUB S02_SUB S03_SUB : b7 6d fc 30
+S10_SUB S11_SUB S12_SUB S13_SUB : 83 35 25 81
+S20_SUB S21_SUB S22_SUB S23_SUB : d6 9a 43 59
+S30_SUB S31_SUB S32_SUB S33_SUB : 3f 97 ec aa
+Final Outputs:
+Done : 0
+Result from DUT : 6824e4a60bf87b50a67ebb13ecbc57e9 
+Result from GoldenModel : 89e94404aaff9cdbcf46ee4a678e0d06 
+------------- Simulation Time -----------------               135000
+Inputs :
+rst : 1
+Key load : 0 
+KEY: 619c584fe0c0124558514a4f4c269a3e
+TEXT: a9c4b5c3712d36fd8b85085f9ec4ba5a
+Inputs to sbox : 
+S00 S01 S02 S03 : d0 20 34 a1
+S10 S11 S12 S13 : c2 f1 cb 0d
+S20 S21 S22 S23 : e8 e3 7a d4
+S30 S31 S32 S33 : b0 9f 5c e5
+Outputs from sbox : 
+S00_SUB S01_SUB S02_SUB S03_SUB : 70 b7 18 32
+S10_SUB S11_SUB S12_SUB S13_SUB : 25 a1 1f d7
+S20_SUB S21_SUB S22_SUB S23_SUB : 9b 11 da 48
+S30_SUB S31_SUB S32_SUB S33_SUB : e7 db 4a d9
+Final Outputs:
+Done : 0
+Result from DUT : a4454ae19e270115f259c4b619fafd83 
+Result from GoldenModel : 89e94404aaff9cdbcf46ee4a678e0d06 
+------------- Simulation Time -----------------               145000
+Inputs :
+rst : 1
+Key load : 0 
+KEY: a927ad33682a3795729918c30793a0f1
+TEXT: c99c37a51d121c319eef05ef078c82bc
+Inputs to sbox : 
+S00 S01 S02 S03 : 9e 8d 6a 01
+S10 S11 S12 S13 : 70 41 ef 57
+S20 S21 S22 S23 : af f3 7f 67
+S30 S31 S32 S33 : ac 84 2c 7c
+Outputs from sbox : 
+S00_SUB S01_SUB S02_SUB S03_SUB : 0b 5d 02 7c
+S10_SUB S11_SUB S12_SUB S13_SUB : 51 83 df 5b
+S20_SUB S21_SUB S22_SUB S23_SUB : 79 0d d2 85
+S30_SUB S31_SUB S32_SUB S33_SUB : 91 5f 71 10
+Final Outputs:
+Done : 0
+Result from DUT : f5547b37c1e8b12360f8703e63739dc0 
+Result from GoldenModel : 89e94404aaff9cdbcf46ee4a678e0d06 
+------------- Simulation Time -----------------               155000
+Inputs :
+rst : 1
+Key load : 0 
+KEY: 1a1ca44972daee0811f3b1e2d37360dd
+TEXT: b6aac9fa8aaffaa7b90dc0605e8301f2
+Inputs to sbox : 
+S00 S01 S02 S03 : 3e d6 b5 5c
+S10 S11 S12 S13 : fa 9b 29 a7
+S20 S21 S22 S23 : d8 1d 87 e5
+S30 S31 S32 S33 : 53 7f 84 ae
+Outputs from sbox : 
+S00_SUB S01_SUB S02_SUB S03_SUB : b2 f6 d5 4a
+S10_SUB S11_SUB S12_SUB S13_SUB : 2d 14 a5 5c
+S20_SUB S21_SUB S22_SUB S23_SUB : 61 a4 17 d9
+S30_SUB S31_SUB S32_SUB S33_SUB : ed d2 5f e4
+Final Outputs:
+Done : 0
+Result from DUT : 7f120d2f5fb9a36a7812b441574e4ce5 
+Result from GoldenModel : 89e94404aaff9cdbcf46ee4a678e0d06 
+------------- Simulation Time -----------------               165000
+Inputs :
+rst : 1
+Key load : 0 
+KEY: 2c7c1a640c4289e229618e17f1d7b8b6
+TEXT: f0f52e962055c6a9153b1a0a6e0883c1
+Inputs to sbox : 
+S00 S01 S02 S03 : 84 01 aa 7f
+S10 S11 S12 S13 : 55 4e 21 9a
+S20 S21 S22 S23 : 42 0d 30 82
+S30 S31 S32 S33 : d3 89 cd 56
+Outputs from sbox : 
+S00_SUB S01_SUB S02_SUB S03_SUB : 5f 7c ac d2
+S10_SUB S11_SUB S12_SUB S13_SUB : fc 2f fd b8
+S20_SUB S21_SUB S22_SUB S23_SUB : 2c d7 04 13
+S30_SUB S31_SUB S32_SUB S33_SUB : 66 a7 bd b1
+Final Outputs:
+Done : 0
+Result from DUT : 8606ea2ac0d102d8996177f92d0ff3e0 
+Result from GoldenModel : 89e94404aaff9cdbcf46ee4a678e0d06 
+------------- Simulation Time -----------------               175000
+Inputs :
+rst : 1
+Key load : 0 
+KEY: 50621f6ec43aee9c3172c004b5072534
+TEXT: 2854a7f83f40708847a8e6bd28cda05f
+Inputs to sbox : 
+S00 S01 S02 S03 : c6 1b dd 6b
+S10 S11 S12 S13 : f5 f3 14 cc
+S20 S21 S22 S23 : 45 23 86 28
+S30 S31 S32 S33 : f8 d8 7b cd
+Outputs from sbox : 
+S00_SUB S01_SUB S02_SUB S03_SUB : b4 af c1 7f
+S10_SUB S11_SUB S12_SUB S13_SUB : e6 0d fa 4b
+S20_SUB S21_SUB S22_SUB S23_SUB : 6e 26 44 34
+S30_SUB S31_SUB S32_SUB S33_SUB : 41 61 21 bd
+Final Outputs:
+Done : 0
+Result from DUT : e366f1faf6c03d186ab814f273deb857 
+Result from GoldenModel : adec36c43c26684694970a338b182d99 
+------------- Simulation Time -----------------               185000
+Inputs :
+rst : 1
+Key load : 1 
+KEY: ee249027c65d73090474687556bb2c75
+TEXT: 997bf118ce942d02238b919029bdaaae
+Inputs to sbox : 
+S00 S01 S02 S03 : 84 b6 1e 3c
+S10 S11 S12 S13 : 3e 81 58 1d
+S20 S21 S22 S23 : 9f a2 91 bd
+S30 S31 S32 S33 : 96 a1 ed bb
+Outputs from sbox : 
+S00_SUB S01_SUB S02_SUB S03_SUB : 5f 4e 72 eb
+S10_SUB S11_SUB S12_SUB S13_SUB : b2 0c 6a a4
+S20_SUB S21_SUB S22_SUB S23_SUB : db 3a 81 7a
+S30_SUB S31_SUB S32_SUB S33_SUB : 90 32 55 ea
+Final Outputs:
+Done : 1
+Result from DUT : adec36c43c26684694970a338b182d99 
+Result from GoldenModel : aeaabd2990918b23022d94ce18f17b99 

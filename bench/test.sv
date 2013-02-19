@@ -248,6 +248,11 @@ program tb (ifc.bench ds);
 		$fdisplay (f, "S20_SUB S21_SUB S22_SUB S23_SUB : %h %h %h %h", ds.cb.sa20, ds.cb.sa21, ds.cb.sa22, ds.cb.sa23);
 		$fdisplay (f, "S30_SUB S31_SUB S32_SUB S33_SUB : %h %h %h %h", ds.cb.sa30, ds.cb.sa31, ds.cb.sa32, ds.cb.sa33);
 
+		$fdisplay (f, "Final Outputs:");
+		$fdisplay (f, "Done : %b", ds.cb.done);
+		$fdisplay (f, " Result from DUT : %h%h%h%h ", ds.cb.text_out[127:96], ds.cb.text_out[95:64], ds.cb.text_out[63:32], ds.cb.text_out[31:0]);
+		$fdisplay (f, " Result from GoldenModel : %h%h%h%h ", ctext[3], ctext[2], ctext[1], ctext[0]);
+
 	if (verbose) begin
 
 		$display("SV: Receieved Encrypted Text: %h%h%h%h", ctext[3], ctext[2], ctext[1], ctext[0]);
@@ -267,12 +272,12 @@ program tb (ifc.bench ds);
 
 
 	initial begin
-		t = new( 40, 100 );
+		t = new( 60, 100 );
 		checker = new();
 
 		f = $fopen ("log.txt, w");
 
-		repeat(50) begin
+		repeat(20) begin
 			do_cycle();
 			checker.check_result(ds.cb.text_out[31:0],  ds.cb.text_out[63:32], ds.cb.text_out[95:64],  
 				    ds.cb.text_out[127:96], ds.cb.done, ctext, t.done, t.status, rst_chk);

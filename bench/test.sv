@@ -190,9 +190,6 @@ program tb (ifc.bench ds);
 		end else
 			rst_chk		=	0; 
 
-	f = $fopen ("log.txt");
-
-		$fdisplay (f, "SV KEY: %h%h%h%h", t.key[3], t.key[2], t.key[1], t.key[0]);
 
 	
 		ds.cb.rst		<= 	t.rst;	
@@ -230,6 +227,21 @@ program tb (ifc.bench ds);
 		ctext[3] = get_ciphertext(3);
 		t.done   = get_done();
 		t.status = get_status();	
+
+		f = $fopen ("log.txt");
+		$fdisplay (f, "------------- Simulation Time ----------------- %t", $realtime );
+		$fdisplay (f, "Inputs :");
+		$fdisplay (f, "rst : %b", t.rst );
+		$fdisplay (f, "Key load : %b ", t.ld);
+		$fdisplay (f, "KEY: %h%h%h%h", t.key[3], t.key[2], t.key[1], t.key[0]);
+		$fdisplay (f, "TEXT: %h%h%h%h", t.text[3], t.text[2], t.text[1], t.text[0]);
+
+		
+		$fdisplay (f, "Input to sbox : ");
+		$fdisplay (f, "S00 S01 S02 S03 : %h%h%h%h", ds.cb.sa00, ds.cb.sa01, ds.cb.sa02, ds.cb.sa03);
+		$fdisplay (f, "S10 S11 S12 S13 : %h%h%h%h", ds.cb.sa10, ds.cb.sa11, ds.cb.sa12, ds.cb.sa13);
+		$fdisplay (f, "S20 S21 S22 S23 : %h%h%h%h", ds.cb.sa20, ds.cb.sa21, ds.cb.sa22, ds.cb.sa23);
+		$fdisplay (f, "S30 S31 S32 S33 : %h%h%h%h", ds.cb.sa30, ds.cb.sa31, ds.cb.sa32, ds.cb.sa33);
 
 	if (verbose) begin
 

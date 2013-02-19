@@ -161,7 +161,7 @@ program tb (ifc.bench ds);
 
 	integer f;
 
-	f = fopen ("log.txt");
+	f = $fopen ("log.txt");
 
 	int verbose = 0;
 

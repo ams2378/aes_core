@@ -281,6 +281,8 @@ program tb (ifc.bench ds);
 			do_cycle();
 		end
 
+		t = new( 100, 100 );
+
 		repeat(20) begin
 			do_cycle();
 			checker.check_result(ds.cb.text_out[31:0],  ds.cb.text_out[63:32], ds.cb.text_out[95:64],  

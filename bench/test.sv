@@ -76,6 +76,7 @@ endclass
 class aes_checker;
 	bit pass;
 	integer f;
+	int s_ct = 14;
 
 	function void check_result (int dut_text_0, int dut_text_1, int dut_text_2, int dut_text_3, int dut_done, 
 				   int unsigned bench_text_o[], int bench_done, int status, int rst_chk);
@@ -85,7 +86,7 @@ class aes_checker;
 		bit done_passed;
 
 
-	if (status == 13 ) begin
+	if (status == s_ct ) begin
  
 		text_passed = (dut_text_0 == bench_text_o[0]) && (dut_text_1 == bench_text_o[1]) &&
 		    	      (dut_text_2 == bench_text_o[2]) && (dut_text_3 == bench_text_o[3]);
@@ -111,7 +112,7 @@ class aes_checker;
 				$exit();
 		end
 
-	end else if (status < 13 || status == 0) begin
+	end else if (status < s_ct || status == 0) begin
 
 		done_passed = (dut_done == bench_done);
 		text_passed = 1;
@@ -253,6 +254,8 @@ program tb (ifc.bench ds);
 		$fdisplay (f, "Final Outputs:");
 		$fdisplay (f, "Status is: %d ", t.status);
 		$fdisplay (f, " DUT Done : %b", ds.cb.done);
+		$fdisplay (f, " GoldenModel Done : %b", t.done);
+		$fdisplay (f, "Result from GoldenModel : %h%h%h%h ", ctext[3], ctext[2], ctext[1], ctext[0]);	
 		$fdisplay (f, "Result from DUT : %h%h%h%h ", ds.cb.text_out[127:96], ds.cb.text_out[95:64], ds.cb.text_out[63:32], ds.cb.text_out[31:0]);
 
 	if (verbose) begin
@@ -275,8 +278,7 @@ program tb (ifc.bench ds);
 
 	@(ds.cb);
 
-//		$fdisplay (f, " GoldenModel Done : %b", t.done);
-//		$fdisplay (f, "Result from GoldenModel : %h%h%h%h ", ctext[3], ctext[2], ctext[1], ctext[0]);
+
 
 	endtask
 

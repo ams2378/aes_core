@@ -5,7 +5,7 @@ class aes_transaction;
 	rand int 	unsigned key[4];
 	rand bit 	rst;
 	rand bit	ld;
-	int		done;
+	bit		done;
 	int		status;
 
 	int 		ld_density;
@@ -82,17 +82,6 @@ class aes_checker;
 		int verbose = 1;
 		bit text_passed;
 		bit done_passed;
-
-	if (1) begin
-			$display ("TIME :: %t", $realtime);
-			$display ("INSIDE CHECKER ");
-			$display ("dut_done bench_done : %d  %d", dut_done, bench_done);
-		
-            			$display("dut value || dut done: %h%h%h%h %d", dut_text_3, dut_text_2, dut_text_1, dut_text_0, dut_done);
-            			$display("bench value || bench_done: %h%h%h%h", bench_text_o[3], bench_text_o[2], bench_text_o[1], bench_text_o[0], bench_done);
-			
-
-	end
 
 	if (status == 13 ) begin
  
@@ -262,9 +251,7 @@ program tb (ifc.bench ds);
 		$fdisplay (f, "Final Outputs:");
 		$fdisplay (f, "Status is: %d ", t.status);
 		$fdisplay (f, " DUT Done : %b", ds.cb.done);
-		$fdisplay (f, " GMO Done : %b", t.done);
 		$fdisplay (f, "Result from DUT : %h%h%h%h ", ds.cb.text_out[127:96], ds.cb.text_out[95:64], ds.cb.text_out[63:32], ds.cb.text_out[31:0]);
-		$fdisplay (f, "Result from GoldenModel : %h%h%h%h ", ctext[3], ctext[2], ctext[1], ctext[0]);
 
 	if (verbose) begin
 
@@ -280,6 +267,9 @@ program tb (ifc.bench ds);
 	end
 
 	@(ds.cb);
+
+		$fdisplay (f, " GoldenModel Done : %b", t.done);
+		$fdisplay (f, "Result from GoldenModel : %h%h%h%h ", ctext[3], ctext[2], ctext[1], ctext[0]);
 
 	endtask
 

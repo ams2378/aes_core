@@ -59,13 +59,29 @@
 `timescale 1ns/1ps 
 
 
-module aes_cipher_top(clk, rst, ld, done, key, text_in, text_out );
+module aes_cipher_top(clk, rst, ld, done, key, text_in, text_out,
+		sa00, sa01, sa02, sa03,	sa10, sa11, sa12, sa13,
+		sa20, sa21, sa22, sa23, sa30, sa31, sa32, sa33,       
+		sa00_sub, sa01_sub, sa02_sub, sa03_sub,
+		sa10_sub, sa11_sub, sa12_sub, sa13_sub,
+		sa20_sub, sa21_sub, sa22_sub, sa23_sub,
+		sa30_sub, sa31_sub, sa32_sub, sa33_sub		);
+
 input		clk, rst;
 input		ld;
 output		done;
 input	[127:0]	key;
 input	[127:0]	text_in;
 output	[127:0]	text_out;
+output	[7:0]	sa00, sa01, sa02, sa03;
+output	[7:0]	sa10, sa11, sa12, sa13;
+output	[7:0]	sa20, sa21, sa22, sa23;
+output	[7:0]	sa30, sa31, sa32, sa33;
+output	[7:0]	sa00_sub, sa01_sub, sa02_sub, sa03_sub;
+output	[7:0]	sa10_sub, sa11_sub, sa12_sub, sa13_sub;
+output	[7:0]	sa20_sub, sa21_sub, sa22_sub, sa23_sub;
+output	[7:0]	sa30_sub, sa31_sub, sa32_sub, sa33_sub;
+
 
 ////////////////////////////////////////////////////////////////////
 //

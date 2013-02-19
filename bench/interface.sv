@@ -17,7 +17,10 @@ interface ifc (input bit clk);
 
     logic done;
     logic [127:0] text_out;
-   
+ 
+//    logic [7:0]   sbox_a;
+//    logic [7:0]	  sbox_b;
+  
     logic rst;
 
     clocking cb @(posedge clk);
@@ -30,6 +33,8 @@ interface ifc (input bit clk);
 
 	input done;
 	input text_out;
+//	input sbox_a;
+//	input sbox_b;
     endclocking
 
     modport dut (
@@ -43,6 +48,9 @@ interface ifc (input bit clk);
 
 	output text_out,
 	output done
+//	output sbox_a,
+//	output sbox_b
+
 	);
 
     modport bench (clocking cb);

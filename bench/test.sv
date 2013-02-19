@@ -171,8 +171,6 @@ program tb (ifc.bench ds);
 
 		t.randomize();
 		
-//		t.rst= '1;		// temporary
-
 		//send text/key to dut and software
 
 		if (t.rst == 0) begin
@@ -271,7 +269,7 @@ program tb (ifc.bench ds);
 
 		$fdisplay (f, " VALIDATON SUITE FOR AES CORE - ELEN 6321");
 
-		repeat(50) begin
+		repeat(10000) begin
 			do_cycle();
 		end
 	end

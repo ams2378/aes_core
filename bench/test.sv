@@ -83,6 +83,14 @@ class aes_checker;
 		bit text_passed;
 		bit done_passed;
 
+	if (1) begin
+			$fdisplay (f, "INSIDE CHECKER ");
+			$fdisplay (f, "dut_done bench_done : %d  %d", dut_done, bench_done);
+		
+			
+
+	end
+
 	if (status == 13 ) begin
  
 		text_passed = (dut_text_0 == bench_text_o[0]) && (dut_text_1 == bench_text_o[1]) &&

@@ -255,7 +255,7 @@ program tb (ifc.bench ds);
 
 
 	initial begin
-		t = new( 30, 60 );
+		t = new( 60, 60 );
 		checker = new();
 
 

@@ -159,6 +159,8 @@ program tb (ifc.bench ds);
 	int unsigned ctext[4];
 	int rst_chk;
 
+	integer f;
+
 	int verbose = 0;
 
 	task do_cycle;
@@ -187,6 +189,10 @@ program tb (ifc.bench ds);
 		end else
 			rst_chk		=	0; 
 
+
+		f = fopen ("log.txt");
+		fdisplay (f, t.key[3] t.key[2] t.key[1] t.key[0]);
+	
 		ds.cb.rst		<= 	t.rst;	
 		ds.cb.ld		<= 	t.ld;
 		ds.cb.text_in[31:0] 	<= 	t.text[0];

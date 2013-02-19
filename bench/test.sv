@@ -85,8 +85,8 @@ class aes_checker;
 
 	if (1) begin
 			$display ("TIME :: %t", $realtime);
-			$display (f, "INSIDE CHECKER ");
-			$display (f, "dut_done bench_done : %d  %d", dut_done, bench_done);
+			$display ("INSIDE CHECKER ");
+			$display ("dut_done bench_done : %d  %d", dut_done, bench_done);
 		
 			
 

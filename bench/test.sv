@@ -250,7 +250,8 @@ program tb (ifc.bench ds);
 
 		$fdisplay (f, "Final Outputs:");
 		$fdisplay (f, "Status is: %d ", t.status);
-		$fdisplay (f, "Done : %b", ds.cb.done);
+		$fdisplay (f, " DUT Done : %b", ds.cb.done);
+		$fdisplay (f, " GMO Done : %b", t.done);
 		$fdisplay (f, "Result from DUT : %h%h%h%h ", ds.cb.text_out[127:96], ds.cb.text_out[95:64], ds.cb.text_out[63:32], ds.cb.text_out[31:0]);
 		$fdisplay (f, "Result from GoldenModel : %h%h%h%h ", ctext[3], ctext[2], ctext[1], ctext[0]);
 

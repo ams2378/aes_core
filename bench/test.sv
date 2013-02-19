@@ -84,8 +84,9 @@ class aes_checker;
 		bit done_passed;
 
 	if (1) begin
-			$fdisplay (f, "INSIDE CHECKER ");
-			$fdisplay (f, "dut_done bench_done : %d  %d", dut_done, bench_done);
+			$display ("TIME :: %t", $realtime);
+			$display (f, "INSIDE CHECKER ");
+			$display (f, "dut_done bench_done : %d  %d", dut_done, bench_done);
 		
 			
 

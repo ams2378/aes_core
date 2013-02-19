@@ -26,13 +26,16 @@ word key[8];
 int rst_ctrl [2] = {0, 0};
 int tmp_rst = 0;
 
+
+int s_ct = 14;
+
 int get_done() {
 
 	int temp = 0;
 
 //	if (status == 13 && rst != 0)
 //	if (status == 13 && rst_ctrl[0] !=0)
-	if (status == 13) {
+	if (status == s_ct) {
 		done = 1;
 		status = 0;
 	}
@@ -103,7 +106,7 @@ void rebuild_key(word t_key, int i) {
 
 void generate_ciphertext(int rst){
 
-	if (status == 13 && rst != 0)
+	if (status == s_ct && rst != 0)
 		encrypt_128_key_expand_inline_no_branch(state, key);
 
 	ctext[0] = state[0];
@@ -195,7 +198,7 @@ void rearrange_cipher() {
     word x[4];
     x[0] = ctext[0]; x[1] = ctext[1]; x[2] = ctext[2]; x[3] = ctext[3];
 
-    if (status == 13) {
+    if (status == s_ct) {
 	    byte *o = (byte *)x;
 	    for (i=0; i<16; i++) {
 		n[i] = o[15-i];

@@ -84,12 +84,6 @@ class aes_checker;
 		bit text_passed;
 		bit done_passed;
 
-	if (1) begin
-	
-		f = $fopen ("log.txt");
-		$fdisplay (f, " GoldenModel Done : %b", dut_done);
-		$fdisplay (f, "Result from GoldenModel : %h%h%h%h ", bench_text_o[3], bench_text_o[2], bench_text_o[1], bench_text_o[0]);
-	end
 
 	if (status == 13 ) begin
  
@@ -274,6 +268,11 @@ program tb (ifc.bench ds);
 
 	end
 
+
+			checker.check_result(ds.cb.text_out[31:0],  ds.cb.text_out[63:32], ds.cb.text_out[95:64],  
+				    ds.cb.text_out[127:96], ds.cb.done, ctext, t.done, t.status, rst_chk);
+
+
 	@(ds.cb);
 
 //		$fdisplay (f, " GoldenModel Done : %b", t.done);
@@ -297,8 +296,10 @@ program tb (ifc.bench ds);
 
 		repeat(50) begin
 			do_cycle();
-			checker.check_result(ds.cb.text_out[31:0],  ds.cb.text_out[63:32], ds.cb.text_out[95:64],  
-				    ds.cb.text_out[127:96], ds.cb.done, ctext, t.done, t.status, rst_chk);
+//			checker.check_result(ds.cb.text_out[31:0],  ds.cb.text_out[63:32], ds.cb.text_out[95:64],  
+//				    ds.cb.text_out[127:96], ds.cb.done, ctext, t.done, t.status, rst_chk);
+
+//			checker.print_log ( t.key[3], t.key[2], t.key[1], t.key[0], t.text[3], t.text[2], t.text[1], t.text[0] );
 
 		end
 	end

@@ -231,30 +231,38 @@ program tb (ifc.bench ds);
 		t.done   = get_done();
 		t.status = get_status();	
 
+		$fdisplay (f, "\n");
+
 		$fdisplay (f, "------------- Simulation Time ----------------- %t", $realtime );
+		$fdisplay (f, "\n");
 		$fdisplay (f, "Inputs :");
+		$fdisplay (f, "-----------------");
 		$fdisplay (f, "rst : %b", t.rst );
 		$fdisplay (f, "Key load : %b ", t.ld);
 		$fdisplay (f, "KEY: %h%h%h%h", t.key[3], t.key[2], t.key[1], t.key[0]);
 		$fdisplay (f, "TEXT: %h%h%h%h", t.text[3], t.text[2], t.text[1], t.text[0]);
-
 		
+		$fdisplay (f, "\n");
 		$fdisplay (f, "Inputs to sbox : ");
+		$fdisplay (f, "------------------");
 		$fdisplay (f, "S00 S01 S02 S03 : %h %h %h %h", ds.cb.sa00, ds.cb.sa01, ds.cb.sa02, ds.cb.sa03);
 		$fdisplay (f, "S10 S11 S12 S13 : %h %h %h %h", ds.cb.sa10, ds.cb.sa11, ds.cb.sa12, ds.cb.sa13);
 		$fdisplay (f, "S20 S21 S22 S23 : %h %h %h %h", ds.cb.sa20, ds.cb.sa21, ds.cb.sa22, ds.cb.sa23);
 		$fdisplay (f, "S30 S31 S32 S33 : %h %h %h %h", ds.cb.sa30, ds.cb.sa31, ds.cb.sa32, ds.cb.sa33);
 
+		$fdisplay (f, "\n");
 		$fdisplay (f, "Outputs from sbox : ");
+		$fdisplay (f, "--------------------");
 		$fdisplay (f, "S00_SUB S01_SUB S02_SUB S03_SUB : %h %h %h %h", ds.cb.sa00_sub, ds.cb.sa01_sub, ds.cb.sa02_sub, ds.cb.sa03_sub);
 		$fdisplay (f, "S10_SUB S11_SUB S12_SUB S13_SUB : %h %h %h %h", ds.cb.sa10_sub, ds.cb.sa11_sub, ds.cb.sa12_sub, ds.cb.sa13_sub);
 		$fdisplay (f, "S20_SUB S21_SUB S22_SUB S23_SUB : %h %h %h %h", ds.cb.sa20_sub, ds.cb.sa21_sub, ds.cb.sa22_sub, ds.cb.sa23_sub);
 		$fdisplay (f, "S30_SUB S31_SUB S32_SUB S33_SUB : %h %h %h %h", ds.cb.sa30_sub, ds.cb.sa31_sub, ds.cb.sa32_sub, ds.cb.sa33_sub);
 
+		$fdisplay (f, "\n");
 		$fdisplay (f, "Final Outputs:");
-		$fdisplay (f, "Status is: %d ", t.status);
-		$fdisplay (f, " DUT Done : %b", ds.cb.done);
-		$fdisplay (f, " GoldenModel Done : %b", t.done);
+		$fdisplay (f, "--------------------");
+		$fdisplay (f, "DUT Done : %b", ds.cb.done);
+		$fdisplay (f, "GoldenModel Done : %b", t.done);
 		$fdisplay (f, "Result from GoldenModel : %h%h%h%h ", ctext[3], ctext[2], ctext[1], ctext[0]);	
 		$fdisplay (f, "Result from DUT : %h%h%h%h ", ds.cb.text_out[127:96], ds.cb.text_out[95:64], ds.cb.text_out[63:32], ds.cb.text_out[31:0]);
 
@@ -270,15 +278,11 @@ program tb (ifc.bench ds);
 		$display("\n");
 
 	end
-
-
-			checker.check_result(ds.cb.text_out[31:0],  ds.cb.text_out[63:32], ds.cb.text_out[95:64],  
-				    ds.cb.text_out[127:96], ds.cb.done, ctext, t.done, t.status, rst_chk);
+		checker.check_result(ds.cb.text_out[31:0],  ds.cb.text_out[63:32], ds.cb.text_out[95:64],  
+				     ds.cb.text_out[127:96], ds.cb.done, ctext, t.done, t.status, rst_chk);
 
 
 	@(ds.cb);
-
-
 
 	endtask
 
@@ -296,13 +300,10 @@ program tb (ifc.bench ds);
 		f = $fopen ("log.txt");
 		t = new( 50, 100 );
 
+		$fdisplay (f, " VALIDATON SUITE FOR AES CORE - ELEN 6321");
+
 		repeat(50) begin
 			do_cycle();
-//			checker.check_result(ds.cb.text_out[31:0],  ds.cb.text_out[63:32], ds.cb.text_out[95:64],  
-//				    ds.cb.text_out[127:96], ds.cb.done, ctext, t.done, t.status, rst_chk);
-
-//			checker.print_log ( t.key[3], t.key[2], t.key[1], t.key[0], t.text[3], t.text[2], t.text[1], t.text[0] );
-
 		end
 	end
 endprogram

@@ -275,7 +275,7 @@ program tb (ifc.bench ds);
 		t = new( 60, 100 );
 		checker = new();
 
-		f = $fopen ("log.txt, w");
+		f = $fopen ("log.txt");
 
 		repeat(20) begin
 			do_cycle();

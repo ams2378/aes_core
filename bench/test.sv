@@ -275,12 +275,13 @@ program tb (ifc.bench ds);
 		t = new( 20, 100 );
 		checker = new();
 
-		f = $fopen ("log.txt");
 
 		repeat (3) begin
 			do_cycle();
 		end
 
+
+		f = $fopen ("log.txt");
 		t = new( 100, 100 );
 
 		repeat(20) begin

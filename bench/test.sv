@@ -245,7 +245,7 @@ program tb (ifc.bench ds);
 		t = new( 30, 70 );
 		checker = new();
 
-		repeat(50000) begin
+		repeat(50) begin
 			do_cycle();
 			checker.check_result(ds.cb.text_out[31:0],  ds.cb.text_out[63:32], ds.cb.text_out[95:64],  
 				    ds.cb.text_out[127:96], ds.cb.done, ctext, t.done, t.status, rst_chk);

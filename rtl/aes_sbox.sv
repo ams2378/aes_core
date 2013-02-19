@@ -65,9 +65,11 @@ output	[7:0]	d;
 reg	[7:0]	d;
 
 
-$display ("hello from sbox");
 
 always @(a)
+
+
+$display ("hello from sbox");
 	case(a)		// synopsys full_case parallel_case
 	   8'h00: d=8'h63;
 	   8'h01: d=8'h7c;

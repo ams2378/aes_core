@@ -258,18 +258,17 @@ program tb (ifc.bench ds);
 		t = new( 60, 30 );
 		checker = new();
 
-
-		repeat (10) begin
+		/* warm up */
+		repeat (5) begin
 			do_cycle();
 		end
 
-
 		f = $fopen ("log.txt");
-		t = new( 60, 70 );
+		t = new( 100, 100 );
 
 		$fdisplay (f, " VALIDATON SUITE FOR AES CORE - ELEN 6321");
 
-		repeat(10000) begin
+		repeat(30) begin
 			do_cycle();
 		end
 	end

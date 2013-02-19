@@ -88,6 +88,8 @@ class aes_checker;
 			$display ("INSIDE CHECKER ");
 			$display ("dut_done bench_done : %d  %d", dut_done, bench_done);
 		
+            			$display("dut value || dut done: %h%h%h%h %d", dut_text_3, dut_text_2, dut_text_1, dut_text_0, dut_done);
+            			$display("bench value || bench_done: %h%h%h%h", bench_text_o[3], bench_text_o[2], bench_text_o[1], bench_text_o[0], bench_done);
 			
 
 	end

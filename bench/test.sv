@@ -228,7 +228,6 @@ program tb (ifc.bench ds);
 		t.done   = get_done();
 		t.status = get_status();	
 
-		f = $fopen ("log.txt");
 		$fdisplay (f, "------------- Simulation Time ----------------- %t", $realtime );
 		$fdisplay (f, "Inputs :");
 		$fdisplay (f, "rst : %b", t.rst );
@@ -265,6 +264,7 @@ program tb (ifc.bench ds);
 		t = new( 40, 100 );
 		checker = new();
 
+		f = $fopen ("log.txt, w");
 
 		repeat(50) begin
 			do_cycle();

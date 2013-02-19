@@ -236,11 +236,17 @@ program tb (ifc.bench ds);
 		$fdisplay (f, "TEXT: %h%h%h%h", t.text[3], t.text[2], t.text[1], t.text[0]);
 
 		
-		$fdisplay (f, "Input to sbox : ");
-		$fdisplay (f, "S00 S01 S02 S03 : %h%h%h%h", ds.cb.sa00, ds.cb.sa01, ds.cb.sa02, ds.cb.sa03);
-		$fdisplay (f, "S10 S11 S12 S13 : %h%h%h%h", ds.cb.sa10, ds.cb.sa11, ds.cb.sa12, ds.cb.sa13);
-		$fdisplay (f, "S20 S21 S22 S23 : %h%h%h%h", ds.cb.sa20, ds.cb.sa21, ds.cb.sa22, ds.cb.sa23);
-		$fdisplay (f, "S30 S31 S32 S33 : %h%h%h%h", ds.cb.sa30, ds.cb.sa31, ds.cb.sa32, ds.cb.sa33);
+		$fdisplay (f, "Inputs to sbox : ");
+		$fdisplay (f, "S00 S01 S02 S03 : %h %h %h %h", ds.cb.sa00, ds.cb.sa01, ds.cb.sa02, ds.cb.sa03);
+		$fdisplay (f, "S10 S11 S12 S13 : %h %h %h %h", ds.cb.sa10, ds.cb.sa11, ds.cb.sa12, ds.cb.sa13);
+		$fdisplay (f, "S20 S21 S22 S23 : %h %h %h %h", ds.cb.sa20, ds.cb.sa21, ds.cb.sa22, ds.cb.sa23);
+		$fdisplay (f, "S30 S31 S32 S33 : %h %h %h %h", ds.cb.sa30, ds.cb.sa31, ds.cb.sa32, ds.cb.sa33);
+
+		$fdisplay (f, "Outputs from sbox : ");
+		$fdisplay (f, "S00_SUB S01_SUB S02_SUB S03_SUB : %h %h %h %h", ds.cb.sa00, ds.cb.sa01, ds.cb.sa02, ds.cb.sa03);
+		$fdisplay (f, "S10_SUB S11_SUB S12_SUB S13_SUB : %h %h %h %h", ds.cb.sa10, ds.cb.sa11, ds.cb.sa12, ds.cb.sa13);
+		$fdisplay (f, "S20_SUB S21_SUB S22_SUB S23_SUB : %h %h %h %h", ds.cb.sa20, ds.cb.sa21, ds.cb.sa22, ds.cb.sa23);
+		$fdisplay (f, "S30_SUB S31_SUB S32_SUB S33_SUB : %h %h %h %h", ds.cb.sa30, ds.cb.sa31, ds.cb.sa32, ds.cb.sa33);
 
 	if (verbose) begin
 

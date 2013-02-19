@@ -249,6 +249,7 @@ program tb (ifc.bench ds);
 		$fdisplay (f, "S30_SUB S31_SUB S32_SUB S33_SUB : %h %h %h %h", ds.cb.sa30_sub, ds.cb.sa31_sub, ds.cb.sa32_sub, ds.cb.sa33_sub);
 
 		$fdisplay (f, "Final Outputs:");
+		$fdisplay (f, "Status is: t.status")
 		$fdisplay (f, "Done : %b", ds.cb.done);
 		$fdisplay (f, "Result from DUT : %h%h%h%h ", ds.cb.text_out[127:96], ds.cb.text_out[95:64], ds.cb.text_out[63:32], ds.cb.text_out[31:0]);
 		$fdisplay (f, "Result from GoldenModel : %h%h%h%h ", ctext[3], ctext[2], ctext[1], ctext[0]);

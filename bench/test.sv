@@ -75,7 +75,6 @@ endclass
 
 class aes_checker;
 	bit pass;
-	f = $fopen ("log.txt");
 
 	function void check_result (int dut_text_0, int dut_text_1, int dut_text_2, int dut_text_3, int dut_done, 
 				   int unsigned bench_text_o[], int bench_done, int status, int rst_chk);
@@ -85,6 +84,8 @@ class aes_checker;
 		bit done_passed;
 
 	if (1) begin
+	
+		f = $fopen ("log.txt");
 		$fdisplay (f, " GoldenModel Done : %b", dut_done);
 		$fdisplay (f, "Result from GoldenModel : %h%h%h%h ", bench_text_o[3], bench_text_o[2], bench_text_o[1], bench_text_o[0]);
 	end

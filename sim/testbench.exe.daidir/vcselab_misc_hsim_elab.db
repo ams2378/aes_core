@@ -1,5 +1,5 @@
 psSimBaseName                      	../sim/testbench.exe
-pDaiDir                            	/home/asc2171/aes_core/sim/../sim/testbench.exe.daidir
+pDaiDir                            	/home/asc2171/aes_core_bak/aes_core/sim/../sim/testbench.exe.daidir
 destPath                           	csrc/
 hsMainFileCount                    	0
 hsMainFileName                     	dummy

@@ -190,12 +190,9 @@ program tb (ifc.bench ds);
 			rst_chk		=	0; 
 
 
-//		f = fopen ("log.txt");
-//		fdisplay (f, t.key[3], t.key[2], t.key[1], t.key[0]);
+		f = fopen ("log.txt");
+		fdisplay (f, "SV KEY: %h%h%h%h" t.key[3], t.key[2], t.key[1], t.key[0]);
 
-
-
-		$write("SV: Generated key: %h%h%h%h", t.key[3], t.key[2], t.key[1], t.key[0]);
 	
 		ds.cb.rst		<= 	t.rst;	
 		ds.cb.ld		<= 	t.ld;

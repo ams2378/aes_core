@@ -257,7 +257,7 @@ program tb (ifc.bench ds);
 
 
 	initial begin
-		t = new( 20, 100 );
+		t = new( 30, 60 );
 		checker = new();
 
 
@@ -267,7 +267,7 @@ program tb (ifc.bench ds);
 
 
 		f = $fopen ("log.txt");
-		t = new( 50, 100 );
+		t = new( 10000, 100 );
 
 		$fdisplay (f, " VALIDATON SUITE FOR AES CORE - ELEN 6321");
 

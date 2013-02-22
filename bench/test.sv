@@ -1,4 +1,8 @@
+`include "aes_env.sv"
+
 `timescale 1ns/1ps
+
+
 
 class aes_transaction;
 	rand int 	unsigned text[4];

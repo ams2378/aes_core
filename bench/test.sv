@@ -27,14 +27,12 @@ class aes_transaction;
 
 endclass
 
-/*
-class aes_env;
-    int cycle = 0;
-    int max_transactions = 1000;
-    int warmup_time = 10;
-    bit verbose = 1;
 
-    int reset_density, search_density, read_density, write_density;
+class aes_env;
+    int max_transactions;
+    int warmup;
+    bit verbose;
+    int reset_density, ld_density;
 
     function configure(string filename);
         int file, value, seed, chars_returned;
@@ -46,23 +44,20 @@ class aes_env;
                 seed = value;
                 $srandom(seed);
             end
-            else if("TRANSACTIONS" == param) begin
-                max_transactions = value;
-            end
 	    else if("RESET_DENSITY" == param) begin
 	    	reset_density = value;
 	    end
-	    else if("SEARCH_DENSITY" == param) begin
-		search_density = value;
-	    end
-	    else if("READ_DENSITY" == param) begin
-		read_density = value;
-	    end
-	    else if("WRITE_DENSITY" == param) begin
-		write_density = value;
+	    else if("LD_DENSITY" == param) begin
+		ld_density = value;
 	    end
 	    else if("VERBOSE" == param) begin
 		verbose = value;
+	    end
+	    else if("WARMUP" == param) begin
+		warmup = value;
+	    end
+	    else if("MAX_TRAN" == param) begin
+		max_transactions = value;
 	    end
             else begin
                 $display("Never heard of a: %s", param);
@@ -71,7 +66,7 @@ class aes_env;
         end
     endfunction
 endclass
-*/
+
 
 class aes_checker;
 	bit pass;
@@ -158,6 +153,8 @@ program tb (ifc.bench ds);
 
 	aes_checker checker;
 	aes_transaction t;
+	aes_env env;
+
 	int en_ce_stat = 0;
 	int unsigned ctext[4];
 	int rst_chk;
@@ -165,6 +162,11 @@ program tb (ifc.bench ds);
 	integer f;
 
 
+/*	covergroup reset;
+		coverpoint t.rst;
+	endgroup
+
+*/
 	int verbose = 0;
 
 	task do_cycle;
@@ -257,18 +259,22 @@ program tb (ifc.bench ds);
 	initial begin
 		t = new( 60, 30 );
 		checker = new();
+		env = new();
+		env.configure("configure.txt");
+
+//		reset = new;
 
 		/* warm up */
-		repeat (5) begin
+		repeat (env.warmup) begin
 			do_cycle();
 		end
 
 		f = $fopen ("log.txt");
-		t = new( 70, 100 );
+		t = new( env.ld_density, env.reset_density );
 
 		$fdisplay (f, " VALIDATON SUITE FOR AES CORE - ELEN 6321");
 
-		repeat(60) begin
+		repeat(env.max_transactions) begin
 			do_cycle();
 		end
 	end

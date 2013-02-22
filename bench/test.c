@@ -64,7 +64,7 @@ void send_ld_rst (int l, int rt) {
 
 //	if (status == 13 || rst == 0)
 	if (rst == 0 && status == 13){
-		done = 1
+		done = 1;
 		status = 0;
 	} else if (rst == 0)
 		status = 0;

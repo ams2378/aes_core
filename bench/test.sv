@@ -161,11 +161,11 @@ program tb (ifc.bench ds);
 
 	integer f;
 
-	covergroup reset;
+	covergroup cg_reset;
 		coverpoint t.rst;
 	endgroup
 
-	reset cov_rst;
+	cg_reset cov_rst;
 
 	int verbose = 0;
 
@@ -279,6 +279,9 @@ program tb (ifc.bench ds);
 			cov_rst.sample();
 		end
 	end
+
+	$display("Instance coverage is %e",cov_rst.get_coverage());
+
 endprogram
 
 

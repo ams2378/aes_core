@@ -161,10 +161,11 @@ program tb (ifc.bench ds);
 
 	integer f;
 
-
 	covergroup reset;
 		coverpoint t.rst;
 	endgroup
+
+	reset cov_rst;
 
 	int verbose = 0;
 
@@ -261,7 +262,7 @@ program tb (ifc.bench ds);
 		env = new();
 		env.configure("configure.txt");
 
-		reset cov_rst = new();
+		cov_rst = new();
 
 		/* warm up */
 		repeat (env.warmup) begin

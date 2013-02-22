@@ -5,6 +5,10 @@ class aes_transaction;
 	rand int 	unsigned key[4];
 	rand bit 	rst;
 	rand bit	ld;
+
+    rand bit    kld;
+
+    bit     kdone;
 	bit		done;
 	int		status;
 
@@ -24,6 +28,17 @@ class aes_transaction;
 	constraint ld_status {
 		(status != 0) -> (ld == 0);
 	}
+
+    constraint ld_kld {
+        (kld != 0) -> (ld == 0);
+    }
+
+    constraint mode_status {
+        (status != 0) -> (mode == mode);
+    }
+
+
+
 
 endclass
 
@@ -170,7 +185,12 @@ program tb (ifc.bench ds);
 	task do_cycle;
 
 		t.randomize();
-		
+
+        $display("Mode: %b", t.mode);
+        $dispaly("Status: %d", t.status);
+
+
+      if (t.mode == 0) begin
 		//send text/key to dut and software
 
 		if (t.rst == 0) begin
@@ -180,6 +200,7 @@ program tb (ifc.bench ds);
 	
 		ds.cb.rst		<= 	t.rst;	
 		ds.cb.ld		<= 	t.ld;
+        ds.cb.kld       <=  0;
 		ds.cb.text_in[31:0] 	<= 	t.text[0];
 		ds.cb.text_in[63:32]	<= 	t.text[1]; 
 		ds.cb.text_in[95:64 ]	<= 	t.text[2]; 		
@@ -249,7 +270,16 @@ program tb (ifc.bench ds);
 				     ds.cb.text_out[127:96], ds.cb.done, ctext, t.done, t.status, rst_chk);
 
 
-	@(ds.cb);
+    	@(ds.cb);
+
+      end else if (t.mode == 1) begin
+            
+
+
+
+
+      end
+
 
 	endtask
 

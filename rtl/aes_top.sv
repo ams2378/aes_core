@@ -3,16 +3,35 @@
 `timescale 1ns/1ps 
 
 module aes_top(ifc.dut d);
+    logic ld_e;
+    logic ld_d;
+ 
+    logic done_e;
+    logic done_d;
+    logic kdone;
 
+    always_comb begin
+        if (d.mode == '0) begin
+            ld_e = d.ld;
+            assign d.done = done_e;
+            assign d.kdone = '0;
+        end else if (d.mode == '1) begin
+            ld_d = d.ld;
+            assign d.done = done_d;
+            assign d.kdone = kdone;
+        end
+    end
+
+ 
 
 	aes_cipher_top cipher (
 			.clk(d.clk),	
 			.rst(d.rst),
-			.ld(d.ld),
+			.ld(ld_e),
 			.key(d.key),
 			.text_in(d.text_in),
 			.text_out(d.text_out),
-			.done(d.done),
+			.done(done_e),
 			.sa00(d.sa00),
 			.sa01(d.sa01),
 			.sa02(d.sa02),
@@ -47,6 +66,19 @@ module aes_top(ifc.dut d);
 			.sa32_sub(d.sa32_sub),
 			.sa33_sub(d.sa33_sub)
 			);
+
+
+    aes_inv_cipher_top decipher (
+        .clk(d.clk),
+        .rst(d.rst),
+        .ld(ld_d),
+        .kld(d.kld),
+        .done(done_d),
+        .kdone(kdone),
+        .key(d.key),
+        .test_in(d.text_in),
+        .text_out(d.text_out)
+        );
 
 
 

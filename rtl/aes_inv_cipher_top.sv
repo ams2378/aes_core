@@ -56,9 +56,10 @@
 
 //`include "timescale.v"
 
-module aes_inv_cipher_top(clk, rst, kld, ld, done, key, text_in, text_out );
+module aes_inv_cipher_top(clk, rst, kld, ld, kdone, done, key, text_in, text_out );
 input		clk, rst;
 input		kld, ld;
+output      kdone;
 output		done;
 input	[127:0]	key;
 input	[127:0]	text_in;

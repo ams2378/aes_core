@@ -11,10 +11,14 @@
 `timescale 1ns/1ps 
 
 interface ifc (input bit clk);
+    logic mode; //0 encryption , 1 decryption
+    
     logic ld;
+    logic kld;
     logic [127:0] key;
     logic [127:0] text_in;
 
+    logic kdone;
     logic done;
     logic [127:0] text_out;
 
@@ -34,9 +38,12 @@ logic	[7:0]	sa30_sub, sa31_sub, sa32_sub, sa33_sub;
 
        	output rst;	
 	output ld;
+    output kld;
 	output key;
 	output text_in;
+    output mode;
 
+    input kdone;
 	input done;
 	input text_out;
 	input		sa00, sa01, sa02, sa03;
@@ -54,10 +61,13 @@ logic	[7:0]	sa30_sub, sa31_sub, sa32_sub, sa33_sub;
 	input clk,
 	input rst,
 	
+    input mode,
 	input key,
 	input text_in,
 	input ld,
+    input kld,
 
+    output kdone,
 	output text_out,
 	output done,
 

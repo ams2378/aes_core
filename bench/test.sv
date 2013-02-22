@@ -165,7 +165,17 @@ program tb (ifc.bench ds);
 		coverpoint t.rst;
 	endgroup
 
+	covergroup cg_ld;
+		coverpoint t.ld;
+	endgroup
+
+	covergroup cg_text;
+		coverpoint t.text;
+	endgroup
+
 	cg_reset cov_rst;
+	cg_reset cov_ld;
+	cg_reset cov_text;
 
 	int verbose = 0;
 
@@ -263,6 +273,8 @@ program tb (ifc.bench ds);
 		env.configure("configure.txt");
 
 		cov_rst = new();
+		cov_ld = new();
+		cov_text = new();
 
 		/* warm up */
 		repeat (env.warmup) begin
@@ -277,9 +289,15 @@ program tb (ifc.bench ds);
 		repeat(env.max_transactions) begin
 			do_cycle();
 			cov_rst.sample();
+			cov_ld.sample();
+			cov_test.sample();
 		end
-
+	cov_rst.stop();
+	cov_ld.stop();
+	cov_text.stop();
 	$display("Instance coverage is %e",cov_rst.get_coverage());
+	$display("Instance coverage is %e",cov_ld.get_coverage());
+	$display("Instance coverage is %e",cov_text.get_coverage());
 	end
 
 

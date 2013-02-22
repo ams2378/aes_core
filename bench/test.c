@@ -18,7 +18,9 @@ void print_verilog_hex(word w[], int bit_num);
 int  rst;
 int  ld;
 int  status = 0;
+int  kstatus = 0;
 int  done;
+int  kdone;
 word ctext[4];
 word state[4];
 word key[8];
@@ -45,9 +47,28 @@ int get_done() {
 	return done;
 }
 
+int get_kdone() {
+
+	int temp = 0;
+
+	if (status == s_ct) {
+		kdone = 1;
+		status = 0;
+	}
+	else
+		kdone = 0;
+
+	return kdone;
+}
+
+
 int get_status() {
 
 	return status;
+}
+
+int get_kstatus() {
+    return kstatus;
 }
 
 void send_ld_rst (int l, int rt) {
@@ -67,8 +88,28 @@ void send_ld_rst (int l, int rt) {
 	tmp_rst == 1;
 
 	rst = rt;
-	printf (" status and rst : %d%d", status, rst);
+	printf (" status and rst : %d %d", status, rst);
 }
+
+void send_kld_rst (int l, int rt) {
+
+	ld = l;
+
+	if (rst == 0)
+		kstatus = 0;
+
+	if (kstatus >= 1)
+		kstatus = status + 1;
+
+	if (ld == 1)
+		kstatus = 1;
+
+	tmp_rst == 1;
+
+	rst = rt;
+	printf (" kstatus and rst : %d %d", status, rst);
+}
+
 
 void rebuild_text(word t_state, int i) {
 
@@ -84,15 +125,15 @@ void rebuild_text(word t_state, int i) {
 	printf ("text is \n");
 	print_verilog_hex(state, 128);
 	printf ("\n");
-	#endif	
+	#endif
 }
 
 void rebuild_key(word t_key, int i) {
 
 	if (status == 1)
 		key[i] = t_key;
-	else 
-		key[i] = key[i];	
+	else
+		key[i] = key[i];
 
 	#ifdef print
     	printf (" rebuilt key received in C :%d\n", t_key);
@@ -123,7 +164,7 @@ void generate_ciphertext(int rst){
 	printf("\n");
 
 	printf("########ENCRYPTING#########");
-	printf("\n");    
+	printf("\n");
 */
 
 /*
@@ -169,7 +210,7 @@ void rearrange_text() {
 	    byte *o = (byte *)x;
 	    for (i=0; i<16; i++) {
 		n[i] = o[15-i];
-    	} 
+    	}
     }
 }
 
@@ -184,7 +225,7 @@ void rearrange_key() {
 	    byte *o = (byte *)x;
 	    for (i=0; i<16; i++) {
 		n[i] = o[15-i];
-   	}    
+   	}
    }
 }
 
@@ -202,6 +243,6 @@ void rearrange_cipher() {
 	    byte *o = (byte *)x;
 	    for (i=0; i<16; i++) {
 		n[i] = o[15-i];
-	   }    
+	   }
    }
-} 
+}

@@ -12,6 +12,7 @@ class aes_transaction;
    	bit     kdone;
 	bit		done;
 	int		status;
+    int     kstatus;
 
 	int 		ld_density;
 	int		rst_density;
@@ -28,6 +29,7 @@ class aes_transaction;
 
 	constraint ld_status {
 		(status != 0) -> (ld == 0);
+        (status != 0) -> (kld == 0);
 	}
 
     constraint ld_kld {
@@ -176,6 +178,8 @@ program tb (ifc.bench ds);
 	aes_transaction t;
 	int en_ce_stat = 0;
 	int unsigned ctext[4];
+    int unsigned dtext[4];
+    int unsigned dkey[4];
 	int rst_chk;
 
 	integer f;
@@ -280,9 +284,71 @@ program tb (ifc.bench ds);
     	@(ds.cb);
 
       end else if (t.mode == 1) begin
+          if (t.rst == 0) begin
+			rst_chk 	= 	1;
+		  end else
+			rst_chk		=	0; 
+
+
+          if (t.kld == 1) begin
+            send_kld_rst (t.kld, t.rst);
             
+            rebuild_text(t.text[0], 0);
+		    rebuild_text(t.text[1], 1);
+		    rebuild_text(t.text[2], 2);
+    		rebuild_text(t.text[3], 3);
+	    	rearrange_text();
 
+		    rebuild_key(t.key[0], 0);
+		    rebuild_key(t.key[1], 1);
+		    rebuild_key(t.key[2], 2);
+	    	rebuild_key(t.key[3], 3);
+	    	rearrange_key();
+    
+    		generate_ciphertext();
+    
+	    	rearrange_cipher();
+    		ctext[0] = get_ciphertext(0);
+	    	ctext[1] = get_ciphertext(1);
+	    	ctext[2] = get_ciphertext(2);
+	    	ctext[3] = get_ciphertext(3);
 
+            dtext[0] = t.text[0];
+            dtext[1] = t.text[1];
+            dtext[2] = t.text[2];
+            dtext[3] = t.text[3];
+           
+            dkey[0] = t.text[0];
+            dkey[1] = t.text[1];
+            dkey[2] = t.text[2];
+            dkey[3] = t.text[3];		
+    
+            t.kdone   = get_kdone();
+		    t.kstatus = get_kstatus();	
+          end 
+          else if (t.kstatus != 0) begin
+            send_kld_rst(t.kld, t.rst);
+            t.done = get_kdone();
+            t.status = get_kstatus();
+          end 
+
+            ds.cb.rst		<= 	t.rst;	
+            ds.cb.ld		<= 	t.ld;
+            ds.cb.kld       <=  t.kld;
+            ds.cb.text_in[31:0] 	<= 	ctext[0];
+            ds.cb.text_in[63:32]	<= 	ctext[1]; 
+            ds.cb.text_in[95:64 ]	<= 	ctext[2]; 		
+            ds.cb.text_in[127:96]	<= 	ctext[3]; 		
+
+            ds.cb.key[31:0] 	<= 	dkey[0];
+            ds.cb.key[63:32]	<= 	dkey[1]; 		
+            ds.cb.key[95:64 ]	<= 	dkey[2]; 		
+            ds.cb.key[127:96]	<= 	dkey[3]; 	 
+
+            
+            checker.check_result('0, '0, '0,  '0, ds.cb.kdone, '0, t.kdone, t.kstatus, rst_chk);
+
+        
 
 
       end

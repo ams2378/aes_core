@@ -39,17 +39,17 @@ int get_done() {
 		done = 1;
 		status = 0;
 	}
-	else
-		done = 0;
+//	else
+//		done = 0;
 
 	return done;
 
-	if (rst == 0)
-		status = 0;
+//	if (rst == 0)
+//		status = 0;
 
-//	if (status != s_ct) {
-//		done = 0;
-//	}
+	if (status != s_ct) {
+		done = 0;
+	}
 
 }
 
@@ -63,8 +63,8 @@ void send_ld_rst (int l, int rt) {
 	ld = l;
 
 //	if (status == 13 || rst == 0)
-//	if (rst == 0)
-//		status = 0;
+	if (rst == 0)
+		status = 0;
 
 	if (status >= 1)
 		status = status + 1;

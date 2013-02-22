@@ -278,9 +278,10 @@ program tb (ifc.bench ds);
 			do_cycle();
 			cov_rst.sample();
 		end
-	end
 
 	$display("Instance coverage is %e",cov_rst.get_coverage());
+	end
+
 
 endprogram
 

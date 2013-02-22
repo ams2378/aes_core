@@ -9,16 +9,20 @@ module aes_top(ifc.dut d);
     logic done_e;
     logic done_d;
     logic kdone;
-
+    logic  [127:0] text_out_e;
+    logic [127:0] text_out_d;
+	
     always_comb begin
         if (d.mode == '0) begin
             ld_e = d.ld;
             assign d.done = done_e;
             assign d.kdone = '0;
+	    assign d.text_out = text_out_e;
         end else if (d.mode == '1) begin
             ld_d = d.ld;
             assign d.done = done_d;
             assign d.kdone = kdone;
+	    assign d.text_out = text_out_d;
         end
     end
 
@@ -30,7 +34,7 @@ module aes_top(ifc.dut d);
 			.ld(ld_e),
 			.key(d.key),
 			.text_in(d.text_in),
-			.text_out(d.text_out),
+			.text_out(text_out_e),
 			.done(done_e),
 			.sa00(d.sa00),
 			.sa01(d.sa01),
@@ -76,8 +80,8 @@ module aes_top(ifc.dut d);
         .done(done_d),
         .kdone(kdone),
         .key(d.key),
-        .test_in(d.text_in),
-        .text_out(d.text_out)
+        .text_in(d.text_in),
+        .text_out(text_out_d)
         );
 
 

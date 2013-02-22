@@ -6,9 +6,10 @@ class aes_transaction;
 	rand bit 	rst;
 	rand bit	ld;
 
-    rand bit    kld;
+    	rand bit    kld;
+    	rand bit 	mode;
 
-    bit     kdone;
+   	bit     kdone;
 	bit		done;
 	int		status;
 
@@ -185,9 +186,15 @@ program tb (ifc.bench ds);
 	task do_cycle;
 
 		t.randomize();
+	
+	t.mode = 1; //temporary
+	t.rst = 1; //temporary
 
         $display("Mode: %b", t.mode);
-        $dispaly("Status: %d", t.status);
+        $display("Status: %d", t.status);
+	$display("Rst: %b", t.rst);		
+	$display("ld: %b", t.ld);
+	$display("kld: %b", t.kld);
 
 
       if (t.mode == 0) begin

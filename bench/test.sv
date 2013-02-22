@@ -27,7 +27,7 @@ class aes_transaction;
 
 endclass
 
-
+/*
 class aes_env;
     int max_transactions;
     int warmup;
@@ -66,7 +66,7 @@ class aes_env;
         end
     endfunction
 endclass
-
+*/
 
 class aes_checker;
 	bit pass;

@@ -174,8 +174,8 @@ program tb (ifc.bench ds);
 	endgroup
 
 	cg_reset cov_rst;
-	cg_reset cov_ld;
-	cg_reset cov_text;
+	cg_ld cov_ld;
+	cg_text cov_text;
 
 	int verbose = 0;
 
@@ -290,7 +290,7 @@ program tb (ifc.bench ds);
 			do_cycle();
 			cov_rst.sample();
 			cov_ld.sample();
-			cov_test.sample();
+			cov_text.sample();
 		end
 	cov_rst.stop();
 	cov_ld.stop();

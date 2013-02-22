@@ -261,7 +261,7 @@ program tb (ifc.bench ds);
 		env = new();
 		env.configure("configure.txt");
 
-		reset cov_rst = new;
+		reset cov_rst = new();
 
 		/* warm up */
 		repeat (env.warmup) begin

@@ -170,7 +170,7 @@ program tb (ifc.bench ds);
 	endgroup
 
 	covergroup cg_text;
-		coverpoint t.text;
+		coverpoint t.text[1];
 	endgroup
 
 	cg_reset cov_rst;

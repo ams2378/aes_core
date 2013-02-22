@@ -147,7 +147,8 @@ void rebuild_key(word t_key, int i) {
 
 void generate_ciphertext(int rst){
 
-	if (status == s_ct && rst != 0)
+//	if (status == s_ct && rst != 0)
+	if (rst != 0)
 		encrypt_128_key_expand_inline_no_branch(state, key);
 
 	ctext[0] = state[0];

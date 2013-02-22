@@ -231,7 +231,7 @@ program tb (ifc.bench ds);
 	
 		ds.cb.rst		<= 	t.rst;	
 		ds.cb.ld		<= 	t.ld;
-		ds.cb.kld 		<= 	t.kld;
+	//	ds.cb.kld 		<= 	t.kld;
 
 
         ds.cb.kld       <=  0;
@@ -341,15 +341,16 @@ program tb (ifc.bench ds);
 	    	ctext[2] = get_ciphertext(2);
 	    	ctext[3] = get_ciphertext(3);
 
+
             dtext[0] = t.text[0];
             dtext[1] = t.text[1];
             dtext[2] = t.text[2];
             dtext[3] = t.text[3];
            
-            dkey[0] = t.text[0];
-            dkey[1] = t.text[1];
-            dkey[2] = t.text[2];
-            dkey[3] = t.text[3];		
+            dkey[0] = t.key[0];
+            dkey[1] = t.key[1];
+            dkey[2] = t.key[2];
+            dkey[3] = t.key[3];		
     
             t.kdone   = get_kdone();
 		    t.kstatus = get_kstatus();
@@ -359,7 +360,8 @@ program tb (ifc.bench ds);
             send_kld_rst(t.kld, t.rst);
           //  t.kdone = get_kdone();
           //  t.kstatus = get_kstatus();
-          end 
+          end
+ 
   	    t.kdone = get_kdone();
 	    t.kstatus = get_kstatus();
 		
@@ -367,6 +369,7 @@ program tb (ifc.bench ds);
             ds.cb.ld		<= 	t.ld;
             ds.cb.kld       <=  t.kld;
 	    ds.cb.mode      <=  currentmode;
+
 
             ds.cb.text_in[31:0] 	<= 	ctext[0];
             ds.cb.text_in[63:32]	<= 	ctext[1]; 
@@ -398,9 +401,10 @@ program tb (ifc.bench ds);
 
 		if (t.status == 13) 
 			kloaded = 0; 
-	    end
-      end
 
+	end
+      end
+	
 	@(ds.cb);
 	endtask
 
@@ -419,7 +423,7 @@ program tb (ifc.bench ds);
 
 		$fdisplay (f, " VALIDATON SUITE FOR AES CORE - ELEN 6321");
 
-		repeat(60) begin
+		repeat(1000) begin
 			do_cycle();
 		end
 	end

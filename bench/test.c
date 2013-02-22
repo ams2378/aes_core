@@ -39,17 +39,17 @@ int get_done() {
 		done = 1;
 		status = 0;
 	}
-//	else
-//		done = 0;
+	else
+		done = 0;
 
 	return done;
 
 //	if (rst == 0)
 //		status = 0;
 
-	if (status != s_ct) {
-		done = 0;
-	}
+//	if (status != s_ct) {
+//		done = 0;
+//	}
 
 }
 

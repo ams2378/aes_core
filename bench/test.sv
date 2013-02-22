@@ -36,17 +36,15 @@ class aes_transaction;
 		(kstatus != 0) -> (kld == 0);
 	}
 
+
     constraint ld_kld {
         (kld != 0) -> (ld == 0);
     }
 
-    constraint mode_status {
-        (status != 0) -> (mode == mode);
-	(kstatus != 0) -> (mode == mode);
-    }
 
 	constraint kloaded_ld{ 
 		(mode == 1 && kloaded == 0) -> (ld == 0);
+		(kloaded == 1 && status ==0) -> (ld == 1);
 	}
 
 
@@ -152,8 +150,6 @@ class aes_checker;
 //				$exit();
 		end
 
-                                $display("dut value: %d", dut_done); //temporary
-                                $display("bench value: %d", bench_done); //temporary
 
 
 		if (verbose) begin  $display (" %t <<<<<< BYPASSING DATA CHECKER:  DUT OUTPUT NOT READY YET >>>>>>>> ", $realtime); end
@@ -199,6 +195,8 @@ program tb (ifc.bench ds);
     int unsigned dkey[4];
 	int rst_chk;
 
+	bit kloaded= 0;
+
 	integer f;
 	bit currentmode;
 
@@ -213,6 +211,7 @@ program tb (ifc.bench ds);
 
         $display("Mode: %b", t.mode);
         $display("KStatus: %d", t.kstatus);
+	$display("Status: %d", t.status);
 	$display("Rst: %b", t.rst);		
 	$display("ld: %b", t.ld);
 	$display("kld: %b", t.kld);
@@ -312,8 +311,12 @@ program tb (ifc.bench ds);
 			rst_chk 	= 	1;
 		  end else
 			rst_chk		=	0; 
-	 
-	  t.kloaded = 0;	
+	
+	t.kloaded = kloaded;	
+ 
+	 if (kloaded == 0) begin
+		t.ld = 0;
+	 end 
 
           if (t.kld == 1) begin
             send_kld_rst (t.kld, t.rst);
@@ -351,7 +354,6 @@ program tb (ifc.bench ds);
             t.kdone   = get_kdone();
 		    t.kstatus = get_kstatus();
 
-		t.kloaded = 1;	
           end 
           else if (t.kstatus != 0) begin
             send_kld_rst(t.kld, t.rst);
@@ -375,12 +377,28 @@ program tb (ifc.bench ds);
             ds.cb.key[63:32]	<= 	dkey[1]; 		
             ds.cb.key[95:64 ]	<= 	dkey[2]; 		
             ds.cb.key[127:96]	<= 	dkey[3]; 	 
-
+	
+	    if (ds.cb.kdone == 1) begin
+		kloaded = 1;
+	    end
             
             checker.check_result(0, 0, 0,  0, ds.cb.kdone, {0,0,0,0}, t.kdone, t.kstatus, rst_chk);
+	
+	    if (kloaded == 0) begin
+		send_ld_rst(t.ld, 0);
+	    end
+		
+		send_ld_rst(t.ld, t.rst);
+		t.status = get_status();
+		t.done = get_done();
 
+	    if (kloaded == 1) begin
+		checker.check_result(ds.cb.text_out[31:0],  ds.cb.text_out[63:32], ds.cb.text_out[95:64],
+                                     ds.cb.text_out[127:96], ds.cb.done, dtext, t.done, t.status, rst_chk);
 
-
+		if (t.status == 13) 
+			kloaded = 0; 
+	    end
       end
 
 	@(ds.cb);

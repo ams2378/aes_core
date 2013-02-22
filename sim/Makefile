@@ -1,7 +1,7 @@
 MODULES= ../rtl/aes_rcon.sv ../rtl/aes_sbox.sv ../rtl/aes_key_expand_128.sv ../rtl/aes_cipher_top.sv ../rtl/aes_top.sv
 INTERFACE= ../bench/interface.sv
 TOP = ../bench/top.sv
-TEST= ../bench/aes.c ../bench/test.c ../bench/test.sv
+TEST= ../bench/aes_env.sv ../bench/aes.c ../bench/test.c ../bench/test.sv
 BENCH=../sim/testbench.exe
 
 all: 

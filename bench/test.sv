@@ -162,11 +162,10 @@ program tb (ifc.bench ds);
 	integer f;
 
 
-/*	covergroup reset;
+	covergroup reset;
 		coverpoint t.rst;
 	endgroup
 
-*/
 	int verbose = 0;
 
 	task do_cycle;
@@ -262,7 +261,7 @@ program tb (ifc.bench ds);
 		env = new();
 		env.configure("configure.txt");
 
-//		reset = new;
+		reset cov_rst = new;
 
 		/* warm up */
 		repeat (env.warmup) begin
@@ -276,6 +275,7 @@ program tb (ifc.bench ds);
 
 		repeat(env.max_transactions) begin
 			do_cycle();
+			cov_rst.sample();
 		end
 	end
 endprogram

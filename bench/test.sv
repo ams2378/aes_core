@@ -42,6 +42,7 @@ class aes_transaction;
 
     constraint mode_status {
         (status != 0) -> (mode == mode);
+	(kstatus != 0) -> (mode == mode);
     }
 
 	constraint kloaded_ld{ 
@@ -199,7 +200,7 @@ program tb (ifc.bench ds);
 	int rst_chk;
 
 	integer f;
-
+	bit currentmode;
 
 	int verbose = 0;
 
@@ -207,7 +208,7 @@ program tb (ifc.bench ds);
 
 		t.randomize();
 	
-	t.mode = 0; //temporary
+	t.mode = 1; //temporary
 	t.rst = 1; //temporary
 
         $display("Mode: %b", t.mode);
@@ -216,10 +217,12 @@ program tb (ifc.bench ds);
 	$display("ld: %b", t.ld);
 	$display("kld: %b", t.kld);
 
-	
+	if (t.kstatus == 0 && t.status == 0) begin
+		currentmode = t.mode;
+	end	
 
 
-      if (t.mode == 0) begin
+      if (currentmode == 0) begin
 		//send text/key to dut and software
 
 		if (t.rst == 0) begin
@@ -229,12 +232,16 @@ program tb (ifc.bench ds);
 	
 		ds.cb.rst		<= 	t.rst;	
 		ds.cb.ld		<= 	t.ld;
+		ds.cb.kld 		<= 	t.kld;
+
+
         ds.cb.kld       <=  0;
 		ds.cb.text_in[31:0] 	<= 	t.text[0];
 		ds.cb.text_in[63:32]	<= 	t.text[1]; 
 		ds.cb.text_in[95:64 ]	<= 	t.text[2]; 		
 		ds.cb.text_in[127:96]	<= 	t.text[3]; 		
-
+		ds.cb.mode 		<= 	currentmode;
+	
 		ds.cb.key[31:0] 	<= 	t.key[0];
 		ds.cb.key[63:32]	<= 	t.key[1]; 		
 		ds.cb.key[95:64 ]	<= 	t.key[2]; 		
@@ -300,7 +307,7 @@ program tb (ifc.bench ds);
 
 
 
-      end else if (t.mode == 1) begin
+      end else if (currentmode == 1) begin
           if (t.rst == 0) begin
 			rst_chk 	= 	1;
 		  end else
@@ -357,6 +364,8 @@ program tb (ifc.bench ds);
             ds.cb.rst		<= 	t.rst;	
             ds.cb.ld		<= 	t.ld;
             ds.cb.kld       <=  t.kld;
+	    ds.cb.mode      <=  currentmode;
+
             ds.cb.text_in[31:0] 	<= 	ctext[0];
             ds.cb.text_in[63:32]	<= 	ctext[1]; 
             ds.cb.text_in[95:64 ]	<= 	ctext[2]; 		
@@ -379,7 +388,7 @@ program tb (ifc.bench ds);
 
 
 	initial begin
-		t = new( 60, 30 );
+		t = new( 100, 0 );
 		checker = new();
 
 		/* warm up */

@@ -51,9 +51,9 @@ int get_kdone() {
 
 	int temp = 0;
 
-	if (status == s_ct) {
+	if (kstatus == s_ct) {
 		kdone = 1;
-		status = 0;
+		kstatus = 0;
 	}
 	else
 		kdone = 0;
@@ -99,7 +99,7 @@ void send_kld_rst (int l, int rt) {
 		kstatus = 0;
 
 	if (kstatus >= 1)
-		kstatus = status + 1;
+		kstatus = kstatus + 1;
 
 	if (ld == 1)
 		kstatus = 1;

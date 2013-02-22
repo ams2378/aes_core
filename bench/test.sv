@@ -14,6 +14,8 @@ class aes_transaction;
 	int		status;
     int     kstatus;
 
+	bit kloaded;
+
 	int 		ld_density;
 	int		rst_density;
 
@@ -29,7 +31,9 @@ class aes_transaction;
 
 	constraint ld_status {
 		(status != 0) -> (ld == 0);
-        (status != 0) -> (kld == 0);
+        	(status != 0) -> (kld == 0);
+		(kstatus != 0) -> (ld == 0);
+		(kstatus != 0) -> (kld == 0);
 	}
 
     constraint ld_kld {
@@ -40,7 +44,9 @@ class aes_transaction;
         (status != 0) -> (mode == mode);
     }
 
-
+	constraint kloaded_ld{ 
+		(mode == 1 && kloaded == 0) -> (ld == 0);
+	}
 
 
 endclass
@@ -117,7 +123,7 @@ class aes_checker;
             			$display("dut value: %d", dut_done);
             			$display("bench value: %d", bench_done);
 
-				$exit();
+//				$exit();
 		end
 
 		if (text_passed ) begin 
@@ -127,7 +133,7 @@ class aes_checker;
             			$display("dut value || dut done: %h%h%h%h %d", dut_text_3, dut_text_2, dut_text_1, dut_text_0, dut_done);
             			$display("bench value || bench_done: %h%h%h%h", bench_text_o[3], bench_text_o[2], bench_text_o[1], bench_text_o[0], bench_done);
 
-				$exit();
+//				$exit();
 		end
 
 	end else if (status < s_ct || status == 0) begin
@@ -142,8 +148,12 @@ class aes_checker;
             			$display("dut value: %d", dut_done);
             			$display("bench value: %d", bench_done);
 
-				$exit();
+//				$exit();
 		end
+
+                                $display("dut value: %d", dut_done); //temporary
+                                $display("bench value: %d", bench_done); //temporary
+
 
 		if (verbose) begin  $display (" %t <<<<<< BYPASSING DATA CHECKER:  DUT OUTPUT NOT READY YET >>>>>>>> ", $realtime); end
 
@@ -173,6 +183,12 @@ program tb (ifc.bench ds);
 	import "DPI-C" function void send_ld_rst( int i, int j );
 	import "DPI-C" function int get_done();
 	import "DPI-C" function int get_status();
+	
+	import "DPI-C" function void send_kld_rst( int i, int j);
+        import "DPI-C" function int get_kdone();
+        import "DPI-C" function int get_kstatus();
+
+
 
 	aes_checker checker;
 	aes_transaction t;
@@ -191,14 +207,16 @@ program tb (ifc.bench ds);
 
 		t.randomize();
 	
-	t.mode = 1; //temporary
+	t.mode = 0; //temporary
 	t.rst = 1; //temporary
 
         $display("Mode: %b", t.mode);
-        $display("Status: %d", t.status);
+        $display("KStatus: %d", t.kstatus);
 	$display("Rst: %b", t.rst);		
 	$display("ld: %b", t.ld);
 	$display("kld: %b", t.kld);
+
+	
 
 
       if (t.mode == 0) begin
@@ -281,14 +299,14 @@ program tb (ifc.bench ds);
 				     ds.cb.text_out[127:96], ds.cb.done, ctext, t.done, t.status, rst_chk);
 
 
-    	@(ds.cb);
 
       end else if (t.mode == 1) begin
           if (t.rst == 0) begin
 			rst_chk 	= 	1;
 		  end else
 			rst_chk		=	0; 
-
+	 
+	  t.kloaded = 0;	
 
           if (t.kld == 1) begin
             send_kld_rst (t.kld, t.rst);
@@ -324,14 +342,18 @@ program tb (ifc.bench ds);
             dkey[3] = t.text[3];		
     
             t.kdone   = get_kdone();
-		    t.kstatus = get_kstatus();	
+		    t.kstatus = get_kstatus();
+
+		t.kloaded = 1;	
           end 
           else if (t.kstatus != 0) begin
             send_kld_rst(t.kld, t.rst);
-            t.done = get_kdone();
-            t.status = get_kstatus();
+          //  t.kdone = get_kdone();
+          //  t.kstatus = get_kstatus();
           end 
-
+  	    t.kdone = get_kdone();
+	    t.kstatus = get_kstatus();
+		
             ds.cb.rst		<= 	t.rst;	
             ds.cb.ld		<= 	t.ld;
             ds.cb.kld       <=  t.kld;
@@ -346,14 +368,13 @@ program tb (ifc.bench ds);
             ds.cb.key[127:96]	<= 	dkey[3]; 	 
 
             
-            checker.check_result('0, '0, '0,  '0, ds.cb.kdone, '0, t.kdone, t.kstatus, rst_chk);
+            checker.check_result(0, 0, 0,  0, ds.cb.kdone, {0,0,0,0}, t.kdone, t.kstatus, rst_chk);
 
-        
 
 
       end
 
-
+	@(ds.cb);
 	endtask
 
 

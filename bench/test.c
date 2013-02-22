@@ -46,6 +46,11 @@ int get_done() {
 
 	if (rst == 0)
 		status = 0;
+
+	if (status != s_ct) {
+		done = 0;
+	}
+
 }
 
 int get_status() {

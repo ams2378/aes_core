@@ -43,10 +43,10 @@ program tb (ifc.bench ds);
 		coverpoint t.key;
 	endgroup
 
-	cg_reset cov_rst;
-	cg_ld cov_ld;
-	cg_text cov_text;
-	cg_key cov_key;
+	cg_reset 	cov_rst;
+	cg_ld 		cov_ld;
+	cg_text 	cov_text;
+	cg_key 		cov_key;
 
 	int verbose = 0;
 
@@ -163,6 +163,7 @@ program tb (ifc.bench ds);
 			cov_rst.sample();
 			cov_ld.sample();
 			cov_text.sample();
+			cov_key.sample();
 		end
 	cov_rst.stop();
 	cov_ld.stop();

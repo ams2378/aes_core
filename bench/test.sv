@@ -39,6 +39,9 @@ program tb (ifc.bench ds);
 		coverpoint t.text;
 	endgroup
 
+	covergroup cg_key;
+		coverpoint t.key;
+	endgroup
 	cg_reset cov_rst;
 	cg_ld cov_ld;
 	cg_text cov_text;
@@ -63,10 +66,10 @@ program tb (ifc.bench ds);
 		ds.cb.text_in[95:64 ]	<= 	t.text[95:64]; 		
 		ds.cb.text_in[127:96]	<= 	t.text[127:96]; 		
 
-		ds.cb.key[31:0] 	<= 	t.key[0];
-		ds.cb.key[63:32]	<= 	t.key[1]; 		
-		ds.cb.key[95:64 ]	<= 	t.key[2]; 		
-		ds.cb.key[127:96]	<= 	t.key[3]; 			
+		ds.cb.key[31:0] 	<= 	t.key[31:0];
+		ds.cb.key[63:32]	<= 	t.key[63:32]; 		
+		ds.cb.key[95:64 ]	<= 	t.key[95:64]; 		
+		ds.cb.key[127:96]	<= 	t.key[127:96]; 			
 
 
 		send_ld_rst (t.ld, t.rst);
@@ -76,10 +79,10 @@ program tb (ifc.bench ds);
 		rebuild_text(t.text[127:96], 3);
 		rearrange_text();
 
-		rebuild_key(t.key[0], 0);
-		rebuild_key(t.key[1], 1);
-		rebuild_key(t.key[2], 2);
-		rebuild_key(t.key[3], 3);
+		rebuild_key(t.key[31:0], 0);
+		rebuild_key(t.key[63:32], 1);
+		rebuild_key(t.key[95:64], 2);
+		rebuild_key(t.key[127:96], 3);
 		rearrange_key();
 
 		generate_ciphertext();
@@ -99,7 +102,7 @@ program tb (ifc.bench ds);
 		$fdisplay (f, "-----------------");
 		$fdisplay (f, "rst : %b", t.rst );
 		$fdisplay (f, "Key load : %b ", t.ld);
-		$fdisplay (f, "KEY: %h%h%h%h", t.key[3], t.key[2], t.key[1], t.key[0]);
+		$fdisplay (f, "KEY: %h%h%h%h", t.key[127:96], t.key[95:64], t.key[63:32], t.key[31:0]);
 		$fdisplay (f, "TEXT: %h%h%h%h", t.text[127:96], t.text[95:64], t.text[63:32], t.text[31:0]);
 		
 		$fdisplay (f, "Inputs to sbox : ");

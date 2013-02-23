@@ -1,9 +1,8 @@
 
 class aes_transaction;
-//	rand int 	unsigned text[4];
-	rand int 	unsigned key[4];
 
 	rand bit[127:0] text;
+	rand bit[127:0] key;
 	rand bit 	rst;
 	rand bit	ld;
 	bit		done;

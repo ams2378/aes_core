@@ -42,6 +42,7 @@ program tb (ifc.bench ds);
 	covergroup cg_key;
 		coverpoint t.key;
 	endgroup
+
 	cg_reset cov_rst;
 	cg_ld cov_ld;
 	cg_text cov_text;
@@ -166,6 +167,7 @@ program tb (ifc.bench ds);
 	cov_rst.stop();
 	cov_ld.stop();
 	cov_text.stop();
+	cov_key.stop();
 
 	$display("RST	: Instance coverage is %e",cov_rst.get_coverage());
 	$display("LD	: Instance coverage is %e",cov_ld.get_coverage());

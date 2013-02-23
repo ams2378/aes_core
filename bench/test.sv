@@ -45,6 +45,7 @@ program tb (ifc.bench ds);
 	cg_reset cov_rst;
 	cg_ld cov_ld;
 	cg_text cov_text;
+	cg_key cov_key;
 
 	int verbose = 0;
 
@@ -144,6 +145,7 @@ program tb (ifc.bench ds);
 		cov_rst = new();
 		cov_ld = new();
 		cov_text = new();
+		cov_key = new();
 
 		/* warm up */
 		repeat (env.warmup) begin
@@ -164,9 +166,12 @@ program tb (ifc.bench ds);
 	cov_rst.stop();
 	cov_ld.stop();
 	cov_text.stop();
-	$display("Instance coverage is %e",cov_rst.get_coverage());
-	$display("Instance coverage is %e",cov_ld.get_coverage());
-	$display("Instance coverage is %e",cov_text.get_coverage());
+
+	$display("RST	: Instance coverage is %e",cov_rst.get_coverage());
+	$display("LD	: Instance coverage is %e",cov_ld.get_coverage());
+	$display("TEXT	: Instance coverage is %e",cov_text.get_coverage());
+	$display("KEY	: Instance coverage is %e",cov_key.get_coverage());
+
 	end
 
 

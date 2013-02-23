@@ -36,7 +36,7 @@ program tb (ifc.bench ds);
 	endgroup
 
 	covergroup cg_text;
-		coverpoint t.text[1];
+		coverpoint t.text;
 	endgroup
 
 	cg_reset cov_rst;
@@ -100,7 +100,7 @@ program tb (ifc.bench ds);
 		$fdisplay (f, "rst : %b", t.rst );
 		$fdisplay (f, "Key load : %b ", t.ld);
 		$fdisplay (f, "KEY: %h%h%h%h", t.key[3], t.key[2], t.key[1], t.key[0]);
-//		$fdisplay (f, "TEXT: %h%h%h%h", t.text[3], t.text[2], t.text[1], t.text[0]);
+		$fdisplay (f, "TEXT: %h%h%h%h", t.text[127:96], t.text[95:64], t.text[63:32], t.text[31:0]);
 		
 		$fdisplay (f, "Inputs to sbox : ");
 		$fdisplay (f, "------------------");

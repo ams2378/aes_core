@@ -36,11 +36,11 @@ program tb (ifc.bench ds);
 	endgroup
 
 	covergroup cg_text;
-		coverpoint t.text;
+		coverpoint t.text[127:0];
 	endgroup
 
 	covergroup cg_key;
-		coverpoint t.key;
+		coverpoint t.key[127:0];
 	endgroup
 
 	cg_reset 	cov_rst;

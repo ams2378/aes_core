@@ -58,10 +58,10 @@ program tb (ifc.bench ds);
 	
 		ds.cb.rst		<= 	t.rst;	
 		ds.cb.ld		<= 	t.ld;
-		ds.cb.text_in[31:0] 	<= 	t.text[0];
-		ds.cb.text_in[63:32]	<= 	t.text[1]; 
-		ds.cb.text_in[95:64 ]	<= 	t.text[2]; 		
-		ds.cb.text_in[127:96]	<= 	t.text[3]; 		
+		ds.cb.text_in[31:0] 	<= 	t.text[31:0];
+		ds.cb.text_in[63:32]	<= 	t.text[63:32]; 
+		ds.cb.text_in[95:64 ]	<= 	t.text[95:64]; 		
+		ds.cb.text_in[127:96]	<= 	t.text[127:96]; 		
 
 		ds.cb.key[31:0] 	<= 	t.key[0];
 		ds.cb.key[63:32]	<= 	t.key[1]; 		
@@ -70,10 +70,10 @@ program tb (ifc.bench ds);
 
 
 		send_ld_rst (t.ld, t.rst);
-		rebuild_text(t.text[0], 0);
-		rebuild_text(t.text[1], 1);
-		rebuild_text(t.text[2], 2);
-		rebuild_text(t.text[3], 3);
+		rebuild_text(t.text[31:0], 0);
+		rebuild_text(t.text[63:32], 1);
+		rebuild_text(t.text[95:64], 2);
+		rebuild_text(t.text[127:96], 3);
 		rearrange_text();
 
 		rebuild_key(t.key[0], 0);
@@ -100,7 +100,7 @@ program tb (ifc.bench ds);
 		$fdisplay (f, "rst : %b", t.rst );
 		$fdisplay (f, "Key load : %b ", t.ld);
 		$fdisplay (f, "KEY: %h%h%h%h", t.key[3], t.key[2], t.key[1], t.key[0]);
-		$fdisplay (f, "TEXT: %h%h%h%h", t.text[3], t.text[2], t.text[1], t.text[0]);
+//		$fdisplay (f, "TEXT: %h%h%h%h", t.text[3], t.text[2], t.text[1], t.text[0]);
 		
 		$fdisplay (f, "Inputs to sbox : ");
 		$fdisplay (f, "------------------");
@@ -123,8 +123,8 @@ program tb (ifc.bench ds);
 		$fdisplay (f, "Result from GoldenModel : %h%h%h%h ", ctext[3], ctext[2], ctext[1], ctext[0]);	
 		$fdisplay (f, "Result from DUT : %h%h%h%h ", ds.cb.text_out[127:96], ds.cb.text_out[95:64], ds.cb.text_out[63:32], ds.cb.text_out[31:0]);
 
-		checker.check_result(ds.cb.text_out[31:0],  ds.cb.text_out[63:32], ds.cb.text_out[95:64],  
-				     ds.cb.text_out[127:96], ds.cb.done, ctext, t.done, t.status, rst_chk);
+//		checker.check_result(ds.cb.text_out[31:0],  ds.cb.text_out[63:32], ds.cb.text_out[95:64],  
+//				     ds.cb.text_out[127:96], ds.cb.done, ctext, t.done, t.status, rst_chk);
 
 
 	@(ds.cb);

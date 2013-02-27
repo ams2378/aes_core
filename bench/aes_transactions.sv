@@ -2,10 +2,10 @@
 class aes_transaction;
 
 //	rand bit[127:0] text;
-//	rand bit[127:0] key;
+	rand bit[127:0] key;
 
 	rand int 	text[4];
-	rand int	key[4];
+//	rand int	key[4];
 	rand bit 	rst;
 	rand bit	ld;
 	bit		done;

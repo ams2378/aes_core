@@ -150,16 +150,16 @@ program tb (ifc.bench ds);
 		cov_text = new();
 		cov_key = new();
 		
-		if (env.single_key == 1) begin 
-			t.const_key = 1; 
-		end
-
 		/* warm up */
 		repeat (env.warmup) begin
 			do_cycle();
 		end
 
 		t = new( env.ld_density, env.reset_density );
+
+		if (env.single_key == 1) begin 
+			t.const_key = 1; 
+		end
 
 		$fdisplay (f, " VALIDATON SUITE FOR AES CORE - ELEN 6321");
 

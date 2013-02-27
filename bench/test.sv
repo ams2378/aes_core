@@ -53,6 +53,11 @@ program tb (ifc.bench ds);
 	task do_cycle;
 
 		t.randomize();
+
+
+		if (t.const_key == 1) begin
+			t.key = 128'h20f04193bd83c6bc82ad5b2b65140618; 
+		end
 		
 		//send text/key to dut and software
 

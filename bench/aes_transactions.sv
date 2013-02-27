@@ -11,6 +11,8 @@ class aes_transaction;
 	bit		done;
 	int		status;
 
+	int		const_key;
+
 	int 		ld_density;
 	int		rst_density;
 
@@ -28,5 +30,8 @@ class aes_transaction;
 		(status != 0) -> (ld == 0);
 	}
 
+	constraint ld_status {
+		(const_key == 1) -> (key[0] == 1695811096, key[1] =2192399147, key[2] =3179529916, key[3] = 552616339);
+	}
 endclass
 

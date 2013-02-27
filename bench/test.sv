@@ -63,16 +63,10 @@ program tb (ifc.bench ds);
 	
 		ds.cb.rst		<= 	t.rst;	
 		ds.cb.ld		<= 	t.ld;
-		ds.cb.text_in[31:0] 	<= 	t.text[0];
-		ds.cb.text_in[63:32]	<= 	t.text[1]; 
-		ds.cb.text_in[95:64 ]	<= 	t.text[2]; 		
-		ds.cb.text_in[127:96]	<= 	t.text[3]; 		
-
 		ds.cb.key[31:0] 	<= 	t.key[0];
 		ds.cb.key[63:32]	<= 	t.key[1]; 		
 		ds.cb.key[95:64 ]	<= 	t.key[2]; 		
 		ds.cb.key[127:96]	<= 	t.key[3]; 			
-
 
 		send_ld_rst (t.ld, t.rst);
 		rebuild_text(t.text[0], 0);
@@ -149,6 +143,10 @@ program tb (ifc.bench ds);
 		cov_ld = new();
 		cov_text = new();
 		cov_key = new();
+		
+		if (single_key == 1) begin 
+			t.const_key = 1; 
+		end
 
 		/* warm up */
 		repeat (env.warmup) begin

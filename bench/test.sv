@@ -36,11 +36,11 @@ program tb (ifc.bench ds);
 	endgroup
 
 	covergroup cg_text;
-		coverpoint t.text[127:0];
+		coverpoint t.text[0];
 	endgroup
 
 	covergroup cg_key;
-		coverpoint t.key[127:0];
+		coverpoint t.key[0];
 	endgroup
 
 	cg_reset 	cov_rst;
@@ -63,28 +63,28 @@ program tb (ifc.bench ds);
 	
 		ds.cb.rst		<= 	t.rst;	
 		ds.cb.ld		<= 	t.ld;
-		ds.cb.text_in[31:0] 	<= 	t.text[31:0];
-		ds.cb.text_in[63:32]	<= 	t.text[63:32]; 
-		ds.cb.text_in[95:64 ]	<= 	t.text[95:64]; 		
-		ds.cb.text_in[127:96]	<= 	t.text[127:96]; 		
+		ds.cb.text_in[31:0] 	<= 	t.text[0];
+		ds.cb.text_in[63:32]	<= 	t.text[1]; 
+		ds.cb.text_in[95:64 ]	<= 	t.text[2]; 		
+		ds.cb.text_in[127:96]	<= 	t.text[3]; 		
 
-		ds.cb.key[31:0] 	<= 	t.key[31:0];
-		ds.cb.key[63:32]	<= 	t.key[63:32]; 		
-		ds.cb.key[95:64 ]	<= 	t.key[95:64]; 		
-		ds.cb.key[127:96]	<= 	t.key[127:96]; 			
+		ds.cb.key[31:0] 	<= 	t.key[0];
+		ds.cb.key[63:32]	<= 	t.key[1]; 		
+		ds.cb.key[95:64 ]	<= 	t.key[2]; 		
+		ds.cb.key[127:96]	<= 	t.key[3]; 			
 
 
 		send_ld_rst (t.ld, t.rst);
-		rebuild_text(t.text[31:0], 0);
-		rebuild_text(t.text[63:32], 1);
-		rebuild_text(t.text[95:64], 2);
-		rebuild_text(t.text[127:96], 3);
+		rebuild_text(t.text[0], 0);
+		rebuild_text(t.text[1], 1);
+		rebuild_text(t.text[2], 2);
+		rebuild_text(t.text[3], 3);
 		rearrange_text();
 
-		rebuild_key(t.key[31:0], 0);
-		rebuild_key(t.key[63:32], 1);
-		rebuild_key(t.key[95:64], 2);
-		rebuild_key(t.key[127:96], 3);
+		rebuild_key(t.key[0], 0);
+		rebuild_key(t.key[1], 1);
+		rebuild_key(t.key[2], 2);
+		rebuild_key(t.key[3], 3);
 		rearrange_key();
 
 		generate_ciphertext();
@@ -104,22 +104,22 @@ program tb (ifc.bench ds);
 		$fdisplay (f, "-----------------");
 		$fdisplay (f, "rst : %b", t.rst );
 		$fdisplay (f, "Key load : %b ", t.ld);
-		$fdisplay (f, "KEY: %h%h%h%h", t.key[127:96], t.key[95:64], t.key[63:32], t.key[31:0]);
-		$fdisplay (f, "TEXT: %h%h%h%h", t.text[127:96], t.text[95:64], t.text[63:32], t.text[31:0]);
+		$fdisplay (f, "KEY: %h%h%h%h", t.key[3], t.key[2], t.key[1], t.key[0]);
+		$fdisplay (f, "TEXT: %h%h%h%h", t.text[3], t.text[2], t.text[1], t.text[0]);
 		
 		$fdisplay (f, "Inputs to sbox : ");
 		$fdisplay (f, "------------------");
-		$fdisplay (f, "S00 S01 S02 S03 : %h %h %h %h", ds.cb.sa00, ds.cb.sa01, ds.cb.sa02, ds.cb.sa03);
-		$fdisplay (f, "S10 S11 S12 S13 : %h %h %h %h", ds.cb.sa10, ds.cb.sa11, ds.cb.sa12, ds.cb.sa13);
-		$fdisplay (f, "S20 S21 S22 S23 : %h %h %h %h", ds.cb.sa20, ds.cb.sa21, ds.cb.sa22, ds.cb.sa23);
-		$fdisplay (f, "S30 S31 S32 S33 : %h %h %h %h", ds.cb.sa30, ds.cb.sa31, ds.cb.sa32, ds.cb.sa33);
+		$fdisplay (f, "S00 S01 S02 S03 : %b %b %b %b", ds.cb.sa00, ds.cb.sa01, ds.cb.sa02, ds.cb.sa03);
+		$fdisplay (f, "S10 S11 S12 S13 : %b %b %b %b", ds.cb.sa10, ds.cb.sa11, ds.cb.sa12, ds.cb.sa13);
+		$fdisplay (f, "S20 S21 S22 S23 : %b %b %b %b", ds.cb.sa20, ds.cb.sa21, ds.cb.sa22, ds.cb.sa23);
+		$fdisplay (f, "S30 S31 S32 S33 : %b %b %b %b", ds.cb.sa30, ds.cb.sa31, ds.cb.sa32, ds.cb.sa33);
 
 		$fdisplay (f, "Outputs from sbox : ");
 		$fdisplay (f, "--------------------");
-		$fdisplay (f, "S00_SUB S01_SUB S02_SUB S03_SUB : %h %h %h %h", ds.cb.sa00_sub, ds.cb.sa01_sub, ds.cb.sa02_sub, ds.cb.sa03_sub);
-		$fdisplay (f, "S10_SUB S11_SUB S12_SUB S13_SUB : %h %h %h %h", ds.cb.sa10_sub, ds.cb.sa11_sub, ds.cb.sa12_sub, ds.cb.sa13_sub);
-		$fdisplay (f, "S20_SUB S21_SUB S22_SUB S23_SUB : %h %h %h %h", ds.cb.sa20_sub, ds.cb.sa21_sub, ds.cb.sa22_sub, ds.cb.sa23_sub);
-		$fdisplay (f, "S30_SUB S31_SUB S32_SUB S33_SUB : %h %h %h %h", ds.cb.sa30_sub, ds.cb.sa31_sub, ds.cb.sa32_sub, ds.cb.sa33_sub);
+		$fdisplay (f, "S00_SUB S01_SUB S02_SUB S03_SUB : %b %b %b %b", ds.cb.sa00_sub, ds.cb.sa01_sub, ds.cb.sa02_sub, ds.cb.sa03_sub);
+		$fdisplay (f, "S10_SUB S11_SUB S12_SUB S13_SUB : %b %b %b %b", ds.cb.sa10_sub, ds.cb.sa11_sub, ds.cb.sa12_sub, ds.cb.sa13_sub);
+		$fdisplay (f, "S20_SUB S21_SUB S22_SUB S23_SUB : %b %b %b %b", ds.cb.sa20_sub, ds.cb.sa21_sub, ds.cb.sa22_sub, ds.cb.sa23_sub);
+		$fdisplay (f, "S30_SUB S31_SUB S32_SUB S33_SUB : %b %b %b %b", ds.cb.sa30_sub, ds.cb.sa31_sub, ds.cb.sa32_sub, ds.cb.sa33_sub);
 
 		$fdisplay (f, "Final Outputs:");
 		$fdisplay (f, "--------------------");

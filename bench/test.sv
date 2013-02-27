@@ -144,7 +144,7 @@ program tb (ifc.bench ds);
 		cov_text = new();
 		cov_key = new();
 		
-		if (single_key == 1) begin 
+		if (env.single_key == 1) begin 
 			t.const_key = 1; 
 		end
 

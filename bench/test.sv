@@ -72,6 +72,10 @@ program tb (ifc.bench ds);
 		ds.cb.key[63:32]	<= 	t.key[63:32]; 		
 		ds.cb.key[95:64 ]	<= 	t.key[95:64]; 		
 		ds.cb.key[127:96]	<= 	t.key[127:96]; 			
+		ds.cb.text_in[31:0] 	<= 	t.text[0];
+		ds.cb.text_in[63:32]	<= 	t.text[1]; 
+		ds.cb.text_in[95:64 ]	<= 	t.text[2]; 		
+		ds.cb.text_in[127:96]	<= 	t.text[3]; 		
 
 		send_ld_rst (t.ld, t.rst);
 		rebuild_text(t.text[0], 0);

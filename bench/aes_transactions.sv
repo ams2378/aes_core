@@ -30,9 +30,5 @@ class aes_transaction;
 		(status != 0) -> (ld == 0);
 	}
 
-/*	constraint single_key {
-		(const_key != 0) -> (key = 128'h20f04193bd83c6bc82ad5b2b65140618);
-	}
-*/
 endclass
 

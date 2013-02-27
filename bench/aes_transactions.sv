@@ -31,7 +31,22 @@ class aes_transaction;
 	}
 
 	constraint ld_status {
-		(const_key == 1) -> (key[0] == 1695811096; key[1] =2192399147; key[2] =3179529916; key[3] = 552616339);
+		(const_key == 1) -> (key[0] == 1695811096);
 	}
+
+	constraint ld_status {
+		(const_key == 1) -> (key[1] =2192399147);
+	}
+
+	constraint ld_status {
+		(const_key == 1) -> (key[2] =3179529916);
+	}
+
+	constraint ld_status {
+		(const_key == 1) -> (key[3] = 552616339);
+	}
+
+
+
 endclass
 

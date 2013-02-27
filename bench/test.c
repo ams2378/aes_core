@@ -53,7 +53,7 @@ void send_ld_rst (int l, int rt) {
 
 	ld = l;
 
-	if (rst == 0 && status != 13 ){
+	if (rst == 0 && status != 14 ){
 		status = 0;
 	} 
 

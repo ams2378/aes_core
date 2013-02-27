@@ -1,6 +1,7 @@
 class aes_env;
     int max_transactions;
     int warmup;
+    int warmup_rst;
     bit verbose;
     int reset_density, ld_density;
 
@@ -29,7 +30,9 @@ class aes_env;
 	    else if("MAX_TRAN" == param) begin
 		max_transactions = value;
 	    end
-            else begin
+ 	    else if("WARMUP_RST" == param) begin
+		warmup_rst = value;
+	    end           else begin
                 $display("Never heard of a: %s", param);
                 $exit();
             end

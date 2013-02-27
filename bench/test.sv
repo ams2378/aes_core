@@ -138,11 +138,11 @@ program tb (ifc.bench ds);
 
 
 	initial begin
-		t = new( 60, 30 );
 		checker = new();
 		env = new();
 		env.configure("configure.txt");
 
+		t = new( 60, env.warmup_rst );
 		cov_rst = new();
 		cov_ld = new();
 		cov_text = new();

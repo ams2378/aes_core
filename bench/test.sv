@@ -138,6 +138,8 @@ program tb (ifc.bench ds);
 
 
 	initial begin
+
+		f = $fopen ("log.txt");
 		checker = new();
 		env = new();
 		env.configure("configure.txt");
@@ -153,7 +155,6 @@ program tb (ifc.bench ds);
 			do_cycle();
 		end
 
-		f = $fopen ("log.txt");
 		t = new( env.ld_density, env.reset_density );
 
 		$fdisplay (f, " VALIDATON SUITE FOR AES CORE - ELEN 6321");

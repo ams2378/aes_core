@@ -66,7 +66,7 @@ void send_ld_rst (int l, int rt) {
 	tmp_rst == 1;
 
 	rst = rt;
-	printf (" status and rst : %d%d", status, rst);
+//	printf (" status and rst : %d%d", status, rst);
 }
 
 void rebuild_text(word t_state, int i) {

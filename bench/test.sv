@@ -117,8 +117,8 @@ program tb (ifc.bench ds);
 		$fdisplay (f,"Encryption Number : %0d" , en_num);
 		$fdisplay (f,"Inputs :");
 		$fdisplay (f,"-----------------");
-		$fdisplay (g,"KEY: %h%h%h%h", t.key[127:96], t.key[95:64], t.key[63:32], t.key[31:0]);
-		$fdisplay (g,"TEXT: %h%h%h%h", t.text[3], t.text[2], t.text[1], t.text[0]);
+		$fdisplay (f,"KEY: %h%h%h%h", t.key[127:96], t.key[95:64], t.key[63:32], t.key[31:0]);
+		$fdisplay (f,"TEXT: %h%h%h%h", t.text[3], t.text[2], t.text[1], t.text[0]);
 		$fdisplay (f,"rst : %b", t.rst );
 		$fdisplay (f,"Key load : %b ", t.ld);
 

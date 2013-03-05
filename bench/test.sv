@@ -100,6 +100,10 @@ program tb (ifc.bench ds);
 		t.done   = get_done();
 		t.status = get_status();	
 
+
+		if (ds.cb.done == 1) begin v = v + 1; end
+
+
 		$fdisplay (f, "\n");
 
 		$fdisplay (f, "------------- Simulation Time ----------------- %t", $realtime );
@@ -203,13 +207,6 @@ program tb (ifc.bench ds);
 
 
 	initial begin
-/*
-		string filename = "log.txt";
-		int veriable = 1;
-		string v = veriable;
-		string filet = {filename, veriable};
-		f = $fopen (filet);
-*/
 
 		int v = 1;
 		string s;

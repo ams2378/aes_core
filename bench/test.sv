@@ -56,8 +56,8 @@ program tb (ifc.bench ds);
 	task do_cycle;
 
 
-		s = $sformatf("/log_%0d.txt", v);		
-		f[v] = $fopen ( {dir, s}, "w" );
+//		s = $sformatf("/log_%0d.txt", v);		
+//		f[v] = $fopen ( {dir, s}, "w" );
 
 
 		t.randomize();
@@ -243,6 +243,8 @@ program tb (ifc.bench ds);
 	//	$fdisplay (f[v]," VALIDATON SUITE FOR AES CORE - ELEN 6321");
 
 		repeat(env.max_transactions) begin
+			s = $sformatf("/log_%0d.txt", v);		
+			f[v] = $fopen ( {dir, s}, "w" );
 			do_cycle();
 			cov_rst.sample();
 			cov_ld.sample();

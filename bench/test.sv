@@ -27,6 +27,7 @@ program tb (ifc.bench ds);
 
 	integer f;
 	integer v = 1;
+	integer en_num = 1;
 	string s;
 	string dir = "logs";
 
@@ -109,6 +110,13 @@ program tb (ifc.bench ds);
 		$fdisplay (f[v],"\n");
 
 		$fdisplay (f,"------------- Simulation Time ----------------- %t", $realtime );
+
+		if ( t.ld == 1 && t.rst == 1) begin 
+			en_num = en_num + 1;
+		end
+
+		$fdisplay (f,"Encryption Number : %0d" , en_num);
+
 		$fdisplay (f,"Inputs :");
 		$fdisplay (f,"-----------------");
 		$fdisplay (f,"rst : %b", t.rst );

@@ -217,7 +217,7 @@ program tb (ifc.bench ds);
 	initial begin
 
 //		s = $sformatf("/log_%0d.txt", v);		
-//		f = $fopen ( {dir, s});
+//		f = $fopen ( {dir, s}, "w");
 
 		checker = new();
 		env = new();

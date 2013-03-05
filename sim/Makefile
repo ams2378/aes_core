@@ -17,11 +17,11 @@ test:
 	./$(BENCH)
 
 view:
-#	dve -full64 -vpd vcdplus.vpd &
+	dve -full64 -vpd vcdplus.vpd &
 
 gtkwave:
-#	vcs -vpd2vcd vcdplus.vpd waveform.vcd
-#	gtkwave waveform.vcd &
+	vcs -vpd2vcd vcdplus.vpd waveform.vcd
+	gtkwave waveform.vcd &
 
 #leda:
 #	leda -full64 -sverilog -top $(DUV) $(DUV4).sv $(DUV42).sv $(DUV16).sv $(DUV41).sv $(DUV43).sv $(DUV).sv

@@ -4,7 +4,6 @@
 
 module aes_top(ifc.dut d);
 
-
 	aes_cipher_top cipher (
 			.clk(d.clk),	
 			.rst(d.rst),

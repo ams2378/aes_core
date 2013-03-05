@@ -203,16 +203,18 @@ program tb (ifc.bench ds);
 
 
 	initial begin
-
+/*
 		string filename = "log.txt";
-
 		int veriable = 1;
-
 		string v = veriable;
-
 		string filet = {filename, veriable};
-		
 		f = $fopen (filet);
+*/
+
+		int v = 1;
+		string s;
+		$sformatf(s, "log_%d.txt");		
+		f = $fopen (s);
 
 //		f = $fopen ("log.txt");
 		checker = new();

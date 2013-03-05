@@ -57,7 +57,7 @@ program tb (ifc.bench ds);
 
 
 		s = $sformatf("/log_%0d.txt", v);		
-		f[v] = $fopen ( {dir, s});
+		f[v] = $fopen ( {dir, s}, "w" };
 
 
 		t.randomize();

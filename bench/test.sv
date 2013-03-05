@@ -136,7 +136,7 @@ program tb (ifc.bench ds);
 		$fdisplay (f, "a_S22 : %b %b %b %b %b %b %b %b", ds.cb.sa22[7], ds.cb.sa22[6], ds.cb.sa22[5], ds.cb.sa22[4],
 								 ds.cb.sa22[3], ds.cb.sa22[2], ds.cb.sa22[1], ds.cb.sa22[0]);
 		$fdisplay (f, "a_S23 : %b %b %b %b %b %b %b %b", ds.cb.sa23[7], ds.cb.sa23[6], ds.cb.sa23[5], ds.cb.sa23[4],
-
+								 ds.cb.sa23[3], ds.cb.sa23[2], ds.cb.sa23[1], ds.cb.sa23[0]);
 		$fdisplay (f, "a_S30 : %b %b %b %b %b %b %b %b", ds.cb.sa30[7], ds.cb.sa30[6], ds.cb.sa30[5], ds.cb.sa30[4],
 								 ds.cb.sa30[3], ds.cb.sa30[2], ds.cb.sa30[1], ds.cb.sa30[0]);
 		$fdisplay (f, "a_S31 : %b %b %b %b %b %b %b %b", ds.cb.sa31[7], ds.cb.sa31[6], ds.cb.sa31[5], ds.cb.sa31[4],
@@ -144,6 +144,7 @@ program tb (ifc.bench ds);
 		$fdisplay (f, "a_S32 : %b %b %b %b %b %b %b %b", ds.cb.sa32[7], ds.cb.sa32[6], ds.cb.sa32[5], ds.cb.sa32[4],
 								 ds.cb.sa32[3], ds.cb.sa32[2], ds.cb.sa32[1], ds.cb.sa32[0]);
 		$fdisplay (f, "a_S33 : %b %b %b %b %b %b %b %b", ds.cb.sa33[7], ds.cb.sa33[6], ds.cb.sa33[5], ds.cb.sa33[4],
+								 ds.cb.sa33[3], ds.cb.sa33[2], ds.cb.sa33[1], ds.cb.sa33[0]);
 
 
 		$fdisplay (f, "Outputs from sbox : ");

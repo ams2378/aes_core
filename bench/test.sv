@@ -111,8 +111,7 @@ program tb (ifc.bench ds);
 		$fdisplay (f, "TEXT: %h%h%h%h", t.text[3], t.text[2], t.text[1], t.text[0]);
 		
 		$fdisplay (f, "Inputs to sbox : ");
-		$fdisplay (f, "------------------");
-		
+
 		$fdisplay (f, "ROUND : %d ", ds.cb.dcnt);
 
 		$fdisplay (f, "a_S00 : %b %b %b %b %b %b %b %b", ds.cb.sa00[7], ds.cb.sa00[6], ds.cb.sa00[5], ds.cb.sa00[4],
@@ -205,7 +204,11 @@ program tb (ifc.bench ds);
 
 	initial begin
 
-		f = $fopen ("log.txt");
+		string filename = "log.txt";
+
+		f = $fopen (filename);
+
+//		f = $fopen ("log.txt");
 		checker = new();
 		env = new();
 		env.configure("configure.txt");

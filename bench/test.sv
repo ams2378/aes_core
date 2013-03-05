@@ -109,7 +109,7 @@ program tb (ifc.bench ds);
 		t.status = get_status();	
 
 
-		if (ds.cb.done == 1) begin v = v + 1; end
+	//	if (ds.cb.done == 1) begin v = v + 1; end
 
 
 		$fdisplay (f[v],"\n");

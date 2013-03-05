@@ -26,6 +26,7 @@ program tb (ifc.bench ds);
 	int rst_chk;
 
 	integer f;
+	integer v;
 
 	covergroup cg_reset;
 		coverpoint t.rst;
@@ -208,7 +209,7 @@ program tb (ifc.bench ds);
 
 	initial begin
 
-		int v = 1;
+		v = 1;
 		string s;
 		string dir = "logs";
 		s = $sformatf("/log_%0d.txt", v);		

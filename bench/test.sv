@@ -26,7 +26,7 @@ program tb (ifc.bench ds);
 	int rst_chk;
 
 	integer f;
-	integer v;
+	integer v = 1;
 	string s;
 	string dir = "logs";
 
@@ -54,6 +54,11 @@ program tb (ifc.bench ds);
 	int verbose = 0;
 
 	task do_cycle;
+
+
+		s = $sformatf("/log_%0d.txt", v);		
+		f = $fopen ( {dir, s});
+
 
 		t.randomize();
 
@@ -211,12 +216,9 @@ program tb (ifc.bench ds);
 
 	initial begin
 
-		v = 1;
+//		s = $sformatf("/log_%0d.txt", v);		
+//		f = $fopen ( {dir, s});
 
-		s = $sformatf("/log_%0d.txt", v);		
-		f = $fopen ( {dir, s});
-
-//		f = $fopen ("log.txt");
 		checker = new();
 		env = new();
 		env.configure("configure.txt");

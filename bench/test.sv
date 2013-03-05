@@ -57,7 +57,6 @@ program tb (ifc.bench ds);
 
 		t.randomize();
 
-
 		if (t.const_key == 1) begin
 			t.key = 128'h20f04193bd83c6bc82ad5b2b65140618; 
 		end
@@ -211,9 +210,6 @@ program tb (ifc.bench ds);
 
 	initial begin
 
-		s = $sformatf("/log_%0d.txt", v);		
-		f = $fopen ({dir, s});
-
 		checker = new();
 		env = new();
 		env.configure("configure.txt");
@@ -228,6 +224,9 @@ program tb (ifc.bench ds);
 		repeat (env.warmup) begin
 			do_cycle();
 		end
+
+		s = $sformatf("/log_%0d.txt", v);		
+		f = $fopen ({dir, s});
 
 		t = new( env.ld_density, env.reset_density );
 

@@ -210,7 +210,7 @@ program tb (ifc.bench ds);
 
 		string v = veriable;
 
-		string filet = {filename, variable};
+		string filet = {filename, veriable};
 		
 		f = $fopen (filet);
 

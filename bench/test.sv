@@ -149,7 +149,7 @@ program tb (ifc.bench ds);
 
 		$fdisplay (f, "Outputs from sbox : ");
 		$fdisplay (f, "------------------");
-		$fdisplay (f, "d_S00_sub : %b %b %b %b %b %b %b %b", ds.cb.sa00_sub_sub[7], ds.cb.sa00_sub[6], ds.cb.sa00_sub[5], ds.cb.sa00_sub[4],
+		$fdisplay (f, "d_S00_sub : %b %b %b %b %b %b %b %b", ds.cb.sa00_sub[7], ds.cb.sa00_sub[6], ds.cb.sa00_sub[5], ds.cb.sa00_sub[4],
 								 ds.cb.sa00_sub[3], ds.cb.sa00_sub[2], ds.cb.sa00_sub[1], ds.cb.sa00_sub[0]);
 		$fdisplay (f, "d_S01_sub : %b %b %b %b %b %b %b %b", ds.cb.sa01_sub[7], ds.cb.sa01_sub[6], ds.cb.sa01_sub[5], ds.cb.sa01_sub[4],
 								 ds.cb.sa01_sub[3], ds.cb.sa01_sub[2], ds.cb.sa01_sub[1], ds.cb.sa01_sub[0]);

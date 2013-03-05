@@ -27,6 +27,8 @@ program tb (ifc.bench ds);
 
 	integer f;
 	integer v;
+	string s;
+	string dir = "logs";
 
 	covergroup cg_reset;
 		coverpoint t.rst;
@@ -210,8 +212,7 @@ program tb (ifc.bench ds);
 	initial begin
 
 		v = 1;
-		string s;
-		string dir = "logs";
+
 		s = $sformatf("/log_%0d.txt", v);		
 		f = $fopen ( {dir, s});
 

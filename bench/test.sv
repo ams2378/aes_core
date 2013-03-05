@@ -213,7 +213,7 @@ program tb (ifc.bench ds);
 
 		int v = 1;
 		string s;
-		$sformatf(s, "log_%d.txt");		
+		$sformatf(s, "log_%d.txt", v);		
 		f = $fopen (s);
 
 //		f = $fopen ("log.txt");

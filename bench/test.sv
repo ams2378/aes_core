@@ -113,48 +113,74 @@ program tb (ifc.bench ds);
 		$fdisplay (f, "Inputs to sbox : ");
 		$fdisplay (f, "------------------");
 		$fdisplay (f, "a_S00 : %b %b %b %b %b %b %b %b", ds.cb.sa00[7], ds.cb.sa00[6], ds.cb.sa00[5], ds.cb.sa00[4],
-								 ds.cb.sa00[3],ds.cb.sa00[2],ds.cb.sa00[1],ds.cb.sa00[0]);
-		$fdisplay (f, "a_S01 : %b ", ds.cb.sa01);
-		$fdisplay (f, "a_S02 : %b ", ds.cb.sa02);
-		$fdisplay (f, "a_S03 : %b ", ds.cb.sa03);
+								 ds.cb.sa00[3], ds.cb.sa00[2], ds.cb.sa00[1], ds.cb.sa00[0]);
+		$fdisplay (f, "a_S01 : %b %b %b %b %b %b %b %b", ds.cb.sa01[7], ds.cb.sa01[6], ds.cb.sa01[5], ds.cb.sa01[4],
+								 ds.cb.sa01[3], ds.cb.sa01[2], ds.cb.sa01[1], ds.cb.sa01[0]);
+		$fdisplay (f, "a_S02 : %b %b %b %b %b %b %b %b", ds.cb.sa02[7], ds.cb.sa02[6], ds.cb.sa02[5], ds.cb.sa02[4],
+								 ds.cb.sa02[3], ds.cb.sa02[2], ds.cb.sa02[1], ds.cb.sa02[0]);
+		$fdisplay (f, "a_S03 : %b %b %b %b %b %b %b %b", ds.cb.sa03[7], ds.cb.sa03[6], ds.cb.sa03[5], ds.cb.sa03[4],
+								 ds.cb.sa03[3], ds.cb.sa03[2], ds.cb.sa03[1], ds.cb.sa03[0]);
+		$fdisplay (f, "a_S10 : %b %b %b %b %b %b %b %b", ds.cb.sa10[7], ds.cb.sa10[6], ds.cb.sa10[5], ds.cb.sa10[4],
+								 ds.cb.sa10[3], ds.cb.sa10[2], ds.cb.sa10[1], ds.cb.sa10[0]);
+		$fdisplay (f, "a_S11 : %b %b %b %b %b %b %b %b", ds.cb.sa11[7], ds.cb.sa11[6], ds.cb.sa11[5], ds.cb.sa11[4],
+								 ds.cb.sa11[3], ds.cb.sa11[2], ds.cb.sa11[1], ds.cb.sa11[0]);
+		$fdisplay (f, "a_S12 : %b %b %b %b %b %b %b %b", ds.cb.sa12[7], ds.cb.sa12[6], ds.cb.sa12[5], ds.cb.sa12[4],
+								 ds.cb.sa12[3], ds.cb.sa12[2], ds.cb.sa12[1], ds.cb.sa12[0]);
+		$fdisplay (f, "a_S13 : %b %b %b %b %b %b %b %b", ds.cb.sa13[7], ds.cb.sa13[6], ds.cb.sa13[5], ds.cb.sa13[4],
+								 ds.cb.sa13[3], ds.cb.sa13[2], ds.cb.sa13[1], ds.cb.sa13[0]);
 
-		$fdisplay (f, "a_S10 : %b ", ds.cb.sa10);
-		$fdisplay (f, "a_S11 : %b ", ds.cb.sa11);
-		$fdisplay (f, "a_S12 : %b ", ds.cb.sa12);
-		$fdisplay (f, "a_S13 : %b ", ds.cb.sa13);
+		$fdisplay (f, "a_S20 : %b %b %b %b %b %b %b %b", ds.cb.sa20[7], ds.cb.sa20[6], ds.cb.sa20[5], ds.cb.sa20[4],
+								 ds.cb.sa20[3], ds.cb.sa20[2], ds.cb.sa20[1], ds.cb.sa20[0]);
+		$fdisplay (f, "a_S21 : %b %b %b %b %b %b %b %b", ds.cb.sa21[7], ds.cb.sa21[6], ds.cb.sa21[5], ds.cb.sa21[4],
+								 ds.cb.sa21[3], ds.cb.sa21[2], ds.cb.sa21[1], ds.cb.sa21[0]);
+		$fdisplay (f, "a_S22 : %b %b %b %b %b %b %b %b", ds.cb.sa22[7], ds.cb.sa22[6], ds.cb.sa22[5], ds.cb.sa22[4],
+								 ds.cb.sa22[3], ds.cb.sa22[2], ds.cb.sa22[1], ds.cb.sa22[0]);
+		$fdisplay (f, "a_S23 : %b %b %b %b %b %b %b %b", ds.cb.sa23[7], ds.cb.sa23[6], ds.cb.sa23[5], ds.cb.sa23[4],
 
-		$fdisplay (f, "a_S20 : %b ", ds.cb.sa20);
-		$fdisplay (f, "a_S21 : %b ", ds.cb.sa21);
-		$fdisplay (f, "a_S22 : %b ", ds.cb.sa22);
-		$fdisplay (f, "a_S23 : %b ", ds.cb.sa23);
-
-		$fdisplay (f, "a_S30 : %b ", ds.cb.sa30);
-		$fdisplay (f, "a_S31 : %b ", ds.cb.sa31);
-		$fdisplay (f, "a_S32 : %b ", ds.cb.sa32);
-		$fdisplay (f, "a_S33 : %b ", ds.cb.sa33);
+		$fdisplay (f, "a_S30 : %b %b %b %b %b %b %b %b", ds.cb.sa30[7], ds.cb.sa30[6], ds.cb.sa30[5], ds.cb.sa30[4],
+								 ds.cb.sa30[3], ds.cb.sa30[2], ds.cb.sa30[1], ds.cb.sa30[0]);
+		$fdisplay (f, "a_S31 : %b %b %b %b %b %b %b %b", ds.cb.sa31[7], ds.cb.sa31[6], ds.cb.sa31[5], ds.cb.sa31[4],
+								 ds.cb.sa31[3], ds.cb.sa31[2], ds.cb.sa31[1], ds.cb.sa31[0]);
+		$fdisplay (f, "a_S32 : %b %b %b %b %b %b %b %b", ds.cb.sa32[7], ds.cb.sa32[6], ds.cb.sa32[5], ds.cb.sa32[4],
+								 ds.cb.sa32[3], ds.cb.sa32[2], ds.cb.sa32[1], ds.cb.sa32[0]);
+		$fdisplay (f, "a_S33 : %b %b %b %b %b %b %b %b", ds.cb.sa33[7], ds.cb.sa33[6], ds.cb.sa33[5], ds.cb.sa33[4],
 
 
 		$fdisplay (f, "Outputs from sbox : ");
 		$fdisplay (f, "------------------");
-		$fdisplay (f, "d_S00_SUB : %b ", ds.cb.sa00_sub);
-		$fdisplay (f, "d_S01_SUB : %b ", ds.cb.sa01_sub);
-		$fdisplay (f, "d_S02_SUB : %b ", ds.cb.sa02_sub);
-		$fdisplay (f, "d_S03_SUB : %b ", ds.cb.sa03_sub);
+		$fdisplay (f, "d_S00_sub : %b %b %b %b %b %b %b %b", ds.cb.sa00_sub_sub[7], ds.cb.sa00_sub[6], ds.cb.sa00_sub[5], ds.cb.sa00_sub[4],
+								 ds.cb.sa00_sub[3], ds.cb.sa00_sub[2], ds.cb.sa00_sub[1], ds.cb.sa00_sub[0]);
+		$fdisplay (f, "d_S01_sub : %b %b %b %b %b %b %b %b", ds.cb.sa01_sub[7], ds.cb.sa01_sub[6], ds.cb.sa01_sub[5], ds.cb.sa01_sub[4],
+								 ds.cb.sa01_sub[3], ds.cb.sa01_sub[2], ds.cb.sa01_sub[1], ds.cb.sa01_sub[0]);
+		$fdisplay (f, "d_S02_sub : %b %b %b %b %b %b %b %b", ds.cb.sa02_sub[7], ds.cb.sa02_sub[6], ds.cb.sa02_sub[5], ds.cb.sa02_sub[4],
+								 ds.cb.sa02_sub[3], ds.cb.sa02_sub[2], ds.cb.sa02_sub[1], ds.cb.sa02_sub[0]);
+		$fdisplay (f, "d_S03_sub : %b %b %b %b %b %b %b %b", ds.cb.sa03_sub[7], ds.cb.sa03_sub[6], ds.cb.sa03_sub[5], ds.cb.sa03_sub[4],
+								 ds.cb.sa03_sub[3], ds.cb.sa03_sub[2], ds.cb.sa03_sub[1], ds.cb.sa03_sub[0]);
+		$fdisplay (f, "d_S10_sub : %b %b %b %b %b %b %b %b", ds.cb.sa10_sub[7], ds.cb.sa10_sub[6], ds.cb.sa10_sub[5], ds.cb.sa10_sub[4],
+								 ds.cb.sa10_sub[3], ds.cb.sa10_sub[2], ds.cb.sa10_sub[1], ds.cb.sa10_sub[0]);
+		$fdisplay (f, "d_S11_sub : %b %b %b %b %b %b %b %b", ds.cb.sa11_sub[7], ds.cb.sa11_sub[6], ds.cb.sa11_sub[5], ds.cb.sa11_sub[4],
+								 ds.cb.sa11_sub[3], ds.cb.sa11_sub[2], ds.cb.sa11_sub[1], ds.cb.sa11_sub[0]);
+		$fdisplay (f, "d_S12_sub : %b %b %b %b %b %b %b %b", ds.cb.sa12_sub[7], ds.cb.sa12_sub[6], ds.cb.sa12_sub[5], ds.cb.sa12_sub[4],
+								 ds.cb.sa12_sub[3], ds.cb.sa12_sub[2], ds.cb.sa12_sub[1], ds.cb.sa12_sub[0]);
+		$fdisplay (f, "d_S13_sub : %b %b %b %b %b %b %b %b", ds.cb.sa13_sub[7], ds.cb.sa13_sub[6], ds.cb.sa13_sub[5], ds.cb.sa13_sub[4],
+								 ds.cb.sa13_sub[3], ds.cb.sa13_sub[2], ds.cb.sa13_sub[1], ds.cb.sa13_sub[0]);
 
-		$fdisplay (f, "d_S10_SUB : %b ", ds.cb.sa10_sub);
-		$fdisplay (f, "d_S11_SUB : %b ", ds.cb.sa11_sub);
-		$fdisplay (f, "d_S12_SUB : %b ", ds.cb.sa12_sub);
-		$fdisplay (f, "d_S13_SUB : %b ", ds.cb.sa13_sub);
+		$fdisplay (f, "d_S20_sub : %b %b %b %b %b %b %b %b", ds.cb.sa20_sub[7], ds.cb.sa20_sub[6], ds.cb.sa20_sub[5], ds.cb.sa20_sub[4],
+								 ds.cb.sa20_sub[3], ds.cb.sa20_sub[2], ds.cb.sa20_sub[1], ds.cb.sa20_sub[0]);
+		$fdisplay (f, "d_S21_sub : %b %b %b %b %b %b %b %b", ds.cb.sa21_sub[7], ds.cb.sa21_sub[6], ds.cb.sa21_sub[5], ds.cb.sa21_sub[4],
+								 ds.cb.sa21_sub[3], ds.cb.sa21_sub[2], ds.cb.sa21_sub[1], ds.cb.sa21_sub[0]);
+		$fdisplay (f, "d_S22_sub : %b %b %b %b %b %b %b %b", ds.cb.sa22_sub[7], ds.cb.sa22_sub[6], ds.cb.sa22_sub[5], ds.cb.sa22_sub[4],
+								 ds.cb.sa22_sub[3], ds.cb.sa22_sub[2], ds.cb.sa22_sub[1], ds.cb.sa22_sub[0]);
+		$fdisplay (f, "d_S23_sub : %b %b %b %b %b %b %b %b", ds.cb.sa23_sub[7], ds.cb.sa23_sub[6], ds.cb.sa23_sub[5], ds.cb.sa23_sub[4],
 
-		$fdisplay (f, "d_S20_SUB : %b ", ds.cb.sa20_sub);
-		$fdisplay (f, "d_S21_SUB : %b ", ds.cb.sa21_sub);
-		$fdisplay (f, "d_S22_SUB : %b ", ds.cb.sa22_sub);
-		$fdisplay (f, "d_S23_SUB : %b ", ds.cb.sa23_sub);
-
-		$fdisplay (f, "d_S30_SUB : %b ", ds.cb.sa30_sub);
-		$fdisplay (f, "d_S31_SUB : %b ", ds.cb.sa31_sub);
-		$fdisplay (f, "d_S32_SUB : %b ", ds.cb.sa32_sub);
-		$fdisplay (f, "d_S33_SUB : %b ", ds.cb.sa33_sub);
+		$fdisplay (f, "d_S30_sub : %b %b %b %b %b %b %b %b", ds.cb.sa30_sub[7], ds.cb.sa30_sub[6], ds.cb.sa30_sub[5], ds.cb.sa30_sub[4],
+								 ds.cb.sa30_sub[3], ds.cb.sa30_sub[2], ds.cb.sa30_sub[1], ds.cb.sa30_sub[0]);
+		$fdisplay (f, "d_S31_sub : %b %b %b %b %b %b %b %b", ds.cb.sa31_sub[7], ds.cb.sa31_sub[6], ds.cb.sa31_sub[5], ds.cb.sa31_sub[4],
+								 ds.cb.sa31_sub[3], ds.cb.sa31_sub[2], ds.cb.sa31_sub[1], ds.cb.sa31_sub[0]);
+		$fdisplay (f, "d_S32_sub : %b %b %b %b %b %b %b %b", ds.cb.sa32_sub[7], ds.cb.sa32_sub[6], ds.cb.sa32_sub[5], ds.cb.sa32_sub[4],
+								 ds.cb.sa32_sub[3], ds.cb.sa32_sub[2], ds.cb.sa32_sub[1], ds.cb.sa32_sub[0]);
+		$fdisplay (f, "d_S33_sub : %b %b %b %b %b %b %b %b", ds.cb.sa33_sub[7], ds.cb.sa33_sub[6], ds.cb.sa33_sub[5], ds.cb.sa33_sub[4],
+								 ds.cb.sa33_sub[3], ds.cb.sa33_sub[2], ds.cb.sa33_sub[1], ds.cb.sa33_sub[0]);
 
 		$fdisplay (f, "Final Outputs:");
 		$fdisplay (f, "--------------------");

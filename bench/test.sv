@@ -107,23 +107,53 @@ program tb (ifc.bench ds);
 		$fdisplay (f, "-----------------");
 		$fdisplay (f, "rst : %b", t.rst );
 		$fdisplay (f, "Key load : %b ", t.ld);
-	//	$fdisplay (f, "KEY: %h%h%h%h", t.key[3], t.key[2], t.key[1], t.key[0]);
 		$fdisplay (f, "KEY: %h%h%h%h", t.key[127:96], t.key[95:64], t.key[63:32], t.key[31:0]);
 		$fdisplay (f, "TEXT: %h%h%h%h", t.text[3], t.text[2], t.text[1], t.text[0]);
 		
 		$fdisplay (f, "Inputs to sbox : ");
 		$fdisplay (f, "------------------");
-		$fdisplay (f, "S00 S01 S02 S03 : %b %b %b %b", ds.cb.sa00, ds.cb.sa01, ds.cb.sa02, ds.cb.sa03);
-		$fdisplay (f, "S10 S11 S12 S13 : %b %b %b %b", ds.cb.sa10, ds.cb.sa11, ds.cb.sa12, ds.cb.sa13);
-		$fdisplay (f, "S20 S21 S22 S23 : %b %b %b %b", ds.cb.sa20, ds.cb.sa21, ds.cb.sa22, ds.cb.sa23);
-		$fdisplay (f, "S30 S31 S32 S33 : %b %b %b %b", ds.cb.sa30, ds.cb.sa31, ds.cb.sa32, ds.cb.sa33);
+		$fdisplay (f, "a_S00 : %b ", ds.cb.sa00);
+		$fdisplay (f, "a_S01 : %b ", ds.cb.sa01);
+		$fdisplay (f, "a_S02 : %b ", ds.cb.sa02);
+		$fdisplay (f, "a_S03 : %b ", ds.cb.sa03);
+
+		$fdisplay (f, "a_S10 : %b ", ds.cb.sa10);
+		$fdisplay (f, "a_S11 : %b ", ds.cb.sa11);
+		$fdisplay (f, "a_S12 : %b ", ds.cb.sa12);
+		$fdisplay (f, "a_S13 : %b ", ds.cb.sa13);
+
+		$fdisplay (f, "a_S20 : %b ", ds.cb.sa20);
+		$fdisplay (f, "a_S21 : %b ", ds.cb.sa21);
+		$fdisplay (f, "a_S22 : %b ", ds.cb.sa22);
+		$fdisplay (f, "a_S23 : %b ", ds.cb.sa23);
+
+		$fdisplay (f, "a_S30 : %b ", ds.cb.sa30);
+		$fdisplay (f, "a_S31 : %b ", ds.cb.sa31);
+		$fdisplay (f, "a_S32 : %b ", ds.cb.sa32);
+		$fdisplay (f, "a_S33 : %b ", ds.cb.sa33);
+
 
 		$fdisplay (f, "Outputs from sbox : ");
-		$fdisplay (f, "--------------------");
-		$fdisplay (f, "S00_SUB S01_SUB S02_SUB S03_SUB : %b %b %b %b", ds.cb.sa00_sub, ds.cb.sa01_sub, ds.cb.sa02_sub, ds.cb.sa03_sub);
-		$fdisplay (f, "S10_SUB S11_SUB S12_SUB S13_SUB : %b %b %b %b", ds.cb.sa10_sub, ds.cb.sa11_sub, ds.cb.sa12_sub, ds.cb.sa13_sub);
-		$fdisplay (f, "S20_SUB S21_SUB S22_SUB S23_SUB : %b %b %b %b", ds.cb.sa20_sub, ds.cb.sa21_sub, ds.cb.sa22_sub, ds.cb.sa23_sub);
-		$fdisplay (f, "S30_SUB S31_SUB S32_SUB S33_SUB : %b %b %b %b", ds.cb.sa30_sub, ds.cb.sa31_sub, ds.cb.sa32_sub, ds.cb.sa33_sub);
+		$fdisplay (f, "------------------");
+		$fdisplay (f, "d_S00_SUB : %b ", ds.cb.sa00_sub);
+		$fdisplay (f, "d_S01_SUB : %b ", ds.cb.sa01_sub);
+		$fdisplay (f, "d_S02_SUB : %b ", ds.cb.sa02_sub);
+		$fdisplay (f, "d_S03_SUB : %b ", ds.cb.sa03_sub);
+
+		$fdisplay (f, "d_S10_SUB : %b ", ds.cb.sa10_sub);
+		$fdisplay (f, "d_S11_SUB : %b ", ds.cb.sa11_sub);
+		$fdisplay (f, "d_S12_SUB : %b ", ds.cb.sa12_sub);
+		$fdisplay (f, "d_S13_SUB : %b ", ds.cb.sa13_sub);
+
+		$fdisplay (f, "d_S20_SUB : %b ", ds.cb.sa20_sub);
+		$fdisplay (f, "d_S21_SUB : %b ", ds.cb.sa21_sub);
+		$fdisplay (f, "d_S22_SUB : %b ", ds.cb.sa22_sub);
+		$fdisplay (f, "d_S23_SUB : %b ", ds.cb.sa23_sub);
+
+		$fdisplay (f, "d_S30_SUB : %b ", ds.cb.sa30_sub);
+		$fdisplay (f, "d_S31_SUB : %b ", ds.cb.sa31_sub);
+		$fdisplay (f, "d_S32_SUB : %b ", ds.cb.sa32_sub);
+		$fdisplay (f, "d_S33_SUB : %b ", ds.cb.sa33_sub);
 
 		$fdisplay (f, "Final Outputs:");
 		$fdisplay (f, "--------------------");

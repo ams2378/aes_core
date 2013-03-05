@@ -215,7 +215,7 @@ program tb (ifc.bench ds);
 		string s;
 		string dir = "logs";
 		s = $sformatf("/log_%0d.txt", v);		
-		f = $fopen ( {logs, s});
+		f = $fopen ( {dir, s});
 
 //		f = $fopen ("log.txt");
 		checker = new();

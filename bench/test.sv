@@ -206,7 +206,11 @@ program tb (ifc.bench ds);
 
 		string filename = "log.txt";
 
-		f = $fopen (filename);
+		int var = 1;
+
+		string v = var;
+
+		f = $fopen ( {filename, v});
 
 //		f = $fopen ("log.txt");
 		checker = new();

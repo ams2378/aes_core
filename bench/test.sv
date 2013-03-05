@@ -25,7 +25,7 @@ program tb (ifc.bench ds);
 	int unsigned ctext[4];
 	int rst_chk;
 
-	integer f, g;
+	integer f, g, start;
 	integer v = 1;
 	integer en_num = 1;
 	string s;
@@ -57,6 +57,11 @@ program tb (ifc.bench ds);
 	task do_cycle;
 
 		t.randomize();
+
+
+		if ( t.ld == 1 && t.rst == 1) begin 
+			start =  1;
+		end
 
 		if (t.const_key == 1) begin
 			t.key = 128'h20f04193bd83c6bc82ad5b2b65140618; 
@@ -112,14 +117,18 @@ program tb (ifc.bench ds);
 		$fdisplay (f,"------------- Simulation Time ----------------- %t", $realtime );
 
 		$fdisplay (f,"Encryption Number : %0d" , en_num);
-		$fdisplay (g,"Encryption Number : %0d" , en_num);
 
 		$fdisplay (f,"Inputs :");
 		$fdisplay (f,"-----------------");
 		$fdisplay (f,"rst : %b", t.rst );
 		$fdisplay (f,"Key load : %b ", t.ld);
+
+		if (start == 1) begin
+		$fdisplay (g,"Encryption Number : %0d" , en_num);
 		$fdisplay (g,"KEY: %h%h%h%h", t.key[127:96], t.key[95:64], t.key[63:32], t.key[31:0]);
 		$fdisplay (g,"TEXT: %h%h%h%h", t.text[3], t.text[2], t.text[1], t.text[0]);
+		start = 0;
+		end
 		
 		$fdisplay (f,"Inputs to sbox : ");
 

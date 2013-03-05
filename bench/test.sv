@@ -112,6 +112,9 @@ program tb (ifc.bench ds);
 		
 		$fdisplay (f, "Inputs to sbox : ");
 		$fdisplay (f, "------------------");
+		
+		$fdisplay (f, "ROUND : %d ", ds.cb.dcnt);
+
 		$fdisplay (f, "a_S00 : %b %b %b %b %b %b %b %b", ds.cb.sa00[7], ds.cb.sa00[6], ds.cb.sa00[5], ds.cb.sa00[4],
 								 ds.cb.sa00[3], ds.cb.sa00[2], ds.cb.sa00[1], ds.cb.sa00[0]);
 		$fdisplay (f, "a_S01 : %b %b %b %b %b %b %b %b", ds.cb.sa01[7], ds.cb.sa01[6], ds.cb.sa01[5], ds.cb.sa01[4],

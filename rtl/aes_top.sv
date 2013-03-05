@@ -44,7 +44,8 @@ module aes_top(ifc.dut d);
 			.sa30_sub(d.sa30_sub),
 			.sa31_sub(d.sa31_sub),
 			.sa32_sub(d.sa32_sub),
-			.sa33_sub(d.sa33_sub)
+			.sa33_sub(d.sa33_sub),
+			.dcnt(d.dcnt)
 			);
 
 

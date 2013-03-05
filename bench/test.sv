@@ -173,6 +173,7 @@ program tb (ifc.bench ds);
 		$fdisplay (f, "d_S22_sub : %b %b %b %b %b %b %b %b", ds.cb.sa22_sub[7], ds.cb.sa22_sub[6], ds.cb.sa22_sub[5], ds.cb.sa22_sub[4],
 								 ds.cb.sa22_sub[3], ds.cb.sa22_sub[2], ds.cb.sa22_sub[1], ds.cb.sa22_sub[0]);
 		$fdisplay (f, "d_S23_sub : %b %b %b %b %b %b %b %b", ds.cb.sa23_sub[7], ds.cb.sa23_sub[6], ds.cb.sa23_sub[5], ds.cb.sa23_sub[4],
+								 ds.cb.sa23_sub[3], ds.cb.sa23_sub[2], ds.cb.sa23_sub[1], ds.cb.sa23_sub[0]);
 
 		$fdisplay (f, "d_S30_sub : %b %b %b %b %b %b %b %b", ds.cb.sa30_sub[7], ds.cb.sa30_sub[6], ds.cb.sa30_sub[5], ds.cb.sa30_sub[4],
 								 ds.cb.sa30_sub[3], ds.cb.sa30_sub[2], ds.cb.sa30_sub[1], ds.cb.sa30_sub[0]);

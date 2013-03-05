@@ -136,7 +136,6 @@ program tb (ifc.bench ds);
 								 ds.cb.sa12[3], ds.cb.sa12[2], ds.cb.sa12[1], ds.cb.sa12[0]);
 		$fdisplay (f,"a_S13 : %b %b %b %b %b %b %b %b", ds.cb.sa13[7], ds.cb.sa13[6], ds.cb.sa13[5], ds.cb.sa13[4],
 								 ds.cb.sa13[3], ds.cb.sa13[2], ds.cb.sa13[1], ds.cb.sa13[0]);
-
 		$fdisplay (f,"a_S20 : %b %b %b %b %b %b %b %b", ds.cb.sa20[7], ds.cb.sa20[6], ds.cb.sa20[5], ds.cb.sa20[4],
 								 ds.cb.sa20[3], ds.cb.sa20[2], ds.cb.sa20[1], ds.cb.sa20[0]);
 		$fdisplay (f,"a_S21 : %b %b %b %b %b %b %b %b", ds.cb.sa21[7], ds.cb.sa21[6], ds.cb.sa21[5], ds.cb.sa21[4],
@@ -173,7 +172,6 @@ program tb (ifc.bench ds);
 								 ds.cb.sa12_sub[3], ds.cb.sa12_sub[2], ds.cb.sa12_sub[1], ds.cb.sa12_sub[0]);
 		$fdisplay (f,"d_S13_sub : %b %b %b %b %b %b %b %b", ds.cb.sa13_sub[7], ds.cb.sa13_sub[6], ds.cb.sa13_sub[5], ds.cb.sa13_sub[4],
 								 ds.cb.sa13_sub[3], ds.cb.sa13_sub[2], ds.cb.sa13_sub[1], ds.cb.sa13_sub[0]);
-
 		$fdisplay (f,"d_S20_sub : %b %b %b %b %b %b %b %b", ds.cb.sa20_sub[7], ds.cb.sa20_sub[6], ds.cb.sa20_sub[5], ds.cb.sa20_sub[4],
 								 ds.cb.sa20_sub[3], ds.cb.sa20_sub[2], ds.cb.sa20_sub[1], ds.cb.sa20_sub[0]);
 		$fdisplay (f,"d_S21_sub : %b %b %b %b %b %b %b %b", ds.cb.sa21_sub[7], ds.cb.sa21_sub[6], ds.cb.sa21_sub[5], ds.cb.sa21_sub[4],
@@ -182,7 +180,6 @@ program tb (ifc.bench ds);
 								 ds.cb.sa22_sub[3], ds.cb.sa22_sub[2], ds.cb.sa22_sub[1], ds.cb.sa22_sub[0]);
 		$fdisplay (f,"d_S23_sub : %b %b %b %b %b %b %b %b", ds.cb.sa23_sub[7], ds.cb.sa23_sub[6], ds.cb.sa23_sub[5], ds.cb.sa23_sub[4],
 								 ds.cb.sa23_sub[3], ds.cb.sa23_sub[2], ds.cb.sa23_sub[1], ds.cb.sa23_sub[0]);
-
 		$fdisplay (f,"d_S30_sub : %b %b %b %b %b %b %b %b", ds.cb.sa30_sub[7], ds.cb.sa30_sub[6], ds.cb.sa30_sub[5], ds.cb.sa30_sub[4],
 								 ds.cb.sa30_sub[3], ds.cb.sa30_sub[2], ds.cb.sa30_sub[1], ds.cb.sa30_sub[0]);
 		$fdisplay (f,"d_S31_sub : %b %b %b %b %b %b %b %b", ds.cb.sa31_sub[7], ds.cb.sa31_sub[6], ds.cb.sa31_sub[5], ds.cb.sa31_sub[4],

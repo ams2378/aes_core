@@ -25,7 +25,7 @@ program tb (ifc.bench ds);
 	int unsigned ctext[4];
 	int rst_chk;
 
-	integer f;
+	integer f, g;
 	integer v = 1;
 	integer en_num = 1;
 	string s;
@@ -111,18 +111,15 @@ program tb (ifc.bench ds);
 
 		$fdisplay (f,"------------- Simulation Time ----------------- %t", $realtime );
 
-		if ( t.ld == 1 && t.rst == 1) begin 
-			en_num = en_num + 1;
-		end
-
 		$fdisplay (f,"Encryption Number : %0d" , en_num);
+		$fdisplay (g,"Encryption Number : %0d" , en_num);
 
 		$fdisplay (f,"Inputs :");
 		$fdisplay (f,"-----------------");
 		$fdisplay (f,"rst : %b", t.rst );
 		$fdisplay (f,"Key load : %b ", t.ld);
-		$fdisplay (f,"KEY: %h%h%h%h", t.key[127:96], t.key[95:64], t.key[63:32], t.key[31:0]);
-		$fdisplay (f,"TEXT: %h%h%h%h", t.text[3], t.text[2], t.text[1], t.text[0]);
+		$fdisplay (g,"KEY: %h%h%h%h", t.key[127:96], t.key[95:64], t.key[63:32], t.key[31:0]);
+		$fdisplay (g,"TEXT: %h%h%h%h", t.text[3], t.text[2], t.text[1], t.text[0]);
 		
 		$fdisplay (f,"Inputs to sbox : ");
 
@@ -207,6 +204,10 @@ program tb (ifc.bench ds);
 		checker.check_result(ds.cb.text_out[31:0],  ds.cb.text_out[63:32], ds.cb.text_out[95:64],  
 				     ds.cb.text_out[127:96], ds.cb.done, ctext, t.done, t.status, rst_chk);
 
+		if ( t.ld == 1 && t.rst == 1) begin 
+			en_num = en_num + 1;
+		end
+
 
 	@(ds.cb);
 
@@ -233,13 +234,13 @@ program tb (ifc.bench ds);
 		s = $sformatf("/log_%0d.txt", v);		
 		f = $fopen ({dir, s});
 
+		g = $fopen ("log_2.txt");
+
 		t = new( env.ld_density, env.reset_density );
 
 		if (env.single_key == 1) begin 
 			t.const_key = 1; 
 		end
-
-	//	$fdisplay (f[v]," VALIDATON SUITE FOR AES CORE - ELEN 6321");
 
 		repeat(env.max_transactions) begin
 			do_cycle();

@@ -114,7 +114,12 @@ program tb (ifc.bench ds);
 
 		$fdisplay (f,"------------- Simulation Time ----------------- %t", $realtime );
 
+
+
+		if ( t.ld == 1 && t.rst == 1) begin 
 		$fdisplay (f,"Encryption Number : %0d" , en_num);
+		end
+
 		$fdisplay (f,"Inputs :");
 		$fdisplay (f,"-----------------");
 		$fdisplay (f,"KEY: %h%h%h%h", t.key[127:96], t.key[95:64], t.key[63:32], t.key[31:0]);

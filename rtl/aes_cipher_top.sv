@@ -62,10 +62,10 @@
 module aes_cipher_top(clk, rst, ld, done, key, text_in, text_out,
 		sa00, sa01, sa02, sa03,	sa10, sa11, sa12, sa13,
 		sa20, sa21, sa22, sa23, sa30, sa31, sa32, sa33,       
-		sa00_sub, sa01_sub, sa02_sub, sa03_sub,
-		sa10_sub, sa11_sub, sa12_sub, sa13_sub,
-		sa20_sub, sa21_sub, sa22_sub, sa23_sub,
-		sa30_sub, sa31_sub, sa32_sub, sa33_sub, dcnt		);
+		sa00_next, sa01_next, sa02_next, sa03_next,
+		sa10_next, sa11_next, sa12_next, sa13_next,
+		sa20_next, sa21_next, sa22_next, sa23_next,
+		sa30_next, sa31_next, sa32_next, sa33_next, dcnt );		// edit ams
 
 input		clk, rst;
 input		ld;
@@ -91,7 +91,7 @@ output	[3:0]	dcnt;
 // Local Wires
 //
 
-wire	[31:0]	w0, w1, w2, w3;
+wire	[31:0]	w0, w1, w2, w3;					
 reg	[127:0]	text_in_r;
 reg	[127:0]	text_out;
 reg	[7:0]	sa00, sa01, sa02, sa03;
@@ -142,24 +142,6 @@ always @(posedge clk) ld_r <= #1 ld;
 // Initial Permutation (AddRoundKey)
 //
 /*
-always @(posedge clk)	sa33 <= #1 ld_r ? text_in_r[007:000] ^ w3[07:00] : sa33_next;
-always @(posedge clk)	sa23 <= #1 ld_r ? text_in_r[015:008] ^ w3[15:08] : sa23_next;
-always @(posedge clk)	sa13 <= #1 ld_r ? text_in_r[023:016] ^ w3[23:16] : sa13_next;
-always @(posedge clk)	sa03 <= #1 ld_r ? text_in_r[031:024] ^ w3[31:24] : sa03_next;
-always @(posedge clk)	sa32 <= #1 ld_r ? text_in_r[039:032] ^ w2[07:00] : sa32_next;
-always @(posedge clk)	sa22 <= #1 ld_r ? text_in_r[047:040] ^ w2[15:08] : sa22_next;
-always @(posedge clk)	sa12 <= #1 ld_r ? text_in_r[055:048] ^ w2[23:16] : sa12_next;
-always @(posedge clk)	sa02 <= #1 ld_r ? text_in_r[063:056] ^ w2[31:24] : sa02_next;
-always @(posedge clk)	sa31 <= #1 ld_r ? text_in_r[071:064] ^ w1[07:00] : sa31_next;
-always @(posedge clk)	sa21 <= #1 ld_r ? text_in_r[079:072] ^ w1[15:08] : sa21_next;
-always @(posedge clk)	sa11 <= #1 ld_r ? text_in_r[087:080] ^ w1[23:16] : sa11_next;
-always @(posedge clk)	sa01 <= #1 ld_r ? text_in_r[095:088] ^ w1[31:24] : sa01_next;
-always @(posedge clk)	sa30 <= #1 ld_r ? text_in_r[103:096] ^ w0[07:00] : sa30_next;
-always @(posedge clk)	sa20 <= #1 ld_r ? text_in_r[111:104] ^ w0[15:08] : sa20_next;
-always @(posedge clk)	sa10 <= #1 ld_r ? text_in_r[119:112] ^ w0[23:16] : sa10_next;
-always @(posedge clk)	sa00 <= #1 ld_r ? text_in_r[127:120] ^ w0[31:24] : sa00_next;
-*/
-
 aes_addroundkey ux33(.clk(clk), .ld_r (ld_r), .text_in(text_in_r[007:000]), .w_i (w3[07:00]), .sa_i(sa33_next), .sa_o(sa33) );
 aes_addroundkey ux23(.clk(clk), .ld_r (ld_r), .text_in(text_in_r[015:008]), .w_i (w3[15:08]), .sa_i(sa23_next), .sa_o(sa23) );
 aes_addroundkey ux13(.clk(clk), .ld_r (ld_r), .text_in(text_in_r[023:016]), .w_i (w3[23:16]), .sa_i(sa13_next), .sa_o(sa13) );
@@ -176,6 +158,43 @@ aes_addroundkey ux30(.clk(clk), .ld_r (ld_r), .text_in(text_in_r[103:096]), .w_i
 aes_addroundkey ux20(.clk(clk), .ld_r (ld_r), .text_in(text_in_r[111:104]), .w_i (w0[15:08]), .sa_i(sa20_next), .sa_o(sa20) );
 aes_addroundkey ux10(.clk(clk), .ld_r (ld_r), .text_in(text_in_r[119:112]), .w_i (w0[23:16]), .sa_i(sa10_next), .sa_o(sa10) );
 aes_addroundkey ux00(.clk(clk), .ld_r (ld_r), .text_in(text_in_r[127:120]), .w_i (w0[31:24]), .sa_i(sa00_next), .sa_o(sa00) );
+*/
+
+aes_addroundkey u_addroundkey(.clk(clk), .ld_r (ld_r), .text_in_r(text_in_r), .w_0 (w0), .w_1(w1), .w_2(w2), .w_3(w3),
+
+			.sa00(sa00),
+			.sa01(sa01),
+			.sa02(sa02),
+			.sa03(sa03),
+			.sa10(sa10),
+			.sa11(sa11),
+			.sa12(sa12),
+			.sa13(sa13),
+			.sa20(sa20),
+			.sa21(sa21),
+			.sa22(sa22),
+			.sa23(sa23),
+			.sa30(sa30),
+			.sa31(sa31),
+			.sa32(sa32),
+			.sa33(sa33),
+
+			.sa00_next(sa00_next),
+			.sa01_next(sa01_next),
+			.sa02_next(sa02_next),
+			.sa03_next(sa03_next),
+			.sa10_next(sa10_next),
+			.sa11_next(sa11_next),
+			.sa12_next(sa12_next),
+			.sa13_next(sa13_next),
+			.sa20_next(sa20_next),
+			.sa21_next(sa21_next),
+			.sa22_next(sa22_next),
+			.sa23_next(sa23_next),
+			.sa30_next(sa30_next),
+			.sa31_next(sa31_next),
+			.sa32_next(sa32_next),
+			.sa33_next(sa33_next)	);
 
 ////////////////////////////////////////////////////////////////////
 //

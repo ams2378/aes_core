@@ -141,7 +141,7 @@ always @(posedge clk) ld_r <= #1 ld;
 //
 // Initial Permutation (AddRoundKey)
 //
-
+/*
 always @(posedge clk)	sa33 <= #1 ld_r ? text_in_r[007:000] ^ w3[07:00] : sa33_next;
 always @(posedge clk)	sa23 <= #1 ld_r ? text_in_r[015:008] ^ w3[15:08] : sa23_next;
 always @(posedge clk)	sa13 <= #1 ld_r ? text_in_r[023:016] ^ w3[23:16] : sa13_next;
@@ -158,6 +158,24 @@ always @(posedge clk)	sa30 <= #1 ld_r ? text_in_r[103:096] ^ w0[07:00] : sa30_ne
 always @(posedge clk)	sa20 <= #1 ld_r ? text_in_r[111:104] ^ w0[15:08] : sa20_next;
 always @(posedge clk)	sa10 <= #1 ld_r ? text_in_r[119:112] ^ w0[23:16] : sa10_next;
 always @(posedge clk)	sa00 <= #1 ld_r ? text_in_r[127:120] ^ w0[31:24] : sa00_next;
+*/
+
+aes_addroundkey ux33(.clk(clk), .ld_r (ld_r), .text_in(text_in_r[007:000]), .w_i (w3[07:00]), .sa_i(sa33_next), sa_o(sa33) );
+aes_addroundkey ux23(.clk(clk), .ld_r (ld_r), .text_in(text_in_r[015:008]), .w_i (w3[15:08]), .sa_i(sa23_next), sa_o(sa23) );
+aes_addroundkey ux13(.clk(clk), .ld_r (ld_r), .text_in(text_in_r[023:016]), .w_i (w3[23:16]), .sa_i(sa13_next), sa_o(sa13) );
+aes_addroundkey ux03(.clk(clk), .ld_r (ld_r), .text_in(text_in_r[031:024]), .w_i (w3[31:24]), .sa_i(sa03_next), sa_o(sa03) );
+aes_addroundkey ux32(.clk(clk), .ld_r (ld_r), .text_in(text_in_r[039:032]), .w_i (w3[07:00]), .sa_i(sa32_next), sa_o(sa32) );
+aes_addroundkey ux22(.clk(clk), .ld_r (ld_r), .text_in(text_in_r[047:040]), .w_i (w3[15:08]), .sa_i(sa22_next), sa_o(sa22) );
+aes_addroundkey ux12(.clk(clk), .ld_r (ld_r), .text_in(text_in_r[055:048]), .w_i (w3[23:16]), .sa_i(sa12_next), sa_o(sa12) );
+aes_addroundkey ux02(.clk(clk), .ld_r (ld_r), .text_in(text_in_r[063:056]), .w_i (w3[31:24]), .sa_i(sa02_next), sa_o(sa02) );
+aes_addroundkey ux31(.clk(clk), .ld_r (ld_r), .text_in(text_in_r[071:064]), .w_i (w3[07:00]), .sa_i(sa31_next), sa_o(sa31) );
+aes_addroundkey ux21(.clk(clk), .ld_r (ld_r), .text_in(text_in_r[079:072]), .w_i (w3[15:08]), .sa_i(sa21_next), sa_o(sa21) );
+aes_addroundkey ux11(.clk(clk), .ld_r (ld_r), .text_in(text_in_r[087:080]), .w_i (w3[23:16]), .sa_i(sa11_next), sa_o(sa11) );
+aes_addroundkey ux01(.clk(clk), .ld_r (ld_r), .text_in(text_in_r[095:088]), .w_i (w3[31:24]), .sa_i(sa01_next), sa_o(sa01) );
+aes_addroundkey ux30(.clk(clk), .ld_r (ld_r), .text_in(text_in_r[103:096]), .w_i (w3[07:00]), .sa_i(sa30_next), sa_o(sa30) );
+aes_addroundkey ux20(.clk(clk), .ld_r (ld_r), .text_in(text_in_r[111:104]), .w_i (w3[15:08]), .sa_i(sa20_next), sa_o(sa20) );
+aes_addroundkey ux10(.clk(clk), .ld_r (ld_r), .text_in(text_in_r[119:112]), .w_i (w3[23:16]), .sa_i(sa10_next), sa_o(sa10) );
+aes_addroundkey ux00(.clk(clk), .ld_r (ld_r), .text_in(text_in_r[127:120]), .w_i (w3[31:24]), .sa_i(sa00_next), sa_o(sa00) );
 
 ////////////////////////////////////////////////////////////////////
 //
@@ -273,6 +291,8 @@ aes_sbox us30(	.a(	sa30	), .d(	sa30_sub	));
 aes_sbox us31(	.a(	sa31	), .d(	sa31_sub	));
 aes_sbox us32(	.a(	sa32	), .d(	sa32_sub	));
 aes_sbox us33(	.a(	sa33	), .d(	sa33_sub	));
+
+
 
 endmodule
 

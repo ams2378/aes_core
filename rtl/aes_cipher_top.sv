@@ -160,7 +160,7 @@ always @(posedge clk)	sa10 <= #1 ld_r ? text_in_r[119:112] ^ w0[23:16] : sa10_ne
 always @(posedge clk)	sa00 <= #1 ld_r ? text_in_r[127:120] ^ w0[31:24] : sa00_next;
 */
 
-aes_addroundkey ux33(.clk(clk), .ld_r (ld_r), .text_in(text_in_r[007:000]), .w_i (w3[00:00]), .sa_i(sa33_next), .sa_o(sa33) );
+aes_addroundkey ux33(.clk(clk), .ld_r (ld_r), .text_in(text_in_r[007:000]), .w_i (w3[07:00]), .sa_i(sa33_next), .sa_o(sa33) );
 aes_addroundkey ux23(.clk(clk), .ld_r (ld_r), .text_in(text_in_r[015:008]), .w_i (w3[15:08]), .sa_i(sa23_next), .sa_o(sa23) );
 aes_addroundkey ux13(.clk(clk), .ld_r (ld_r), .text_in(text_in_r[023:016]), .w_i (w3[23:16]), .sa_i(sa13_next), .sa_o(sa13) );
 aes_addroundkey ux03(.clk(clk), .ld_r (ld_r), .text_in(text_in_r[031:024]), .w_i (w3[31:24]), .sa_i(sa03_next), .sa_o(sa03) );

@@ -18,17 +18,16 @@ class aes_checker;
 	 	done_passed = (dut_done == bench_done);
 
 		if (done_passed) begin 
-				$display ("**********  PASSED *********** @ simtime %t :" , $realtime );	
+				$display ("**********  PASSED done1 *********** @ simtime %t :" , $realtime );	
 		end else if ( !done_passed ) begin
 			        $display("%t : error in done bit \n", $realtime);
             			$display("dut value: %d", dut_done);
             			$display("bench value: %d", bench_done);
-
 				$exit();
 		end
 
 		if (text_passed ) begin 
-				$display ("**********  PASSED *********** @ simtime %t :" , $realtime );	
+				$display ("**********  PASSED text *********** @ simtime %t :" , $realtime );	
 		end else if ( !text_passed ) begin
 		        	$display("%t : error in text_o \n", $realtime);
             			$display("dut value || dut done: %h%h%h%h %d", dut_text_3, dut_text_2, dut_text_1, dut_text_0, dut_done);
@@ -43,7 +42,7 @@ class aes_checker;
 		text_passed = 1;
 
 		if (done_passed) begin 
-				$display ("**********  PASSED *********** @ simtime %t :" , $realtime );	
+				$display ("**********  PASSED done2 *********** @ simtime %t :" , $realtime );	
 		end else if ( !done_passed ) begin
 			        $display("%t : error in done bit \n", $realtime);
             			$display("dut value: %d", dut_done);

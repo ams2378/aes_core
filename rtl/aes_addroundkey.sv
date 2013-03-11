@@ -14,7 +14,7 @@ module aes_addroundkey (clk, ld_r, text_in_r, w_0, w_1, w_2, w_3,
 		sa00_next, sa01_next, sa02_next, sa03_next,
 		sa10_next, sa11_next, sa12_next, sa13_next,
 		sa20_next, sa21_next, sa22_next, sa23_next,
-		sa30_next, sa31_next, sa32_next, sa33_next)
+		sa30_next, sa31_next, sa32_next, sa33_next);
 
 
 input		clk;

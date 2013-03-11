@@ -1,7 +1,7 @@
 class aes_checker;
 	bit pass;
 	integer f;
-	int s_ct = 14;
+	int s_ct = 13;
 
 	function void check_result (int dut_text_0, int dut_text_1, int dut_text_2, int dut_text_3, int dut_done, 
 				   int unsigned bench_text_o[], int bench_done, int status, int rst_chk);

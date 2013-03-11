@@ -216,7 +216,7 @@ program tb (ifc.bench ds);
 
 
 		
-		$display (" calling checker from test with status : %d  @ runtime %t ", status, $realtime);
+		$display (" calling checker from test with status : %d  @ runtime %t ", t.status, $realtime);
 		checker.check_result(ds.cb.text_out[31:0],  ds.cb.text_out[63:32], ds.cb.text_out[95:64],  
 				     ds.cb.text_out[127:96], ds.cb.done, ctext, t.done, t.status, rst_chk);
 

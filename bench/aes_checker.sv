@@ -42,7 +42,7 @@ class aes_checker;
 		text_passed = 1;
 
 		if (done_passed) begin 
-				$display ("**********  PASSED done2 *********** @ s_ct %d simtime %t :" , s_ct, $realtime );	
+				$display ("**********  PASSED done2 *********** @ status %d simtime %t :" , status, $realtime );	
 		end else if ( !done_passed ) begin
 			        $display("%t : error in done bit \n", $realtime);
             			$display("dut value: %d", dut_done);

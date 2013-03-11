@@ -159,7 +159,7 @@ aes_addroundkey_bak ux10(.clk(clk), .ld_r (ld_r), .text_in(text_in_r[119:112]), 
 aes_addroundkey_bak ux00(.clk(clk), .ld_r (ld_r), .text_in(text_in_r[127:120]), .w_i (w0[31:24]), .sa_i(sa00_next), .sa_o(sa00) );
 */
 
-aes_addroundkey u_addroundkey(.clk(clk), .ld_r (ld_r), .text_in_r(text_in_r), .w_0 (w0), .w_1(w1), .w_2(w2), .w_3(w3),
+aes_addroundkey u_addroundkey(.clk(clk), .ld_r (ld_r), .text_in_r(text_in_r), .w0 (w0), .w1(w1), .w2(w2), .w3(w3),
 
 			.sa00(sa00),
 			.sa01(sa01),

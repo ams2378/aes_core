@@ -8,7 +8,7 @@
  * @dependencies	aes_xor.sv	
  */
 
-module aes_addroundkey (clk, ld_r, text_in_r, w_0, w_1, w_2, w_3, 
+module aes_addroundkey (clk, ld_r, text_in_r, w0, w1, w2, w3, 
 		sa00, sa01, sa02, sa03,	sa10, sa11, sa12, sa13,
 		sa20, sa21, sa22, sa23, sa30, sa31, sa32, sa33,       
 		sa00_next, sa01_next, sa02_next, sa03_next,
@@ -20,7 +20,7 @@ module aes_addroundkey (clk, ld_r, text_in_r, w_0, w_1, w_2, w_3,
 input		clk;
 input		ld_r;
 input[127:0]	text_in_r;
-input[31:0]	w_0, w_1, w_2, w_3;
+input[31:0]	w0, w1, w2, w3;
 
 output	[7:0]	sa00, sa01, sa02, sa03;
 output	[7:0]	sa10, sa11, sa12, sa13;

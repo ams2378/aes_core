@@ -9,7 +9,7 @@
  */
 
 
-module aes_addroundkey ( clk, ld_r, text_in, w_i, sa_i, sa_o);
+module aes_xor ( clk, ld_r, text_in, w_i, sa_i, sa_o);
 
 input		clk;
 input		ld_r;	

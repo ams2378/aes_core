@@ -11,13 +11,16 @@
 `timescale 1ns/1ps 
 
 interface ifc (input bit clk);
-    logic ld;
-    logic [127:0] key;
-    logic [127:0] text_in;
+logic 		ld;
+logic [127:0] 	key;
+logic [127:0] 	text_in;
 
-    logic done;
-    logic [127:0] text_out;
-    logic [3:0]  dcnt;
+logic 		done;
+logic [127:0] 	text_out;
+logic [127:0] 	text_in_r;
+logic [31:0] 	w0, w1, w2, w3;
+    
+logic 	[3:0]  	dcnt;
 
 logic	[7:0]	sa00, sa01, sa02, sa03;
 logic	[7:0]	sa10, sa11, sa12, sa13;
@@ -33,10 +36,12 @@ logic	[7:0]	sa30_sub, sa31_sub, sa32_sub, sa33_sub;
     clocking cb @(posedge clk);
 //        default output #1;
 
-       	output rst;	
-	output ld;
-	output key;
-	output text_in;
+       	output 		rst;	
+	output 		ld;
+	output 		key;
+	output 		text_in;
+	output		text_in_r;
+	output		w0, w1, w2, w3;
 
 	input 		done;
 	input 		text_out;
@@ -60,6 +65,9 @@ logic	[7:0]	sa30_sub, sa31_sub, sa32_sub, sa33_sub;
 	input 		key,
 	input 		text_in,
 	input 		ld,
+	input		text_in_r,
+	input		w0, w1, w2, w3,
+
 
 	output 		text_out,
 	output 		done,
@@ -73,7 +81,7 @@ logic	[7:0]	sa30_sub, sa31_sub, sa32_sub, sa33_sub;
 	output		sa00_sub, sa01_sub, sa02_sub, sa03_sub,
 	output		sa10_sub, sa11_sub, sa12_sub, sa13_sub,
 	output		sa20_sub, sa21_sub, sa22_sub, sa23_sub,
-	output		sa30_sub, sa31_sub, sa32_sub, sa33_sub
+	output		sa30_sub, sa31_sub, sa32_sub, sa33_sub,
 
 
 

@@ -29,6 +29,12 @@ module aes_top(ifc.dut d);
 			.sa32(d.sa32),
 			.sa33(d.sa33),
 
+			.text_in_r(d.text_in_r),
+			.w0(d.w0),
+			.w1(d.w1),
+			.w2(d.w2),
+			.w3(d.w3),
+
 			.sa00_sub(d.sa00_sub),
 			.sa01_sub(d.sa01_sub),
 			.sa02_sub(d.sa02_sub),

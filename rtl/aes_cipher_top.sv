@@ -75,7 +75,7 @@ output		done;
 input	[127:0]	key;
 input	[127:0]	text_in;
 output	[127:0]	text_out;
-output	[127:0]	text_in_r;			edit ams
+output	[127:0]	text_in_r;			//edit ams
 output  [31:0]	w0, w1, w2, w3;
 output	[7:0]	sa00, sa01, sa02, sa03;
 output	[7:0]	sa10, sa11, sa12, sa13;

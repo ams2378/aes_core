@@ -81,7 +81,7 @@ logic	[7:0]	sa30_sub, sa31_sub, sa32_sub, sa33_sub;
 	output		sa00_sub, sa01_sub, sa02_sub, sa03_sub,
 	output		sa10_sub, sa11_sub, sa12_sub, sa13_sub,
 	output		sa20_sub, sa21_sub, sa22_sub, sa23_sub,
-	output		sa30_sub, sa31_sub, sa32_sub, sa33_sub,
+	output		sa30_sub, sa31_sub, sa32_sub, sa33_sub
 
 
 

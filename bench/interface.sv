@@ -40,8 +40,9 @@ logic	[7:0]	sa30_sub, sa31_sub, sa32_sub, sa33_sub;
 	output 		ld;
 	output 		key;
 	output 		text_in;
-	output		text_in_r;
-	output		w0, w1, w2, w3;
+
+	input		text_in_r;
+	input		w0, w1, w2, w3;
 
 	input 		done;
 	input 		text_out;

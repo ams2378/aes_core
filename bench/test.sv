@@ -187,7 +187,6 @@ program tb (ifc.bench ds);
 		$fdisplay (f, "sa00 input text : %h ", ds.cb.text_in_r[129:120]);
 		$fdisplay (f, "sa00 input key : %h ", ds.cb.w0[31:24]);
 
-
 		$fdisplay (f,"Outputs from roundkey : ");
 		$fdisplay (f,"------------------");
 

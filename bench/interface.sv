@@ -32,7 +32,7 @@ logic	[7:0]	sa10_next, sa11_next, sa12_next, sa13_next;
 logic	[7:0]	sa20_next, sa21_next, sa22_next, sa23_next;
 logic	[7:0]	sa30_next, sa31_next, sa32_next, sa33_next;
 
-    logic rst;
+logic 		rst;
 
     clocking cb @(posedge clk);
 //        default output #1;

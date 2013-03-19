@@ -144,7 +144,7 @@ program tb (ifc.bench ds);
 		$fdisplay (f, "sa00_w_i  : %h ", ds.cb.w0[31:24]);
 		$fdisplay (f, "sa00_sa_i : %h ", ds.cb.sa00_next);
 		$fdisplay (f, "sa00_sa_o : %h ", ds.cb.sa00);
-		$fdisplay (f, "sa00_ld_r : %b ", ds.cb.ld_r);
+		$fdisplay (f, "sa00_ld_r : %h ", ds.cb.ld_r);
 
 		$fdisplay (f, "sa01_textin : %h ", ds.cb.text_in_r[095:088]);
 		$fdisplay (f, "sa01_w_i  : %h ", ds.cb.w1[31:24]);

@@ -1,5 +1,152 @@
 `timescale 1ns/1ps
 
+
+class aes_env;
+    int max_transactions;
+    int warmup;
+    int warmup_rst;
+    bit verbose;
+    int reset_density, ld_density, single_key, single_text;
+
+    function configure(string filename);
+        int file, value, seed, chars_returned;
+        string param;
+        file = $fopen(filename, "r");
+        while(!$feof(file)) begin
+            chars_returned = $fscanf(file, "%s %d", param, value);
+            if ("RANDOM_SEED" == param) begin
+                seed = value;
+                $srandom(seed);
+            end
+	    else if("RESET_DENSITY" == param) begin
+	    	reset_density = value;
+	    end
+	    else if("LD_DENSITY" == param) begin
+		ld_density = value;
+	    end
+	    else if("VERBOSE" == param) begin
+		verbose = value;
+	    end
+	    else if("WARMUP" == param) begin
+		warmup = value;
+	    end
+	    else if("MAX_TRAN" == param) begin
+		max_transactions = value;
+	    end
+ 	    else if("WARMUP_RST" == param) begin
+		warmup_rst = value;
+	    end
+	    else if("SINGLE_KEY" == param) begin
+		single_key = value;
+	    end
+ 	    else if("SINGLE_TEXT" == param) begin
+		single_text = value;
+	    end
+           else begin
+                $display("Never heard of a: %s", param);
+                $exit();
+            end
+        end
+    endfunction
+
+class aes_transaction;
+
+//	rand bit[127:0] text;
+	rand bit[127:0] key;
+
+	rand int 	text[4];
+//	rand int	key[4];
+	rand bit 	rst;
+	rand bit	ld;
+	bit		done;
+	int		status;
+
+	int		const_key;
+
+	int 		ld_density;
+	int		rst_density;
+
+	function new (int ld_den, int rst_den);
+		ld_density = ld_den;
+		rst_density = rst_den;
+	endfunction
+
+	constraint density_dist {
+		ld dist {0:/100-ld_density, 1:/ld_density};
+		rst dist {0:/100-rst_density, 1:/rst_density};
+	}
+
+	constraint ld_status {
+		(status != 0) -> (ld == 0);
+	}
+
+endclass
+
+
+class aes_checker;
+	bit pass;
+	integer f;
+	int s_ct = 14;
+
+	function void check_result (int dut_text_0, int dut_text_1, int dut_text_2, int dut_text_3, int dut_done, 
+				   int unsigned bench_text_o[], int bench_done, int status, int rst_chk);
+
+		int verbose = 0;
+		bit text_passed;
+		bit done_passed;
+
+
+	if (status == s_ct ) begin
+ 
+		text_passed = (dut_text_0 == bench_text_o[0]) && (dut_text_1 == bench_text_o[1]) &&
+		    	      (dut_text_2 == bench_text_o[2]) && (dut_text_3 == bench_text_o[3]);
+	 	done_passed = (dut_done == bench_done);
+
+		if (done_passed) begin 
+				$display ("**********  PASSED done *********** @ simtime %t :" , $realtime );	
+		end else if ( !done_passed ) begin
+			        $display("%t : error in done bit \n", $realtime);
+            			$display("dut value: %d", dut_done);
+            			$display("bench value: %d", bench_done);
+				$exit();
+		end
+
+		if (text_passed ) begin 
+				$display ("**********  PASSED text *********** @ simtime %t :" , $realtime );	
+		end else if ( !text_passed ) begin
+		        	$display("%t : error in text_o \n", $realtime);
+            			$display("dut value || dut done: %h%h%h%h %d", dut_text_3, dut_text_2, dut_text_1, dut_text_0, dut_done);
+            			$display("bench value || bench_done: %h%h%h%h", bench_text_o[3], bench_text_o[2], bench_text_o[1], bench_text_o[0], bench_done);
+
+				$exit();
+		end
+
+	end else if (status < s_ct || status == 0) begin
+
+		done_passed = (dut_done == bench_done);
+		text_passed = 1;
+
+		if (done_passed) begin 
+				$display ("**********  PASSED done *********** @ simtime %t :" , $realtime );	
+		end else if ( !done_passed ) begin
+			        $display("%t : error in done bit \n", $realtime);
+            			$display("dut value: %d", dut_done);
+            			$display("bench value: %d", bench_done);
+
+				$exit();
+		end
+
+		if (verbose) begin  $display (" %t <<<<<< BYPASSING DATA CHECKER:  DUT OUTPUT NOT READY YET >>>>>>>> ", $realtime); end
+
+	end else begin
+		if (verbose) begin $display (" %t <<<<< BYPASSING CHECKER:  DUT OUTPUT NOT READY YET >>>>>> ", $realtime ); end
+	end
+
+	endfunction
+
+endclass
+
+
 program tb (ifc.bench ds);
 
 	import "DPI-C" function void rebuild_text ( input int  txt, input int i);

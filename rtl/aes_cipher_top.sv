@@ -81,10 +81,10 @@ output	[7:0]	sa00, sa01, sa02, sa03;
 output	[7:0]	sa10, sa11, sa12, sa13;
 output	[7:0]	sa20, sa21, sa22, sa23;
 output	[7:0]	sa30, sa31, sa32, sa33;
-output	[7:0]	sa00_sub, sa01_sub, sa02_sub, sa03_sub;
-output	[7:0]	sa10_sub, sa11_sub, sa12_sub, sa13_sub;
-output	[7:0]	sa20_sub, sa21_sub, sa22_sub, sa23_sub;
-output	[7:0]	sa30_sub, sa31_sub, sa32_sub, sa33_sub;
+output	[7:0]	sa00_next, sa01_next, sa02_next, sa03_next;
+output	[7:0]	sa10_next, sa11_next, sa12_next, sa13_next;
+output	[7:0]	sa20_next, sa21_next, sa22_next, sa23_next;
+output	[7:0]	sa30_next, sa31_next, sa32_next, sa33_next;
 
 
 output	[3:0]	dcnt;

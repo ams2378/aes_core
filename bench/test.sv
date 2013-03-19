@@ -139,54 +139,77 @@ program tb (ifc.bench ds);
 
 		$fdisplay (f,"ROUND : %d ", ds.cb.dcnt);
 
-		$fdisplay (f, "sa33 input text : %h ", ds.cb.text_in_r[007:000]);
-		$fdisplay (f, "sa33 input key  : %h ", ds.cb.w3[7:0]);
+		$fdisplay (f, "sa33 text_in : %h ", ds.cb.text_in[007:000]);
+		$fdisplay (f, "sa33 w_i  : %h ", ds.cb.w3[7:0]);
 
-		$fdisplay (f, "sa23 input text : %h ", ds.cb.text_in_r[015:008]);
-		$fdisplay (f, "sa23 input key  : %h ", ds.cb.w3[15:8]);
+		$fdisplay (f, "sa23 text_in : %h ", ds.cb.text_in[015:008]);
+		$fdisplay (f, "sa23 w_i  : %h ", ds.cb.w3[15:8]);
 
-		$fdisplay (f, "sa13 input text : %h ", ds.cb.text_in_r[023:016]);
-		$fdisplay (f, "sa13 input key  : %h ", ds.cb.w3[23:16]);
+		$fdisplay (f, "sa13 text_in : %h ", ds.cb.text_in[023:016]);
+		$fdisplay (f, "sa13 w_i  : %h ", ds.cb.w3[23:16]);
 
-		$fdisplay (f, "sa03 input text : %h ", ds.cb.text_in_r[031:024]);
-		$fdisplay (f, "sa03 input key  : %h ", ds.cb.w3[31:24]);
+		$fdisplay (f, "sa03 text_in : %h ", ds.cb.text_in[031:024]);
+		$fdisplay (f, "sa03 w_i  : %h ", ds.cb.w3[31:24]);
 
-		$fdisplay (f, "sa32 input text : %h ", ds.cb.text_in_r[039:032]);
-		$fdisplay (f, "sa32 input key  : %h ", ds.cb.w2[7:0]);
+		$fdisplay (f, "sa32 text_in : %h ", ds.cb.text_in[039:032]);
+		$fdisplay (f, "sa32 w_i  : %h ", ds.cb.w2[7:0]);
 
-		$fdisplay (f, "sa22 input text : %h ", ds.cb.text_in_r[047:040]);
-		$fdisplay (f, "sa22 input key  : %h ", ds.cb.w2[15:8]);
+		$fdisplay (f, "sa22 text_in : %h ", ds.cb.text_in[047:040]);
+		$fdisplay (f, "sa22 w_i  : %h ", ds.cb.w2[15:8]);
 
-		$fdisplay (f, "sa12 input text : %h ", ds.cb.text_in_r[055:048]);
-		$fdisplay (f, "sa12 input key  : %h ", ds.cb.w2[23:16]);
+		$fdisplay (f, "sa12 text_in : %h ", ds.cb.text_in[055:048]);
+		$fdisplay (f, "sa12 w_i  : %h ", ds.cb.w2[23:16]);
 
-		$fdisplay (f, "sa02 input text : %h ", ds.cb.text_in_r[063:056]);
-		$fdisplay (f, "sa02 input key  : %h ", ds.cb.w2[31:24]);
+		$fdisplay (f, "sa02 text_in : %h ", ds.cb.text_in[063:056]);
+		$fdisplay (f, "sa02 w_i  : %h ", ds.cb.w2[31:24]);
 
 
-		$fdisplay (f, "sa31 input text : %h ", ds.cb.text_in_r[071:064]);
-		$fdisplay (f, "sa31 input key  : %h ", ds.cb.w1[7:0]);
+		$fdisplay (f, "sa31 text_in : %h ", ds.cb.text_in[071:064]);
+		$fdisplay (f, "sa31 w_i  : %h ", ds.cb.w1[7:0]);
 
-		$fdisplay (f, "sa21 input text : %h ", ds.cb.text_in_r[079:072]);
-		$fdisplay (f, "sa21 input key  : %h ", ds.cb.w1[15:8]);
+		$fdisplay (f, "sa21 text_in : %h ", ds.cb.text_in[079:072]);
+		$fdisplay (f, "sa21 w_i  : %h ", ds.cb.w1[15:8]);
 
-		$fdisplay (f, "sa11 input text : %h ", ds.cb.text_in_r[087:080]);
-		$fdisplay (f, "sa11 input key  : %h ", ds.cb.w1[23:16]);
+		$fdisplay (f, "sa11 text_in : %h ", ds.cb.text_in[087:080]);
+		$fdisplay (f, "sa11 w_i  : %h ", ds.cb.w1[23:16]);
 
-		$fdisplay (f, "sa01 input text : %h ", ds.cb.text_in_r[095:088]);
-		$fdisplay (f, "sa01 input key  : %h ", ds.cb.w1[31:24]);
+		$fdisplay (f, "sa01 text_in : %h ", ds.cb.text_in[095:088]);
+		$fdisplay (f, "sa01 w_i  : %h ", ds.cb.w1[31:24]);
 
-		$fdisplay (f, "sa30 input text : %h ", ds.cb.text_in_r[103:096]);
-		$fdisplay (f, "sa30 input key  : %h ", ds.cb.w0[7:0]);
+		$fdisplay (f, "sa30 text_in : %h ", ds.cb.text_in[103:096]);
+		$fdisplay (f, "sa30 w_i  : %h ", ds.cb.w0[7:0]);
 
-		$fdisplay (f, "sa20 input text : %h ", ds.cb.text_in_r[111:104]);
-		$fdisplay (f, "sa20 input key  : %h ", ds.cb.w0[15:8]);
+		$fdisplay (f, "sa20 text_in : %h ", ds.cb.text_in[111:104]);
+		$fdisplay (f, "sa20 w_i  : %h ", ds.cb.w0[15:8]);
 
-		$fdisplay (f, "sa10 input text : %h ", ds.cb.text_in_r[119:112]);
-		$fdisplay (f, "sa10 input key  : %h ", ds.cb.w0[23:16]);
+		$fdisplay (f, "sa10 text_in : %h ", ds.cb.text_in[119:112]);
+		$fdisplay (f, "sa10 w_i  : %h ", ds.cb.w0[23:16]);
 
-		$fdisplay (f, "sa00 input text : %h ", ds.cb.text_in_r[129:120]);
-		$fdisplay (f, "sa00 input key  : %h ", ds.cb.w0[31:24]);
+		$fdisplay (f, "sa00 text_in : %h ", ds.cb.text_in[129:120]);
+		$fdisplay (f, "sa00 w_i  : %h ", ds.cb.w0[31:24]);
+
+/*
+		$fdisplay (f,"sa33 : %h ", ds.cb.sa33_next);
+		$fdisplay (f,"sa23 : %h ", ds.cb.sa23_next);
+		$fdisplay (f,"sa13 : %h ", ds.cb.sa13_next);
+		$fdisplay (f,"sa03 : %h ", ds.cb.sa03_next);
+
+
+		$fdisplay (f,"sa32 : %h ", ds.cb.sa32_next);
+		$fdisplay (f,"sa22 : %h ", ds.cb.sa22_next);
+		$fdisplay (f,"sa12 : %h ", ds.cb.sa12_next);
+		$fdisplay (f,"sa02 : %h ", ds.cb.sa02_next);
+
+		$fdisplay (f,"sa31 : %h ", ds.cb.sa31_next);
+		$fdisplay (f,"sa21 : %h ", ds.cb.sa21_next);
+		$fdisplay (f,"sa11 : %h ", ds.cb.sa11_next);
+		$fdisplay (f,"sa01 : %h ", ds.cb.sa01_next);
+
+		$fdisplay (f,"sa30 : %h ", ds.cb.sa30_next);
+		$fdisplay (f,"sa20 : %h ", ds.cb.sa20_next);
+		$fdisplay (f,"sa10 : %h ", ds.cb.sa10_next);
+		$fdisplay (f,"sa00 : %h ", ds.cb.sa00_next);
+*/
 
 		$fdisplay (f,"Outputs from roundkey : ");
 		$fdisplay (f,"------------------");

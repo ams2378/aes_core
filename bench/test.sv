@@ -144,21 +144,21 @@ program tb (ifc.bench ds);
 		$fdisplay (f, "sa33 w_i  : %h ", ds.cb.w3[7:0]);
 		$fdisplay (f, "sa33 sa_i : %h ", ds.cb.sa33_next);
 		$fdisplay (f, "sa33 sa_o : %h ", ds.cb.sa33);
-		$fdisplay (f," sa33 ld_r : %b ", t.ld);
+		$fdisplay (f, "sa33 ld_r : %b ", t.ld);
 
 
 		$fdisplay (f, "sa23 text_in : %h ", ds.cb.text_in_r[015:008]);
 		$fdisplay (f, "sa23 w_i  : %h ", ds.cb.w3[15:8]);
 		$fdisplay (f, "sa23 sa_i : %h ", ds.cb.sa23_next);
 		$fdisplay (f, "sa23 sa_o : %h ", ds.cb.sa23);
-		$fdisplay (f," sa23 ld_r : %b ", t.ld);
+		$fdisplay (f, "sa23 ld_r : %b ", t.ld);
 
 
 		$fdisplay (f, "sa13 text_in : %h ", ds.cb.text_in_r[023:016]);
 		$fdisplay (f, "sa13 w_i  : %h ", ds.cb.w3[23:16]);
 		$fdisplay (f, "sa13 sa_i : %h ", ds.cb.sa13_next);
 		$fdisplay (f, "sa13 sa_o : %h ", ds.cb.sa13);
-		$fdisplay (f," sa13 ld_r : %b ", t.ld);
+		$fdisplay (f, "sa13 ld_r : %b ", t.ld);
 
 
 		$fdisplay (f, "sa03 text_in : %h ", ds.cb.text_in_r[031:024]);

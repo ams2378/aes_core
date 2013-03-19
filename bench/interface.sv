@@ -16,6 +16,7 @@ logic [127:0] 	key;
 logic [127:0] 	text_in;
 
 logic 		done;
+logic 		ld_r;
 logic [127:0] 	text_out;
 logic [127:0] 	text_in_r;
 logic [31:0] 	w0, w1, w2, w3;
@@ -44,6 +45,7 @@ logic	[7:0]	sa30_next, sa31_next, sa32_next, sa33_next;
 	input		text_in_r;
 	input		w0, w1, w2, w3;
 
+	input		ld_r;
 	input 		done;
 	input 		text_out;
 	input		sa00, sa01, sa02, sa03;
@@ -74,7 +76,7 @@ logic	[7:0]	sa30_next, sa31_next, sa32_next, sa33_next;
 	output 		text_out,
 	output 		done,
 	output 		dcnt,
-
+	output		ld_r,
 
 	output		sa00, sa01, sa02, sa03,
 	output		sa10, sa11, sa12, sa13,

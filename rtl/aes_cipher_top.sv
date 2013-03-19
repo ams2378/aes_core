@@ -65,7 +65,7 @@ module aes_cipher_top(clk, rst, ld, done, key, text_in, text_out,
 		sa10_next, sa11_next, sa12_next, sa13_next,
 		sa20_next, sa21_next, sa22_next, sa23_next,
 		sa30_next, sa31_next, sa32_next, sa33_next, dcnt,
-		text_in_r, w0, w1, w2, w3 
+		text_in_r, w0, w1, w2, w3, ld_r 
 
 		 );		// edit ams
 

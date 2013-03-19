@@ -206,7 +206,7 @@ program tb (ifc.bench ds);
 		$fdisplay (f, "sa22 sa_o : %h ", ds.cb.sa22);
 		$fdisplay (f, "sa22 ld_r : %b ", t.ld);
 
-		fdisplay  (f, "sa23 text_in : %h ", ds.cb.text_in_r[015:008]);
+		$fdisplay (f, "sa23 text_in : %h ", ds.cb.text_in_r[015:008]);
 		$fdisplay (f, "sa23 w_i  : %h ", ds.cb.w3[15:8]);
 		$fdisplay (f, "sa23 sa_i : %h ", ds.cb.sa23_next);
 		$fdisplay (f, "sa23 sa_o : %h ", ds.cb.sa23);

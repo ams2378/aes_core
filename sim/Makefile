@@ -2,7 +2,7 @@ MODULES= ../rtl/aes_rcon.sv ../rtl/aes_sbox.sv ../rtl/aes_xor.sv ../rtl/aes_addr
 INTERFACE= ../bench/interface.sv
 TOP = ../bench/top.sv
 TEST= ../bench/aes_env.sv ../bench/aes_checker.sv ../bench/aes_transactions.sv ../bench/aes.c ../bench/test.c ../bench/test.sv
-BENCH=../sim/testbench.exe
+#BENCH=../sim/testbench.exe
 
 all: 
 	make cleanall

@@ -51,6 +51,7 @@ module aes_top(ifc.dut d);
 			.sa31_next(d.sa31_next),
 			.sa32_next(d.sa32_next),
 			.sa33_next(d.sa33_next),
+			.ld_r(d.ld_r),
 			.dcnt(d.dcnt)
 			);
 

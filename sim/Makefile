@@ -5,7 +5,7 @@ TEST= ../bench/aes_env.sv ../bench/aes_checker.sv ../bench/aes_transactions.sv .
 BENCH=../sim/testbench.exe
 
 all: 
-	make clean
+	make cleanall
 	make test
 	make gtkwave
 duv4:

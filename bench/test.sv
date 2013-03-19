@@ -140,7 +140,7 @@ program tb (ifc.bench ds);
 
 		$fdisplay (f,"ROUND : %d ", ds.cb.dcnt);
 
-		$fdisplay (f, "sa00 text_in : %h ", ds.cb.text_in_r[129:120]);
+		$fdisplay (f, "sa00 text_in : %h ", ds.cb.text_in_r[127:120]);
 		$fdisplay (f, "sa00 w_i  : %h ", ds.cb.w0[31:24]);
 		$fdisplay (f, "sa00 sa_i : %h ", ds.cb.sa00_next);
 		$fdisplay (f, "sa00 sa_o : %h ", ds.cb.sa00);

@@ -1,4 +1,5 @@
 
+`timescale 1ns/1ps
 class aes_transaction;
 
 //	rand bit[127:0] text;

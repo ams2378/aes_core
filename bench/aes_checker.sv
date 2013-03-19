@@ -1,3 +1,6 @@
+
+`timescale 1ns/1ps
+
 class aes_checker;
 	bit pass;
 	integer f;

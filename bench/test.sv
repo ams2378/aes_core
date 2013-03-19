@@ -140,101 +140,101 @@ program tb (ifc.bench ds);
 
 		$fdisplay (f,"ROUND : %d ", ds.cb.dcnt);
 
-		$fdisplay (f, "sa00 text_in : %h ", ds.cb.text_in_r[127:120]);
-		$fdisplay (f, "sa00 w_i  : %h ", ds.cb.w0[31:24]);
-		$fdisplay (f, "sa00 sa_i : %h ", ds.cb.sa00_next);
-		$fdisplay (f, "sa00 sa_o : %h ", ds.cb.sa00);
-		$fdisplay (f, "sa00 ld_r : %b ", t.ld);
+		$fdisplay (f, "sa00_textin : %h ", ds.cb.text_in_r[127:120]);
+		$fdisplay (f, "sa00_w_i  : %h ", ds.cb.w0[31:24]);
+		$fdisplay (f, "sa00_sa_i : %h ", ds.cb.sa00_next);
+		$fdisplay (f, "sa00_sa_o : %h ", ds.cb.sa00);
+		$fdisplay (f, "sa00_ld_r : %b ", t.ld);
 
-		$fdisplay (f, "sa01 text_in : %h ", ds.cb.text_in_r[095:088]);
-		$fdisplay (f, "sa01 w_i  : %h ", ds.cb.w1[31:24]);
-		$fdisplay (f, "sa01 sa_i : %h ", ds.cb.sa01_next);
-		$fdisplay (f, "sa01 sa_o : %h ", ds.cb.sa01);
-		$fdisplay (f, "sa01 ld_r : %b ", t.ld);
+		$fdisplay (f, "sa01_textin : %h ", ds.cb.text_in_r[095:088]);
+		$fdisplay (f, "sa01_w_i  : %h ", ds.cb.w1[31:24]);
+		$fdisplay (f, "sa01_sa_i : %h ", ds.cb.sa01_next);
+		$fdisplay (f, "sa01_sa_o : %h ", ds.cb.sa01);
+		$fdisplay (f, "sa01_ld_r : %b ", t.ld);
 
-		$fdisplay (f, "sa02 text_in : %h ", ds.cb.text_in_r[063:056]);
-		$fdisplay (f, "sa02 w_i  : %h ", ds.cb.w2[31:24]);
-		$fdisplay (f, "sa02 sa_i : %h ", ds.cb.sa02_next);
-		$fdisplay (f, "sa02 sa_o : %h ", ds.cb.sa02);
-		$fdisplay (f, "sa02 ld_r : %b ", t.ld);
+		$fdisplay (f, "sa02_textin : %h ", ds.cb.text_in_r[063:056]);
+		$fdisplay (f, "sa02_w_i  : %h ", ds.cb.w2[31:24]);
+		$fdisplay (f, "sa02_sa_i : %h ", ds.cb.sa02_next);
+		$fdisplay (f, "sa02_sa_o : %h ", ds.cb.sa02);
+		$fdisplay (f, "sa02_ld_r : %b ", t.ld);
 
-		$fdisplay (f, "sa03 text_in : %h ", ds.cb.text_in_r[031:024]);
-		$fdisplay (f, "sa03 w_i  : %h ", ds.cb.w3[31:24]);
-		$fdisplay (f, "sa03 sa_i : %h ", ds.cb.sa03_next);
-		$fdisplay (f, "sa03 sa_o : %h ", ds.cb.sa03);
-		$fdisplay (f, "sa03 ld_r : %b ", t.ld);
+		$fdisplay (f, "sa03_textin : %h ", ds.cb.text_in_r[031:024]);
+		$fdisplay (f, "sa03_w_i  : %h ", ds.cb.w3[31:24]);
+		$fdisplay (f, "sa03_sa_i : %h ", ds.cb.sa03_next);
+		$fdisplay (f, "sa03_sa_o : %h ", ds.cb.sa03);
+		$fdisplay (f, "sa03_ld_r : %b ", t.ld);
 
-		$fdisplay (f, "sa10 text_in : %h ", ds.cb.text_in_r[119:112]);
-		$fdisplay (f, "sa10 w_i  : %h ", ds.cb.w0[23:16]);
-		$fdisplay (f, "sa10 sa_i : %h ", ds.cb.sa10_next);
-		$fdisplay (f, "sa10 sa_o : %h ", ds.cb.sa10);
-		$fdisplay (f, "sa10 ld_r : %b ", t.ld);
+		$fdisplay (f, "sa10_textin : %h ", ds.cb.text_in_r[119:112]);
+		$fdisplay (f, "sa10_w_i  : %h ", ds.cb.w0[23:16]);
+		$fdisplay (f, "sa10_sa_i : %h ", ds.cb.sa10_next);
+		$fdisplay (f, "sa10_sa_o : %h ", ds.cb.sa10);
+		$fdisplay (f, "sa10_ld_r : %b ", t.ld);
 
-		$fdisplay (f, "sa11 text_in : %h ", ds.cb.text_in_r[087:080]);
-		$fdisplay (f, "sa11 w_i  : %h ", ds.cb.w1[23:16]);
-		$fdisplay (f, "sa11 sa_i : %h ", ds.cb.sa11_next);
-		$fdisplay (f, "sa11 sa_o : %h ", ds.cb.sa11);
-		$fdisplay (f, "sa11 ld_r : %b ", t.ld);
+		$fdisplay (f, "sa11_textin : %h ", ds.cb.text_in_r[087:080]);
+		$fdisplay (f, "sa11_w_i  : %h ", ds.cb.w1[23:16]);
+		$fdisplay (f, "sa11_sa_i : %h ", ds.cb.sa11_next);
+		$fdisplay (f, "sa11_sa_o : %h ", ds.cb.sa11);
+		$fdisplay (f, "sa11_ld_r : %b ", t.ld);
 
-		$fdisplay (f, "sa12 text_in : %h ", ds.cb.text_in_r[055:048]);
-		$fdisplay (f, "sa12 w_i  : %h ", ds.cb.w2[23:16]);
-		$fdisplay (f, "sa12 sa_i : %h ", ds.cb.sa12_next);
-		$fdisplay (f, "sa12 sa_o : %h ", ds.cb.sa12);
-		$fdisplay (f, "sa12 ld_r : %b ", t.ld);
+		$fdisplay (f, "sa12_textin : %h ", ds.cb.text_in_r[055:048]);
+		$fdisplay (f, "sa12_w_i  : %h ", ds.cb.w2[23:16]);
+		$fdisplay (f, "sa12_sa_i : %h ", ds.cb.sa12_next);
+		$fdisplay (f, "sa12_sa_o : %h ", ds.cb.sa12);
+		$fdisplay (f, "sa12_ld_r : %b ", t.ld);
 
-		$fdisplay (f, "sa13 text_in : %h ", ds.cb.text_in_r[023:016]);
-		$fdisplay (f, "sa13 w_i  : %h ", ds.cb.w3[23:16]);
-		$fdisplay (f, "sa13 sa_i : %h ", ds.cb.sa13_next);
-		$fdisplay (f, "sa13 sa_o : %h ", ds.cb.sa13);
-		$fdisplay (f, "sa13 ld_r : %b ", t.ld);
+		$fdisplay (f, "sa13_textin : %h ", ds.cb.text_in_r[023:016]);
+		$fdisplay (f, "sa13_w_i  : %h ", ds.cb.w3[23:16]);
+		$fdisplay (f, "sa13_sa_i : %h ", ds.cb.sa13_next);
+		$fdisplay (f, "sa13_sa_o : %h ", ds.cb.sa13);
+		$fdisplay (f, "sa13_ld_r : %b ", t.ld);
 
-		$fdisplay (f, "sa20 text_in : %h ", ds.cb.text_in_r[111:104]);
-		$fdisplay (f, "sa20 w_i  : %h ", ds.cb.w0[15:8]);
-		$fdisplay (f, "sa20 sa_i : %h ", ds.cb.sa20_next);
-		$fdisplay (f, "sa20 sa_o : %h ", ds.cb.sa20);
-		$fdisplay (f, "sa20 ld_r : %b ", t.ld);
+		$fdisplay (f, "sa20_textin : %h ", ds.cb.text_in_r[111:104]);
+		$fdisplay (f, "sa20_w_i  : %h ", ds.cb.w0[15:8]);
+		$fdisplay (f, "sa20_sa_i : %h ", ds.cb.sa20_next);
+		$fdisplay (f, "sa20_sa_o : %h ", ds.cb.sa20);
+		$fdisplay (f, "sa20_ld_r : %b ", t.ld);
 
-		$fdisplay (f, "sa21 text_in : %h ", ds.cb.text_in_r[079:072]);
-		$fdisplay (f, "sa21 w_i  : %h ", ds.cb.w1[15:8]);
-		$fdisplay (f, "sa21 sa_i : %h ", ds.cb.sa21_next);
-		$fdisplay (f, "sa21 sa_o : %h ", ds.cb.sa21);
-		$fdisplay (f, "sa21 ld_r : %b ", t.ld);
+		$fdisplay (f, "sa21_textin : %h ", ds.cb.text_in_r[079:072]);
+		$fdisplay (f, "sa21_w_i  : %h ", ds.cb.w1[15:8]);
+		$fdisplay (f, "sa21_sa_i : %h ", ds.cb.sa21_next);
+		$fdisplay (f, "sa21_sa_o : %h ", ds.cb.sa21);
+		$fdisplay (f, "sa21_ld_r : %b ", t.ld);
 
-		$fdisplay (f, "sa22 text_in : %h ", ds.cb.text_in_r[047:040]);
-		$fdisplay (f, "sa22 w_i  : %h ", ds.cb.w2[15:8]);
-		$fdisplay (f, "sa22 sa_i : %h ", ds.cb.sa22_next);
-		$fdisplay (f, "sa22 sa_o : %h ", ds.cb.sa22);
-		$fdisplay (f, "sa22 ld_r : %b ", t.ld);
+		$fdisplay (f, "sa22_textin : %h ", ds.cb.text_in_r[047:040]);
+		$fdisplay (f, "sa22_w_i  : %h ", ds.cb.w2[15:8]);
+		$fdisplay (f, "sa22_sa_i : %h ", ds.cb.sa22_next);
+		$fdisplay (f, "sa22_sa_o : %h ", ds.cb.sa22);
+		$fdisplay (f, "sa22_ld_r : %b ", t.ld);
 
-		$fdisplay (f, "sa23 text_in : %h ", ds.cb.text_in_r[015:008]);
-		$fdisplay (f, "sa23 w_i  : %h ", ds.cb.w3[15:8]);
-		$fdisplay (f, "sa23 sa_i : %h ", ds.cb.sa23_next);
-		$fdisplay (f, "sa23 sa_o : %h ", ds.cb.sa23);
-		$fdisplay (f, "sa23 ld_r : %b ", t.ld);
+		$fdisplay (f, "sa23_textin : %h ", ds.cb.text_in_r[015:008]);
+		$fdisplay (f, "sa23_w_i  : %h ", ds.cb.w3[15:8]);
+		$fdisplay (f, "sa23_sa_i : %h ", ds.cb.sa23_next);
+		$fdisplay (f, "sa23_sa_o : %h ", ds.cb.sa23);
+		$fdisplay (f, "sa23_ld_r : %b ", t.ld);
 
-		$fdisplay (f, "sa30 text_in : %h ", ds.cb.text_in_r[103:096]);
-		$fdisplay (f, "sa30 w_i  : %h ", ds.cb.w0[7:0]);
-		$fdisplay (f, "sa30 sa_i : %h ", ds.cb.sa30_next);
-		$fdisplay (f, "sa30 sa_o : %h ", ds.cb.sa30);
-		$fdisplay (f, "sa30 ld_r : %b ", t.ld);
+		$fdisplay (f, "sa30_textin : %h ", ds.cb.text_in_r[103:096]);
+		$fdisplay (f, "sa30_w_i  : %h ", ds.cb.w0[7:0]);
+		$fdisplay (f, "sa30_sa_i : %h ", ds.cb.sa30_next);
+		$fdisplay (f, "sa30_sa_o : %h ", ds.cb.sa30);
+		$fdisplay (f, "sa30_ld_r : %b ", t.ld);
 
-		$fdisplay (f, "sa31 text_in : %h ", ds.cb.text_in_r[071:064]);
-		$fdisplay (f, "sa31 w_i  : %h ", ds.cb.w1[7:0]);
-		$fdisplay (f, "sa31 sa_i : %h ", ds.cb.sa31_next);
-		$fdisplay (f, "sa31 sa_o : %h ", ds.cb.sa31);
-		$fdisplay (f, "sa31 ld_r : %b ", t.ld);
+		$fdisplay (f, "sa31_textin : %h ", ds.cb.text_in_r[071:064]);
+		$fdisplay (f, "sa31_w_i  : %h ", ds.cb.w1[7:0]);
+		$fdisplay (f, "sa31_sa_i : %h ", ds.cb.sa31_next);
+		$fdisplay (f, "sa31_sa_o : %h ", ds.cb.sa31);
+		$fdisplay (f, "sa31_ld_r : %b ", t.ld);
 
-		$fdisplay (f, "sa32 text_in : %h ", ds.cb.text_in_r[039:032]);
-		$fdisplay (f, "sa32 w_i  : %h ", ds.cb.w2[7:0]);
-		$fdisplay (f, "sa32 sa_i : %h ", ds.cb.sa32_next);
-		$fdisplay (f, "sa32 sa_o : %h ", ds.cb.sa32);
-		$fdisplay (f, "sa32 ld_r : %b ", t.ld);
+		$fdisplay (f, "sa32_textin : %h ", ds.cb.text_in_r[039:032]);
+		$fdisplay (f, "sa32_w_i  : %h ", ds.cb.w2[7:0]);
+		$fdisplay (f, "sa32_sa_i : %h ", ds.cb.sa32_next);
+		$fdisplay (f, "sa32_sa_o : %h ", ds.cb.sa32);
+		$fdisplay (f, "sa32_ld_r : %b ", t.ld);
 
-		$fdisplay (f, "sa33 text_in : %h ", ds.cb.text_in_r[007:000]);
-		$fdisplay (f, "sa33 w_i  : %h ", ds.cb.w3[7:0]);
-		$fdisplay (f, "sa33 sa_i : %h ", ds.cb.sa33_next);
-		$fdisplay (f, "sa33 sa_o : %h ", ds.cb.sa33);
-		$fdisplay (f, "sa33 ld_r : %b ", t.ld);
+		$fdisplay (f, "sa33_textin : %h ", ds.cb.text_in_r[007:000]);
+		$fdisplay (f, "sa33_w_i  : %h ", ds.cb.w3[7:0]);
+		$fdisplay (f, "sa33_sa_i : %h ", ds.cb.sa33_next);
+		$fdisplay (f, "sa33_sa_o : %h ", ds.cb.sa33);
+		$fdisplay (f, "sa33_ld_r : %b ", t.ld);
 
 
 /*		$fdisplay (f,"Final Outputs:");

@@ -4,14 +4,38 @@
 
 module aes_top(ifc.dut d);
 
+wire		ld_t;
+wire [127:0]	text_t;
+wire [127:0]	key_t;
+wire		done_t;
+
+	aes_input_buffer inbuffer (
+			.clk(d.clk),
+			.rst(d.rst),
+			.ld_i(d.ld)
+			.text_in(d.text_in),
+			.key_in(d.key),
+			.done_i(done_t),
+
+			.text_o(text_t),
+			.key_o(key_t),
+			.ld_o(ld_t)
+			)
+
+
 	aes_cipher_top cipher (
 			.clk(d.clk),	
 			.rst(d.rst),
-			.ld(d.ld),
-			.key(d.key),
-			.text_in(d.text_in),
+			.ld(ld_t),
+			.key(key_t),
+			.text_in(text_t),
+
+		//	.ld(d.ld),
+		//	.key(d.key),
+		//	.text_in(d.text_in),
+
 			.text_out(d.text_out),
-			.done(d.done),
+			.done(done_t),
 			.sa00(d.sa00),
 			.sa01(d.sa01),
 			.sa02(d.sa02),
@@ -55,6 +79,6 @@ module aes_top(ifc.dut d);
 			.dcnt(d.dcnt)
 			);
 
-
+assign d.done	=	done_t;
 
 endmodule

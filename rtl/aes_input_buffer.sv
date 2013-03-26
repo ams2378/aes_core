@@ -13,7 +13,8 @@ module aes_xor ( clk, rst, ld_i, text_in, done_i, key_in, text_o, key_o, ld_o );
 
 input		clk;
 input		rst;
-input		ld;	
+input		ld_i;	
+input		done_i;	
 input [31:0] 	text_in;
 input [31:0] 	key_in;
 
@@ -41,7 +42,7 @@ always @(posedge clk) begin
 	else			state <= next_state;
 end
 
-always @(state or start_tag_i or start_value_i) begin
+always @(state or done or ld or rst) begin
 	
 	if (!rst) begin
 		text_o 	= '0;

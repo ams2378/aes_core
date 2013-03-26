@@ -17,7 +17,7 @@ input		rst;
 input		done_i;	
 input [127:0] 	text_in;
 
-output [32:0]	text_o;
+output [31:0]	text_o;
 output		done_o;
 
 /* state variable */

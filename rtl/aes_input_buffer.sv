@@ -42,7 +42,7 @@ always @(posedge clk) begin
 	else			state <= next_state;
 end
 
-always @(state or done or ld or rst) begin
+always @(state or done_i or ld or rst) begin
 	
 	if (!rst) begin
 		text_o 	= '0;
@@ -99,10 +99,10 @@ always @(state or done or ld or rst) begin
 				if (rst == 0) begin
 					ld 	   = 0;
 					next_state = state0;
-				end else if (done != 1) begin
+				end else if (done_i != 1) begin
 					ld 	   = 0;
 					next_state = state4;
-				end else if (done == 1) begin
+				end else if (done_i == 1) begin
 					ld 	   = 0;
 					next_state = state0;
 				end

@@ -58,7 +58,16 @@
 `timescale 1ns/1ps 
 
 
-module aes_cipher_top(clk, rst, ld, done, key, text_in, text_out);		// edit ams
+module aes_cipher_top(clk, rst, ld, done, key, text_in, text_out,
+		sa00, sa01, sa02, sa03,	sa10, sa11, sa12, sa13,
+		sa20, sa21, sa22, sa23, sa30, sa31, sa32, sa33,       
+		sa00_next, sa01_next, sa02_next, sa03_next,
+		sa10_next, sa11_next, sa12_next, sa13_next,
+		sa20_next, sa21_next, sa22_next, sa23_next,
+		sa30_next, sa31_next, sa32_next, sa33_next, dcnt,
+		text_in_r, w0, w1, w2, w3, ld_r 
+
+		 );		// edit ams
 
 input		clk, rst;
 input		ld;
@@ -66,7 +75,21 @@ input	[127:0]	key;
 input	[127:0]	text_in;
 
 output		done;
+output		ld_r;
 output	[127:0]	text_out;
+output	[127:0]	text_in_r;			//edit ams
+output  [31:0]	w0, w1, w2, w3;
+output	[7:0]	sa00, sa01, sa02, sa03;
+output	[7:0]	sa10, sa11, sa12, sa13;
+output	[7:0]	sa20, sa21, sa22, sa23;
+output	[7:0]	sa30, sa31, sa32, sa33;
+output	[7:0]	sa00_next, sa01_next, sa02_next, sa03_next;
+output	[7:0]	sa10_next, sa11_next, sa12_next, sa13_next;
+output	[7:0]	sa20_next, sa21_next, sa22_next, sa23_next;
+output	[7:0]	sa30_next, sa31_next, sa32_next, sa33_next;
+
+
+output	[3:0]	dcnt;
 
 
 ////////////////////////////////////////////////////////////////////

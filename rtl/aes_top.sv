@@ -1,11 +1,20 @@
-//aes top
-//include both aes_cipher_top and aes_inv_cipher_top
+/**
+ * @filename		aes_top.sv 
+ *
+ * @brief     	        top file   	
+ *
+ * @author		Adil Sadik <sadik.adil@gmail.com> 
+ *
+ * @dependencies	none	
+ */
+
 `timescale 1ns/1ps 
 
 module aes_top(ifc.dut d);
 
 wire		ld_t;
 wire [127:0]	text_t;
+wire [127:0]	text_t2;
 wire [127:0]	key_t;
 wire		done_t;
 
@@ -22,6 +31,14 @@ wire		done_t;
 			.ld_o(ld_t)
 			);
 
+	aes_input_buffer inbuffer (
+			.clk(d.clk),
+			.rst(d.rst),
+			.done_i(done_t),
+			.text_in(text_t2),
+			.text_o(d.text_out),
+			.done_o(d.done)
+			);
 
 	aes_cipher_top cipher (
 			.clk(d.clk),	
@@ -29,12 +46,7 @@ wire		done_t;
 			.ld(ld_t),
 			.key(key_t),
 			.text_in(text_t),
-
-		//	.ld(d.ld),
-		//	.key(d.key),
-		//	.text_in(d.text_in),
-
-			.text_out(d.text_out),
+			.text_out(text_t2),
 			.done(done_t),
 			.sa00(d.sa00),
 			.sa01(d.sa01),
@@ -78,7 +90,5 @@ wire		done_t;
 			.ld_r(d.ld_r),
 			.dcnt(d.dcnt)
 			);
-
-assign d.done	=	done_t;
 
 endmodule

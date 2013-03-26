@@ -17,7 +17,7 @@ logic [31:0] 	text_in;
 
 logic 		done;
 logic 		ld_r;
-logic [127:0] 	text_out;
+logic [31:0] 	text_out;
 logic [127:0] 	text_in_r;
 logic [31:0] 	w0, w1, w2, w3;
     

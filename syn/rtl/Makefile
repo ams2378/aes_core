@@ -9,7 +9,7 @@ all:
 	make test
 
 clean:
-	rm -rf *.log
+	rm -rf *.log csrc simv*
 
 test:
 	vcs -full64 -PP -sverilog +define+SV +define+VPD  $(MODULES) > $(LOG)  

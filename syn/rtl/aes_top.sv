@@ -18,7 +18,7 @@ module aes_top(
 	input [31:0] 	key,
 	input [31:0] 	text_in,
 	
-	ouput 		done,
+	output 		done,
 	output [31:0] 	text_out
 	);
 

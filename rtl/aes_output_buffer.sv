@@ -30,7 +30,7 @@ reg [2:0]			next_state;
 
 
 reg [32:0]			text_o;
-reg				ld_o;
+reg				done_o;
 
 always @(posedge clk) begin
 	if (!rst)		state <= state0;

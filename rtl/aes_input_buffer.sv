@@ -9,7 +9,7 @@
  */
 
 
-module aes_xor ( clk, rst, ld_i, text_in, done_i, key_in, text_o, key_o, ld_o );
+module aes_input_buffer ( clk, rst, ld_i, text_in, done_i, key_in, text_o, key_o, ld_o );
 
 input		clk;
 input		rst;

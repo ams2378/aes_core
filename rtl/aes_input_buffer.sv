@@ -53,7 +53,7 @@ always @(state or done_i or ld ) begin
 	case(state) 
 	
 		state0: begin 			
-				if (ld_o_i == 1) begin
+				if (ld_i == 1) begin
 					key_o [31:0] = key_in;
 					text_o[31:0] = text_in;
 					ld_o 	   = 0;

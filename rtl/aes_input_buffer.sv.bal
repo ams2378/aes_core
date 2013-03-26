@@ -42,7 +42,7 @@ always @(posedge clk) begin
 	else			state <= next_state;
 end
 
-always @(state or done_i or ld ) begin
+always @(state or done_i or ld or rst) begin
 	
 	if (!rst) begin
 		text_o 	= '0;
@@ -53,7 +53,10 @@ always @(state or done_i or ld ) begin
 	case(state) 
 	
 		state0: begin 			
-				if (ld_i == 1) begin
+				if (rst != 1) begin
+					ld 	   = 0;	
+					next_state = state0;
+				end else if (ld_i == 1) begin
 					key [31:0] = key_i;
 					text[31:0] = text_i;
 					ld 	   = 0;
@@ -63,25 +66,40 @@ always @(state or done_i or ld ) begin
 				end
 		end
 		state1: begin
+				if (rst == 0) begin
+					next_state = state0;
+				end else begin
 					key [63:32] = key_i;
 					text[63:32] = text_i;
 					ld 	   = 0;
 					next_state = state2;
+				end
 		end
 		state2: begin
+				if (rst == 0) begin
+					next_state = state0;
+				end else begin
 					key [95:64] = key_i;
 					text[95:64] = text_i;
 					ld 	    = 0;
 					next_state = state3;
+				end
 		end
 		state3:	begin
+				if (rst == 0) begin
+					next_state = state0;
+				end else begin
 					key [127:96] = key_i;
 					text[127:96] = text_i;
 					ld 	     = 1;
 					next_state = state4;
+				end
 		end	
 		state4:	begin
-				if (done_i != 1) begin
+				if (rst == 0) begin
+					ld 	   = 0;
+					next_state = state0;
+				end else if (done_i != 1) begin
 					ld 	   = 0;
 					next_state = state4;
 				end else if (done_i == 1) begin

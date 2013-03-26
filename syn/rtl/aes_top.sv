@@ -29,9 +29,10 @@ wire [127:0]	text_t;
 wire [127:0]	text_t2;
 wire [127:0]	key_t;
 wire		done_t;
-wire		kld_d;
-wire		ld_e;
-wire		ld_d;
+
+reg		kld_d;
+reg		ld_e;
+reg		ld_d;
 
     always @(*) begin
         //encryption mode

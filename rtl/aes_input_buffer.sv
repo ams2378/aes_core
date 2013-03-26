@@ -54,8 +54,8 @@ always @(state or done_i or ld ) begin
 	
 		state0: begin 			
 				if (ld_o_i == 1) begin
-					key_o [31:0] = key_o_in;
-					text_o[31:0] = text_o_in;
+					key_o [31:0] = key_in;
+					text_o[31:0] = text_in;
 					ld_o 	   = 0;
 					next_state = state1;
 				end else begin						
@@ -63,20 +63,20 @@ always @(state or done_i or ld ) begin
 				end
 		end
 		state1: begin
-					key_o [63:32] = key_o_in;
-					text_o[63:32] = text_o_in;
+					key_o [63:32] = key_in;
+					text_o[63:32] = text_in;
 					ld_o 	   = 0;
 					next_state = state2;
 		end
 		state2: begin
-					key_o [95:64] = key_o_in;
-					text_o[95:64] = text_o_in;
+					key_o [95:64] = key_in;
+					text_o[95:64] = text_in;
 					ld_o 	    = 0;
 					next_state = state3;
 		end
 		state3:	begin
-					key_o [127:96] = key_o_in;
-					text_o[127:96] = text_o_in;
+					key_o [127:96] = key_in;
+					text_o[127:96] = text_in;
 					ld_o 	     = 1;
 					next_state = state4;
 		end	

@@ -12,7 +12,7 @@ wire		done_t;
 	aes_input_buffer inbuffer (
 			.clk(d.clk),
 			.rst(d.rst),
-			.ld_i(d.ld)
+			.ld_i(d.ld),
 			.text_in(d.text_in),
 			.key_in(d.key),
 			.done_i(done_t),

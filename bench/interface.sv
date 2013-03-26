@@ -12,8 +12,8 @@
 
 interface ifc (input bit clk);
 logic 		ld;
-logic [127:0] 	key;
-logic [127:0] 	text_in;
+logic [31:0] 	key;
+logic [31:0] 	text_in;
 
 logic 		done;
 logic 		ld_r;

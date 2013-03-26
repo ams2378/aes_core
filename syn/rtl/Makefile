@@ -4,6 +4,12 @@ LOG = compile.log
 #TEST= ../bench/aes_env.sv ../bench/aes_checker.sv ../bench/aes_transactions.sv ../bench/aes.c ../bench/test.c ../bench/test.sv
 #BENCH=../sim/testbench.exe
 
+all:
+	make clean
+	make test
+
+clean:
+	rm -rf *.log
 
 test:
 	vcs -full64 -PP -sverilog +define+SV +define+VPD  $(MODULES) > $(LOG)  

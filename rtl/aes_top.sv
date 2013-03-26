@@ -20,7 +20,7 @@ wire		done_t;
 			.text_o(text_t),
 			.key_o(key_t),
 			.ld_o(ld_t)
-			)
+			);
 
 
 	aes_cipher_top cipher (

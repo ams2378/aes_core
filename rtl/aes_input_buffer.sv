@@ -45,9 +45,9 @@ end
 always @(state or done_i or ld ) begin
 	
 	if (!rst) begin
-		text_o 	= '0;
-		key_o 	= '0;
-		ld_o	= '0;
+		text 	= '0;
+		key 	= '0;
+		ld	= '0;
 	end
 	
 	case(state) 

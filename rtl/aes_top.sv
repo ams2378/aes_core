@@ -31,7 +31,7 @@ wire		done_t;
 			.ld_o(ld_t)
 			);
 
-	aes_input_buffer outbuffer (
+	aes_output_buffer outbuffer (
 			.clk(d.clk),
 			.rst(d.rst),
 			.done_i(done_t),

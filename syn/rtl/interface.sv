@@ -34,33 +34,7 @@ logic	[7:0]	sa30_next, sa31_next, sa32_next, sa33_next;
 
 logic 		rst;
 
-    clocking cb @(posedge clk);
-//        default output #1;
-
-       	output 		rst;	
-	output 		ld;
-	output 		key;
-	output 		text_in;
-
-	input		text_in_r;
-	input		w0, w1, w2, w3;
-
-	input		ld_r;
-	input 		done;
-	input 		text_out;
-	input		sa00, sa01, sa02, sa03;
-	input		sa10, sa11, sa12, sa13;
-	input		sa20, sa21, sa22, sa23;
-	input		sa30, sa31, sa32, sa33;
-	input		sa00_next, sa01_next, sa02_next, sa03_next;
-	input		sa10_next, sa11_next, sa12_next, sa13_next;
-	input		sa20_next, sa21_next, sa22_next, sa23_next;
-	input		sa30_next, sa31_next, sa32_next, sa33_next;
-	input		dcnt;
-
-    endclocking
-
-    modport dut (
+     dut (
 
 	input 		clk,
 	input 		rst,
@@ -87,9 +61,6 @@ logic 		rst;
 	output		sa20_next, sa21_next, sa22_next, sa23_next,
 	output		sa30_next, sa31_next, sa32_next, sa33_next
 
-
-
 	);
 
-    modport bench (clocking cb);
 endinterface

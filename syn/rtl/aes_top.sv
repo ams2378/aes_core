@@ -57,7 +57,7 @@ wire		done_t;
 			.key(key_t),
 			.text_in(text_t),
 			.text_out(text_t2),
-			.done(done_t),
+			.done(done_t)
 			);
 
 endmodule

@@ -8,6 +8,8 @@
  * @dependencies	aes_xor.sv	
  */
 
+`timescale 1ns/1ps 
+
 module aes_addroundkey (clk, ld_r, text_in_r, w0, w1, w2, w3, 
 		sa00, sa01, sa02, sa03,	sa10, sa11, sa12, sa13,
 		sa20, sa21, sa22, sa23, sa30, sa31, sa32, sa33,       

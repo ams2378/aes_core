@@ -8,6 +8,7 @@
  * @dependencies	none	
  */
 
+`timescale 1ns/1ps 
 
 module aes_output_buffer ( clk, rst, done_i, text_in, text_o, done_o );
 

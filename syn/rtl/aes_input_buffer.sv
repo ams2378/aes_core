@@ -8,6 +8,7 @@
  * @dependencies	none	
  */
 
+`timescale 1ns/1ps 
 
 module aes_input_buffer ( clk, rst, ld_i, text_in, done_i, key_in, text_o, key_o, ld_o );
 

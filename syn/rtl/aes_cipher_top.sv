@@ -58,8 +58,7 @@
 `timescale 1ns/1ps 
 
 
-module aes_cipher_top(clk, rst, ld, done, key, text_in, text_out,
-		 );		// edit ams
+module aes_cipher_top(clk, rst, ld, done, key, text_in, text_out );		// edit ams
 
 input		clk, rst;
 input		ld;

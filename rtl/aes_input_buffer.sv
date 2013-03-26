@@ -33,9 +33,9 @@ reg [2:0]			state;
 reg [2:0]			next_state;
 
 
-reg [127:0]			text;
-reg [127:0]			key;
-reg				ld;
+reg [127:0]			text_o;
+reg [127:0]			key_o;
+reg				ld_o;
 
 always @(posedge clk) begin
 	if (!rst)		state <= state0;
@@ -45,56 +45,56 @@ end
 always @(state or done_i or ld ) begin
 	
 	if (!rst) begin
-		text 	= '0;
-		key 	= '0;
-		ld	= '0;
+		text_o 	= '0;
+		key_o 	= '0;
+		ld_o	= '0;
 	end
 	
 	case(state) 
 	
 		state0: begin 			
-				if (ld_i == 1) begin
-					key [31:0] = key_in;
-					text[31:0] = text_in;
-					ld 	   = 0;
+				if (ld_o_i == 1) begin
+					key_o [31:0] = key_o_in;
+					text_o[31:0] = text_o_in;
+					ld_o 	   = 0;
 					next_state = state1;
 				end else begin						
 					next_state = state0;
 				end
 		end
 		state1: begin
-					key [63:32] = key_in;
-					text[63:32] = text_in;
-					ld 	   = 0;
+					key_o [63:32] = key_o_in;
+					text_o[63:32] = text_o_in;
+					ld_o 	   = 0;
 					next_state = state2;
 		end
 		state2: begin
-					key [95:64] = key_in;
-					text[95:64] = text_in;
-					ld 	    = 0;
+					key_o [95:64] = key_o_in;
+					text_o[95:64] = text_o_in;
+					ld_o 	    = 0;
 					next_state = state3;
 		end
 		state3:	begin
-					key [127:96] = key_in;
-					text[127:96] = text_in;
-					ld 	     = 1;
+					key_o [127:96] = key_o_in;
+					text_o[127:96] = text_o_in;
+					ld_o 	     = 1;
 					next_state = state4;
 		end	
 		state4:	begin
 				if (done_i != 1) begin
-					ld 	   = 0;
+					ld_o 	   = 0;
 					next_state = state4;
 				end else if (done_i == 1) begin
-					ld 	   = 0;
+					ld_o 	   = 0;
 					next_state = state0;
 				end
 		end	
 	endcase
 end
-
+/*
 assign 	text_o 			= 	text;
 assign 	key_o	 		= 	key;
 assign 	ld_o 			= 	ld;
-
+*/
 endmodule
 

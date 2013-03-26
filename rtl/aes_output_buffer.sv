@@ -29,7 +29,7 @@ reg [2:0]			state;
 reg [2:0]			next_state;
 
 
-reg [127:0]			text_o;
+reg [32:0]			text_o;
 reg				ld_o;
 
 always @(posedge clk) begin

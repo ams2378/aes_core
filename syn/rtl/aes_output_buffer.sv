@@ -30,7 +30,7 @@ reg [2:0]			state;
 reg [2:0]			next_state;
 
 
-reg [32:0]			text_o;
+reg [31:0]			text_o;
 reg				done_o;
 
 always @(posedge clk) begin

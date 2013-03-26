@@ -12,13 +12,13 @@
 
 module aes_top(
 
-	input		clk;
-	input 		ld;
-	input 		rst;
-	input [31:0] 	key;
-	input [31:0] 	text_in;
+	input		clk,
+	input 		ld,
+	input 		rst,
+	input [31:0] 	key,
+	input [31:0] 	text_in,
 	
-	ouput 		done;
+	ouput 		done,
 	output [31:0] 	text_out
 	);
 

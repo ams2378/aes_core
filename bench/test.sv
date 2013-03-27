@@ -143,6 +143,7 @@ program tb (ifc.bench ds);
 			$fdisplay (p,"TEXT: %h%h%h%h", t.text[3], t.text[2], t.text[1], t.text[0]);
 	//		$fdisplay (p,"Key MSBs : %h", msbs);
 			$fdisplay (p,"Round : %d", ds.cb.dcnt);
+			$fdisplay (p, "sa00 : %h ", ds.cb.sa00);
 			$fdisplay (p,"Bit change: %d", bitchange);
 	//		$fdisplay (k,"(Encryption Key) %0d %h", en_num-1, msbs);
 			$fdisplay (p,"Result: %h%h%h%h ", ds.cb.text_out[127:96], ds.cb.text_out[95:64], ds.cb.text_out[63:32], ds.cb.text_out[31:0], "\n");

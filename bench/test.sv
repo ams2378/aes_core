@@ -64,7 +64,7 @@ program tb (ifc.bench ds);
 
 	if (en_num == 5) being
 	//	key_rand_cntrl = 1;
-		en_num = 1;
+	//	en_num = 1;
 	end
 
 	if (w == 1) begin

@@ -77,7 +77,7 @@ program tb (ifc.bench ds);
 		end
 
 		if (t.const_key == 1) begin
-			t.key = {randkeys.rand_key, temp_key}; 
+			t.key = {t.key[127:120], temp_key}; 
 		end
 		
 		//send text/key to dut and software

@@ -35,9 +35,13 @@ program tb (ifc.bench ds);
 	string dir = "logs";
 	int rand_key_cntrl = 1;
 	int w;	
+	int bitchange;
+
 
 	bit[119:0] temp_key = 120'hf04193bd83c6bc82ad5b2b65140618; 
 	bit [7:0]  msbs = 8'h00;
+	bit [7:0]  temp_sa00;
+
 
 	covergroup cg_reset;
 		coverpoint t.rst;
@@ -120,6 +124,19 @@ program tb (ifc.bench ds);
 		t.status = get_status();	
 		t.done   = get_done();
 
+
+		/*	power prediction starts here */
+	
+
+		$fdisplay (f," #### temp_sa00 %h", temp_sa00);
+		$fdisplay (f," #### ds.cb.sa00 %h", ds.cb.sa00);
+
+	
+		if (ds.cb.dcnt == 4'hb) begin
+			tmep_sa00 = temp_sa00 ^ ds.cb.sa00;
+			bitchange = $countones (temp_sa00);	
+		end
+		
 
 	//	if (ds.cb.done == 1) begin v = v + 1; end
 
@@ -271,6 +288,9 @@ program tb (ifc.bench ds);
 			en_num = en_num + 1;
 		end
 
+		temp_sa00 = ds.cb.sa00;	
+
+			
 
 	@(ds.cb);
 

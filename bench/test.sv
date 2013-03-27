@@ -28,7 +28,7 @@ program tb (ifc.bench ds);
 	int unsigned ctext[4];
 	int rst_chk;
 
-	integer f, g, start, p;
+	integer f, g, start, p, k;
 	integer v = 1;
 	integer en_num = 1;
 	string s;
@@ -138,10 +138,13 @@ program tb (ifc.bench ds);
 		if (ds.cb.dcnt == 4'hb) begin
 			temp_sa00 = temp_sa00 ^ ds.cb.sa00;
 			bitchange = $countones (temp_sa00);	
-			$fdisplay (p,"Key MSBs : %h" , msbs);
 			$fdisplay (p,"Encryption Number : %0d" , en_num-1);
+			$fdisplay (p,"KEY: %h%h%h%h", t.key[127:96], t.key[95:64], t.key[63:32], t.key[31:0]);
+			$fdisplay (p,"TEXT: %h%h%h%h", t.text[3], t.text[2], t.text[1], t.text[0]);
+	//		$fdisplay (p,"Key MSBs : %h" , msbs);
 			$fdisplay (p,"Round : %d" , ds.cb.dcnt);
 			$fdisplay (p,"Bit change: : %d" , bitchange);
+			$fdisplay (k," (Encryption, Key) %0d %h", en_num-1, ", ", msbs);
 		end
 
 		if ( t.ld == 1 && t.rst == 1) begin 
@@ -319,6 +322,7 @@ program tb (ifc.bench ds);
 		f = $fopen ({dir, s});
 */
 
+		k = $fopen ("keys.txt", "a");
 		f = $fopen ("log_1.txt", "a");
 		g = $fopen ("log_2.txt", "a");
 		p = $fopen ("power.txt", "a");

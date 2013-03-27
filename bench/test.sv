@@ -144,7 +144,8 @@ program tb (ifc.bench ds);
 	//		$fdisplay (p,"Key MSBs : %h" , msbs);
 			$fdisplay (p,"Round : %d" , ds.cb.dcnt);
 			$fdisplay (p,"Bit change:%d" , bitchange, "\n" );
-			$fdisplay (k,"(Encryption Key) %0d %h", en_num-1, msbs);
+			$fdisplay (k,"Encryption num : %0d", en_num-1);
+			$fdisplay (k,"Key : %h", msbs);
 		end
 
 		if ( t.ld == 1 && t.rst == 1) begin 

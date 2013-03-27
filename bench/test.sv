@@ -133,7 +133,7 @@ program tb (ifc.bench ds);
 
 	
 		if (ds.cb.dcnt == 4'hb) begin
-			tmep_sa00 = temp_sa00 ^ ds.cb.sa00;
+			temp_sa00 = temp_sa00 ^ ds.cb.sa00;
 			bitchange = $countones (temp_sa00);	
 		end
 		

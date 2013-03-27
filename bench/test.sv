@@ -35,6 +35,7 @@ program tb (ifc.bench ds);
 	string dir = "logs";
 	bit [119:0] 	temp_key = 120'hf04193bd83c6bc82ad5b2b65140618; 
 	bit [7:0]   	temp_sa00;
+	bit [7:0]   	temp_msb;
 	integer	    	key_rand_cntrl = 1; 	
 
 	covergroup cg_reset;
@@ -78,6 +79,7 @@ program tb (ifc.bench ds);
 	end else if (key_rand_cntrl == 1 && en_num == 1) begin
 		t.randomize();
 		key_msb.randomize();
+		temp_msb = key_msb.key_msbs;
 	end else
 		t.randomize();
 
@@ -89,7 +91,7 @@ program tb (ifc.bench ds);
 		end
 
 		if (t.const_key == 1) begin
-			t.key = {key_msb.key_msbs, temp_key}; 
+			t.key = {temp_msb, temp_key}; 
 		end
 		
 		//send text/key to dut and software

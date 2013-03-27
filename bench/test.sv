@@ -71,9 +71,11 @@ program tb (ifc.bench ds);
 		t.randomize();
 
 		if (en_num == 11 && msbs <256) begin
-			msbs = msbs + 1;
+		//	msbs = msbs + 1;
 			en_num = 1;
 		end
+
+		msbs = msbs + env.incr_msb;
 
 		if ( t.ld == 1 && t.rst == 1) begin 
 			start =  1;

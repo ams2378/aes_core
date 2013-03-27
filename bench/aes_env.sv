@@ -7,6 +7,7 @@ class aes_env;
     int warmup_rst;
     bit verbose;
     int reset_density, ld_density, single_key, single_text;
+    int incr_msb;
 
     function configure(string filename);
         int file, value, seed, chars_returned;
@@ -41,6 +42,9 @@ class aes_env;
 	    end
  	    else if("SINGLE_TEXT" == param) begin
 		single_text = value;
+	    end
+ 	    else if("INCR_MSB" == param) begin
+		incr_msb = value;
 	    end
            else begin
                 $display("Never heard of a: %s", param);

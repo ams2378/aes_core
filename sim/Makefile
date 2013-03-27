@@ -6,6 +6,7 @@ BENCH=../sim/testbench.exe
 
 all: 
 	make cleanall
+	make cleanlog
 	make test
 	make gtkwave
 duv4:
@@ -29,7 +30,7 @@ cleanall:
 	rm -rf csrc *.exe.daidir *.exe *.log *.inf .leda_work *.key *.vpd *.vcd DVEfiles testbench.exe* 
 
 cleanlog:
-	rm -rf log_*
+	rm -rf *.txt
 
 
 

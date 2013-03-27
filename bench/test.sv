@@ -75,7 +75,7 @@ program tb (ifc.bench ds);
 			en_num = 1;
 		end
 
-		msbs = msbs + env.incr_msb;
+		msbs = env.incr_msb;
 
 		if ( t.ld == 1 && t.rst == 1) begin 
 			start =  1;

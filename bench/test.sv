@@ -37,7 +37,7 @@ program tb (ifc.bench ds);
 	int w;	
 
 	bit[119:0] temp_key = 120'hf04193bd83c6bc82ad5b2b65140618; 
-
+	bit [7:0]  msbs = '0;
 
 	covergroup cg_reset;
 		coverpoint t.rst;
@@ -66,18 +66,15 @@ program tb (ifc.bench ds);
 
 		t.randomize();
 
-//		if (rand_key_cntrl == 1 && w == 0)
-//			randkeys.randomize();
-
-//		rand_key_cntrl = 0;
-		
+		if (en_num == 10)
+			msbs = msbs + 1;
 
 		if ( t.ld == 1 && t.rst == 1) begin 
 			start =  1;
 		end
 
 		if (t.const_key == 1) begin
-			t.key = {t.key[127:120], temp_key}; 
+			t.key = {msbs, temp_key}; 
 		end
 		
 		//send text/key to dut and software

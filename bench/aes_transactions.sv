@@ -31,6 +31,10 @@ class aes_transaction;
 		(status != 0) -> (ld == 0);
 	}
 
+//	constraint rand_key {
+//		(status != 0) -> (ld == 0);
+//	}
+
 endclass
 
 /*

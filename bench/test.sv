@@ -61,7 +61,7 @@ program tb (ifc.bench ds);
 
 	if (w == 1) begin
 		t.key = '1;
-		t.text = '1;
+		t.text = 0;
 		t.ld = 0;
 		t.rst = 0;	
 	end else

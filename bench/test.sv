@@ -141,9 +141,9 @@ program tb (ifc.bench ds);
 			$fdisplay (p,"Encryption Number : %0d" , en_num-1);
 			$fdisplay (p,"KEY: %h%h%h%h", t.key[127:96], t.key[95:64], t.key[63:32], t.key[31:0]);
 			$fdisplay (p,"TEXT: %h%h%h%h", t.text[3], t.text[2], t.text[1], t.text[0]);
-	//		$fdisplay (p,"Key MSBs : %h" , msbs);
-			$fdisplay (p,"Round : %d" , $countones (temp_sa00));
-			$fdisplay (p,"Bit change : %d" , bitchange, "\n" );
+	//		$fdisplay (p,"Key MSBs : %h", msbs);
+			$fdisplay (p,"Round : %d", ds.cb.dcnt);
+			$fdisplay (p,"Bit change: %d", bitchange, "\n" );
 			$fdisplay (k,"(Encryption Key) %0d %h", en_num-1, msbs);
 		end
 

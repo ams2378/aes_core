@@ -99,12 +99,6 @@ program tb (ifc.bench ds);
 		end else
 			rst_chk		=	0; 
 
-		
-		if (t.ld == 1) begin
-			t.key_rand_cntrl = 1;
-		end
-
-	
 		ds.cb.rst		<= 	t.rst;	
 		ds.cb.ld		<= 	t.ld;
 		ds.cb.key[31:0] 	<= 	t.key[31:0];

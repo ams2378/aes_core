@@ -6,8 +6,9 @@ BENCH=../sim/testbench.exe
 
 all: 
 	make cleanall
-	make test
-	make gtkwave
+	make dut
+	make run 
+	make wave
 duv4:
 	vcs -full64 -PP -sverilog +define+SV +define+VPD $(INTERFACE) $(MODULES) $(TOP)-o $(BENCH)
 
@@ -20,7 +21,7 @@ run:
 view:
 	dve -full64 -vpd vcdplus.vpd &
 
-gtkwave:
+wave:
 	vcs -vpd2vcd vcdplus.vpd waveform.vcd
 	gtkwave waveform.vcd &
 

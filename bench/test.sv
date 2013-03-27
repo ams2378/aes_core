@@ -145,8 +145,9 @@ program tb (ifc.bench ds);
 			$fdisplay (p,"Round : %d", ds.cb.dcnt);
 			$fdisplay (p,"Bit change: %d", bitchange, "\n" );
 			$fdisplay (k,"(Encryption Key) %0d %h", en_num-1, msbs);
+			$fdisplay (p,"Result: %h%h%h%h ", ds.cb.text_out[127:96], ds.cb.text_out[95:64], ds.cb.text_out[63:32], ds.cb.text_out[31:0]);
 		end
-
+/*
 		if ( t.ld == 1 && t.rst == 1) begin 
 		$fdisplay (f,"Encryption Number : %0d" , en_num);
 		end
@@ -278,7 +279,7 @@ program tb (ifc.bench ds);
 		$fdisplay (g,"Result GoldenModel : %h%h%h%h ", ctext[3], ctext[2], ctext[1], ctext[0]);	
 		$fdisplay (g,"Result DUT : %h%h%h%h ", ds.cb.text_out[127:96], ds.cb.text_out[95:64], ds.cb.text_out[63:32], ds.cb.text_out[31:0]);
 		end
-
+*/
 		
 	//	$display (" calling checker from test with status : %d  @ runtime %t ", t.status, $realtime); 
 

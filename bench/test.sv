@@ -266,10 +266,6 @@ program tb (ifc.bench ds);
 		$fdisplay (f, "sa33_sa_o : %h ", ds.cb.sa33);
 		$fdisplay (f, "sa33_ld_r : %b ", ds.cb.ld_r);
 
-
-/*		$fdisplay (f,"Final Outputs:");
-		$fdisplay (f,"--------------------");
-*/
 		$fdisplay (f,"DUT Done : %b", ds.cb.done);
 		$fdisplay (f,"GoldenModel Done : %b", t.done);
 		$fdisplay (f,"Result from GoldenModel : %h%h%h%h ", ctext[3], ctext[2], ctext[1], ctext[0]);	

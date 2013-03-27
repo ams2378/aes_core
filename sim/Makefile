@@ -14,7 +14,7 @@ duv4:
 	./$(BENCH)
 
 test:
-	vcs -full64 -PP -sverilog +define+SV +define+VPD $(INTERFACE) $(MODULES)  $(TOP) $(TEST) -o $(BENCH)
+	vcs -full64 -PP -sverilog +define+SV +define+VPD $(INTERFACE) $(MODULES)  $(TOP) $(TEST) -o $(BENCH) > compile.log
 	./$(BENCH)
 
 view:

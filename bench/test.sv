@@ -143,9 +143,9 @@ program tb (ifc.bench ds);
 			$fdisplay (p,"TEXT: %h%h%h%h", t.text[3], t.text[2], t.text[1], t.text[0]);
 	//		$fdisplay (p,"Key MSBs : %h", msbs);
 			$fdisplay (p,"Round : %d", ds.cb.dcnt);
-			$fdisplay (p,"Bit change: %d", bitchange, "\n" );
-			$fdisplay (k,"(Encryption Key) %0d %h", en_num-1, msbs);
-			$fdisplay (p,"Result: %h%h%h%h ", ds.cb.text_out[127:96], ds.cb.text_out[95:64], ds.cb.text_out[63:32], ds.cb.text_out[31:0]);
+			$fdisplay (p,"Bit change: %d", bitchange);
+	//		$fdisplay (k,"(Encryption Key) %0d %h", en_num-1, msbs);
+			$fdisplay (p,"Result: %h%h%h%h ", ds.cb.text_out[127:96], ds.cb.text_out[95:64], ds.cb.text_out[63:32], ds.cb.text_out[31:0], "\n");
 		end
 /*
 		if ( t.ld == 1 && t.rst == 1) begin 
@@ -319,9 +319,9 @@ program tb (ifc.bench ds);
 		f = $fopen ({dir, s});
 */
 
-		k = $fopen ("keys.txt", "a");
-		f = $fopen ("log_1.txt", "a");
-		g = $fopen ("log_2.txt", "a");
+	//	k = $fopen ("keys.txt", "a");
+	//	f = $fopen ("log_1.txt", "a");
+	//	g = $fopen ("log_2.txt", "a");
 		p = $fopen ("power.txt", "a");
 /*
 		f = $fopena ("log_1.txt");

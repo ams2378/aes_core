@@ -89,7 +89,7 @@ program tb (ifc.bench ds);
 		end
 
 		if (t.const_key == 1) begin
-			t.key = {t.key_msbs, temp_key}; 
+			t.key = {key_msb.key_msbs, temp_key}; 
 		end
 		
 		//send text/key to dut and software

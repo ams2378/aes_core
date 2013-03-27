@@ -143,8 +143,8 @@ program tb (ifc.bench ds);
 			$fdisplay (p,"TEXT: %h%h%h%h", t.text[3], t.text[2], t.text[1], t.text[0]);
 	//		$fdisplay (p,"Key MSBs : %h" , msbs);
 			$fdisplay (p,"Round : %d" , ds.cb.dcnt);
-			$fdisplay (p,"Bit change: : %d" , bitchange);
-			$fdisplay (k," (Encryption, Key) %0d %h", en_num-1, ", ", msbs);
+			$fdisplay (p,"Bit change: : %d" , bitchange, "\n" );
+			$fdisplay (k," (Encryption Key) %0d %h", en_num-1, msbs);
 		end
 
 		if ( t.ld == 1 && t.rst == 1) begin 

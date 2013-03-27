@@ -29,14 +29,14 @@ program tb (ifc.bench ds);
 
 	integer f, g, start;
 	integer v = 1;
-	integer en_num;
+	integer en_num = 1;
 	string s;
 	int	w;		// warmup flag
 	string dir = "logs";
 	bit [119:0] 	temp_key = 120'hf04193bd83c6bc82ad5b2b65140618; 
 	bit [7:0]   	temp_sa00;
 	bit [7:0]   	temp_msb;
-	integer	    	key_rand_cntrl; 	
+	integer	    	key_rand_cntrl = 1; 	
 
 	covergroup cg_reset;
 		coverpoint t.rst;
@@ -65,8 +65,11 @@ program tb (ifc.bench ds);
 
 	if (en_num == 5) being
 		key_rand_cntrl = 1;
-		en_num = 1;
+//		en_num = 1;
 	end
+
+//	key_rand_cntrl = (en_num == 5) ? 1 : key_rand_cntrl;
+
 
 	if (w == 1) begin
 		t.key = '1;
@@ -302,8 +305,6 @@ program tb (ifc.bench ds);
 		cov_key = new();
 		
 		w = 1;
-		en_num = 1;
-		key_rand_cntrl = 1;
 		
 		/* warm up */
 		repeat (env.warmup) begin

@@ -30,6 +30,7 @@ program tb (ifc.bench ds);
 	integer v = 1;
 	integer en_num = 1;
 	string s;
+	int	w;		// warmup flag
 	string dir = "logs";
 	bit [119:0] temp_key = 120'hf04193bd83c6bc82ad5b2b65140618; 
 
@@ -58,8 +59,13 @@ program tb (ifc.bench ds);
 
 	task do_cycle;
 
+	if (w == 1) begin
+		t.key = '1;
+		t.text = '1;
+		t.ld = '0;
+		t.rst = '0;	
+	end else
 		t.randomize();
-
 
 		if ( t.ld == 1 && t.rst == 1) begin 
 			start =  1;
@@ -274,6 +280,8 @@ program tb (ifc.bench ds);
 		cov_ld = new();
 		cov_text = new();
 		cov_key = new();
+		
+		w = 1;
 		
 		/* warm up */
 		repeat (env.warmup) begin

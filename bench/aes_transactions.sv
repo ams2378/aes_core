@@ -14,6 +14,7 @@ class aes_transaction;
 	bit		done;
 	int		status;
 
+	int		key_rand_cntrl;
 	int		const_key;
 
 	int 		ld_density;

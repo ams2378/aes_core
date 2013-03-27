@@ -30,7 +30,7 @@ cleanall:
 	rm -rf csrc *.exe.daidir *.exe *.log *.inf .leda_work *.key *.vpd *.vcd DVEfiles testbench.exe* 
 
 cleanlog:
-	rm -rf *.txt
+	rm -rf log* power* 
 
 
 

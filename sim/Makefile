@@ -11,14 +11,18 @@ all:
 	make gtkwave
 duv4:
 	vcs -full64 -PP -sverilog +define+SV +define+VPD $(INTERFACE) $(MODULES) $(TOP)-o $(BENCH)
-	./$(BENCH)
+#	./$(BENCH)
 
 test:
 	vcs -full64 -PP -sverilog +define+SV +define+VPD $(INTERFACE) $(MODULES)  $(TOP) $(TEST) -o $(BENCH) > compile.log
-	./$(BENCH)
+#	./$(BENCH)
 
 view:
 	dve -full64 -vpd vcdplus.vpd &
+
+run:
+	./$(BENCH)
+
 
 gtkwave:
 	vcs -vpd2vcd vcdplus.vpd waveform.vcd

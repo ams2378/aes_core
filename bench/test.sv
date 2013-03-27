@@ -32,6 +32,10 @@ program tb (ifc.bench ds);
 	string s;
 	string dir = "logs";
 
+
+	bit[119:0] temp_key = 120'hf04193bd83c6bc82ad5b2b65140618; 
+
+
 	covergroup cg_reset;
 		coverpoint t.rst;
 	endgroup
@@ -65,7 +69,7 @@ program tb (ifc.bench ds);
 		end
 
 		if (t.const_key == 1) begin
-			t.key = 128'h20f04193bd83c6bc82ad5b2b65140618; 
+			t.key = {t.key[127:120], temp_key}; 
 		end
 		
 		//send text/key to dut and software

@@ -21,7 +21,7 @@ program tb (ifc.bench ds);
 	aes_checker checker;
 	aes_transaction t;
 	aes_env env;
-	msb	randkeys;
+//	msb	randkeys;
 
 
 	int en_ce_stat = 0;
@@ -66,13 +66,10 @@ program tb (ifc.bench ds);
 
 		t.randomize();
 
-		
+//		if (rand_key_cntrl == 1 && w == 0)
+//			randkeys.randomize();
 
-
-		if (rand_key_cntrl == 1 && w == 0)
-			randkeys.randomize();
-
-		rand_key_cntrl = 0;
+//		rand_key_cntrl = 0;
 		
 
 		if ( t.ld == 1 && t.rst == 1) begin 
@@ -282,7 +279,7 @@ program tb (ifc.bench ds);
 		checker = new();
 		env = new();
 		env.configure("configure.txt");
-		randkeys = new();
+	//	randkeys = new();
 
 		t = new( 60, env.warmup_rst );
 		cov_rst = new();

@@ -3,7 +3,9 @@
 class aes_transaction;
 
 //	rand bit[127:0] text;
-	rand bit[127:0] key;
+	bit[127:0] key;
+
+	randc bit[7:0]	key_msbs;
 
 	rand int 	text[4];
 //	rand int	key[4];

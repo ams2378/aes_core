@@ -299,6 +299,7 @@ program tb (ifc.bench ds);
 		env.configure("configure.txt");
 
 		t = new( 60, env.warmup_rst );
+		key_msb = new();
 		cov_rst = new();
 		cov_ld = new();
 		cov_text = new();

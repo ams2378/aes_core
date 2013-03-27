@@ -69,7 +69,7 @@ program tb (ifc.bench ds);
 //	end
 
 	key_rand_cntrl = (en_num == 5) ? 1 : key_rand_cntrl;
-
+	en_num	=  (en_num == 5) ? 1 : en_num;
 
 	if (w == 1) begin
 		t.key = '1;

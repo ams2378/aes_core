@@ -70,10 +70,10 @@ program tb (ifc.bench ds);
 
 		t.randomize();
 
-//		if (en_num == 11 && msbs <256) begin
-		//	msbs = msbs + 1;
-//			en_num = 1;
-//		end
+	//	if (en_num == 600 && msbs <256) begin
+	//	msbs = msbs + 1;
+	//		en_num = 1;
+	//	end
 
 		msbs = env.incr_msb;
 

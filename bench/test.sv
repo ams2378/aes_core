@@ -291,6 +291,8 @@ program tb (ifc.bench ds);
 			do_cycle();
 		end
 
+		w = 0;
+
 /*		s = $sformatf("/log_%0d.txt", v);		
 		f = $fopen ({dir, s});
 */

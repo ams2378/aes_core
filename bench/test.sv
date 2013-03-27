@@ -35,7 +35,7 @@ program tb (ifc.bench ds);
 	string dir = "logs";
 	bit [119:0] 	temp_key = 120'hf04193bd83c6bc82ad5b2b65140618; 
 	bit [7:0]   	temp_sa00;
-	int	    	key_rand_cntrl = 1; 	
+	integer	    	key_rand_cntrl = 1; 	
 
 	covergroup cg_reset;
 		coverpoint t.rst;

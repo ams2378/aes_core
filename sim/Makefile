@@ -5,8 +5,8 @@ TEST= ../bench/aes_env.sv ../bench/aes_checker.sv ../bench/aes_transactions.sv .
 BENCH=../sim/testbench.exe
 
 all: 
-	make cleanall
-	make cleanlog
+	make clean
+	make clean
 	make test
 	make gtkwave
 duv4:
@@ -30,10 +30,8 @@ gtkwave:
 
 #leda:
 #	leda -full64 -sverilog -top $(DUV) $(DUV4).sv $(DUV42).sv $(DUV16).sv $(DUV41).sv $(DUV43).sv $(DUV).sv
-cleanall:
+clean:
 	rm -rf csrc *.exe.daidir *.exe *.log *.inf .leda_work *.key *.vpd *.vcd DVEfiles testbench.exe* 
-
-cleanlog:
 	rm -rf log* power* 
 
 

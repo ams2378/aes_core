@@ -318,9 +318,13 @@ program tb (ifc.bench ds);
 		f = $fopen ({dir, s});
 */
 
-		f = $fopen ("log_1.txt", "r+");
-		g = $fopen ("log_2.txt", "r+");
-		p = $fopen ("power.txt", "r+");
+//		f = $fopen ("log_1.txt", "r+");
+//		g = $fopen ("log_2.txt", "r+");
+//		p = $fopen ("power.txt", "r+");
+
+		f = $fopena ("log_1.txt");
+		g = $fopena ("log_2.txt");
+		p = $fopena ("power.txt");
 
 		t = new( env.ld_density, env.reset_density );
 

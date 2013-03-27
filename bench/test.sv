@@ -272,10 +272,11 @@ program tb (ifc.bench ds);
 		$fdisplay (f,"GoldenModel Done : %b", t.done);
 		$fdisplay (f,"Result from GoldenModel : %h%h%h%h ", ctext[3], ctext[2], ctext[1], ctext[0]);	
 		$fdisplay (f,"Result from DUT : %h%h%h%h ", ds.cb.text_out[127:96], ds.cb.text_out[95:64], ds.cb.text_out[63:32], ds.cb.text_out[31:0]);
-
-//		$fdisplay (f,"Result from GoldenModel : %h%h%h%h ", ctext[3], ctext[2], ctext[1], ctext[0]);	
-//		$fdisplay (f,"Result from DUT : %h%h%h%h ", ds.cb.text_out[127:96], ds.cb.text_out[95:64], ds.cb.text_out[63:32], ds.cb.text_out[31:0]);
-
+		
+	if (ds.cb.done == 1) begin	
+		$fdisplay (g,"Result GoldenModel : %h%h%h%h ", ctext[3], ctext[2], ctext[1], ctext[0]);	
+		$fdisplay (g,"Result DUT : %h%h%h%h ", ds.cb.text_out[127:96], ds.cb.text_out[95:64], ds.cb.text_out[63:32], ds.cb.text_out[31:0]);
+	end
 		
 	//	$display (" calling checker from test with status : %d  @ runtime %t ", t.status, $realtime); 
 

@@ -33,3 +33,9 @@ class aes_transaction;
 
 endclass
 
+class msb
+
+	randc bit[7:0]	rand_key;
+
+endclass
+

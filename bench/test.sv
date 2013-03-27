@@ -21,6 +21,8 @@ program tb (ifc.bench ds);
 	aes_checker checker;
 	aes_transaction t;
 	aes_env env;
+	msb	randkeys;
+
 
 	int en_ce_stat = 0;
 	int unsigned ctext[4];
@@ -31,7 +33,8 @@ program tb (ifc.bench ds);
 	integer en_num = 1;
 	string s;
 	string dir = "logs";
-
+	int rand_key_cntrl = 1;
+	int w;	
 
 	bit[119:0] temp_key = 120'hf04193bd83c6bc82ad5b2b65140618; 
 
@@ -63,13 +66,21 @@ program tb (ifc.bench ds);
 
 		t.randomize();
 
+		
+
+
+		if (rand_key_cntrl == 1 && w == 0)
+			randkeys.randomize();
+
+		rand_key_cntrl = 0;
+		
 
 		if ( t.ld == 1 && t.rst == 1) begin 
 			start =  1;
 		end
 
 		if (t.const_key == 1) begin
-			t.key = {t.key[127:120], temp_key}; 
+			t.key = {randkeys.rand_key, temp_key}; 
 		end
 		
 		//send text/key to dut and software
@@ -271,6 +282,7 @@ program tb (ifc.bench ds);
 		checker = new();
 		env = new();
 		env.configure("configure.txt");
+		randkeys = new();
 
 		t = new( 60, env.warmup_rst );
 		cov_rst = new();
@@ -279,9 +291,12 @@ program tb (ifc.bench ds);
 		cov_key = new();
 		
 		/* warm up */
+
+		w = 1;
 		repeat (env.warmup) begin
 			do_cycle();
 		end
+		w = 0;
 
 /*		s = $sformatf("/log_%0d.txt", v);		
 		f = $fopen ({dir, s});

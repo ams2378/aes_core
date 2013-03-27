@@ -131,13 +131,14 @@ program tb (ifc.bench ds);
 
 	/*	power prediction starts here */
 
-		$fdisplay (f," #### temp_sa00 %h", temp_sa00);
-		$fdisplay (f," #### ds.cb.sa00 %h", ds.cb.sa00);
+	//	$fdisplay (f," #### temp_sa00 %h", temp_sa00);
+	//	$fdisplay (f," #### ds.cb.sa00 %h", ds.cb.sa00);
 
 	
 		if (ds.cb.dcnt == 4'hb) begin
 			temp_sa00 = temp_sa00 ^ ds.cb.sa00;
 			bitchange = $countones (temp_sa00);	
+			$fdisplay (p,"Key MSBs : %h" , msbs);
 			$fdisplay (p,"Encryption Number : %0d" , en_num-1);
 			$fdisplay (p,"Round : %d" , ds.cb.dcnt);
 			$fdisplay (p,"Bit change: : %d" , bitchange);

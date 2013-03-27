@@ -37,7 +37,7 @@ program tb (ifc.bench ds);
 	int w;	
 
 	bit[119:0] temp_key = 120'hf04193bd83c6bc82ad5b2b65140618; 
-	bit [7:0]  msbs = '0;
+	bit [7:0]  msbs = 8'h00;
 
 	covergroup cg_reset;
 		coverpoint t.rst;
@@ -66,8 +66,10 @@ program tb (ifc.bench ds);
 
 		t.randomize();
 
-		if (en_num == 10)
+		if (en_num == 10) begin
 			msbs = msbs + 1;
+			en_num = 1;
+		end
 
 		if ( t.ld == 1 && t.rst == 1) begin 
 			start =  1;

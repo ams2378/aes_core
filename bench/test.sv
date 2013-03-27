@@ -28,7 +28,7 @@ program tb (ifc.bench ds);
 	int unsigned ctext[4];
 	int rst_chk;
 
-	integer f, g, start;
+	integer f, g, start, p;
 	integer v = 1;
 	integer en_num = 1;
 	string s;
@@ -125,8 +125,9 @@ program tb (ifc.bench ds);
 		t.done   = get_done();
 
 
-		/*	power prediction starts here */
-	
+		$fdisplay (f,"------------- Simulation Time ----------------- %t", $realtime );
+
+	/*	power prediction starts here */
 
 		$fdisplay (f," #### temp_sa00 %h", temp_sa00);
 		$fdisplay (f," #### ds.cb.sa00 %h", ds.cb.sa00);
@@ -135,15 +136,10 @@ program tb (ifc.bench ds);
 		if (ds.cb.dcnt == 4'hb) begin
 			temp_sa00 = temp_sa00 ^ ds.cb.sa00;
 			bitchange = $countones (temp_sa00);	
+			$fdisplay (p,"Encryption Number : %0d" , en_num);
+			$fdisplay (p,"Round : %d" , ds.cb.dcnt);
+			$fdisplay (p,"Bit change: : %d" , bitchange);
 		end
-		
-
-	//	if (ds.cb.done == 1) begin v = v + 1; end
-
-
-		$fdisplay (f,"------------- Simulation Time ----------------- %t", $realtime );
-
-
 
 		if ( t.ld == 1 && t.rst == 1) begin 
 		$fdisplay (f,"Encryption Number : %0d" , en_num);
@@ -151,11 +147,12 @@ program tb (ifc.bench ds);
 
 //		$fdisplay (f,"Inputs :");
 //		$fdisplay (f,"-----------------");
+//		$fdisplay (f,"rst : %b", t.rst );
+//		$fdisplay (f,"Key load : %b ", t.ld);
+//		$fdisplay (f,"Inputs to roundkey : ");
 
 		$fdisplay (f,"KEY: %h%h%h%h", t.key[127:96], t.key[95:64], t.key[63:32], t.key[31:0]);
 		$fdisplay (f,"TEXT: %h%h%h%h", t.text[3], t.text[2], t.text[1], t.text[0]);
-//		$fdisplay (f,"rst : %b", t.rst );
-//		$fdisplay (f,"Key load : %b ", t.ld);
 
 		if (start == 1) begin
 		$fdisplay (g,"Encryption Number : %0d" , en_num);
@@ -163,8 +160,6 @@ program tb (ifc.bench ds);
 		$fdisplay (g,"TEXT: %h%h%h%h", t.text[3], t.text[2], t.text[1], t.text[0]);
 		start = 0;
 		end
-		
-//		$fdisplay (f,"Inputs to roundkey : ");
 
 		$fdisplay (f,"ROUND : %d ", ds.cb.dcnt);
 
@@ -302,7 +297,6 @@ program tb (ifc.bench ds);
 		checker = new();
 		env = new();
 		env.configure("configure.txt");
-	//	randkeys = new();
 
 		t = new( 60, env.warmup_rst );
 		cov_rst = new();
@@ -324,6 +318,7 @@ program tb (ifc.bench ds);
 
 		f = $fopen ("log_1.txt");
 		g = $fopen ("log_2.txt");
+		p = $fopen ("power.txt");
 
 		t = new( env.ld_density, env.reset_density );
 

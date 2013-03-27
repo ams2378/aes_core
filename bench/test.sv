@@ -63,12 +63,12 @@ program tb (ifc.bench ds);
 
 	task do_cycle;				// task starts here
 
-	if (en_num == 5) being
-		key_rand_cntrl = 1;
+//	if (en_num == 5) being
+//		key_rand_cntrl = 1;
 //		en_num = 1;
-	end
+//	end
 
-//	key_rand_cntrl = (en_num == 5) ? 1 : key_rand_cntrl;
+	key_rand_cntrl = (en_num == 5) ? 1 : key_rand_cntrl;
 
 
 	if (w == 1) begin

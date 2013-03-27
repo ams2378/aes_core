@@ -3,18 +3,17 @@
 class aes_transaction;
 
 //	rand bit[127:0] text;
-	bit[127:0] key;
-
-	randc bit[7:0]	key_msbs;
-
-	rand int 	text[4];
+//	randc bit[7:0]	key_msbs;
 //	rand int	key[4];
+//	bit		key_rand_cntrl;
+
+	bit[127:0] 	key;
+	rand int 	text[4];
 	rand bit 	rst;
 	rand bit	ld;
 	bit		done;
 	int		status;
 
-	int		key_rand_cntrl;
 	int		const_key;
 
 	int 		ld_density;
@@ -35,4 +34,11 @@ class aes_transaction;
 	}
 
 endclass
+
+class rand_msbs;
+
+	randc bit[7:0]	key_msbs;
+endclass
+
+
 

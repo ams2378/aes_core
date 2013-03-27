@@ -21,6 +21,7 @@ program tb (ifc.bench ds);
 	aes_checker checker;
 	aes_transaction t;
 	aes_env env;
+	rand_msbs key_msb;
 
 	int en_ce_stat = 0;
 	int unsigned ctext[4];
@@ -32,7 +33,9 @@ program tb (ifc.bench ds);
 	string s;
 	int	w;		// warmup flag
 	string dir = "logs";
-	bit [119:0] temp_key = 120'hf04193bd83c6bc82ad5b2b65140618; 
+	bit [119:0] 	temp_key = 120'hf04193bd83c6bc82ad5b2b65140618; 
+	bit [7:0]   	temp_sa00;
+	int	    	key_rand_cntrl = 1; 	
 
 	covergroup cg_reset;
 		coverpoint t.rst;
@@ -57,7 +60,12 @@ program tb (ifc.bench ds);
 
 	int verbose = 0;
 
-	task do_cycle;
+	task do_cycle;				// task starts here
+
+	if (en_num == 5) being
+		key_rand_cntrl = 1;
+		en_num = 1;
+	end
 
 	if (w == 1) begin
 		t.key = '1;
@@ -67,8 +75,14 @@ program tb (ifc.bench ds);
 		t.text[3] = 0;
 		t.ld = 0;
 		t.rst = 0;	
+	end else if (key_rand_cntrl == 1 && en_num == 1) begin
+		t.randomize();
+		key_msb.randomize();
 	end else
 		t.randomize();
+
+		key_rand_cntrl = 0;
+
 
 		if ( t.ld == 1 && t.rst == 1) begin 
 			start =  1;
@@ -84,6 +98,12 @@ program tb (ifc.bench ds);
 			rst_chk 	= 	1;
 		end else
 			rst_chk		=	0; 
+
+		
+		if (t.ld == 1) begin
+			t.key_rand_cntrl = 1;
+		end
+
 	
 		ds.cb.rst		<= 	t.rst;	
 		ds.cb.ld		<= 	t.ld;

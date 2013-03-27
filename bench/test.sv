@@ -62,13 +62,13 @@ program tb (ifc.bench ds);
 
 	task do_cycle;				// task starts here
 
-//	if (en_num == 5) being
+//	if (en_num == 6) being
 //		key_rand_cntrl = 1;
 //		en_num = 1;
 //	end
 
-	key_rand_cntrl = (en_num == 5) ? 1 : key_rand_cntrl;
-	en_num	=  (en_num == 5) ? 1 : en_num;
+	key_rand_cntrl = (en_num == 6) ? 1 : key_rand_cntrl;
+	en_num	=  (en_num == 6) ? 1 : en_num;
 
 	if (w == 1) begin
 		t.key = '1;
@@ -79,7 +79,7 @@ program tb (ifc.bench ds);
 		key_msb.key_msbs = '0;
 		t.ld = 0;
 		t.rst = 0;	
-	end else if (key_rand_cntrl == 1 || en_num == 1) begin
+	end else if (key_rand_cntrl == 1 ) begin
 		t.randomize();
 		key_msb.randomize();
 	end else

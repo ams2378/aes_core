@@ -10,10 +10,11 @@ all:
 	make gtkwave
 duv4:
 	vcs -full64 -PP -sverilog +define+SV +define+VPD $(INTERFACE) $(MODULES) $(TOP)-o $(BENCH)
-	./$(BENCH)
 
-test:
+dut:
 	vcs -full64 -PP -sverilog +define+SV +define+VPD $(INTERFACE) $(MODULES)  $(TOP) $(TEST) -o $(BENCH)
+
+run:
 	./$(BENCH)
 
 view:

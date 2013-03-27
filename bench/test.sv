@@ -136,7 +136,7 @@ program tb (ifc.bench ds);
 		if (ds.cb.dcnt == 4'hb) begin
 			temp_sa00 = temp_sa00 ^ ds.cb.sa00;
 			bitchange = $countones (temp_sa00);	
-			$fdisplay (p,"Encryption Number : %0d" , en_num);
+			$fdisplay (p,"Encryption Number : %0d" , en_num-1);
 			$fdisplay (p,"Round : %d" , ds.cb.dcnt);
 			$fdisplay (p,"Bit change: : %d" , bitchange);
 		end

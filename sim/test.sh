@@ -1,14 +1,15 @@
 #!/bin/bash
 
+make test
+
 INCR=0
 T=1
-for i in {0..10}
+for i in {0..255}
 do
+	cp configure.txt.bak configure.txt
 	cat configure.txt | sed -e "s/COPY_HERE/INCR_MSB $INCR/g" > temp1.txt
-	rm -rf configure.txt
 	mv temp1.txt configure.txt
-	make test 
-	cat configure.txt | sed -e "s/INCR_MSB $INCR/COPY_HERE/g" > temp2.txt
-	mv temp2.txt configure.txt
+	make run 
+#	cp configure.txt.bak configure.txt
 	INCR=$(($T+$INCR))
 done

@@ -1,0 +1,46 @@
+                         Chronologic VCS (TM)
+         Version F-2011.12_Full64 -- Wed Mar 27 19:52:30 2013
+               Copyright (c) 1991-2011 by Synopsys Inc.
+                         ALL RIGHTS RESERVED
+
+This program is proprietary and confidential information of Synopsys Inc.
+and may be used and disclosed only as authorized in a license agreement
+controlling such use and disclosure.
+
+
+Warning-[ACC_CLI_ON] ACC/CLI capabilities enabled
+  ACC/CLI capabilities have been enabled for the entire design. For faster 
+  performance enable module specific capability in pli.tab file
+
+Parsing design file '../bench/interface.sv'
+Parsing design file '../rtl/aes_rcon.sv'
+Parsing design file '../rtl/aes_sbox.sv'
+Parsing design file '../rtl/aes_xor.sv'
+Parsing design file '../rtl/aes_addroundkey.sv'
+Parsing design file '../rtl/aes_key_expand_128.sv'
+Parsing design file '../rtl/aes_cipher_top.sv'
+Parsing design file '../rtl/aes_top.sv'
+Parsing design file '../bench/top.sv'
+Parsing design file '../bench/aes_env.sv'
+Parsing design file '../bench/aes_checker.sv'
+Parsing design file '../bench/aes_transactions.sv'
+Parsing design file '../bench/test.sv'
+Top Level Modules:
+       top
+TimeScale is 1 ns / 1 ps
+Notice: Ports coerced to inout, use -notice for details
+Starting vcs inline pass...
+5 modules and 0 UDP read.
+recompiling module aes_sbox
+recompiling module aes_xor
+recompiling module top
+recompiling module tb
+All of 6 modules done
+make[1]: Entering directory `/home/asc2171/aes_core_bak/aes_core/sim/csrc'
+gcc -w  -pipe -O -I/sim/synopsys64/vcs/include    -c ../../bench/aes.c
+gcc -w  -pipe -O -I/sim/synopsys64/vcs/include    -c ../../bench/test.c
+if [ -x ../../sim/testbench.exe ]; then chmod -x ../../sim/testbench.exe; fi
+g++  -o ../../sim/testbench.exe    -Wl,-whole-archive    -Wl,-no-whole-archive  aes.o test.o  _vcsobj_1_1.o  5NrI_d.o 5NrIB_d.o SIM_l.o    rmapats_mop.o rmapats.o      /sim/synopsys64/vcs/amd64/lib/libvirsim.so /sim/synopsys64/vcs/amd64/lib/liberrorinf.so /sim/synopsys64/vcs/amd64/lib/libsnpsmalloc.so     /sim/synopsys64/vcs/amd64/lib/libvcsnew.so /sim/synopsys64/vcs/amd64/lib/libuclinative.so         /sim/synopsys64/vcs/amd64/lib/vcs_save_restore_new.o -ldl -lm  -lc -lpthread -ldl 
+../../sim/testbench.exe up to date
+make[1]: Leaving directory `/home/asc2171/aes_core_bak/aes_core/sim/csrc'
+CPU time: .380 seconds to compile + .032 seconds to elab + .548 seconds to link

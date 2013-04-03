@@ -33,7 +33,8 @@ program tb (ifc.bench ds);
 	string dir = "logs";
 
 
-	bit[119:0] temp_key = 120'hf04193bd83c6bc82ad5b2b65140618; 
+//	bit[127:0] temp_key = 128'h01f04193bd83c6bc82ad5b2b65140618; 
+	bit[127:0] temp_key = 128'h87fac3501987124a34bc7dff761a309c; 
 
 
 	covergroup cg_reset;
@@ -69,7 +70,7 @@ program tb (ifc.bench ds);
 		end
 
 		if (t.const_key == 1) begin
-			t.key = {t.key[127:120], temp_key}; 
+			t.key = temp_key; 
 		end
 		
 		//send text/key to dut and software

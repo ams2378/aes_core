@@ -1,0 +1,42 @@
+                         Chronologic VCS (TM)
+         Version F-2011.12_Full64 -- Mon Mar 25 22:18:56 2013
+               Copyright (c) 1991-2011 by Synopsys Inc.
+                         ALL RIGHTS RESERVED
+
+This program is proprietary and confidential information of Synopsys Inc.
+and may be used and disclosed only as authorized in a license agreement
+controlling such use and disclosure.
+
+
+Warning-[ACC_CLI_ON] ACC/CLI capabilities enabled
+  ACC/CLI capabilities have been enabled for the entire design. For faster 
+  performance enable module specific capability in pli.tab file
+
+Parsing design file 'aes_output_buffer.sv'
+Parsing design file 'aes_input_buffer.sv'
+Parsing design file 'aes_rcon.sv'
+Parsing design file 'aes_sbox.sv'
+Parsing design file 'aes_inv_sbox.sv'
+Parsing design file 'aes_xor.sv'
+Parsing design file 'aes_addroundkey.sv'
+Parsing design file 'aes_key_expand_128.sv'
+Parsing design file 'aes_cipher_top.sv'
+Parsing design file 'aes_inv_cipher_top.sv'
+Parsing design file 'aes_top.sv'
+Top Level Modules:
+       aes_top
+TimeScale is 1 ns / 1 ps
+Starting vcs inline pass...
+6 modules and 0 UDP read.
+recompiling module aes_sbox
+recompiling module aes_inv_sbox
+recompiling module aes_xor
+recompiling module aes_key_expand_128
+recompiling module aes_top
+All of 6 modules done
+make[2]: Entering directory `/home/asc2171/aes_core_bak/aes_core/syn/rtl/csrc'
+if [ -x ../simv ]; then chmod -x ../simv; fi
+g++  -o ../simv    -Wl,-whole-archive    -Wl,-no-whole-archive  _vcsobj_1_1.o  5NrI_d.o 5NrIB_d.o SIM_l.o     rmapats_mop.o rmapats.o      /sim/synopsys64/vcs/amd64/lib/libvirsim.so /sim/synopsys64/vcs/amd64/lib/liberrorinf.so /sim/synopsys64/vcs/amd64/lib/libsnpsmalloc.so     /sim/synopsys64/vcs/amd64/lib/libvcsnew.so /sim/synopsys64/vcs/amd64/lib/libuclinative.so         /sim/synopsys64/vcs/amd64/lib/vcs_save_restore_new.o -ldl -lm  -lc -lpthread -ldl 
+../simv up to date
+make[2]: Leaving directory `/home/asc2171/aes_core_bak/aes_core/syn/rtl/csrc'
+CPU time: .224 seconds to compile + .028 seconds to elab + .104 seconds to link

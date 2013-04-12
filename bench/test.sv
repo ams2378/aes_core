@@ -43,7 +43,7 @@ program tb (ifc.bench ds);
 //	bit[119:0] temp_key = 120'hfac3501987124a34bc7dff761a309c;
 //	bit[119:0] temp_key = 120'hf04193bd83c6bc82ad5b2b65140618; 
 //	bit[127:0] temp_key = 127'h20f04193bd83c6bc82ad5b2b65140618; 
-	bit[127:0] temp_key = 127'h56f04193bd83c6bc82ad5b2b65140618; 
+	bit[127:0] temp_key = 127'h21f04193bd83c6bc82ad5b2b65140618; 
 
 	bit [7:0]  msbs = 8'h00;
 	bit [7:0]  temp_sa00;

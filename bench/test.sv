@@ -145,7 +145,7 @@ program tb (ifc.bench ds);
 		if (ds.cb.dcnt == 4'hb) begin
 			temp_sa00 = temp_sa00 ^ ds.cb.sa00;
 			bitchange = $countones (temp_sa00);	
-			$fdisplay (p,"Encryption Number : %0d" , en_num-1);
+	//		$fdisplay (p,"Encryption Number : %0d" , en_num-1);
 			$fdisplay (p,"KEY: %h%h%h%h", t.key[127:96], t.key[95:64], t.key[63:32], t.key[31:0]);
 			$fdisplay (p,"TEXT: %h%h%h%h", t.text[3], t.text[2], t.text[1], t.text[0]);
 	//		$fdisplay (p,"Key MSBs : %h", msbs);
@@ -158,6 +158,8 @@ program tb (ifc.bench ds);
 
 		if ( t.ld == 1 && t.rst == 1) begin 
 		$fdisplay (f,"Encryption Number : %0d" , en_num);
+		$fdisplay (p,"Encryption Number : %0d" , en_num);
+
 		end
 
 //		$fdisplay (f,"Inputs :");

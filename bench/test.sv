@@ -43,7 +43,7 @@ program tb (ifc.bench ds);
 //	bit[119:0] temp_key = 120'hfac3501987124a34bc7dff761a309c;
 //	bit[119:0] temp_key = 120'hf04193bd83c6bc82ad5b2b65140618; 
 
-	bit[127:0] temp_key = 120'hf04193bd83c6bc82ad5b2b65140618; 
+	bit[127:0] temp_key = 127'h20f04193bd83c6bc82ad5b2b65140618; 
 
 	bit [7:0]  msbs = 8'h00;
 	bit [7:0]  temp_sa00;
@@ -155,7 +155,7 @@ program tb (ifc.bench ds);
 	//		$fdisplay (k,"(Encryption Key) %0d %h", en_num-1, msbs);
 			$fdisplay (p,"Result: %h%h%h%h ", ds.cb.text_out[127:96], ds.cb.text_out[95:64], ds.cb.text_out[63:32], ds.cb.text_out[31:0], "\n");
 		end
-/*
+
 		if ( t.ld == 1 && t.rst == 1) begin 
 		$fdisplay (f,"Encryption Number : %0d" , en_num);
 		end
@@ -283,7 +283,7 @@ program tb (ifc.bench ds);
 		$fdisplay (g,"Result GoldenModel : %h%h%h%h ", ctext[3], ctext[2], ctext[1], ctext[0]);	
 		$fdisplay (g,"Result DUT : %h%h%h%h ", ds.cb.text_out[127:96], ds.cb.text_out[95:64], ds.cb.text_out[63:32], ds.cb.text_out[31:0]);
 		end
-*/
+
 		
 	//	$display (" calling checker from test with status : %d  @ runtime %t ", t.status, $realtime); 
 
@@ -323,19 +323,19 @@ program tb (ifc.bench ds);
 		end
 		w = 0;
 
-/*		s = $sformatf("/log_%0d.txt", v);		
-		f = $fopen ({dir, s});
-*/
+//		s = $sformatf("/log_%0d.txt", v);		
+//		f = $fopen ({dir, s});
 
-	//	k = $fopen ("keys.txt", "a");
-	//	f = $fopen ("log_1.txt", "a");
-	//	g = $fopen ("log_2.txt", "a");
-		p = $fopen ("power.txt", "a");
-/*
+
+//		k = $fopen ("keys.txt", "a");
+//		f = $fopen ("log_1.txt", "a");
+//		g = $fopen ("log_2.txt", "a");
+//		p = $fopen ("power.txt", "a");
+
 		f = $fopena ("log_1.txt");
 		g = $fopena ("log_2.txt");
 		p = $fopena ("power.txt");
-*/
+
 		t = new( env.ld_density, env.reset_density );
 
 		if (env.single_key == 1) begin 

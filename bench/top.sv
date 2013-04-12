@@ -13,7 +13,7 @@ module top();
    bit clk = 0;
    always #5 clk = ~clk;
  
-//   initial $vcdpluson;
+   initial $vcdpluson;
 
    ifc IFC(clk); 		// instantiate the interface file
    aes_top dut(IFC.dut); 

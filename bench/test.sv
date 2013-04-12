@@ -145,21 +145,23 @@ program tb (ifc.bench ds);
 		if (ds.cb.dcnt == 4'hb) begin
 			temp_sa00 = temp_sa00 ^ ds.cb.sa00;
 			bitchange = $countones (temp_sa00);	
-	//		$fdisplay (p,"Encryption Number : %0d" , en_num-1);
-			$fdisplay (p,"KEY: %h%h%h%h", t.key[127:96], t.key[95:64], t.key[63:32], t.key[31:0]);
-			$fdisplay (p,"TEXT: %h%h%h%h", t.text[3], t.text[2], t.text[1], t.text[0]);
-	//		$fdisplay (p,"Key MSBs : %h", msbs);
 			$fdisplay (p,"Round : %d", ds.cb.dcnt);
-	//		$fdisplay (p, "sa00 : %h ", ds.cb.sa00);
 			$fdisplay (p,"Bit change: %d", bitchange);
-	//		$fdisplay (k,"(Encryption Key) %0d %h", en_num-1, msbs);
 			$fdisplay (p,"Result: %h%h%h%h ", ds.cb.text_out[127:96], ds.cb.text_out[95:64], ds.cb.text_out[63:32], ds.cb.text_out[31:0], "\n");
+
+	//		$fdisplay (p,"Encryption Number : %0d" , en_num-1);
+	//		$fdisplay (p, "sa00 : %h ", ds.cb.sa00);
+	//		$fdisplay (k,"(Encryption Key) %0d %h", en_num-1, msbs);
+	//		$fdisplay (p,"KEY: %h%h%h%h", t.key[127:96], t.key[95:64], t.key[63:32], t.key[31:0]);
+	//		$fdisplay (p,"TEXT: %h%h%h%h", t.text[3], t.text[2], t.text[1], t.text[0]);
+	//		$fdisplay (p,"Key MSBs : %h", msbs);
 		end
 
 		if ( t.ld == 1 && t.rst == 1) begin 
 		$fdisplay (f,"Encryption Number : %0d" , en_num);
 		$fdisplay (p,"Encryption Number : %0d" , en_num);
-
+		$fdisplay (p,"TEXT: %h%h%h%h", t.text[3], t.text[2], t.text[1], t.text[0]);
+		$fdisplay (p,"KEY: %h%h%h%h", t.key[127:96], t.key[95:64], t.key[63:32], t.key[31:0]);
 		end
 
 //		$fdisplay (f,"Inputs :");

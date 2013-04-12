@@ -4,7 +4,7 @@ make test
 
 INCR=0
 T=1
-for i in {0..255}
+for i in {0..0}
 do
 	cp configure.txt.bak configure.txt
 	cat configure.txt | sed -e "s/COPY_HERE/INCR_MSB $INCR/g" > temp1.txt

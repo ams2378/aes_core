@@ -1,0 +1,3 @@
+Encryption Number : 1
+TEXT: fe7ff3f926286dc2cb7e895d949f62fa
+KEY: 21f04193bd83c6bc82ad5b2b65140618

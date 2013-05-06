@@ -1,0 +1,99 @@
+------------- Simulation Time -----------------                45000
+Encryption Number : 1
+KEY: 21f04193bd83c6bc82ad5b2b65140618
+TEXT: fe7ff3f926286dc2cb7e895d949f62fa
+DUT Done : 0
+GoldenModel Done : 0
+Result from GoldenModel : fa629f945d897ecbc26d2826f9f37ffe 
+Result from DUT : xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
+------------- Simulation Time -----------------                55000
+KEY: 21f04193bd83c6bc82ad5b2b65140618
+TEXT: 1c7a765d0f2ecea980de8a21df50f4e0
+DUT Done : 0
+GoldenModel Done : 0
+Result from GoldenModel : fa629f945d897ecbc26d2826f9f37ffe 
+Result from DUT : xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
+------------- Simulation Time -----------------                65000
+KEY: 21f04193bd83c6bc82ad5b2b65140618
+TEXT: c860d8e1acfd6f771bb37cf592505b5c
+DUT Done : 0
+GoldenModel Done : 0
+Result from GoldenModel : fa629f945d897ecbc26d2826f9f37ffe 
+Result from DUT : b4xxxxxxxxxxxxXxxxxxXxxxxxxXxxxx 
+------------- Simulation Time -----------------                75000
+KEY: 21f04193bd83c6bc82ad5b2b65140618
+TEXT: 83e35d54521caee0b8e6c461a3084992
+DUT Done : 0
+GoldenModel Done : 0
+Result from GoldenModel : fa629f945d897ecbc26d2826f9f37ffe 
+Result from DUT : 95xxxxxxxxxxxxXXxxxxXXxxxxXXxxxx 
+------------- Simulation Time -----------------                85000
+KEY: 21f04193bd83c6bc82ad5b2b65140618
+TEXT: d3e7d4fa22f1e5b22ff6f047d8db6c11
+DUT Done : 0
+GoldenModel Done : 0
+Result from GoldenModel : fa629f945d897ecbc26d2826f9f37ffe 
+Result from DUT : 57xxxxxxxxxxxxXXxxxxXxxxxxxxxxxx 
+------------- Simulation Time -----------------                95000
+KEY: 21f04193bd83c6bc82ad5b2b65140618
+TEXT: e0ddabb9c7ec57dbd1d6ff369f3b12a5
+DUT Done : 0
+GoldenModel Done : 0
+Result from GoldenModel : fa629f945d897ecbc26d2826f9f37ffe 
+Result from DUT : bcxxxxxxxxxxxxxXxxxxXxxxxxxxxxxx 
+------------- Simulation Time -----------------               105000
+KEY: 21f04193bd83c6bc82ad5b2b65140618
+TEXT: a9c92890451b9012810a5de7655c5258
+DUT Done : 0
+GoldenModel Done : 0
+Result from GoldenModel : fa629f945d897ecbc26d2826f9f37ffe 
+Result from DUT : 51xxxxxxxxxxxxxXxxxxXxxxxxxxxxxx 
+------------- Simulation Time -----------------               115000
+KEY: 21f04193bd83c6bc82ad5b2b65140618
+TEXT: 6a33ae2155836d402322739c567ffa9c
+DUT Done : 0
+GoldenModel Done : 0
+Result from GoldenModel : fa629f945d897ecbc26d2826f9f37ffe 
+Result from DUT : b0xxxxxxxxxxxxxXxxxxXxxxxxxxxxxx 
+------------- Simulation Time -----------------               125000
+KEY: 21f04193bd83c6bc82ad5b2b65140618
+TEXT: 2b0bf44fb07ad8143daa9c9b028af881
+DUT Done : 0
+GoldenModel Done : 0
+Result from GoldenModel : fa629f945d897ecbc26d2826f9f37ffe 
+Result from DUT : 49xxxxxxxxxxxxxXxxxxXxxxxxxxxxxx 
+------------- Simulation Time -----------------               135000
+KEY: 21f04193bd83c6bc82ad5b2b65140618
+TEXT: b10f33856bf68b61b2cf1d61c459127b
+DUT Done : 0
+GoldenModel Done : 0
+Result from GoldenModel : fa629f945d897ecbc26d2826f9f37ffe 
+Result from DUT : 80xxxxxxxxxxxxxXxxxxXxxxxxxxxxxx 
+------------- Simulation Time -----------------               145000
+KEY: 21f04193bd83c6bc82ad5b2b65140618
+TEXT: 9d50321f2bbe28d978a98edf7390e268
+DUT Done : 0
+GoldenModel Done : 0
+Result from GoldenModel : fa629f945d897ecbc26d2826f9f37ffe 
+Result from DUT : 29xxxxxxxxxxxxxXxxxxXxxxxxxxxxxx 
+------------- Simulation Time -----------------               155000
+KEY: 21f04193bd83c6bc82ad5b2b65140618
+TEXT: 24149eaeb0a324f061586f1885a41463
+DUT Done : 0
+GoldenModel Done : 0
+Result from GoldenModel : fa629f945d897ecbc26d2826f9f37ffe 
+Result from DUT : 40xxxxxxxxxxxxxXxxxxXxxxxxxxxxxx 
+------------- Simulation Time -----------------               165000
+KEY: 21f04193bd83c6bc82ad5b2b65140618
+TEXT: 50783f484348af5af239d2064a88d835
+DUT Done : 0
+GoldenModel Done : 0
+Result from GoldenModel : fa629f945d897ecbc26d2826f9f37ffe 
+Result from DUT : b2xxxxxxxxxxxxxXxxxxXxxxxxxxxxxx 
+------------- Simulation Time -----------------               175000
+KEY: 21f04193bd83c6bc82ad5b2b65140618
+TEXT: 297ec6fbd45337f5ee19cf253b232e41
+DUT Done : 1
+GoldenModel Done : 1
+Result from GoldenModel : f3d2b4e030a54fe007ec19a2399ad545 
+Result from DUT : 6dxxxxxxxxxxxxxXxxxxXxxxxxxxxxxx 

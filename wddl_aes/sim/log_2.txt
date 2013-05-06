@@ -1,0 +1,5 @@
+Encryption Number : 1
+KEY: 21f04193bd83c6bc82ad5b2b65140618
+TEXT: fe7ff3f926286dc2cb7e895d949f62fa
+Result GoldenModel : f3d2b4e030a54fe007ec19a2399ad545 
+Result DUT : 6dxxxxxxxxxxxxxXxxxxXxxxxxxxxxxx 

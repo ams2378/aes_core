@@ -3,7 +3,7 @@ MODULES = ../rtl/wddl/xor/* ../rtl/aes_xor_wddl.v ../rtl/aes_addroundkey_wddl.v 
 
 INTERFACE= ../bench/interface.sv
 TOP = ../bench/top.sv
-TEST= ../bench/test.sv
+TEST= ../bench/aes_env.sv ../bench/aes_checker.sv ../bench/aes_transactions.sv ../bench/aes.c ../bench/test.c ../bench/test.sv
 BENCH=../sim/testbench.exe
 
 all: 

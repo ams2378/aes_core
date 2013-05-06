@@ -234,4 +234,4 @@ program tb (ifc.bench ds);
 	end
 
 
-endmodule
+endprogram
